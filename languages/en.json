@@ -1,6 +1,9 @@
 {
   "I18N.LANGUAGE": "English",
   "pf2e-runesmith-assistant": {
+    "code": {
+      "diacritic": "diacritic"
+    },
     "keywords": {
       "etch": "Etch",
       "trace": "Trace",

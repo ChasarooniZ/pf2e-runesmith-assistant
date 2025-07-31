@@ -166,13 +166,23 @@ async function pickDialog({ runes, actor, token, options }) {
 }
 
 /**
- *
+ * 
+ * @param {*} rune Rune to be added
+ * @param {{actor, token, type, action, free}} param1 
+ * @returns 
  */
 async function addRune(
   rune,
   { actor, token, type = "etched", action = 0, free }
 ) {
-  const targets = await showDynamicTargetForm();
+  let targets = [];
+  if (rune.name?.toLowerCase()?.includes(localize("code.diacritic"))) {
+
+  } else {
+    
+    targets = await showDynamicTargetForm();
+  }
+
   if (!targets || !targets?.length || targets === 'cancel') return;
   for (const target of targets) {
     let runes = actor.getFlag(MODULE_ID, "runes");
