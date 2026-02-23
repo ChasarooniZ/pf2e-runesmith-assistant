@@ -79,45 +79,45 @@ export function setupHooks() {
     <label><strong>Etched Runes</strong></label>
     <div class="runes-row">
       ${regularEtched
-          .map(
-            (r) => `<img
+        .map(
+          (r) => `<img
                       src="${r.rune.img}" 
                       data-tooltip="${runeTooltip(
-              r,
-              enrichedDescriptions[r.rune.id]
-            )}" 
+                        r,
+                        enrichedDescriptions[r.rune.id],
+                      )}" 
                       data-tooltip-direction="UP" 
                       class="rune-img"
                       data-rune-id="${r.id}"
                       data-rune-type="etched"
-                      style="width:32px;height:32px;margin:2px;">`
-          )
-          .join("")}
+                      style="width:32px;height:32px;margin:2px;">`,
+        )
+        .join("")}
       ${Array.from({ length: emptyCount })
-          .map(
-            () => `<img
+        .map(
+          () => `<img
                     src="${EMPTY_RUNE_ART}"
                     title="Empty Rune Slot"
                     class="rune-img placeholder"
                     style="width:32px;height:32px;opacity:0.3;margin:2px;"
-                  >`
-          )
-          .join("")}
+                  >`,
+        )
+        .join("")}
       ${freeEtched
-          .map(
-            (r) => `<img
+        .map(
+          (r) => `<img
                       src="${r.rune.img}" 
                       data-tooltip="${runeTooltip(
-              r,
-              enrichedDescriptions[r.rune.id]
-            )}" 
+                        r,
+                        enrichedDescriptions[r.rune.id],
+                      )}" 
                       data-tooltip-direction="UP" 
                       class="rune-img"
                       data-rune-id="${r.id}"
                       data-rune-type="etched"
-                      style="width:32px;height:32px;margin:2px;box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);border-radius: 6px;">`
-          )
-          .join("")}
+                      style="width:32px;height:32px;margin:2px;box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);border-radius: 6px;">`,
+        )
+        .join("")}
     </div>
   </div>
 `;
@@ -128,8 +128,8 @@ export function setupHooks() {
     <label><strong>Traced Runes</strong></label>
     <div class="runes-row" style="flex-wrap:wrap;">
       ${traced
-          .map(
-            (r) => `
+        .map(
+          (r) => `
         <img src="${r.rune.img}" 
           data-tooltip="${runeTooltip(r, enrichedDescriptions[r.rune.id])}" 
           data-tooltip-direction="UP" 
@@ -137,9 +137,9 @@ export function setupHooks() {
           data-rune-id="${r.id}"
           data-rune-type="traced"
           style="width:32px;height:32px;margin:2px;">
-      `
-          )
-          .join("")}
+      `,
+        )
+        .join("")}
     </div>
   </div>
 `;
@@ -175,17 +175,18 @@ export function setupHooks() {
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
           const content = await TextEditor.enrichHTML(
-            `<p>Do you want to invoke the rune <strong>${runeData.rune.link
-            }</strong> on <i>${targetDescription(
-              runeData.target
-            ).replaceAll('"', "'")}</i>?</p><hr><fieldset>${enrichedDescriptions[
-            runeData.rune.id
-            ]
+            `<p>Do you want to invoke the rune <strong>${
+              runeData.rune.link
+            }</strong> on <i>${targetDescription(runeData.target).replaceAll(
+              '"',
+              "'",
+            )}</i>?</p><hr><fieldset>${
+              enrichedDescriptions[runeData.rune.id]
             }</fieldset>`,
             {
               rollData,
               async: true,
-            }
+            },
           );
 
           foundry.applications.api.DialogV2.wait({
@@ -209,9 +210,7 @@ export function setupHooks() {
             buttons: [
               {
                 action: "invoke",
-                label: `${localize(
-                  "keywords.invoke"
-                )}`,
+                label: `${localize("keywords.invoke")}`,
                 callback: () => {
                   invokeRune({ act: actor, runeID, type: runeType });
                 },
@@ -223,7 +222,7 @@ export function setupHooks() {
                 label: localize("dialog.buttons.cancel"),
               },
             ],
-          })
+          });
         });
 
       // Rune image right click: open dialog to dispel
@@ -234,18 +233,21 @@ export function setupHooks() {
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
           const content = await TextEditor.enrichHTML(
-            `<p>Do you want to dispel (remove) the rune <strong>${runeData.rune.link
-            }</strong> on <i>${targetDescription(
-              runeData.target
-            ).replaceAll('"', "'")}</i>?</p><hr>
-                                              <fieldset>${enrichedDescriptions[
-            runeData.rune.id
-            ]
-            }</fieldset>`,
+            `<p>Do you want to dispel (remove) the rune <strong>${
+              runeData.rune.link
+            }</strong> on <i>${targetDescription(runeData.target).replaceAll(
+              '"',
+              "'",
+            )}</i>?</p><hr>
+                                              <fieldset>${
+                                                enrichedDescriptions[
+                                                  runeData.rune.id
+                                                ]
+                                              }</fieldset>`,
             {
               rollData,
               async: true,
-            }
+            },
           );
 
           foundry.applications.api.DialogV2.wait({
@@ -281,7 +283,7 @@ export function setupHooks() {
                 label: localize("dialog.buttons.cancel"),
               },
             ],
-          })
+          });
         });
 
       // Rune image hover: highlight token
@@ -314,7 +316,7 @@ export function setupHooks() {
               token._onHoverOut(event); // remove highlight
             }
           }
-        }
+        },
       );
 
       runesFieldset.find(".invoke-runes-btn").on("click", () => {
@@ -326,18 +328,18 @@ export function setupHooks() {
 
       function runeTooltip(runeFlag, enrichedDesc) {
         return `<b>${runeFlag.rune.name}</b><p><i>on ${targetDescription(
-          runeFlag.target
-        )}</i></p><hr>${enrichedDesc}<hr>
+          runeFlag.target,
+        ).replaceAll('"', "'")}</i></p><hr>${enrichedDesc}<hr>
   <p><b>${localize(
-          "dialog.invoke.title"
-        )}: </b><span class='reference'>${game.i18n.localize(
-          "CONTROLS.LeftClick"
-        )}</span></p>
+    "dialog.invoke.title",
+  )}: </b><span class='reference'>${game.i18n.localize(
+    "CONTROLS.LeftClick",
+  )}</span></p>
   <p><b>${localize(
-          "dialog.dispel.title"
-        )}: </b><span class='reference'>${game.i18n.localize(
-          "CONTROLS.RightClick"
-        )}</span></p>
+    "dialog.dispel.title",
+  )}: </b><span class='reference'>${game.i18n.localize(
+    "CONTROLS.RightClick",
+  )}</span></p>
   <p><b>Highlight Affected Token: </b><span class='reference'>Hover</span></p>`;
       }
     }
