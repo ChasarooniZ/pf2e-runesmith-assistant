@@ -14,6 +14,8 @@
 
 Some automation for the Runesmith. NOTE THIS IS VERY POC, Use at your own peril. Designed so my runesmith interested players can do a bit less work. Will most likely be supplanted by the system when the real runesmith is released
 
+This does handle the basic cases of Etching, Invoking, and Scribing runes. This can be done via using the actions, a macro included, or via the character sheet action tab with new sections that are added. It also has some specific handling for specific cases below.
+
 ## Table of Contents
 
 - [PF2e Runesmith Assistant](#pf2e-runesmith-assistant)
@@ -26,10 +28,11 @@ Some automation for the Runesmith. NOTE THIS IS VERY POC, Use at your own peril.
 
 **Runes**
 
-- Holtrik, Rune of Dwarven Ramparts
-- Zohk, Rune of Homecoming
+- `Holtrik, Rune of Dwarven Ramparts` - Adds raise a shield)
+- `Zohk, Rune of Homecoming` - Adds a dialog option when a time is invoked to teleport the target to you
   **Actions**
 - Chain of Words
+  - Adds the cool AoE Effect
 
 ## Changelog
 
