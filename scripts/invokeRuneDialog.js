@@ -151,7 +151,7 @@ export async function pickDialog({
 
   // Compose dialog content
   let content = `
-    <form class="songpicker">
+    <form class="runepicker">
         ${renderEtchedRunes(etched, MAX_ETCHED, "Etched Runes")}
         <hr>
         ${renderTracedRunes(traced, "Traced Runes")}

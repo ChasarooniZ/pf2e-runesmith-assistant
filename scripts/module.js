@@ -1,12 +1,13 @@
 import { setupAPI } from "./api.js";
 import { setupHooks } from "./hooks.js";
-import { CUSTOM_DAILIES } from "./lib/dailiesSupport.js";
 import { setupSocket } from "./socket.js";
 
 export const MODULE_ID = "pf2e-runesmith-assistant";
 
 Hooks.once("init", async function () {
-
+  loadTemplates([
+    `modules/pf2e-runesmith-assistant/templates/target-dialog.hbs`,
+  ])
 });
 
 Hooks.once("socketlib.ready", () => {

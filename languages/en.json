@@ -43,6 +43,26 @@
       },
       "etch-trace": {
         "title": "Rune List"
+      },
+      "target-menu": {
+        "sections": {
+          "type": "Target Type",
+          "object-name": "Object Name",
+          "select-tokens": "Select Token(s)",
+          "person-rune-location": "Rune Location"
+        },
+        "buttons": {
+          "object": "Unattended Object",
+          "person": "Person",
+          "worn-item": "On Worn/Held Item",
+          "item-name": "Item Name"
+        },
+        "misc": {
+          "x-tokens-selected": "{tokenCount} tokens selected"
+        },
+        "placeholder": {
+          "item-name": "Enter item name"
+        }
       }
     },
     "effect": {
