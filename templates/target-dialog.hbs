@@ -1,69 +1,68 @@
-{{!-- Complete Workflow Form --}}
-<div class="workflow-form">
-  <div class="form-header">
-    <h2>Complete Workflow Form</h2>
-    <span class="form-subtitle">{{subtitle}}</span>
-    <button class="close-button" type="button">&times;</button>
+<div class="runesmith-target-dialog">
+  <div class="rune-desc" data-tooltip="{{rune.enriched_desc}}">
+    <img class="rune-art" src="{{rune.img}}"> <b>{{rune.name}}</b>
+  </div>
+  <hr>
+  <div class="form-section" id="type-section">
+    <h4>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.sections.type'}}</h4>
+    <div class="option-row">
+      <button class="option-button {{#if (eq type 'object')}}active{{/if}}" data-type="object">
+        <i class="fa-solid fa-sack" inert></i>
+        <span>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.buttons.object'}}</span>
+      </button>
+      <button class="option-button {{#if (eq type 'person')}}active{{/if}}" data-type="person">
+        <i class="fa-solid fa-person" inert></i>
+        <span>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.buttons.person'}}</span>
+      </button>
+    </div>
   </div>
 
-  <form>
-    {{!-- Target Type Selection --}}
-    <div class="form-section">
-      <label class="section-label">Target Type</label>
-      <div class="button-group">
-        <button type="button" class="tab-button {{#if (eq targetType 'object')}}active{{/if}}" data-target="object">
-          Unattended Object
-        </button>
-        <button type="button" class="tab-button {{#if (eq targetType 'person')}}active{{/if}}" data-target="person">
-          Person
-        </button>
-      </div>
-    </div>
+  {{#if (eq type 'object')}}
+  <div class="form-section" id="object-section">
+    <h4>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.sections.object-name'}}</h4>
+    <input type="text" id="objectName" placeholder="Enter object name" value="{{objectName}}">
+  </div>
+  {{/if}}
 
-    {{!-- Token Selection (only for Person) --}}
-    {{#if (eq targetType 'person')}}
-    <div class="form-section">
-      <label class="section-label">Select Token</label>
-      <div class="token-grid">
-        {{#each tokens}}
-        <div class="token-item {{#if selected}}selected{{/if}}" data-token="{{id}}">
-          <img src="{{image}}" alt="{{name}}" class="token-image">
-          <span class="token-name">{{name}}</span>
-        </div>
-        {{/each}}
+  {{#if (eq type 'person')}}
+  <div class="form-section" id="token-section">
+    <h4>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.sections.select-tokens'}}</h4>
+    <div class="token-selector" id="token-list">
+      {{#each tokens}}
+      <div class="token-card {{#if this.selected}}selected{{/if}}" 
+           data-token-id="{{this.id}}"
+           data-tooltip="<b>{{localize 'CONTROLS.CommonSelect'}}: </b><span class='reference'>{{localize 'CONTROLS.LeftClick'}}</span>">
+        <img src="{{this.img}}">
+        <div>{{this.name}}</div>
       </div>
+      {{/each}}
     </div>
-
-    {{!-- Item Location (only for Person) --}}
-    <div class="form-section">
-      <label class="section-label">Item Location</label>
-      <div class="button-group">
-        <button type="button" class="tab-button {{#if (eq itemLocation 'person')}}active{{/if}}" data-location="person">
-          On Person
-        </button>
-        <button type="button" class="tab-button {{#if (eq itemLocation 'item')}}active{{/if}}" data-location="item">
-          On Item
-        </button>
-      </div>
-    </div>
+    {{#if (gt selectedCount 1)}}
+    <div class="selected-count">{{localize 'pf2e-runesmith-assistant.dialog.target-menu.misc.x-tokens-selected' tokenCount=selectedCount}}</div>
     {{/if}}
+  </div>
+  {{/if}}
 
-    {{!-- Item Name --}}
-    <div class="form-section">
-      <label class="section-label">Item Name</label>
-      <input 
-        type="text" 
-        class="item-name-input" 
-        placeholder="Enter item name" 
-        value="{{itemName}}"
-        name="itemName"
-      >
+  {{#if (gt selectedCount 0)}}
+  <div class="form-section" id="location-section">
+    <h4>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.sections.person-rune-location'}}</h4>
+    <div class="option-row">
+      <button class="option-button {{#if (eq location 'actor')}}active{{/if}}" data-location="actor">
+      <i class="fa-solid fa-circle-user" inert></i>
+        <span>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.buttons.person'}}</span>
+      </button>
+      <button class="option-button {{#if (eq location 'item')}}active{{/if}}" data-location="item">
+      <i class="fa-solid fa-backpack" inert></i>
+        <span>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.buttons.worn-item'}}</span>
+      </button>
     </div>
+  </div>
+  {{/if}}
 
-    {{!-- Form Actions --}}
-    <div class="form-actions">
-      <button type="button" class="btn btn-cancel">Cancel</button>
-      <button type="submit" class="btn btn-primary">Complete</button>
-    </div>
-  </form>
+  {{#if (eq location 'item')}}
+  <div class="form-section" id="item-name-section">
+    <h4>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.buttons.item-name'}}</h4>
+    <input type="text" id="itemNameInput" placeholder="{{localize 'pf2e-runesmith-assistant.dialog.target-menu.placeholder.item-name'}}" value="{{itemName}}">
+  </div>
+  {{/if}}
 </div>

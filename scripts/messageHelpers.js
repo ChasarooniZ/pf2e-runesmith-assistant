@@ -141,9 +141,9 @@ function handleToolbelt({ description, sourceUUID, target, runeUUID, traits, run
     (targetToken ? [targetToken?.document?.uuid] : [])
 
   if (runeSourceID === RUNES.TROLISTRI_FORLORN_SORROW && targetToken) {
-    const enemyAlliances = ALLIANCES.filter(a => a !== sourceAlliance);
+    const enemyAlliances = new Set(ALLIANCES.filter(a => a !== sourceAlliance));
     targets = canvas.tokens.placeables.filter(t =>
-      enemyAlliances.includes(t?.actor?.alliance) && targetToken.distanceTo(t) <= 20
+      enemyAlliances.has(t?.actor?.alliance) && targetToken.distanceTo(t) <= 20
     ).map(t => t?.document?.uuid)
   }
 
@@ -178,7 +178,7 @@ function getDCInfo(description) {
   let isBasic = false;
 
   if (spanMatch) {
-    dcValue = parseInt(spanMatch[1]);
+    dcValue = Number.parseInt(spanMatch[1]);
     isBasic = spanMatch[2].toLowerCase().includes('basic');
   } else {
     // Fallback to original regex patterns if span pattern doesn't match
@@ -186,7 +186,7 @@ function getDCInfo(description) {
       regex.lastIndex = 0;
       const match = regex.exec(description);
       if (match !== null) {
-        dcValue = parseInt(match[2]);
+        dcValue = Number.parseInt(match[2]);
         break;
       }
     }

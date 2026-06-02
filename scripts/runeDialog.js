@@ -12,10 +12,10 @@ export async function runeEtchTraceDialog(options = {}) {
   const token = getYourToken();
   const actor = token.actor;
   const runesList = actor.items.contents.filter((it) =>
-    it.system?.traits?.value?.includes("rune")
+    it.system?.traits?.value?.includes("rune"),
   );
   if (runesList.length === 0) {
-    ui.notifications.error("You have no Runes");
+    ui.notifications.error(localize("notifications.own-no-runes"));
     return;
   }
 
@@ -46,7 +46,7 @@ export async function runeEtchTraceDialog(options = {}) {
             await TextEditor.enrichHTML(r.description, { rollData })
           ).replaceAll("'", '"'),
         };
-      })
+      }),
     )
   ).sort((a, b) => a.name.localeCompare(b.name));
   //console.log({ runeData });
@@ -58,17 +58,18 @@ export async function runeEtchTraceDialog(options = {}) {
 async function pickDialog({ runes, actor, token, options }) {
   let rune_content = ``;
 
-  //Filter for songs
+  //Filter for runes
   for (let rune of runes) {
-    rune_content += `<label class="radio-label" data-tooltip='${rune.enriched_desc}' data-tooltip-direction="UP">
-      <input type="radio" name="song" value="${rune.id}">
-      <img src="${rune.img}" style="border:0px; width: 50px; height:50px;">
+    rune_content += `<label class="radio-label" data-tooltip='${rune.enriched_desc}'
+    data-tooltip-direction="UP">
+      <input type="radio" name="rune" value="${rune.id}">
+      <img src="${rune.img}" ">
       ${rune.name}
   </label>`;
   }
   let content = `
-  <form class="songpicker">
-    <div class="form-group" id="songs">
+  <form class="runepicker">
+    <div class="form-group" id="runes">
         ${rune_content}
     </div>
   </form>
@@ -82,10 +83,10 @@ async function pickDialog({ runes, actor, token, options }) {
         action: "etch",
         label: localize("keywords.etch"),
         callback: async () => {
-          let itemId = $("input[type='radio'][name='song']:checked").val();
+          let itemId = $("input[type='radio'][name='rune']:checked").val();
           addRune(
             runes.find((s) => s.id === itemId),
-            { actor, token, type: "etched" }
+            { actor, token, type: "etched" },
           );
           resolve(itemId);
         },
@@ -99,10 +100,10 @@ async function pickDialog({ runes, actor, token, options }) {
           label: `${localize("keywords.trace")}`,
           action: "trace",
           callback: async () => {
-            let itemId = $("input[type='radio'][name='song']:checked").val();
+            let itemId = $("input[type='radio'][name='rune']:checked").val();
             addRune(
               runes.find((s) => s.id === itemId),
-              { actor, token, type: "traced", action: "1" }
+              { actor, token, type: "traced", action: "1" },
             );
             resolve(itemId);
           },
@@ -112,15 +113,15 @@ async function pickDialog({ runes, actor, token, options }) {
           label: `${localize("keywords.trace")} (30 ft)`,
           action: "trace2",
           callback: async () => {
-            let itemId = $("input[type='radio'][name='song']:checked").val();
+            let itemId = $("input[type='radio'][name='rune']:checked").val();
             addRune(
               runes.find((s) => s.id === itemId),
-              { actor, token, type: "traced", action: "2" }
+              { actor, token, type: "traced", action: "2" },
             );
             resolve(itemId);
           },
           icon: "fa-solid fa-pencil",
-        }
+        },
       );
     }
     foundry.applications.api.DialogV2.wait({
@@ -131,7 +132,8 @@ async function pickDialog({ runes, actor, token, options }) {
             action: "kofi",
             label: "Support Dev",
             icon: "fa-solid fa-mug-hot fa-beat-fade",
-            onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
+            onClick: () =>
+              window.open("https://ko-fi.com/chasarooni", "_blank"),
           },
         ],
         icon: "fas fa-stamp",
@@ -156,7 +158,7 @@ async function pickDialog({ runes, actor, token, options }) {
               type: "etched",
               free: true,
             });
-            resolve(runeId); // Optionally resolve the promise
+            resolve(runeId);
           });
       },
       position: { width: 700 },
@@ -170,10 +172,13 @@ async function pickDialog({ runes, actor, token, options }) {
  */
 async function addRune(
   rune,
-  { actor, token, type = "etched", action = 0, free }
+  { actor, token, type = "etched", action = 0, free },
 ) {
-  const targets = await showDynamicTargetForm();
-  if (!targets || !targets?.length || targets === 'cancel') return;
+  const targets = await showDynamicTargetForm({
+    processType: type,
+    rune: rune,
+  });
+  if (!targets || !targets?.length || targets === "cancel" || !rune) return;
   for (const target of targets) {
     let runes = actor.getFlag(MODULE_ID, "runes");
     const id = foundry.utils.randomID();

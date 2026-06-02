@@ -1,3 +1,11 @@
+## 1.0.0
+
+- **Official Release**
+  - Fixed up a ton of misc issues in the code that were placeholders
+  - Actually correctly fixed styling
+  - Reworked the entire targetting menu
+    - Added a preview of currently selected rune to make the target selection easier
+
 ## 0.7.1
 
 - `Updated`

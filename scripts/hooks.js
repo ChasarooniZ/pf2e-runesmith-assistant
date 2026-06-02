@@ -76,7 +76,7 @@ export function setupHooks() {
 
       let etchedHtml = `
   <div class="runesmith-assistant runes-section etched-runes">
-    <label><strong>Etched Runes</strong></label>
+    <label><strong>${localize("ui.sections.etched")}</strong></label>
     <div class="runes-row">
       ${regularEtched
         .map(
@@ -89,17 +89,15 @@ export function setupHooks() {
                       data-tooltip-direction="UP" 
                       class="rune-img"
                       data-rune-id="${r.id}"
-                      data-rune-type="etched"
-                      style="width:32px;height:32px;margin:2px;">`,
+                      data-rune-type="etched">`,
         )
         .join("")}
       ${Array.from({ length: emptyCount })
         .map(
           () => `<img
                     src="${EMPTY_RUNE_ART}"
-                    title="Empty Rune Slot"
+                    data-tooltip="Empty Rune Slot"
                     class="rune-img placeholder"
-                    style="width:32px;height:32px;opacity:0.3;margin:2px;"
                   >`,
         )
         .join("")}
@@ -112,10 +110,9 @@ export function setupHooks() {
                         enrichedDescriptions[r.rune.id],
                       )}" 
                       data-tooltip-direction="UP" 
-                      class="rune-img"
+                      class="rune-img free-etched"
                       data-rune-id="${r.id}"
-                      data-rune-type="etched"
-                      style="width:32px;height:32px;margin:2px;box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);border-radius: 6px;">`,
+                      data-rune-type="etched">`,
         )
         .join("")}
     </div>
@@ -125,8 +122,8 @@ export function setupHooks() {
       // Build Traced Runes section (no placeholders, wraps)
       let tracedHtml = `
   <div class="runesmith-assistant runes-section traced-runes">
-    <label><strong>Traced Runes</strong></label>
-    <div class="runes-row" style="flex-wrap:wrap;">
+    <label><strong>${localize("ui.sections.traced")}</strong></label>
+    <div class="runes-row">
       ${traced
         .map(
           (r) => `
@@ -135,8 +132,7 @@ export function setupHooks() {
           data-tooltip-direction="UP" 
           class="rune-img"
           data-rune-id="${r.id}"
-          data-rune-type="traced"
-          style="width:32px;height:32px;margin:2px;">
+          data-rune-type="traced">
       `,
         )
         .join("")}
@@ -145,16 +141,16 @@ export function setupHooks() {
 `;
 
       let buttonsHtml = `
-  <div class="runes-buttons" style="margin-top:1em; display: flex; gap: 1em; justify-content: flex-end;">
-    <button type="button" class="invoke-runes-btn"><i class='fa-solid fa-hand-holding-magic'></i> Invoke Menu</button>
-    <button type="button" class="etch-trace-btn"><i class='fa-solid fa-pencil'></i> Etch or Trace Menu</button>
+  <div class="runes-buttons">
+    <button type="button" class="invoke-runes-btn"><i class='fa-solid fa-hand-holding-magic'></i> ${localize("ui.buttons.invoke-menu")}</button>
+    <button type="button" class="etch-trace-btn"><i class='fa-solid fa-pencil'></i> ${localize("ui.buttons.etch-trace-menu")}</button>
   </div>
 `;
 
       // Combine sections with a horizontal line
       let fieldsetHtml = `
-  <fieldset class="runes-fieldset" style="margin-top:1em;">
-  <h4>Rune Management</h4>
+  <fieldset class="runes-fieldset">
+  <h4>${localize("ui.header")}</h4>
     ${etchedHtml}
     <hr>
     ${tracedHtml}
@@ -175,12 +171,14 @@ export function setupHooks() {
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
           const content = await TextEditor.enrichHTML(
-            `<p>Do you want to invoke the rune <strong>${
+            `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${
               runeData.rune.link
-            }</strong> on <i>${targetDescription(runeData.target).replaceAll(
-              '"',
-              "'",
-            )}</i>?</p><hr><fieldset>${
+            }</strong> ${localize("ui.quick-action.on-target", {
+              target: `<i>${targetDescription(runeData.target).replaceAll(
+                '"',
+                "'",
+              )}</i>`,
+            })}?</p><hr><fieldset>${
               enrichedDescriptions[runeData.rune.id]
             }</fieldset>`,
             {
@@ -219,7 +217,7 @@ export function setupHooks() {
               {
                 action: "cancel",
                 icon: "fa-solid fa-xmark",
-                label: localize("dialog.buttons.cancel"),
+                label: "Cancel",
               },
             ],
           });
@@ -233,17 +231,15 @@ export function setupHooks() {
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
           const content = await TextEditor.enrichHTML(
-            `<p>Do you want to dispel (remove) the rune <strong>${
+            `<p>${localize("ui.quick-action.dispel")} <strong>${
               runeData.rune.link
-            }</strong> on <i>${targetDescription(runeData.target).replaceAll(
-              '"',
-              "'",
-            )}</i>?</p><hr>
-                                              <fieldset>${
-                                                enrichedDescriptions[
-                                                  runeData.rune.id
-                                                ]
-                                              }</fieldset>`,
+            }</strong> ${localize("ui.quick-action.on-target", {
+              target: `<i>${targetDescription(runeData.target).replaceAll(
+                '"',
+                "'",
+              )}</i>`,
+            })}?</p><hr>
+            <fieldset>${enrichedDescriptions[runeData.rune.id]}</fieldset>`,
             {
               rollData,
               async: true,
@@ -273,14 +269,18 @@ export function setupHooks() {
                 label: localize("keywords.dispel"),
                 callback: () => {
                   dispelRune({ act: actor, runeID, type: runeType });
-                  ui.notifications.info(`Dispelled ${runeData.rune.name}!`);
+                  ui.notifications.info(
+                    localize("notifications.dispelled-rune", {
+                      rune: runeData.rune.name,
+                    }),
+                  );
                 },
                 icon: '<i class="fa-solid fa-trash"></i>',
               },
               {
                 action: "cancel",
                 icon: "fa-solid fa-xmark",
-                label: localize("dialog.buttons.cancel"),
+                label: "Cancel",
               },
             ],
           });
@@ -330,17 +330,17 @@ export function setupHooks() {
         return `<b>${runeFlag.rune.name}</b><p><i>on ${targetDescription(
           runeFlag.target,
         ).replaceAll('"', "'")}</i></p><hr>${enrichedDesc}<hr>
-  <p><b>${localize(
-    "dialog.invoke.title",
-  )}: </b><span class='reference'>${game.i18n.localize(
-    "CONTROLS.LeftClick",
-  )}</span></p>
-  <p><b>${localize(
-    "dialog.dispel.title",
-  )}: </b><span class='reference'>${game.i18n.localize(
-    "CONTROLS.RightClick",
-  )}</span></p>
-  <p><b>Highlight Affected Token: </b><span class='reference'>Hover</span></p>`;
+        <p><b>${localize(
+          "dialog.invoke.title",
+        )}: </b><span class='reference'>${game.i18n.localize(
+          "CONTROLS.LeftClick",
+        )}</span></p>
+        <p><b>${localize(
+          "dialog.dispel.title",
+        )}: </b><span class='reference'>${game.i18n.localize(
+          "CONTROLS.RightClick",
+        )}</span></p>
+        <p><b>${localize("ui.tooltip.highlight-affected-token")}: </b><span class='reference'>${localize("ui.tooltip.hover")}</span></p>`;
       }
     }
   });
