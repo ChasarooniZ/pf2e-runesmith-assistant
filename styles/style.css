@@ -101,7 +101,19 @@
     height: 50px;
     flex: 0 0 50px;
     cursor: pointer;
+    border-radius: 6px;
     margin-bottom: 6px;
+  }
+
+  .rune-icon {
+    &.temp {
+      img {
+        opacity: 0.3;
+      }
+      span.rune-name {
+        opacity: 0.5;
+      }
+    }
   }
 
   [type="radio"]:checked + img {
@@ -119,6 +131,12 @@
   .option-button.active {
     background: var(--color-pf-primary-dark);
     font-weight: bold;
+  }
+
+  .rune-desc {
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .token-selector {
@@ -147,8 +165,42 @@
     width: 60px;
     height: 60px;
   }
+  .rune-art {
+    width: 32px;
+    height: 32px;
+  }
 
   .hidden {
     display: none;
   }
+}
+
+fieldset.runes-fieldset {
+  margin-top: 1em;
+
+  .runesmith-assistant.runes-section {
+    .runes-row {
+      flex-wrap: wrap;
+
+      .rune-img {
+        width: 32px;
+        height: 32px;
+        margin: 2px;
+        border-radius: 4px;
+
+        &.placeholder {
+          opacity: 0.3;
+        }
+
+        &.free-etched {
+          box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
+        }
+      }
+    }
+  }
+}
+.runes-buttons {
+  margin-top: 1em;
+  display: flex;
+  gap: 1em;
 }

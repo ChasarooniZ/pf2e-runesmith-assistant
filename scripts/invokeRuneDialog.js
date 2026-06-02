@@ -23,14 +23,14 @@ export async function invokeRuneDialog() {
 export async function pickDialog({
   token,
   type = "invoke",
-  title = "Rune List",
+  title = localize("ui.buttons.invoke-menu"),
 }) {
   // Get rune flags
   const flags = token?.actor?.getFlag(MODULE_ID, "runes");
   const etched = flags?.etched ?? [];
   const traced = flags?.traced ?? [];
   if (etched.length === 0 && traced.length === 0) {
-    ui.notifications.error("You have no runes applied");
+    ui.notifications.error(localize("notifications.no-runes-applied"));
     return;
   }
   const MAX_ETCHED = getMaxEtchedRunes(token.actor);
@@ -80,43 +80,47 @@ export async function pickDialog({
     // Render regular runes
     for (let runeData of regularRunes) {
       let rune = runeData.rune;
-      html += `<label class="rune-label rune-item${runeData?.id ? "" : " placeholder"
-        }"
-        data-tooltip="<i>Applied to ${targetDescription(
-          runeData.target
-        ).replaceAll('"', "'")}</i><hr>${enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
+      html += `<label class="rune-label rune-item${
+        runeData?.id ? "" : " placeholder"
+      }"
+        data-tooltip="<i>${localize("dialog.invoke.applied-to", {
+          target: targetDescription(runeData.target).replaceAll('"', "'"),
+        })}</i><hr>${
+          enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
         }"
         data-tooltip-direction="UP"
         data-rune-target='${JSON.stringify(runeData.target)}'
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
-          <img src="${rune.img}" style="width:50px;height:50px;">
+          <img src="${rune.img}">
           <span class="rune-name">${rune.name}</span>
       </label>`;
     }
 
     // Render empty slots
     for (let _ of emptySlots) {
-      html += `<span class="rune-icon temp" data-tooltip="Empty Rune Slot" data-tooltip-direction="UP">
-          <img src="${EMPTY_RUNE_ART}" style="width:50px;height:50px;opacity:0.3;">
-          <span class="rune-name" style="opacity:0.5;">Empty</span>
+      html += `<span class="rune-icon temp" data-tooltip="${localize("ui.tooltip.empty-rune-slot")}" data-tooltip-direction="UP">
+          <img src="${EMPTY_RUNE_ART}">
+          <span class="rune-name">${localize("dialog.empty-rune-slot-filler-name")}}</span>
         </span>`;
     }
 
     // Render free runes at the end
     for (let runeData of freeRunes) {
       let rune = runeData.rune;
-      html += `<label class="rune-label rune-item${runeData?.id ? "" : " placeholder"
-        }"
-        data-tooltip="<i>Applied to ${targetDescription(
-          runeData.target
-        ).replaceAll('"', "'")}</i><hr>${enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
+      html += `<label class="rune-label rune-item${
+        runeData?.id ? "" : " placeholder"
+      }"
+        data-tooltip="<i>${localize("dialog.invoke.applied-to", {
+          target: targetDescription(runeData.target).replaceAll('"', "'"),
+        })}</i><hr>${
+          enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
         }"
         data-tooltip-direction="UP"
         data-rune-target='${JSON.stringify(runeData.target)}'
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
-          <img src="${rune.img}" style="width:50px;height:50px;">
+          <img src="${rune.img}">
           <span class="rune-name">${rune.name}</span>
       </label>`;
     }
@@ -130,18 +134,20 @@ export async function pickDialog({
     let html = `<div class="rune-section"><div class="rune-label">${label}</div><div class="form-group">`;
     for (let runeData of runes) {
       let rune = runeData?.rune;
-      html += `<label class="radio-label rune-item" data-tooltip="<i>Applied to ${targetDescription(
-        runeData.target
-      ).replaceAll('"', "'")}</i><hr><fieldset>${enrichedDescriptions[
-        rune.id
-      ].replaceAll('"', "'")}</fieldset>"
+      html += `<label class="radio-label rune-item" data-tooltip="<i>${localize(
+        "dialog.invoke.applied-to",
+        { target: targetDescription(runeData.target).replaceAll('"', "'") },
+      )}</i><hr><fieldset>${enrichedDescriptions[rune.id].replaceAll(
+        '"',
+        "'",
+      )}</fieldset>"
         data-tooltip-direction="UP"
         data-rune-target='${JSON.stringify(runeData.target)}'
         >
             <input type="checkbox" name="traced" value="${runeData?.id}">
-            <img src="${rune.img
-        }" style="border:0px; width: 50px; height:50px;" ${runeData.free ? 'class="rune-purple-shadow"' : ""
-        }>
+            <img src="${rune.img}" ${
+              runeData.free ? 'class="rune-purple-shadow"' : ""
+            }>
             <span class="rune-name">${rune.name}</span>
         </label>`;
     }
@@ -152,9 +158,9 @@ export async function pickDialog({
   // Compose dialog content
   let content = `
     <form class="runepicker">
-        ${renderEtchedRunes(etched, MAX_ETCHED, "Etched Runes")}
+        ${renderEtchedRunes(etched, MAX_ETCHED, localize("ui.sections.etched"))}
         <hr>
-        ${renderTracedRunes(traced, "Traced Runes")}
+        ${renderTracedRunes(traced, localize("ui.sections.traced"))}
     </form>
     `;
 
@@ -166,17 +172,15 @@ export async function pickDialog({
       buttons.push(
         {
           action: "invoke",
-          label: `${localize(
-            "keywords.invoke"
-          )}`,
+          label: `${localize("keywords.invoke")}`,
           callback: async (event, button, dialog) => {
             const html = dialog.element ? dialog.element : dialog;
             // Collect all checked checkboxes for both types
             let etchedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='etched']:checked")
+              $(html).find("input[type='checkbox'][name='etched']:checked"),
             ).map((e) => e.value);
             let tracedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='traced']:checked")
+              $(html).find("input[type='checkbox'][name='traced']:checked"),
             ).map((e) => e.value);
 
             // Compose result: array of {id, type}
@@ -194,10 +198,10 @@ export async function pickDialog({
           callback: async (event, button, dialog) => {
             const html = dialog.element ? dialog.element : dialog;
             let etchedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='etched']:checked")
+              $(html).find("input[type='checkbox'][name='etched']:checked"),
             ).map((e) => e.value);
             let tracedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='traced']:checked")
+              $(html).find("input[type='checkbox'][name='traced']:checked"),
             ).map((e) => e.value);
             let selected = [
               ...etchedIds.map((id) => ({ id, type: "etched" })),
@@ -206,7 +210,7 @@ export async function pickDialog({
             if (selected.length) resolve({ selected, action: "dispel" });
           },
           icon: "fa-solid fa-trash",
-        }
+        },
       );
     } else if (type === "select") {
       buttons.push({
@@ -215,10 +219,10 @@ export async function pickDialog({
         callback: async (event, button, dialog) => {
           const html = dialog.element ? dialog.element : dialog;
           let etchedIds = Array.from(
-            $(html).find("input[type='checkbox'][name='etched']:checked")
+            $(html).find("input[type='checkbox'][name='etched']:checked"),
           ).map((e) => e.value);
           let tracedIds = Array.from(
-            $(html).find("input[type='checkbox'][name='traced']:checked")
+            $(html).find("input[type='checkbox'][name='traced']:checked"),
           ).map((e) => e.value);
           let selected = [
             ...etchedIds.map((id) => ({ id, type: "etched" })),
@@ -237,7 +241,8 @@ export async function pickDialog({
             action: "kofi",
             label: "Support Dev",
             icon: "fa-solid fa-mug-hot fa-beat-fade",
-            onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
+            onClick: () =>
+              window.open("https://ko-fi.com/chasarooni", "_blank"),
           },
         ],
         icon: "far fa-chart-network",
@@ -249,39 +254,49 @@ export async function pickDialog({
       buttons,
       render: (_event, app) => {
         const html = app.element ? app.element : app;
-        $(html).find(".rune-item:not(.placeholder)").hover(
-          function (event) {
-            // Use `this` instead of event.target
-            const target = this.dataset.runeTarget
-              ? JSON.parse(this.dataset.runeTarget)
-              : null;
-            if (target?.type === "person" && target?.token && canvas?.tokens) {
-              const token =
-                canvas.tokens.get(target.token) ||
-                canvas.tokens.placeables.find(
-                  (t) => t.actor?.id === target.actor
-                );
-              if (token) {
-                token.emit("hoverToken", true); // highlight token
+        $(html)
+          .find(".rune-item:not(.placeholder)")
+          .hover(
+            function (event) {
+              // Use `this` instead of event.target
+              const target = this.dataset.runeTarget
+                ? JSON.parse(this.dataset.runeTarget)
+                : null;
+              if (
+                target?.type === "person" &&
+                target?.token &&
+                canvas?.tokens
+              ) {
+                const token =
+                  canvas.tokens.get(target.token) ||
+                  canvas.tokens.placeables.find(
+                    (t) => t.actor?.id === target.actor,
+                  );
+                if (token) {
+                  token.emit("hoverToken", true); // highlight token
+                }
               }
-            }
-          },
-          function (event) {
-            const target = this.dataset.runeTarget
-              ? JSON.parse(this.dataset.runeTarget)
-              : null;
-            if (target?.type === "person" && target?.token && canvas?.tokens) {
-              const token =
-                canvas.tokens.get(target.token) ||
-                canvas.tokens.placeables.find(
-                  (t) => t.actor?.id === target.actor
-                );
-              if (token) {
-                token.emit("hoverToken", false); // remove highlight
+            },
+            function (event) {
+              const target = this.dataset.runeTarget
+                ? JSON.parse(this.dataset.runeTarget)
+                : null;
+              if (
+                target?.type === "person" &&
+                target?.token &&
+                canvas?.tokens
+              ) {
+                const token =
+                  canvas.tokens.get(target.token) ||
+                  canvas.tokens.placeables.find(
+                    (t) => t.actor?.id === target.actor,
+                  );
+                if (token) {
+                  token.emit("hoverToken", false); // remove highlight
+                }
               }
-            }
-          }
-        );
+            },
+          );
       },
     });
   });
@@ -330,7 +345,7 @@ export async function invokeRune({ token, act, runeID, type }) {
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(
     rune?.description ??
-    "Rune has been removed from your inventory so it has no result"
+      "Rune has been removed from your inventory so it has no result",
   );
 
   const traits = [

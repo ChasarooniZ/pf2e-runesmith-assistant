@@ -1,4 +1,8 @@
 <div class="runesmith-target-dialog">
+  <div class="rune-desc" data-tooltip="{{rune.enriched_desc}}">
+    <img class="rune-art" src="{{rune.img}}"> <b>{{rune.name}}</b>
+  </div>
+  <hr>
   <div class="form-section" id="type-section">
     <h4>{{localize 'pf2e-runesmith-assistant.dialog.target-menu.sections.type'}}</h4>
     <div class="option-row">
@@ -26,7 +30,8 @@
     <div class="token-selector" id="token-list">
       {{#each tokens}}
       <div class="token-card {{#if this.selected}}selected{{/if}}" 
-           data-token-id="{{this.id}}">
+           data-token-id="{{this.id}}"
+           data-tooltip="<b>{{localize 'CONTROLS.CommonSelect'}}: </b><span class='reference'>{{localize 'CONTROLS.LeftClick'}}</span>">
         <img src="{{this.img}}">
         <div>{{this.name}}</div>
       </div>

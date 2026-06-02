@@ -15,7 +15,7 @@ export async function runeEtchTraceDialog(options = {}) {
     it.system?.traits?.value?.includes("rune"),
   );
   if (runesList.length === 0) {
-    ui.notifications.error("You have no Runes");
+    ui.notifications.error(localize("notifications.own-no-runes"));
     return;
   }
 
@@ -60,9 +60,10 @@ async function pickDialog({ runes, actor, token, options }) {
 
   //Filter for runes
   for (let rune of runes) {
-    rune_content += `<label class="radio-label" data-tooltip='${rune.enriched_desc}' data-tooltip-direction="UP">
+    rune_content += `<label class="radio-label" data-tooltip='${rune.enriched_desc}'
+    data-tooltip-direction="UP">
       <input type="radio" name="rune" value="${rune.id}">
-      <img src="${rune.img}" style="border:0px; width: 50px; height:50px;">
+      <img src="${rune.img}" ">
       ${rune.name}
   </label>`;
   }
@@ -173,7 +174,10 @@ async function addRune(
   rune,
   { actor, token, type = "etched", action = 0, free },
 ) {
-  const targets = await showDynamicTargetForm({ processType: type });
+  const targets = await showDynamicTargetForm({
+    processType: type,
+    rune: rune,
+  });
   if (!targets || !targets?.length || targets === "cancel" || !rune) return;
   for (const target of targets) {
     let runes = actor.getFlag(MODULE_ID, "runes");

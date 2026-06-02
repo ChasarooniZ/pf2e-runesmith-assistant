@@ -1,7 +1,7 @@
 import { MODULE_ID } from "./module.js";
 
-export function showDynamicTargetForm({ processType }) {
-  const form = new RuneTargetForm({ processType });
+export function showDynamicTargetForm(options) {
+  const form = new RuneTargetForm(options);
   form.render(true);
   return form.wait();
 }
@@ -35,6 +35,7 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
   constructor(options = {}) {
     super(options);
     this._processType = options?.processType || "etched";
+    this._rune = options?.rune
     this._resolve = null;
     this._reject = null;
     this._promise = new Promise((resolve, reject) => {
@@ -56,7 +57,7 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
     tag: "form",
     window: {
       icon: "fas fa-bullseye-pointer",
-      title: "Select Rune Targets",
+      title: "pf2e-runesmith-assistant.dialog.target-menu.title",
       contentClasses: ["standard-form", "flexcol"],
       controls: [
         {
@@ -98,7 +99,7 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
             type: formData.type,
             item: formData.itemName || null,
             token: tok.id,
-            actor: tok.token.actor,
+            actor: tok.token.actor.id,
             location: formData.location,
             personName: tok.name,
             img: tok.img,
@@ -220,6 +221,7 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
         personNames: [],
         imgs: [],
         item: null,
+        rune: this._rune
       };
     }
     return {

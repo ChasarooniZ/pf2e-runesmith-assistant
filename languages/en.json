@@ -8,8 +8,33 @@
       "dispel": "Dispel",
       "select": "Select"
     },
+    "notifications": {
+      "dispelled-rune": "Dispelled {rune}!",
+      "own-no-runes": "You have no Runes",
+      "no-runes-applied": "You have no runes applied"
+    },
     "ui": {
-      "header": "Rune Management"
+      "header": "Rune Management",
+      "tooltip": {
+        "empty-rune-slot": "Empty Rune Slot",
+        "highlight-affected-token": "Highlight Affected Token",
+        "hover": "Hover"
+      },
+      "sections": {
+        "etched": "Etched Runes",
+        "traced": "Traced Runes"
+      },
+      "quick-action": {
+        "invoke": {
+          "want-to-invoke": "Do you want to invoke the rune"
+        },
+        "dispel": "Do you want to dispel (remove) the rune",
+        "on-target": "on {target}"
+      },
+      "buttons": {
+        "invoke-menu": "Invoke Menu",
+        "etch-trace-menu": "Etch or Trace Menu"
+      }
     },
     "message": {
       "invoke": {
@@ -31,12 +56,10 @@
       }
     },
     "dialog": {
-      "buttons": {
-        "cancel": "Cancel"
-      },
       "invoke": {
         "title": "Invoke Rune",
-        "failed-or-willing": "Target is willing or has failed the check?"
+        "failed-or-willing": "Target is willing or has failed the check?",
+        "applied-to": "Applied to {target}"
       },
       "dispel": {
         "title": "Dispel Rune"
@@ -44,7 +67,9 @@
       "etch-trace": {
         "title": "Rune List"
       },
+      "empty-rune-slot-filler-name": "Empty",
       "target-menu": {
+        "title": "Select Rune Targets",
         "sections": {
           "type": "Target Type",
           "object-name": "Object Name",
