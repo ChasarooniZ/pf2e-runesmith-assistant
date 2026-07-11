@@ -3,6 +3,7 @@ import { getYourToken } from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
 export async function chainOfWords() {
+  return;
   const token = getYourToken();
   const runes = await pickDialog({
     token,
