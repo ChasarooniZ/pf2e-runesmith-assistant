@@ -1,3 +1,8 @@
+## 1.0.1
+
+- Fixed `Trace` and `Invoke` not having `Target` or `Item` data
+- Removed `Chain of Words` animation as its bugged
+
 ## 1.0.0
 
 - **Official Release**

@@ -14,20 +14,22 @@
   margin-bottom: 4px;
 }
 
-.rune-label,
-.radio-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 80px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 5px;
-}
+.rune-section {
+  .rune-label,
+  .radio-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 5px;
+  }
 
-.rune-label input,
-.radio-label input {
-  display: none;
+  .rune-label input,
+  .radio-label input {
+    display: none;
+  }
 }
 
 .rune-label img,
