@@ -69,7 +69,7 @@ async function pickDialog({ runes, actor, token, options }) {
   }
   let content = `
   <form class="runepicker">
-    <div class="form-group" id="runes">
+    <div class="form-group runepicker" id="runes">
         ${rune_content}
     </div>
   </form>

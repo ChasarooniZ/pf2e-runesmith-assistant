@@ -1,12 +1,12 @@
 {
 	"folder": "7S3XCFEkaWLI4t3S",
-	"name": "Effect: Esvadir, Rune of Whetstones",
+	"name": "Effect: Cruonign, Rune of Leeching",
 	"type": "effect",
 	"effects": [],
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.Jdeih7BV8IazoCYs]{Esvadir, Rune of Whetstones}</p><p>The weapon deals an additional 2 persistent bleed damage per weapon damage die.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.sixSYugDKDATPrAs]{Cruonign, Rune of Leeching}</p><p>Strikes with weapon deal additional void damage.</p>"
 		},
 		"rules": [
 			{
@@ -28,11 +28,11 @@
 			{
 				"key": "FlatModifier",
 				"selector": "{item|flags.pf2e.rulesSelections.weapon}-damage",
-				"value": "2*@weapon.system.damage.dice",
-				"damageType": "bleed"
+				"value": "(3 + max(floor((@item.origin.level - 9) / 2), 0))",
+				"damageType": "void"
 			}
 		],
-		"slug": "effect-esvadir-rune-of-whetstones",
+		"slug": "effect-feikris-rune-of-gravity",
 		"_migration": {
 			"version": 0.959,
 			"previous": {
@@ -73,25 +73,23 @@
 		"fromSpell": false
 	},
 	"img": "icons/magic/symbols/rune-sigil-black-pink.webp",
-	"ownership": {
-		"default": 0,
-		"Pp2zLaNIShTxHiU5": 3,
-		"V4DL7FqWwg5mhC94": 3,
-		"vj8VUT8j7Wtzy3Y2": 3
-	},
 	"flags": {},
 	"_stats": {
 		"coreVersion": "14.365",
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
-		"createdTime": 1785527318890,
-		"modifiedTime": 1785569428421,
+		"createdTime": 1785569330741,
+		"modifiedTime": 1785569500216,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,
 		"exportSource": null
 	},
-	"_id": "Bq9YEJ6OvXHgE8j4",
-	"sort": 1400000,
-	"_key": "!items!Bq9YEJ6OvXHgE8j4"
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "gwPN3jbKrnuCI3eA",
+	"sort": 0,
+	"_key": "!items!gwPN3jbKrnuCI3eA"
 }

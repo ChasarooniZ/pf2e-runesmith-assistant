@@ -10,6 +10,7 @@
 - **Updated**
   - Migrated all references to the playtest to instead reference `Impossible Magic` and or `Runesmith Assistant`
   - General Refactoring + Code Cleanup
+  - Fixed styling errors
 
 ## 1.0.1
 

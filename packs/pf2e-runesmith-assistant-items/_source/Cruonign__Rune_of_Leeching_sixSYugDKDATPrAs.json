@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p><strong>Usage</strong> drawn on a slashing or piercing weapon</p><hr><p>The jagged shape of this rune resembles a vampire's fangs. Strikes with the rune-bearing weapon deal an additional @Damage[(3 + floor((@actor.level - 9) / 2))[void]] damage. Whenever a living creature is damaged by one of these Strikes, the rune-bearer gains temporary Hit Points equal to the void damage the target took (after applying resistances and the like). These temporary Hit Points last 1 round.</p><p><strong>Invocation</strong> The rune lashes out in a @Template[type:cone|distance:30] from the wielder of the weapon, dealing @Damage[(4 + floor((@actor.level - 9) / 2))d10[void]] damage to each creature in the area, with a basic Fortitude save. If any creatures take damage, the wielder regains @Damage[(12 + floor((@actor.level - 9) / 2) * 3)[healing]] Hit Points.</p><hr><p><strong>Level (+2)</strong> The additional void damage increases by 1, the damage of the invocation increases by 1d10, and the healing increases by 3.</p>"
+			"value": "<p><strong>Usage</strong> drawn on a slashing or piercing weapon</p><hr><p>The jagged shape of this rune resembles a vampire's fangs. Strikes with the rune-bearing weapon deal an additional @Damage[(3 + floor((@actor.level - 9) / 2))[void]] damage. Whenever a living creature is damaged by one of these Strikes, the rune-bearer gains temporary Hit Points equal to the void damage the target took (after applying resistances and the like). These temporary Hit Points last 1 round.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.gwPN3jbKrnuCI3eA]{Effect: Cruonign, Rune of Leeching}</p><p><strong>Invocation</strong> The rune lashes out in a @Template[type:cone|distance:30] from the wielder of the weapon, dealing @Damage[(4 + floor((@actor.level - 9) / 2))d10[void]] damage to each creature in the area, with a basic Fortitude save. If any creatures take damage, the wielder regains @Damage[(12 + floor((@actor.level - 9) / 2) * 3)[healing]] Hit Points.</p><hr><p><strong>Level (+2)</strong> The additional void damage increases by 1, the damage of the invocation increases by 1d10, and the healing increases by 3.</p>"
 		},
 		"rules": [],
 		"slug": "aiuen-the-elf-gate-key-rune",
@@ -90,7 +90,7 @@
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
 		"createdTime": 1785555291137,
-		"modifiedTime": 1785561013345,
+		"modifiedTime": 1785569511858,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

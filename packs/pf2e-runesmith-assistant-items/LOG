@@ -1,15 +1,15 @@
-2026/08/01-00:54:40.105 8778 Recovering log #97
-2026/08/01-00:54:40.737 8778 Delete type=0 #97
-2026/08/01-00:54:40.737 8778 Delete type=3 #96
-2026/08/01-00:54:40.769 a89c Level-0 table #101: started
-2026/08/01-00:54:40.805 a89c Level-0 table #101: 83739 bytes OK
-2026/08/01-00:54:40.857 a89c Delete type=0 #99
-2026/08/01-00:54:40.858 a89c Manual compaction at level-0 from '!folders!7S3XCFEkaWLI4t3S' @ 72057594037927935 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at '!items!bI1255auW2ren8R0' @ 625 : 1
-2026/08/01-00:54:40.858 a89c Compacting 2@0 + 1@1 files
-2026/08/01-00:54:40.893 a89c Generated table #102@0: 82 keys, 83739 bytes
-2026/08/01-00:54:40.893 a89c Compacted 2@0 + 1@1 files => 83739 bytes
-2026/08/01-00:54:40.946 a89c compacted to: files[ 0 1 0 0 0 0 0 ]
-2026/08/01-00:54:40.946 a89c Delete type=2 #90
-2026/08/01-00:54:40.946 a89c Delete type=2 #94
-2026/08/01-00:54:40.946 a89c Delete type=2 #101
-2026/08/01-00:54:40.947 a89c Manual compaction at level-0 from '!items!bI1255auW2ren8R0' @ 625 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at (end)
+2026/08/01-03:00:48.664 91ec Recovering log #95
+2026/08/01-03:00:48.794 91ec Delete type=0 #95
+2026/08/01-03:00:48.794 91ec Delete type=3 #93
+2026/08/01-03:00:48.871 5dc Level-0 table #99: started
+2026/08/01-03:00:48.895 5dc Level-0 table #99: 84165 bytes OK
+2026/08/01-03:00:48.959 5dc Delete type=0 #97
+2026/08/01-03:00:48.959 5dc Manual compaction at level-0 from '!folders!7S3XCFEkaWLI4t3S' @ 72057594037927935 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at '!items!sixSYugDKDATPrAs' @ 638 : 1
+2026/08/01-03:00:48.960 5dc Compacting 2@0 + 1@1 files
+2026/08/01-03:00:48.994 5dc Generated table #100@0: 84 keys, 84165 bytes
+2026/08/01-03:00:48.994 5dc Compacted 2@0 + 1@1 files => 84165 bytes
+2026/08/01-03:00:49.058 5dc compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/08/01-03:00:49.059 5dc Delete type=2 #90
+2026/08/01-03:00:49.059 5dc Delete type=2 #94
+2026/08/01-03:00:49.059 5dc Delete type=2 #99
+2026/08/01-03:00:49.059 5dc Manual compaction at level-0 from '!items!sixSYugDKDATPrAs' @ 638 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at (end)

@@ -109,7 +109,7 @@ export async function pickDialog ({
           <img src="${EMPTY_RUNE_ART}">
           <span class="rune-name">${localize(
             'dialog.empty-rune-slot-filler-name'
-          )}}</span>
+          )}</span>
         </span>`
     }
 
