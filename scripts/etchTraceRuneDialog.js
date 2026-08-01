@@ -32,7 +32,6 @@ export async function runeEtchTraceDialog(options = {}) {
     });
   }
 
-  const rollData = actor.getRollData();
   let runeData = (
     await Promise.all(
       runesList.map(async (r) => {
@@ -45,7 +44,7 @@ export async function runeEtchTraceDialog(options = {}) {
           traits: r.system.traits.value,
           effects: getEffects(r.description),
           enriched_desc: (
-            await TextEditor.enrichHTML(r.description, { rollData })
+            await TextEditor.enrichHTML(r.description, { rollData: r.getRollData() })
           ).replaceAll("'", '"'),
         };
       }),

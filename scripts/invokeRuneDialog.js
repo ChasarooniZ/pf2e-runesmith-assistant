@@ -45,11 +45,11 @@ export async function pickDialog ({
   const unique_rune_ids = [
     ...new Set([...etched.map(e => e.rune.id), ...traced.map(t => t.rune.id)])
   ]
-  const rollData = actor.getRollData()
 
   const enrichedPromises = unique_rune_ids.map(async id => {
     const r = actor.items.get(id)
     if (!r) return [id, 'Rune no longer exists on this character']
+    const rollData = r.getRollData();
     const enriched = await TextEditor.enrichHTML(r.description, {
       rollData,
       async: true
