@@ -10,7 +10,11 @@ import { showDynamicTargetForm } from "./targetDialog.js";
 
 export async function runeEtchTraceDialog(options = {}) {
   const token = getYourToken();
-  const actor = token.actor;
+  const actor = token?.actor ?? game.user.character;
+  if (!actor) {
+    console.warning("[PF2e Runesmith Assistant] No Actor selected to open Etch/Trace Dialog")
+    return;
+  }
   const runesList = actor.items.contents.filter((it) =>
     it.system?.traits?.value?.includes("rune"),
   );
@@ -20,8 +24,6 @@ export async function runeEtchTraceDialog(options = {}) {
   }
 
   let runes = actor.getFlag(MODULE_ID, "runes");
-
-  //console.log({ runesList, runes });
 
   if (!runes || Object.keys(runes).length === 0) {
     actor.setFlag(MODULE_ID, "runes", {
@@ -49,10 +51,8 @@ export async function runeEtchTraceDialog(options = {}) {
       }),
     )
   ).sort((a, b) => a.name.localeCompare(b.name));
-  //console.log({ runeData });
 
   let res = await pickDialog({ runes: runeData, actor, token, options });
-  //console.log({ res });
 }
 
 async function pickDialog({ runes, actor, token, options }) {
@@ -136,35 +136,38 @@ async function pickDialog({ runes, actor, token, options }) {
               window.open("https://ko-fi.com/chasarooni", "_blank"),
           },
         ],
+        classes: ['runepicker'],
         icon: "fas fa-stamp",
       },
       content,
       buttons,
-      render: (_event, app) => {
-        const html = app.element ? app.element : app;
-        // Attach right-click listener to rune images
-        $(html)
-          .find(".radio-label img")
-          .on("contextmenu", async function (event) {
-            const runeId = $(this)
-              .closest("label")
-              .find("input[type=radio]")
-              .val();
-            const runeObj = runes.find((s) => s.id === runeId);
-            // Call addRune with free: true
-            await addRune(runeObj, {
-              actor,
-              token,
-              type: "etched",
-              free: true,
-            });
-            resolve(runeId);
-          });
-      },
+      render: onRender,
       position: { width: 700 },
     });
   });
   return image;
+}
+
+function onRender(_event, app) {
+  const html = app.element ? app.element : app;
+  // Attach right-click listener to rune images
+  $(html)
+    .find(".radio-label img")
+    .on("contextmenu", async function (event) {
+      const runeId = $(this)
+        .closest("label")
+        .find("input[type=radio]")
+        .val();
+      const runeObj = runes.find((s) => s.id === runeId);
+      // Call addRune with free: true
+      await addRune(runeObj, {
+        actor,
+        token,
+        type: "etched",
+        free: true,
+      });
+      resolve(runeId);
+    });
 }
 
 /**
@@ -178,7 +181,7 @@ async function addRune(
     processType: type,
     rune: rune,
   });
-  if (!targets || !targets?.length || targets === "cancel" || !rune) return;
+  if (!targets?.length || targets === "cancel" || !rune) return;
   for (const target of targets) {
     let runes = actor.getFlag(MODULE_ID, "runes");
     const id = foundry.utils.randomID();

@@ -1,5 +1,3 @@
-import { MODULE_ID } from "./module.js";
-
 export function showDynamicTargetForm(options) {
   const form = new RuneTargetForm(options);
   form.render(true);
@@ -112,7 +110,6 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
 
   static async cancel() {
     this._resolve(null);
-    4;
     this.close();
   }
 

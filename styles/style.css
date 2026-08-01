@@ -4,17 +4,14 @@
   }
 }
 
-/* Not etch or trace*/
-.rune-section {
-  margin-bottom: 10px;
-}
-
 .rune-label {
   font-weight: bold;
   margin-bottom: 4px;
 }
 
 .rune-section {
+  margin-bottom: 10px;
+
   .rune-label,
   .radio-label {
     display: flex;
@@ -42,7 +39,7 @@
 .rune-name {
   font-size: 0.9em;
   margin-top: 2px;
-  word-break: break-word;
+  word-break: word-break;
 }
 
 .rune-icon {
@@ -84,7 +81,6 @@
     text-align: center;
     justify-items: center;
     flex: 1 0 19%;
-    text-align: center;
     min-width: 120px;
     margin: 5px 0;
     padding: 5px 5px;

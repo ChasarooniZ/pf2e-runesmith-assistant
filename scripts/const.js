@@ -12,3 +12,16 @@ export const ITEMS = {
     "Compendium.pf2e.actionspf2e.Item.WcpJPssJB98lsdI5",
     INVOKE_RUNE: "Compendium.pf2e.actionspf2e.Item.gP5oTU1Mh6GkuseX"
 };
+
+ export const MSG_ITEMS = {
+    "Chain of Words":
+      "Compendium.pf2e.feats-srd.Item.AhrwKAPb1LyRxpG4",
+    "Etch Rune":
+      "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.pK4dYJlztm6U1Izf",
+    "Trace Rune":
+      ITEMS.TRACE_RUNE,
+    "Invoke Rune":
+      ITEMS.INVOKE_RUNE,
+    "Fortifying Knock":
+      "Compendium.pf2e.feats-srd.Item.ybMeVTC8TG3rcgoU",
+  };
