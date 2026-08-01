@@ -12,7 +12,7 @@ import { getAllowedTokenName } from './targetDialog.js'
  * @param {"etched" | "traced"} param.type Etched or Traced
  * @param {'' | '0' | '1' | '2' | '3' | 'r'} param.action Action cost
  */
-export async function runeAppliedMessage ({
+export async function runeAppliedMessage({
   actor,
   token,
   rune,
@@ -58,14 +58,13 @@ export async function runeAppliedMessage ({
   })
 }
 
-function applyMessageHelper ({ rune, target, type }) {
+function applyMessageHelper({ rune, target, type }) {
   //const action = type === "etched" ? "Etched" : "Traced";
   let targetText = ''
 
   if (target.type === 'object') {
-    targetText = ` ${localize('message.apply.onto')} <b><u>${
-      target.object
-    }</u></b>`
+    targetText = ` ${localize('message.apply.onto')} <b><u>${target.object
+      }</u></b>`
   } else if (target.type === 'person') {
     const tokenName = getAllowedTokenName(canvas.tokens.get(target?.token))
     if (target?.location === 'actor') {
@@ -75,16 +74,15 @@ function applyMessageHelper ({ rune, target, type }) {
     } else if (target?.location === 'item') {
       targetText = ` ${localize(
         'message.apply.onto'
-      )} <u><b>${tokenName}</b>${localize("message.apply.'s")} <b>${
-        target.item
-      }</b></u>`
+      )} <u><b>${tokenName}</b>${localize("message.apply.'s")} <b>${target.item
+        }</b></u>`
     }
   }
 
   return `${rune.link}${targetText}`
 }
 
-export async function runeInvokedMessage ({
+export async function runeInvokedMessage({
   actor,
   token,
   rune,
@@ -147,7 +145,7 @@ export async function runeInvokedMessage ({
   })
 }
 
-function handleToolbelt ({
+function handleToolbelt({
   description,
   sourceUUID,
   target,
@@ -185,6 +183,7 @@ function handleToolbelt ({
       type: 'action',
       author: sourceUUID,
       item: runeUUID,
+      itemUUID: runeUUID,
       traits: traits ?? [],
       saveVariants: {
         null: {
@@ -198,7 +197,7 @@ function handleToolbelt ({
   }
 }
 
-function getDCInfo (description) {
+function getDCInfo(description) {
   const DC_REGEXES = [
     /(data-pf2-dc=")(\d+)(")/g,
     /(@Check\[.*?type:.*?|dc:)(\d+)(.*?])/g
@@ -240,7 +239,7 @@ function getDCInfo (description) {
   return null
 }
 
-async function getMessageFlavor ({
+async function getMessageFlavor({
   traits = [],
   name = '',
   effect = undefined,
@@ -261,7 +260,7 @@ async function getMessageFlavor ({
   )
 }
 
-export function targetDescription (target) {
+export function targetDescription(target) {
   if (!target) {
     return ''
   } else if (target?.type === 'object') {
@@ -274,7 +273,7 @@ export function targetDescription (target) {
   }
 }
 
-function getToken (tokenID, actorID) {
+function getToken(tokenID, actorID) {
   return (
     canvas.tokens.get(tokenID) ||
     canvas.tokens.placeables.find(t => t.actor.id === actorID)
