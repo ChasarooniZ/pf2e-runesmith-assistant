@@ -1,0 +1,107 @@
+{
+	"type": "equipment",
+	"name": "Trolistri, Rune of Forlorn Sorrow",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/magic/water/water-drop-swirl-blue.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> etched onto armor or a creature</p><hr><p>This rune calls to mind the forlorn nature of elves, and the beauty within it. While this rune is beautiful, sorrow is best admired from a distance, discouraging approach. Enemies within 20 feet of the rune-bearer treat all squares between them and the rune-bearer as difficult terrain.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.HA64N3BMUWe4NuxA]{Effect: Trolistri, Rune of Forlorn Sorrow}</p><p><strong>Invocation</strong> Sorrow blots out the capacity for any other action. Each enemy in a @Template[type:emanation|distance:15] around the rune-bearer must succeed at a @Check[will|against:runesmith] throw or be @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} for 1 round as it spends the first action of its next turn sobbing (@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 2} on a critical failure). Regardless of the outcome, the creature is then temporarily immune to the invocation of trolistri, rune of forlorn sorrow for 1 hour.</p>"
+		},
+		"rules": [],
+		"slug": "trolistri-rune-of-forlorn-sorrow",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"arcane",
+				"emotion",
+				"mental",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/water/water-drop-swirl-blue.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"_id": "AgFVRI7aGK12H8wv",
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527477973,
+		"modifiedTime": 1785561099106,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"sort": 1000000,
+	"_key": "!items!AgFVRI7aGK12H8wv"
+}

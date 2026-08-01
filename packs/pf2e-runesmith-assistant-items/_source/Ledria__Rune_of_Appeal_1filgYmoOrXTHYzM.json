@@ -1,0 +1,104 @@
+{
+	"type": "equipment",
+	"name": "Ledria, Rune of Appeal",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/skills/social/diplomacy-handshake-yellow.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>No matter what skin, shell, or scale this rune is drawn on, it shines like gold. The rune-bearer gains a +1 status bonus to Deception, Diplomacy, and Performance checks.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.1ARstE1wVfXO8pnY]{Effect: Ledria, Rune of Appeal}</p><p><strong>Invocation </strong>The rune draws creatures closer to the bearer. Each creature within 30 feet of the rune-bearer can Step closer to the rune-bearer as a free action.</p><hr><p><strong>Level (9th)</strong> The bonus increases to +2.</p><p><strong>Level (17th)</strong> The bonus increases to +3.</p>"
+		},
+		"rules": [],
+		"slug": "ledria-rune-of-appeal",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"occult",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/skills/social/diplomacy-handshake-yellow.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785528938778,
+		"modifiedTime": 1785561056781,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "1filgYmoOrXTHYzM",
+	"sort": 600000,
+	"_key": "!items!1filgYmoOrXTHYzM"
+}

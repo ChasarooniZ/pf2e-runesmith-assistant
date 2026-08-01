@@ -1,0 +1,97 @@
+{
+	"folder": "7S3XCFEkaWLI4t3S",
+	"name": "Effect: Sar-, Diacritic Rune of Righteousness",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.8AksFXlcywERvqKV]{Inth-, Diacritic Rune of Corruption}</p><p>Any damage dealt by the base rune gains the holy trait. If you're an unholy creature, you become enfeebled 2.</p>"
+		},
+		"rules": [
+			{
+				"key": "RollOption",
+				"option": "item:trait:holy",
+				"domain": "damage",
+				"toggleable": true,
+				"label": "Diacritic Rune of Righteousness — Dealing damage with drawn rune"
+			},
+			{
+				"alterations": [
+					{
+						"mode": "override",
+						"property": "badge-value",
+						"value": 2
+					}
+				],
+				"key": "GrantItem",
+				"onDeleteActions": {
+					"grantee": "restrict"
+				},
+				"uuid": "Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7",
+				"predicate": [
+					"self:trait:unholy"
+				]
+			}
+		],
+		"slug": "effect-inth-diacritic-rune-of-corruption",
+		"_migration": {
+			"version": 0.959,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"duration": {
+			"value": -1,
+			"unit": "unlimited",
+			"expiry": null,
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": false,
+		"fromSpell": false
+	},
+	"img": "icons/magic/holy/prayer-hands-glowing-yellow-white.webp",
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785559815333,
+		"modifiedTime": 1785559828902,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "KdupFs5zELwd4quD",
+	"sort": 0,
+	"_key": "!items!KdupFs5zELwd4quD"
+}

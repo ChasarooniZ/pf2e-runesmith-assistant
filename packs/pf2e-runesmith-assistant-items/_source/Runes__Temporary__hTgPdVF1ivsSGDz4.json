@@ -1,0 +1,23 @@
+{
+	"type": "Item",
+	"folder": null,
+	"name": "Runes (Temporary)",
+	"color": "#2f5c6f",
+	"sorting": "a",
+	"_id": "hTgPdVF1ivsSGDz4",
+	"description": "",
+	"sort": 0,
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785526992708,
+		"modifiedTime": 1785527007036,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_key": "!folders!hTgPdVF1ivsSGDz4"
+}

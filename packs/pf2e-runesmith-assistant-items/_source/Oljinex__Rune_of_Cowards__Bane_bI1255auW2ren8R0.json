@@ -1,0 +1,110 @@
+{
+	"type": "equipment",
+	"name": "Oljinex, Rune of Cowards' Bane",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/defensive/shield-barrier-blue.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a shield</p><hr><p>This rune resembles a broken arrow. The shield bearing the rune gains a +2 status bonus to its Hardness against physical damage from ranged attacks.</p><p><strong>Invocation</strong> (illusion, mental, visual) The rune creates an illusion in the minds of all creatures adjacent to the rune-bearer that lasts for 1 round. The illusion is of a large, impassable wall blocking all paths away from the rune-bearer. Creatures affected by this invocation can't willingly move farther away from the rune-bearer for 1 round or until they disbelieve the illusion, usually by using a @UUID[Compendium.pf2e.actionspf2e.Item.BlAOM2X92SI6HMtJ]{Seek} action.</p><hr><p><strong>Level (+4)</strong> The status bonus to Hardness increases by 1.</p>"
+		},
+		"rules": [],
+		"slug": null,
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"arcane",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/defensive/shield-barrier-blue.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "f0773d5e993496ab33e965b82579ab33fe3bfca3"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527433460,
+		"modifiedTime": 1785563439232,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "bI1255auW2ren8R0",
+	"sort": 900000,
+	"_key": "!items!bI1255auW2ren8R0"
+}

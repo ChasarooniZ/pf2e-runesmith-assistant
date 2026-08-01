@@ -1,0 +1,106 @@
+{
+	"type": "equipment",
+	"name": "Baruiel, Rune of Hold's Bravery",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/skills/social/intimidation-impressing.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a willing creature</p><hr><p>This scratched rune reminds the bearer to stand strong against fear when near allies. As long as the rune-bearer is within 10 feet of one of its allies, whenever it would reduce its frightened condition by 1, it instead reduces it by 2.</p><p><strong>Invocation </strong>The essence of the rune is released outward, easing the minds of others. Each ally of the rune-bearer within a @Template[type:emanation|distance:10] reduces their frightened condition by 2.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"emotion",
+				"magical",
+				"mental",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/skills/social/intimidation-impressing.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785528337488,
+		"modifiedTime": 1785560922201,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "vZcXf5vSJM3k55F0",
+	"sort": 200000,
+	"_key": "!items!vZcXf5vSJM3k55F0"
+}

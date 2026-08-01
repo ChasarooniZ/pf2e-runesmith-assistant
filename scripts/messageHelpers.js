@@ -43,6 +43,7 @@ export async function runeAppliedMessage({
     flags: {
       pf2e: {
         origin: {
+          actor: actor.uuid,
           sourceId: actor.id,
           uuid: ITEMS.TRACE_RUNE,
           type: "action",
@@ -99,9 +100,10 @@ export async function runeInvokedMessage({
   const flags = {
     pf2e: {
       origin: {
+        actor: actor.uuid,
         sourceId: actor.id,
-        uuid: ITEMS.INVOKE_RUNE,
-        type: "action",
+        uuid: rune.uuid,
+        type: "equipment",
       },
       context: {
         target: {

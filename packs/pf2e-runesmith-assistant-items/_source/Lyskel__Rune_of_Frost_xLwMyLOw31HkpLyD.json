@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Lyskel, Rune of Frost",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/water/snowflake-ice-snow-white.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>This rune is often placed on chests and boxes to keep their contents from spoiling, even in the hottest of climates. The rune-bearer takes a –5-foot circumstance penalty to its Speeds and becomes so cold that movement becomes dangerous; if the bearer takes a move action, it becomes @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy 1} until the beginning of its next turn.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.1QR428ABkNdyrZXd]{Effect: Lyskel, Rune of Frost}</p><p><strong>Invocation </strong>The rune-bearer takes @Damage[ceil(@actor.level / 2)d4[cold]] damage, with a @Check[fortitude|basic|against:runesmith] save. All squares on the ground in the bearer's space and adjacent squares are covered in snow, becoming difficult terrain for 1 round.</p><hr><p><strong>Level (+2)</strong> The damage of the invocation increases by [[/r 1d4]].</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"cold",
+				"primal",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/water/snowflake-ice-snow-white.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785529381131,
+		"modifiedTime": 1785561059433,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "xLwMyLOw31HkpLyD",
+	"sort": 700000,
+	"_key": "!items!xLwMyLOw31HkpLyD"
+}

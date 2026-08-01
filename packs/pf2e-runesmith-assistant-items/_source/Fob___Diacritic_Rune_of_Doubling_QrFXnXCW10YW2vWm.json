@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Fob-, Diacritic Rune of Doubling",
+	"folder": "I1uPa1FnuwLxUtKf",
+	"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a rune that doesn't deal damage</p><hr><p>This diacritic consists of pairs of diamonds in opposite positions around the base rune. When the base rune is invoked, the rune-bearer is affected by it as usual, and you can choose to also be affected by the invocation if possible.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"diacritic",
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 5
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785531442202,
+		"modifiedTime": 1785561025571,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "QrFXnXCW10YW2vWm",
+	"sort": 300000,
+	"_key": "!items!QrFXnXCW10YW2vWm"
+}

@@ -1,0 +1,111 @@
+{
+	"type": "equipment",
+	"name": "En-, Diacritic Rune of Expansion",
+	"folder": "I1uPa1FnuwLxUtKf",
+	"img": "icons/magic/control/orb-web-hold.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a rune that deals damage</p><hr><p>This diacritic surrounds a rune with outward-facing arrows to magnify and direct power outward. When the base rune is invoked, the rune-bearer is affected by it as usual, and each other creature in a @Template[emanation|distance:15] around the rune-bearer also takes the damage and other effects from the base rune (and can attempt a saving throw if possible). An individual creature can be affected by the rune only once, even if the rune could normally affect more creatures than just the rune-bearer.</p>"
+		},
+		"rules": [],
+		"slug": "en-diacritic-rune-of-expansion",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"diacritic",
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 5
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/control/orb-web-hold.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "b16a6d98916fd4755582163bbf709f979875b419"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527434502,
+		"modifiedTime": 1785561018310,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "nHEQszmzxmOHX2Yp",
+	"sort": 200000,
+	"_key": "!items!nHEQszmzxmOHX2Yp"
+}

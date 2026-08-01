@@ -1,0 +1,90 @@
+{
+	"folder": "7S3XCFEkaWLI4t3S",
+	"name": "Effect: Zohk, Rune of Homecoming",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.VwIDVNd5mPeTqXl9]{Zohk, Rune of Homecoming}</p><p>You gain a +15-foot status bonus to your Speeds if your movement would end closer to the origin runesmith than you started your turn.</p>"
+		},
+		"rules": [
+			{
+				"key": "RollOption",
+				"option": "rune-of-homecoming",
+				"toggleable": true,
+				"label": "Rune of Homecoming — Apply status bonus to Speeds"
+			},
+			{
+				"key": "FlatModifier",
+				"selector": "all-speeds",
+				"value": 15,
+				"type": "status",
+				"predicate": [
+					"rune-of-homecoming"
+				]
+			}
+		],
+		"slug": "effect-zohk-rune-of-homecoming",
+		"_migration": {
+			"version": 0.959,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": -1,
+			"unit": "unlimited",
+			"expiry": null,
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": false,
+		"fromSpell": false
+	},
+	"img": "icons/magic/symbols/rune-sigil-black-pink.webp",
+	"ownership": {
+		"default": 0,
+		"Pp2zLaNIShTxHiU5": 3,
+		"V4DL7FqWwg5mhC94": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527358664,
+		"modifiedTime": 1785559345646,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "RE2etiUSVzVOfJOc",
+	"sort": 700000,
+	"_key": "!items!RE2etiUSVzVOfJOc"
+}

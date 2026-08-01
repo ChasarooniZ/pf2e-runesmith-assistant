@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Tilus, Rune of Vocabulary",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/sundries/books/book-embossed-gold-red.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>Upon close inspection, this rune comprises hundreds of smaller characters of various runic languages. When you etch or trace this rune, choose one language you know. The rune-bearer can speak and understand the chosen language and gains a +1 status bonus to Society checks and to Lore checks related to writing (such as Library Lore and Scribing Lore).</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.mG4CquA9gYJMEnbJ]{Effect: Tilus, Rune of Vocabulary}</p><p><strong>Invocation </strong>The rune-bearer's voice rings clear and true, allowing them to automatically succeed at any flat check that could disrupt an auditory action (such as the one imposed by the @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} condition) for 1 round. During this time, the bearer can also speak their true mind even if they are currently @UUID[Compendium.pf2e.conditionitems.Item.yblD8fOR1J8rDwEQ]{Confused}, controlled, or otherwise unable to speak.</p><hr><p><strong>Level (9th)</strong> The bonus increases to +2.</p><p><strong>Level (17th)</strong> The bonus increases to +3.</p>"
+		},
+		"rules": [],
+		"slug": "tilus-rune-of-vocabulary",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"arcane",
+				"mental",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/sundries/books/book-embossed-gold-red.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785530860326,
+		"modifiedTime": 1785561096732,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "Vr3UoiMYOh0jcATS",
+	"sort": 1500000,
+	"_key": "!items!Vr3UoiMYOh0jcATS"
+}

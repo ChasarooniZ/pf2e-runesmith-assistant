@@ -1,0 +1,110 @@
+{
+	"type": "equipment",
+	"name": "Atryl, Rune of Fire",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/fire/flame-burning-campfire-red.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>This rune is often placed on a stone in a hearth, its power ensuring the stone remains warm through the night. The bearer's fire resistance, if any, is reduced by [[ ceil(@actor.level / 2) + 4]]. Its immunities are unaffected.</p><p><strong>Invocation</strong> The bearer takes @Damage[ceil(@actor.level / 2)d8[fire]] damage with a @Check[fortitude|basic|against:runesmith] save. On a critical failure, it's also @UUID[Compendium.pf2e.conditionitems.Item.TkIyaNPgTZFBCCuh]{Dazzled} for 1 round.</p><hr><p><strong>Level (+2)</strong> The reduction in fire resistance increases by 1, and the damage of the invocation increases by [[/r 1d8]].</p>"
+		},
+		"rules": [],
+		"slug": "atryl-rune-of-fire",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"fire",
+				"primal",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/fire/flame-burning-campfire-red.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "5de0933576327dacd25879cb71bd767c381629ca"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527435943,
+		"modifiedTime": 1785560914921,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "r5BcAdtq2NjzpCII",
+	"sort": 100000,
+	"_key": "!items!r5BcAdtq2NjzpCII"
+}

@@ -1,0 +1,111 @@
+{
+	"type": "equipment",
+	"name": "Feikris, Rune of Gravity",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/magic/control/debuff-energy-hold-pink.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature or armor</p><hr><p>The lines of this rune overlap strangely, making it seem larger than it really is. The rune-bearer gains a +2 status bonus to Athletics checks. They can @UUID[Compendium.pf2e.actionspf2e.Item.Dt6B1slsBy8ipJu9]{Disarm}, @UUID[Compendium.pf2e.actionspf2e.Item.PMbdMWc2QroouFGD]{Grapple}, @UUID[Compendium.pf2e.actionspf2e.Item.lOE4yjUnETTdaf2T]{Reposition}, @UUID[Compendium.pf2e.actionspf2e.Item.7blmbDrQFNfdT731]{Shove}, or @UUID[Compendium.pf2e.actionspf2e.Item.ge56Lu1xXVFYUnLP]{Trip} creatures up to two sizes larger than themself, or three sizes larger if the rune-bearer is legendary in Athletics.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.s3cil1tttjpA2N7f]{Effect: Feikris, Rune of Gravity}</p><p><strong>Invocation</strong> All creatures in a @Template[type:emanation|distance:15] around the rune-bearer must succeed at a @Check[fortitude|against:runesmith] save or be pulled 5 feet toward the rune-bearer (or 10 feet on a critical failure).</p><hr><p><strong>Level (17th)</strong> The status bonus increases to +3.</p>"
+		},
+		"rules": [],
+		"slug": null,
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"arcane",
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/control/debuff-energy-hold-pink.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "6bb8043b6660be94644c736109376c10ee38303b"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527439041,
+		"modifiedTime": 1785561023343,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "x8KBhfNz8ZntjP0n",
+	"sort": 300000,
+	"_key": "!items!x8KBhfNz8ZntjP0n"
+}

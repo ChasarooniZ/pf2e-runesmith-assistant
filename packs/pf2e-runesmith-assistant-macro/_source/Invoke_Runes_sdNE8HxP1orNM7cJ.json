@@ -1,0 +1,34 @@
+{
+	"name": "Invoke Runes",
+	"type": "script",
+	"command": "game.pf2eRunesmithAssistant.dialog.openInvoke()",
+	"img": "icons/magic/symbols/rune-sigil-horned-blue.webp",
+	"author": "vj8VUT8j7Wtzy3Y2",
+	"scope": "global",
+	"folder": "7p8AOsyZEXha6u0A",
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3,
+		"pOu8a8YxlvR0kUGn": 1
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "c666cbe8fb9dc36a74b6362f28bba4460a93b7d6",
+			"sourceId": "Macro.WNTDhEh7yRyIBtI8"
+		}
+	},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "6.11.1",
+		"createdTime": 1744964491447,
+		"modifiedTime": 1744964491552,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"exportSource": null
+	},
+	"_id": "sdNE8HxP1orNM7cJ",
+	"sort": 0,
+	"_key": "!macros!sdNE8HxP1orNM7cJ"
+}

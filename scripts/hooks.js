@@ -1,4 +1,4 @@
-import { EMPTY_RUNE_ART } from "./const.js";
+import { EMPTY_RUNE_ART, MSG_ITEMS } from "./const.js";
 import { chainOfWords } from "./handleSpecificActions.js";
 import {
   dispelRune,
@@ -8,7 +8,7 @@ import {
 import { targetDescription } from "./messageHelpers.js";
 import { getMaxEtchedRunes, hasFeat, isRunesmith, localize } from "./misc.js";
 import { MODULE_ID } from "./module.js";
-import { runeEtchTraceDialog } from "./runeDialog.js";
+import { runeEtchTraceDialog } from "./etchTraceRuneDialog.js";
 
 export function setupHooks() {
   Hooks.on("preDeleteItem", async (effect, _misc, _userID) => {
@@ -355,18 +355,6 @@ export function setupHooks() {
   //   });
   // }
 
-  const MSG_ITEMS = {
-    "Chain of Words":
-      "Compendium.pf2e-playtest-data.impossible-playtest-class-feats.Item.nPSpd3Urs8YlROWO",
-    "Etch Rune":
-      "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.pK4dYJlztm6U1Izf",
-    "Trace Rune":
-      "Compendium.pf2e-playtest-data.impossible-playtest-actions.Item.wamCImlN6xwUHzyk",
-    "Invoke Rune":
-      "Compendium.pf2e-playtest-data.impossible-playtest-actions.Item.ozrq9hAuigjzwe9C",
-    "Fortifying Knock":
-      "Compendium.pf2e-playtest-data.impossible-playtest-class-feats.Item.lNHunxDc1vnmsPSH",
-  };
 
   Hooks.on("createChatMessage", async function (msg, _status, userid) {
     if (game.user.id !== userid) return;

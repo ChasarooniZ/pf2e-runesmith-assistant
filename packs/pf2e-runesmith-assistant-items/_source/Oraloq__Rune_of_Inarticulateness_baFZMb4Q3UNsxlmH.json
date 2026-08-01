@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Oraloq, Rune of Inarticulateness",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/creatures/magical/humanoid-silhoette-alien-gray.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>This hard-to-read rune makes language difficult for the unfortunate rune-bearer. When the rune-bearer attempts a skill check or ability with the linguistic trait or attempts to Cast a Spell that doesn't have the subtle trait, they must succeed a @Check[flat|dc:5], or the action is lost.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.8SIxhCeZXpGDw4uI]{Effect: Oraloq, Rune of Inarticulateness}</p><p><strong>Invocation</strong> The rune-bearer must attempt a @Check[will|against:runesmith] save as the rune puts a strong mental block on the part of their mind that interprets language. If the rune-bearer fails their save, they take @Damage[(20 + max(floor((@actor.level - 9) / 2), 0)*5)[mental]] damage (or double damage on a critical failure) the first time they use any language, take a linguistic action, or Cast a Spell without the subtle trait. The rune-bearer is aware of this and knows what will trigger the damage. The effect ends once the damage is taken or at the end of the rune-bearer's next turn, whichever comes first.</p><hr><p><strong>Level (+2)</strong> The damage of the invocation increases by 5.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"mental",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/creatures/magical/humanoid-silhoette-alien-gray.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785556564770,
+		"modifiedTime": 1785570280010,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "baFZMb4Q3UNsxlmH",
+	"sort": 800000,
+	"_key": "!items!baFZMb4Q3UNsxlmH"
+}

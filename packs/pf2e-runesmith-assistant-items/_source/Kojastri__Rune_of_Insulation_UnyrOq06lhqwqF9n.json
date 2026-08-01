@@ -1,0 +1,110 @@
+{
+	"type": "equipment",
+	"name": "Kojastri, Rune of Insulation",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on armor</p><hr><p>This rune insulates from harmful energy of all kinds. The creature wearing the armor gains resistance [[4 + max(floor((@actor.level - 9) / 2), 0)]] to your choice of cold, electricity, or fire, and any creature that touches the rune-bearer or damages it with an unarmed attack or non-reach melee weapon takes [[2 + max(floor((@actor.level - 9) / 2), 0)]] damage of the chosen type. The rune has the trait of the energy type chosen.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.aa9Ncmtrwm1EThms]{Effect: Kojastri, Rune of Insulation}</p><p><strong>Invocation</strong> Any creature that has the armor's wearer engulfed, @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{Grabbed}, @UUID[Compendium.pf2e.conditionitems.Item.VcDeM8A5oI6VqhbM]{Restrained}, or swallowed whole takes @Damage[(8 + floor((@actor.level - 9) / 2) * 2)d4[untyped]] damage of the rune's chosen type with a @Check[reflex|against:class|basic] save against your class DC. On a failure, it also releases the armor's wearer.</p><hr><p><strong>Level (+2)</strong> The resistance and damage granted by insulation both increase by 1, and the damage dealt by the invocation increases by [[/r 2d4]].</p>"
+		},
+		"rules": [],
+		"slug": null,
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"arcane",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/defensive/shield-barrier-blades-teal.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "1232b01e147d5f1fcc0c0c2808da409c7bd89bef"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527452216,
+		"modifiedTime": 1785561051923,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "UnyrOq06lhqwqF9n",
+	"sort": 700000,
+	"_key": "!items!UnyrOq06lhqwqF9n"
+}

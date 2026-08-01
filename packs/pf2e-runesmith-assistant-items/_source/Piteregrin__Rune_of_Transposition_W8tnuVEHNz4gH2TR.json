@@ -1,0 +1,104 @@
+{
+	"type": "equipment",
+	"name": "Piteregrin, Rune of Transposition",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>The slanted lines and odd curls of this rune give the impression that it is trying to escape. The rune-bearer can use a single action to swap places with any other willing rune-bearer within 15 feet. (The other rune-bearer can be bearing any rune.) Each creature must have room to appear in its new location or the effect is disrupted. This action has the concentrate and teleportation traits.</p><p><strong>Invocation</strong> (teleportation) The rune grows to an enormous size, swallowing up the rune-bearer and each Large or smaller creature adjacent to them, and then immediately spits them back out. Choose a square within a @Template[type:emanation|distance:15] from the rune-bearer's original position for each swallowed creature to reappear. A Large creature doesn't necessarily need to reappear completely within the emanation, as long as one of its squares is. An unwilling creature avoids being teleported if it succeeds at a @Check[will|against:class] save against your class DC.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785556754310,
+		"modifiedTime": 1785561074586,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "W8tnuVEHNz4gH2TR",
+	"sort": 900000,
+	"_key": "!items!W8tnuVEHNz4gH2TR"
+}
