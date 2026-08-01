@@ -1,0 +1,104 @@
+{
+	"type": "equipment",
+	"name": "Ochygholl, The Poisoned Star",
+	"folder": "d0L7Q0JIPgaqFobo",
+	"img": "icons/magic/light/explosion-star-glow-purple.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>This awe-inspiring rune of pointed curves is rumored to have been part of the magic that alghollthus used to call down the meteoroids of the Earthfall cataclysm. The rune-bearer senses a foreboding shadow overhead and that something terrible is about to happen. This dread is contagious. The rune-bearer becomes @UUID[Compendium.pf2e.conditionitems.Item.3uh1r86TzbQvosxv]{Doomed 1}, and its allies that begin their turn adjacent to the rune-bearer also become doomed 1 for 1 round. Each creature doomed this way takes @Damage[10[mental]] damage the first time each round it attempts an attack roll or skill check.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.3jqT6b9IFgIamOr7]{Effect: Ochygholl, The Poisoned Star}</p><p><strong>Invocation</strong> (fire) The rune calls a meteorite down on the rune-bearer, fulfilling its terrible promise. Each creature in a @Template[type:burst|distance:10] centered on a corner in the rune-bearer's space takes @Damage[3d10[bludgeoning]] damage with a basic Reflex save. Then, each creature within a @Template[type:burst|distance:40] centered on that same corner takes @Damage[8d6[fire]] damage, also with a basic Reflex save. This invocation has the death trait for doomed creatures.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 17
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/light/explosion-star-glow-purple.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785560031601,
+		"modifiedTime": 1785561298156,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "52H07Ty863rtbgQO",
+	"sort": 0,
+	"_key": "!items!52H07Ty863rtbgQO"
+}

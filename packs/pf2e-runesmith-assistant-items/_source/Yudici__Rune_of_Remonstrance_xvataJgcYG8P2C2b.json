@@ -1,0 +1,106 @@
+{
+	"type": "equipment",
+	"name": "Yudici, Rune of Remonstrance",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a shield</p><hr><p>This majestic rune grants the shield's wielder the conviction to aid their allies. While a shield bearing this rune is raised, its bearer emits an aura in a @Template[type:emanation|distance:10] that grants their allies a +1 circumstance bonus to AC.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.4c8YJ0142bwmrJa0]{Effect: Yudici, Rune of Remonstrance (Aura)}</p><p><strong>Invocation</strong> The shield regains 40 Hit Points, and all of the bearer's allies in a @Template[type:emanation|distance:10] gain a +1 status bonus to attack rolls and skill checks for 1 round.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.ziClnEyuXfHnJPwp]{Effect: Yudici, Rune of Remonstrance (Invocation)}</p><hr><p><strong>Level (+3)</strong> The Hit Points restored increases by 10.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"aura",
+				"divine",
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/defensive/shield-barrier-glowing-triangle-teal.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785557151130,
+		"modifiedTime": 1785561105408,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "xvataJgcYG8P2C2b",
+	"sort": 1200000,
+	"_key": "!items!xvataJgcYG8P2C2b"
+}

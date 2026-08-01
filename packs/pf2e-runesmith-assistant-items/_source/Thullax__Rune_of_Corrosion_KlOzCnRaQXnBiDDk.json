@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Thullax, Rune of Corrosion",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>The swooping lines of this rune seem to melt into each other as if their edges were hazy and indistinct, though the meaning is clear to you. The rune-bearer's resistance to each physical damage type is reduced by [[ceil(@actor.level / 2)]] (if it has any such resistances). Its immunities are unaffected.</p><p><strong>Invocation</strong> The bearer takes @Damage[ceil(@actor.level / 2)d6[acid]] damage with a basic Fortitude save; on a critical failure, it takes @Damage[(ceil(@actor.level / 2))[persistent,acid]] damage.</p><hr><p><strong>Level (+2)</strong> The reduction in physical resistance increases by 1, the damage of the invocation increases by 1d6, and the persistent damage increases by 1.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"acid",
+				"arcane",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785530543766,
+		"modifiedTime": 1785561092359,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "KlOzCnRaQXnBiDDk",
+	"sort": 1400000,
+	"_key": "!items!KlOzCnRaQXnBiDDk"
+}

@@ -1,0 +1,101 @@
+{
+	"name": "Rune Repotoire",
+	"type": "backpack",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><em>This item doesn't really do anything, it just was how I had my players organize their runes away somewhere out of the way.</em></p><p></p><p><span style=\"font-family:Roboto, sans-serif\">Your magic can sustain up to </span>[[ floor((@actor.level - 1)/4) + 2 ]]<span style=\"font-family:Roboto, sans-serif\"> etched runes at a time</span></p>"
+		},
+		"rules": [],
+		"slug": null,
+		"_migration": {
+			"version": 0.935,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"level": {
+			"value": 0
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0.1,
+			"capacity": 0,
+			"ignored": 0
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Container",
+				"img": "icons/commodities/stone/engraved-symbol-water-grey.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"collapsed": false,
+		"stowing": false,
+		"usage": {
+			"value": "worn"
+		}
+	},
+	"img": "icons/commodities/stone/engraved-symbol-water-grey.webp",
+	"folder": null,
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "f2188276e6f7025bf1d2a7572144dfbc3a176b74",
+			"sourceId": "Item.cxa2FI4wDlSG98uM"
+		}
+	},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "6.11.1",
+		"createdTime": 1744964571844,
+		"modifiedTime": 1744964571844,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"exportSource": null
+	},
+	"_id": "X3kizdTPO1OkODBh",
+	"sort": 0,
+	"_key": "!items!X3kizdTPO1OkODBh"
+}

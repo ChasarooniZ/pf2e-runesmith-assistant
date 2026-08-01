@@ -1,0 +1,111 @@
+{
+	"type": "equipment",
+	"name": "Ranshu, Rune of Thunder",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/lightning/bolt-strike-blue-white.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>This vertical rune is often carved on tall towers to draw lightning and shield the buildings below it. If the bearer does not take a move action at least once on its turn, lightning finds it at the end of its turn, dealing @Damage[(1d4 + (ceil(@actor.level/2)) - 1)[electricity]].</p><p><strong>Invocation</strong> The preliminary streaks of lightning braid together into a powerful bolt. The rune-bearer takes @Damage[(2*ceil(@actor.level / 2))d6[electricity]] damage, with a @Check[fortitude|basic|against:runesmith] save.</p><hr><p><strong>Level (+2)</strong> The damage increases by 1, and the damage of the invocation increases by 2d6.</p>"
+		},
+		"rules": [],
+		"slug": "ranshu-rune-of-thunder",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"electricity",
+				"primal",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/lightning/bolt-strike-blue-white.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "73ca4488d88db6cd80309be03242b4b1a4cd2d9b"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527429556,
+		"modifiedTime": 1785561079169,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "AiidnIhKKDGzKjsO",
+	"sort": 1100000,
+	"_key": "!items!AiidnIhKKDGzKjsO"
+}

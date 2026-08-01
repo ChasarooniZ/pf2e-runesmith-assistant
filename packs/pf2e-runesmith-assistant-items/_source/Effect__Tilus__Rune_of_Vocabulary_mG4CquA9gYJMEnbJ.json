@@ -1,0 +1,83 @@
+{
+	"folder": "7S3XCFEkaWLI4t3S",
+	"name": "Effect: Tilus, Rune of Vocabulary",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.Vr3UoiMYOh0jcATS]{Tilus, Rune of Vocabulary}</p><p>You gain a +1 status bonus to Society checks and to Lore checks related to writing checks. If the origin runesmith is 9th level or higher the bonus increases to +2, at 17th level or higher, the bonus increases to +3.</p>"
+		},
+		"rules": [
+			{
+				"key": "FlatModifier",
+				"value": "match(when(lte(@item.origin.level, 6), 1), when(btwn(@item.origin.level, 7, 16), 2), when(gte(@item.origin.level, 17), 3))",
+				"type": "status",
+				"selector": [
+					"society",
+					"library-lore",
+					"scribing-lore"
+				]
+			}
+		],
+		"slug": "effect-tilus-rune-of-vocabulary",
+		"_migration": {
+			"version": 0.959,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": -1,
+			"unit": "unlimited",
+			"expiry": null,
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": false,
+		"fromSpell": false
+	},
+	"img": "icons/magic/symbols/rune-sigil-black-pink.webp",
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785531044827,
+		"modifiedTime": 1785559345646,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "mG4CquA9gYJMEnbJ",
+	"sort": 800000,
+	"_key": "!items!mG4CquA9gYJMEnbJ"
+}

@@ -1,3 +1,14 @@
+## Unreleased
+
+## 1.1.0
+
+- **New**
+  - Added data entry for all runes released in `Impossible Magic`
+    - *Note* I did the data entry solo, so there are likely to be some errors, please make github issues for these and I'll address them
+    - *Additional Note* While there is data entry automation for runes is definitely not complete, feel free to leave an issue to request automation of runes or of actions
+- **Updated**
+  - Migrated all references to the playtest to instead reference `Impossible Magic` and or `Runesmith Assistant`
+
 ## 1.0.1
 
 - Fixed `Trace` and `Invoke` not having `Target` or `Item` data

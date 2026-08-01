@@ -1,0 +1,110 @@
+{
+	"type": "equipment",
+	"name": "Holtrik, Rune of Dwarven Ramparts",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/defensive/shield-barrier-glowing-triangle-orange.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a shield</p><hr><p>Similarity in the Dwarven words for \"wall\" and \"shield\" ensure that this angular rune, once used to shore up tunnels, can apply equally well in the heat of battle. A creature that has the shield raised gains a +1 status bonus to AC.</p><p><strong>Invocation </strong>You call the shield to its rightful place. You Raise the Shield bearing the rune, as if the rune-bearer had used @UUID[Compendium.pf2e.actionspf2e.Item.xjGwis0uaC2305pm]{Raise a Shield}, and the shield's status bonus to AC lasts until the beginning of the creature's next turn.</p>"
+		},
+		"rules": [],
+		"slug": null,
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/defensive/shield-barrier-glowing-triangle-orange.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "7ee513e0a11c450fd1fc58ff6c248b11ee497360"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527446807,
+		"modifiedTime": 1785561030169,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "c01ZyJem8D0qvuvN",
+	"sort": 500000,
+	"_key": "!items!c01ZyJem8D0qvuvN"
+}

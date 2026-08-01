@@ -1,0 +1,33 @@
+{
+	"name": "Etch & Trace Runes",
+	"type": "script",
+	"command": "game.pf2eRunesmithAssistant.dialog.openEtchTrace()",
+	"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+	"author": "vj8VUT8j7Wtzy3Y2",
+	"scope": "global",
+	"folder": "7p8AOsyZEXha6u0A",
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "622eab5aab60013a02b88e94665ae75787054708",
+			"sourceId": "Macro.xwe3zYIQFhMPkUYC"
+		}
+	},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "6.11.1",
+		"createdTime": 1744964489954,
+		"modifiedTime": 1744964490068,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"exportSource": null
+	},
+	"_id": "67f9xib7nEgzu6SM",
+	"sort": 0,
+	"_key": "!macros!67f9xib7nEgzu6SM"
+}

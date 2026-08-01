@@ -1,0 +1,106 @@
+{
+	"type": "equipment",
+	"name": "Aiuen, The Elf-Gate Key Rune",
+	"folder": "d0L7Q0JIPgaqFobo",
+	"img": "icons/sundries/misc/key-short-red.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>This masterful circular rune is key to the <em>aiudara</em> network of elf gates that stretch across the stars. Once per turn, when the rune-bearer takes a Stride action, they can instead teleport a distance equal to their Speed.</p><p><strong>Invocation</strong> You teleport the rune-bearer to a location adjacent to any of your other runes, as long as it is on the same plane. An unwilling target can be teleported a maximum distance of 60 feet, and it avoids being teleported at all if it succeeds at a @Check[will|against:class] save against your class DC.</p><hr><p><strong>Special</strong> If you have the ability to cast the sigil cantrip, then you can use aiuen, the elf-gate key's invocation to teleport the rune-bearer to a location adjacent to any of your sigils on the same plane, in addition to any of your runes.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"arcane",
+				"rune",
+				"runesmith",
+				"teleportation"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 17
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/sundries/misc/key-short-red.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"_id": "5f87w7rWV2sjGb8z",
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527458422,
+		"modifiedTime": 1785560102059,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"sort": 100000,
+	"_key": "!items!5f87w7rWV2sjGb8z"
+}

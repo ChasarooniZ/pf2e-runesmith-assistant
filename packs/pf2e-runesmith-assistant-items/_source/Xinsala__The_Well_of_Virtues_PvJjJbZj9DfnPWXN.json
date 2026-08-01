@@ -1,0 +1,104 @@
+{
+	"type": "equipment",
+	"name": "Xinsala, The Well of Virtues",
+	"folder": "d0L7Q0JIPgaqFobo",
+	"img": "icons/magic/water/water-well.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on an unoccupied square</p><hr><p>This complex rune comprises many different ligatures from the ancient Thassilonian runes representing the seven virtues of rule, before they were corrupted by the runelords. When drawn, it creates a well of glowing energy that occupies the square it's drawn on and creates an aura of swirling, virtuous runes in a @Template[type:emanation|distance:30]. While in the aura, you or any of your allies gain a +1 status bonus to AC against magic, a +1 status bonus to saving throws against magic, and resistance 10 to damage from magical effects.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.vAF1ncoRdrigUmIA]{Effect: Xinsala, The Well of Virtues (Aura)}</p><p><strong>Invocation</strong> (healing, vitality) The well explodes outward with invigorating force. The well heals any number of creatures in its area for a total of @Damage[70[heal]] Hit Points divided as you choose, and you and each of your allies in the area gain a +20-foot status bonus to your Speeds and are @UUID[Compendium.pf2e.conditionitems.Item.nlCjDvLMf2EkV2dl]{Quickened} for 1 round. The extra action from quickened can be used only to Stride or Strike.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.Q0YzcN6ENcFJvsSb]{Effect: Xinsala, The Well of Virtues (Invoked)}</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 17
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/water/water-well.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785561437233,
+		"modifiedTime": 1785562043579,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "PvJjJbZj9DfnPWXN",
+	"sort": -200000,
+	"_key": "!items!PvJjJbZj9DfnPWXN"
+}

@@ -1,0 +1,68 @@
+{
+	"type": "action",
+	"name": "Etch Rune",
+	"system": {
+		"actionType": {
+			"value": "passive"
+		},
+		"traits": {
+			"value": [
+				"exploration"
+			],
+			"otherTags": []
+		},
+		"description": {
+			"value": "<p><strong>Requirements</strong> You have a hand free or are holding an artisan's toolkit.</p><hr /><p><span style=\"font-family:Roboto, sans-serif\">A rune can be etched on or merely traced. An etched rune is carved, inked, or branded in, though this application does not damage the creature or item. Etching runes requires an artisan's toolkit. Your magic can sustain up to </span>[[ floor((@actor.level - 1)/4) + 2 ]]<span style=\"font-family:Roboto, sans-serif\"> etched runes at a time, and you can etch any number of runes up to this maximum during your daily preparations and when you spend 10 minutes in exploration mode.</span></p>",
+			"gm": ""
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"rules": [],
+		"slug": null,
+		"_migration": {
+			"version": 0.935,
+			"previous": {
+				"schema": null,
+				"foundry": "12.331",
+				"system": "6.10.2"
+			}
+		},
+		"actions": {
+			"value": null
+		},
+		"category": null,
+		"deathNote": false,
+		"frequency": null
+	},
+	"effects": [],
+	"img": "systems/pf2e/icons/default-icons/action.svg",
+	"folder": null,
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "d75fd90520ca7b930b2cf22299226d1dc09bbef1",
+			"sourceId": "Actor.2oF91Cmg60Zcwg4K.Item.GJwgkjvpYdtIQE6m"
+		}
+	},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "6.11.1",
+		"createdTime": 1745043625417,
+		"modifiedTime": 1745043625417,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"exportSource": null
+	},
+	"_id": "pK4dYJlztm6U1Izf",
+	"sort": 0,
+	"_key": "!items!pK4dYJlztm6U1Izf"
+}

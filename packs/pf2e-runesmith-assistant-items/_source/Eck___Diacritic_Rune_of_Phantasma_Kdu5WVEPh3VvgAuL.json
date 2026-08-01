@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Eck-, Diacritic Rune of Phantasma",
+	"folder": "kYWbomLqL8KGIUSt",
+	"img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a rune that deals damage</p><hr><p>This diacritic frames a base rune with almost @UUID[Compendium.pf2e.conditionitems.Item.zJxUflt9np0q4yML]{Invisible} lines that turn the rune's effects against the bearer's soul. The damage dealt on the base rune becomes spirit damage, and each of your enemies adjacent to the rune-bearer takes @Damage[(1 + max(floor(@actor.level / 17), 0))d8[persistent,spirit]] damage.</p><hr><p><strong>Level (17th)</strong> The persistent spirit damage increases by [[/r 1d8]].</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"diacritic",
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 13
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785558987711,
+		"modifiedTime": 1785561015609,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "Kdu5WVEPh3VvgAuL",
+	"sort": 100000,
+	"_key": "!items!Kdu5WVEPh3VvgAuL"
+}

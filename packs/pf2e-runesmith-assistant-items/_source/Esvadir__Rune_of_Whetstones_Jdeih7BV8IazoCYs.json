@@ -1,0 +1,110 @@
+{
+	"type": "equipment",
+	"name": "Esvadir, Rune of Whetstones",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/commodities/stone/ore-chunk-white.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a weapon or unarmed attack that deals piercing or slashing damage</p><hr><p>This cuspate rune, when placed on a blade, ensures it won't go dull. Strikes with the weapon or unarmed attack deal an extra 2 persistent bleed damage per weapon damage die.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.Bq9YEJ6OvXHgE8j4]{Effect: Esvadir, Rune of Whetstones}</p><p><strong>Invocation </strong>A blast of cutting energy is released outward from the rune, dealing @Damage[ceil(@actor.level / 2)d8[slashing]] damage to a creature adjacent to the rune-bearer, with a @Check[reflex|basic|against:runesmith] save.</p><hr><p><strong>Level (+2)</strong> The damage of the invocation increases by [[/r 1d8]].</p>"
+		},
+		"rules": [],
+		"slug": "esvadir-rune-of-whetstones",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/commodities/stone/ore-chunk-white.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "efbcd93e6e28e58223ba5244f946e294ec738cdd"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527430943,
+		"modifiedTime": 1785561020734,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "Jdeih7BV8IazoCYs",
+	"sort": 400000,
+	"_key": "!items!Jdeih7BV8IazoCYs"
+}

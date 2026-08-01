@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Camonica, Rune of Perplexity",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/symbols/question-stone-yellow.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>This rune of looping swirls is difficult to look straight at and stirs up a psychic cacophony in a foe's mind. The first time each round the rune-bearer takes an action with the concentrate trait, the turmoil increases, dealing it @Damage[(1 + ceil(@actor.level / 2))[mental]] damage.</p><p><strong>Invocation </strong>The cacophony fragments and expands rapidly in a mental explosion, dealing @Damage[ceil(@actor.level / 2)d4[mental]] damage to the rune- bearer with a @Check[will|basic|against:runesmith] save. On a failure, the rune-bearer is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round (or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} on a critical failure).</p><hr><p><strong>Level (+2)</strong> The damage from the mental turmoil increases by 1 and the damage of the invocation increases by [[/r 1d4]].</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"mental",
+				"occult",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/symbols/question-stone-yellow.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785528469276,
+		"modifiedTime": 1785561009973,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "RSHNX82jbq2aaQ1v",
+	"sort": 300000,
+	"_key": "!items!RSHNX82jbq2aaQ1v"
+}

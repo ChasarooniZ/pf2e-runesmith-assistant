@@ -1,0 +1,111 @@
+{
+	"type": "equipment",
+	"name": "Sun-, Diacritic Rune of Preservation",
+	"folder": "I1uPa1FnuwLxUtKf",
+	"img": "icons/magic/time/arrows-circling-pink.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a rune</p><hr><p>This spiraling diacritic channels the magic of a rune outwards, then back to the same location, allowing a rune to reconstitute itself. After the base rune is invoked, the rune automatically Traces itself back upon the same target.</p><hr><p><strong>Special</strong> You can have only one copy of <em>sun-, diacritic rune of preservation</em> applied at a given time, and once you invoke it, you cannot Etch or Trace it again for 10 minutes.</p>"
+		},
+		"rules": [],
+		"slug": "sun-diacritic-rune-of-preservation",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.958,
+				"foundry": "14.360",
+				"system": "8.1.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"diacritic",
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 5
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/time/arrows-circling-pink.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"pOu8a8YxlvR0kUGn": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "de2a1d3197c6533b18779418c9e42d23c4f252b7"
+		}
+	},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527448207,
+		"modifiedTime": 1785561090432,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "1Kh9M1oAQ4wQsFws",
+	"sort": 600000,
+	"_key": "!items!1Kh9M1oAQ4wQsFws"
+}

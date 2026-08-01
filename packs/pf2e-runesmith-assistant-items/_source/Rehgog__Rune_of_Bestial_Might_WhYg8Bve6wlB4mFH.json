@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Rehgog, Rune of Bestial Might",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a willing creature</p><hr><p>The jagged edges of this rune evoke the claws and talons of mighty beasts. The target's nose becomes an animal-like snout, giving the rune-bearer scent as an imprecise scent with a range of 30 feet.</p><p><strong>Invocation </strong>The rune-bearer's muscles bulge with the strength of a ferocious beast. The bearer can immediately Step as a free action. The next unarmed Strike the bearer attempts before the start of your next turn deals an additional die of damage.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"morph",
+				"primal",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/creatures/mammals/bull-horns-eyes-glowin-orange.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785530153925,
+		"modifiedTime": 1785561081970,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "WhYg8Bve6wlB4mFH",
+	"sort": 1200000,
+	"_key": "!items!WhYg8Bve6wlB4mFH"
+}

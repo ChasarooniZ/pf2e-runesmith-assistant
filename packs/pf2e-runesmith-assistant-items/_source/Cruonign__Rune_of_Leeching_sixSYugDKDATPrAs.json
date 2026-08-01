@@ -1,0 +1,106 @@
+{
+	"type": "equipment",
+	"name": "Cruonign, Rune of Leeching",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/creatures/invertebrates/leech-attack-green.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a slashing or piercing weapon</p><hr><p>The jagged shape of this rune resembles a vampire's fangs. Strikes with the rune-bearing weapon deal an additional @Damage[(3 + floor((@actor.level - 9) / 2))[void]] damage. Whenever a living creature is damaged by one of these Strikes, the rune-bearer gains temporary Hit Points equal to the void damage the target took (after applying resistances and the like). These temporary Hit Points last 1 round.</p><p><strong>Invocation</strong> The rune lashes out in a @Template[type:cone|distance:30] from the wielder of the weapon, dealing @Damage[(4 + floor((@actor.level - 9) / 2))d10[void]] damage to each creature in the area, with a basic Fortitude save. If any creatures take damage, the wielder regains @Damage[(12 + floor((@actor.level - 9) / 2) * 3)[healing]] Hit Points.</p><hr><p><strong>Level (+2)</strong> The additional void damage increases by 1, the damage of the invocation increases by 1d10, and the healing increases by 3.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"death",
+				"magical",
+				"rune",
+				"runesmith",
+				"void"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/creatures/invertebrates/leech-attack-green.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785555291137,
+		"modifiedTime": 1785561013345,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "sixSYugDKDATPrAs",
+	"sort": 200000,
+	"_key": "!items!sixSYugDKDATPrAs"
+}

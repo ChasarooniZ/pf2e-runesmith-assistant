@@ -1,12 +1,12 @@
 {
   "id": "pf2e-runesmith-assistant",
   "title": "PF2e Runesmith Assistant",
-  "description": "WIP, this module is still in alpha and subject to changes and breakages so use at your own risk",
+  "description": "WIp Runesmith implementaation",
   "version": "#{VERSION}#",
   "library": "false",
   "compatibility": {
-    "minimum": 12,
-    "verified": 13
+    "minimum": 14,
+    "verified": 14
   },
   "authors": [
     {
@@ -65,10 +65,21 @@
       "system": "pf2e"
     }
   ],
-  "media": [
-    {
-      "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+  "flags": {
+    "pf2e-runesmith-assistant": {
+      "pf2e-homebrew": {
+        "equipmentTraits": {
+          "diacritic": {
+            "label": "pf2e-runesmith-assistant.traits.Diacritic",
+            "description": "pf2e-runesmith-assistant.traits.Description.Diacritic"
+          },
+          "rune": {
+            "label": "pf2e-runesmith-assistant.traits.Rune",
+            "description": "pf2e-runesmith-assistant.traits.Description.Rune"
+          },
+          "runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
+        }
+      }
     }
-  ]
+  }
 }

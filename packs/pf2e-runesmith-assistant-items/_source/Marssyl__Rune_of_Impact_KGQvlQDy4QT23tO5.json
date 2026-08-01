@@ -1,0 +1,105 @@
+{
+	"type": "equipment",
+	"name": "Marssyl, Rune of Impact",
+	"folder": "DHAzlzy3QEE3GCql",
+	"img": "icons/magic/sonic/explosion-shock-sound-wave.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on a weapon or unarmed attack that deals bludgeoning damage</p><hr><p>This rune magnifies force many times over as it passes through the rune's concentric rings. The weapon or unarmed attack deals 1 bludgeoning splash damage per weapon damage die. If the rune is on a melee weapon or melee unarmed attack, you and the rune-bearer are immune to this splash damage.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.cX8MV4n6mF7RmXTp]{Effect: Marssyl, Rune of Impact}</p><p><strong>Invocation </strong>The rune vibrates as power concentrates within it. The next successful Strike made with the weapon or unarmed attack before the end of its wielder's next turn deals an additional die of damage, and the target must succeed at a @Check[fortitude|against:class] save against your class DC or be pushed 10 feet away from the attacker (20 feet on a critical failure).</p>"
+		},
+		"rules": [],
+		"slug": "marssyl-rune-of-impact",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 1
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/sonic/explosion-shock-sound-wave.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"_id": "KGQvlQDy4QT23tO5",
+	"effects": [],
+	"ownership": {
+		"default": 0,
+		"xrkQVtB9iGZvxqph": 3,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785527471128,
+		"modifiedTime": 1785561061498,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"sort": 800000,
+	"_key": "!items!KGQvlQDy4QT23tO5"
+}

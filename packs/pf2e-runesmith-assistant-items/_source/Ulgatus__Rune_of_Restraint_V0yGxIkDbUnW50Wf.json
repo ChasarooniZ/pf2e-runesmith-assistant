@@ -1,0 +1,104 @@
+{
+	"type": "equipment",
+	"name": "Ulgatus, Rune of Restraint",
+	"folder": "VFKHr8QeoeU4J3Eu",
+	"img": "icons/magic/defensive/armor-green-hex.webp",
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Usage</strong> drawn on armor</p><hr><p>A faction of the constructed beings called automatons developed this rune to avoid the weaknesses of flesh. When the creature wearing the armor would gain or increase the value of their drained, enfeebled, or sickened condition, the rune attempts to prevent the imposition. The bearer attempts a @Check[flat|dc:15]. On a success, it doesn't gain or increase the value of that condition, but the rune goes temporarily dormant for 10 minutes. While dormant, the rune can't protect the bearer from conditions but can be invoked.</p><p><strong>Invocation</strong> The rune causes the armor to grow around the creature wearing it, fortifying any vulnerable spots. For 1 minute, the wearer gains resistance 10 to critical hits.</p><hr><p><strong>Level (17th)</strong> The DC of the flat check decreases to 10 and the resistance to critical hits increases to 20.</p>"
+		},
+		"rules": [],
+		"slug": "aiuen-the-elf-gate-key-rune",
+		"_migration": {
+			"version": 0.959,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.935,
+				"foundry": "14.365",
+				"system": "8.4.0"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"magical",
+				"rune",
+				"runesmith"
+			],
+			"rarity": "common"
+		},
+		"publication": {
+			"title": "Pathfinder Impossible Playtest",
+			"authors": "",
+			"license": "ORC",
+			"remaster": true
+		},
+		"level": {
+			"value": 9
+		},
+		"quantity": 1,
+		"baseItem": null,
+		"bulk": {
+			"value": 0,
+			"heldOrStowed": 0,
+			"per": 1
+		},
+		"hp": {
+			"value": 0,
+			"max": 0
+		},
+		"hardness": 0,
+		"price": {
+			"value": {}
+		},
+		"equipped": {
+			"carryType": "worn",
+			"invested": null
+		},
+		"containerId": null,
+		"size": "med",
+		"material": {
+			"type": null,
+			"grade": null
+		},
+		"identification": {
+			"status": "identified",
+			"unidentified": {
+				"name": "Unusual Object",
+				"img": "icons/magic/defensive/armor-green-hex.webp",
+				"data": {
+					"description": {
+						"value": ""
+					}
+				}
+			},
+			"misidentified": {}
+		},
+		"usage": {
+			"value": "other",
+			"type": "worn"
+		},
+		"subitems": []
+	},
+	"effects": [],
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.365",
+		"systemId": "pf2e",
+		"systemVersion": "8.4.0",
+		"createdTime": 1785557307866,
+		"modifiedTime": 1785561101073,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "V0yGxIkDbUnW50Wf",
+	"sort": 1100000,
+	"_key": "!items!V0yGxIkDbUnW50Wf"
+}
