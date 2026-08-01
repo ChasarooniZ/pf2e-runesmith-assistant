@@ -6,7 +6,7 @@ export const CUSTOM_DAILIES = [
     items: [
       {
         slug: "item",
-        uuid: "Compendium.pf2e-playtest-data.impossible-playtest-class-feats.Item.ZRZFrholuPNOHtiq",
+        uuid: "Compendium.pf2e.feats-srd.Item.r3fOPLERrcog5X6J",
         required: true,
       },
     ],

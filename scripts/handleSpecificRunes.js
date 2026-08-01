@@ -1,13 +1,6 @@
+import { ITEMS, RUNES } from "./const.js";
 import { localize } from "./misc.js";
 import { MODULE_ID } from "./module.js";
-
-/** Mapping of Rune SLUG to its Source ID */
-const RUNES = {
-  "holtrick-dwarven-ramparts":
-    "Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.azxAqh6vmhgK2dzR",
-  "zohk-rune-of-homecoming":
-    "Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.dy2PWy8R42gxpnzt",
-};
 
 const RUNE_CHECK_LIST = Object.values(RUNES);
 
@@ -60,8 +53,8 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
   switch (rune?.sourceId) {
     case RUNES["holtrick-dwarven-ramparts"]:
       effectData.system.rules = getGrantItemRules([
-        ITEMS["Effect: Holtrik, Rune of Dwarven Ramparts"],
-        ITEMS["Effect: Raise a Shield"],
+        ITEMS.EFFECT_HOLTRICK_RUNE_OF_DWARVEN_RAMPARTS,
+        ITEMS.EFFECT_RAISE_A_SHIELD,
       ]);
       effectData.system.duration.expiry = "turn-start";
       game.pf2eRunesmithAssistant.socket.executeAsGM("createEffect", {
@@ -143,13 +136,6 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
       break;
   }
 }
-
-const ITEMS = {
-  "Effect: Holtrik, Rune of Dwarven Ramparts":
-    "Compendium.pf2e-playtest-data.impossible-playtest-effects.Item.gBwMb0QqrBJVzyYc",
-  "Effect: Raise a Shield":
-    "Compendium.pf2e.equipment-effects.Item.2YgXoHvJfrDHucMr",
-};
 
 function getGrantItemRules(itemUUIDs) {
   return itemUUIDs.map((UUID) => ({

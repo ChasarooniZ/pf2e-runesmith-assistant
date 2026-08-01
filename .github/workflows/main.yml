@@ -102,6 +102,20 @@ jobs:
           MANIFEST: ${{ env.latest_manifest_url }}
           DOWNLOAD: ${{ env.release_module_url }}
 
+      - name: Copy PF2e Packs to SF2e (Curse you FVTT)
+        run: |
+          cp -r packs/pf2e-runesmith-assistant-items packs/sf2e-runesmith-assistant-items
+
+      - name: Update Item Compendium references for SF2e
+        run: |
+          grep -rl 'Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items' \
+          packs/sf2e-runesmith-assistant-items \
+          | xargs sed -i 's/Compendium\.pf2e-runesmith-assistant\.pf2e-runesmith-assistant-items/Compendium.pf2e-runesmith-assistant.sf2e-runesmith-assistant-items/g'
+      - name: Install Node Dependencies
+        run: npm install
+      - name: Pack the new Copied Packs
+        run: node macros/pack.mjs
+
       # Create a "module.zip" archive containing all the module's required files.
       # If you have other directories or files that will need to be added to
       # your packaged module, add them here.

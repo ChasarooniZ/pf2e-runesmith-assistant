@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.azxAqh6vmhgK2dzR]{Holtrik, Rune of Dwarven Ramparts}</p><p>Your shield's AC bonus increases its circumstance bonus to AC by 1.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.c01ZyJem8D0qvuvN]{Holtrik, Rune of Dwarven Ramparts}</p><p>Your shield's AC bonus increases its circumstance bonus to AC by 1.</p>"
 		},
 		"rules": [
 			{
@@ -41,7 +41,7 @@
 			"value": []
 		},
 		"publication": {
-			"title": "Pathfinder Impossible Playtest",
+			"title": "PF2e Runesmith Assistant",
 			"authors": "",
 			"license": "ORC",
 			"remaster": true
@@ -80,7 +80,7 @@
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
 		"createdTime": 1785527323026,
-		"modifiedTime": 1785559345649,
+		"modifiedTime": 1785614934692,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

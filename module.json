@@ -1,7 +1,7 @@
 {
   "id": "pf2e-runesmith-assistant",
   "title": "PF2e Runesmith Assistant",
-  "description": "WIp Runesmith implementaation",
+  "description": "WIP Runesmith Implementation",
   "version": "#{VERSION}#",
   "library": "false",
   "compatibility": {
@@ -53,6 +53,17 @@
       },
       "system": "pf2e"
     },
+        {
+      "name": "sf2e-runesmith-assistant-items",
+      "label": "SF2e Runesmith Assistant: Items",
+      "path": "packs/sf2e-runesmith-assistant-items",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "sf2e"
+    },
     {
       "name": "pf2e-runesmith-assistant-macro",
       "label": "PF2e Runesmith Assistant: Macro",
@@ -61,8 +72,7 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      },
-      "system": "pf2e"
+      }
     }
   ],
   "flags": {
