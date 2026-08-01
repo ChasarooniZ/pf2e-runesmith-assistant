@@ -90,7 +90,7 @@ export async function runeInvokedMessage({
   traits,
   invocation
 }) {
-  const rollData = actor.getRollData()
+  const rollData = rune.getRollData()
   const enrichedDescription = await TextEditor.enrichHTML(invocation, {
     rollData
   })
