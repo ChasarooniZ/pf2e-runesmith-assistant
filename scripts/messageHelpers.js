@@ -101,7 +101,7 @@ export async function runeInvokedMessage({
         actor: actor.uuid,
         sourceId: actor.id,
         uuid: rune.uuid,
-        type: 'equipment'
+        type: 'action'
       },
       context: {
         target: {
@@ -185,6 +185,7 @@ function handleToolbelt({
       item: runeUUID,
       itemUUID: runeUUID,
       traits: traits ?? [],
+      options: dcInfo.basic ? ['damaging-effect'] : [],
       saveVariants: {
         null: {
           basic: dcInfo.basic,
