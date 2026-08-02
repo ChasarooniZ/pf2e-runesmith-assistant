@@ -53,10 +53,14 @@ export function setupHooks() {
       const enrichedPromises = unique_rune_ids.map(async (id) => {
         const r = actor.items.get(id);
         if (!r) return [id, "Rune no longer exists on this character"];
-        const enriched = await TextEditor.enrichHTML(r.description, {
-          rollData,
-          async: true,
-        });
+        const enriched =
+          await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+            r.description,
+            {
+              rollData,
+              async: true,
+            },
+          );
         return [id, enriched.replaceAll('"', "'")];
       });
       const enrichedPairs = await Promise.all(enrichedPromises);
@@ -79,42 +83,42 @@ export function setupHooks() {
     <label><strong>${localize("ui.sections.etched")}</strong></label>
     <div class="runes-row">
       ${regularEtched
-          .map(
-            (r) => `<img
+        .map(
+          (r) => `<img
                       src="${r.rune.img}" 
                       data-tooltip="${runeTooltip(
-              r,
-              enrichedDescriptions[r.rune.id],
-            )}" 
+                        r,
+                        enrichedDescriptions[r.rune.id],
+                      )}" 
                       data-tooltip-direction="UP" 
                       class="rune-img"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
-          )
-          .join("")}
+        )
+        .join("")}
       ${Array.from({ length: emptyCount })
-          .map(
-            () => `<img
+        .map(
+          () => `<img
                     src="${EMPTY_RUNE_ART}"
                     data-tooltip="Empty Rune Slot"
                     class="rune-img placeholder"
                   >`,
-          )
-          .join("")}
+        )
+        .join("")}
       ${freeEtched
-          .map(
-            (r) => `<img
+        .map(
+          (r) => `<img
                       src="${r.rune.img}" 
                       data-tooltip="${runeTooltip(
-              r,
-              enrichedDescriptions[r.rune.id],
-            )}" 
+                        r,
+                        enrichedDescriptions[r.rune.id],
+                      )}" 
                       data-tooltip-direction="UP" 
                       class="rune-img free-etched"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
-          )
-          .join("")}
+        )
+        .join("")}
     </div>
   </div>
 `;
@@ -125,8 +129,8 @@ export function setupHooks() {
     <label><strong>${localize("ui.sections.traced")}</strong></label>
     <div class="runes-row">
       ${traced
-          .map(
-            (r) => `
+        .map(
+          (r) => `
         <img src="${r.rune.img}" 
           data-tooltip="${runeTooltip(r, enrichedDescriptions[r.rune.id])}" 
           data-tooltip-direction="UP" 
@@ -134,8 +138,8 @@ export function setupHooks() {
           data-rune-id="${r.id}"
           data-rune-type="traced">
       `,
-          )
-          .join("")}
+        )
+        .join("")}
     </div>
   </div>
 `;
@@ -170,20 +174,23 @@ export function setupHooks() {
           const runeID = event.target.dataset.runeId;
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
-          const content = await TextEditor.enrichHTML(
-            `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${runeData.rune.link
-            }</strong> ${localize("ui.quick-action.on-target", {
-              target: `<i>${targetDescription(runeData.target).replaceAll(
-                '"',
-                "'",
-              )}</i>`,
-            })}?</p><hr><fieldset>${enrichedDescriptions[runeData.rune.id]
-            }</fieldset>`,
-            {
-              rollData,
-              async: true,
-            },
-          );
+          const content =
+            await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+              `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${
+                runeData.rune.link
+              }</strong> ${localize("ui.quick-action.on-target", {
+                target: `<i>${targetDescription(runeData.target).replaceAll(
+                  '"',
+                  "'",
+                )}</i>`,
+              })}?</p><hr><fieldset>${
+                enrichedDescriptions[runeData.rune.id]
+              }</fieldset>`,
+              {
+                rollData,
+                async: true,
+              },
+            );
 
           foundry.applications.api.DialogV2.wait({
             window: {
@@ -228,20 +235,22 @@ export function setupHooks() {
           const runeID = event.target.dataset.runeId;
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
-          const content = await TextEditor.enrichHTML(
-            `<p>${localize("ui.quick-action.dispel")} <strong>${runeData.rune.link
-            }</strong> ${localize("ui.quick-action.on-target", {
-              target: `<i>${targetDescription(runeData.target).replaceAll(
-                '"',
-                "'",
-              )}</i>`,
-            })}?</p><hr>
+          const content =
+            await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+              `<p>${localize("ui.quick-action.dispel")} <strong>${
+                runeData.rune.link
+              }</strong> ${localize("ui.quick-action.on-target", {
+                target: `<i>${targetDescription(runeData.target).replaceAll(
+                  '"',
+                  "'",
+                )}</i>`,
+              })}?</p><hr>
             <fieldset>${enrichedDescriptions[runeData.rune.id]}</fieldset>`,
-            {
-              rollData,
-              async: true,
-            },
-          );
+              {
+                rollData,
+                async: true,
+              },
+            );
 
           foundry.applications.api.DialogV2.wait({
             window: {
@@ -352,7 +361,6 @@ export function setupHooks() {
   //   });
   // }
 
-
   Hooks.on("createChatMessage", async function (msg, _status, userid) {
     if (game.user.id !== userid) return;
     switch (msg?.item?.sourceId) {
@@ -370,35 +378,39 @@ export function setupHooks() {
         invokeRuneDialog();
         break;
     }
-  });
-
-  Hooks.on('preCreateChatMessage', async (msg) => {
     const traits = msg?.item?.system?.traits?.value;
-    if (!traits?.includes('rune')) {
+    if (!traits?.includes("rune") || !msg.isDamageRoll) {
       return;
     }
     const rollData = msg.item.getRollData();
-    const enriched = await TextEditor.enrichHTML(msg.item.description, {
-      rollData,
-      async: true
-    })
+    const enriched =
+      await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+        msg.item.description,
+        {
+          rollData,
+          async: true,
+        },
+      );
     const dcInfo = getDCInfo(enriched);
-    const targets = [...game.user.targets].map(t => t.document.uuid)
     const flag = {
-      "type": "damage",
-      "isRegen": false,
-      "area": null,
-      "saveVariants": {
-        "null": {
-          "dc": dcInfo.dc,
-          "basic": dcInfo.basic,
-          "statistic": dFcInfo.statistic
-        }
+      saveVariants: {
+        null: {
+          dc: dcInfo.dc,
+          basic: dcInfo?.isBasic,
+          statistic: dcInfo.statistic,
+        },
       },
-      "targets": targets
-    }
-    msg.flags = {
-      "pf2e-toolbelt": foundry.utils.mergeObject(msg?.flags["pf2e-toolbelt"] ?? {}, { targetHelper: flag })
-    }
-  })
+    };
+
+    await msg.update({
+      msg: {
+        flags: {
+          "pf2e-toolbelt": foundry.utils.mergeObject(
+            msg?.flags["pf2e-toolbelt"] ?? {},
+            { targetHelper: flag },
+          ),
+        },
+      },
+    });
+  });
 }

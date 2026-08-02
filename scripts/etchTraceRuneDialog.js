@@ -12,7 +12,9 @@ export async function runeEtchTraceDialog(options = {}) {
   const token = getYourToken();
   const actor = token?.actor ?? game.user.character;
   if (!actor) {
-    console.warning("[PF2e Runesmith Assistant] No Actor selected to open Etch/Trace Dialog")
+    console.warning(
+      "[PF2e Runesmith Assistant] No Actor selected to open Etch/Trace Dialog",
+    );
     return;
   }
   const runesList = actor.items.contents.filter((it) =>
@@ -44,7 +46,10 @@ export async function runeEtchTraceDialog(options = {}) {
           traits: r.system.traits.value,
           effects: getEffects(r.description),
           enriched_desc: (
-            await TextEditor.enrichHTML(r.description, { rollData: r.getRollData() })
+            await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+              r.description,
+              { rollData: r.getRollData() },
+            )
           ).replaceAll("'", '"'),
         };
       }),
@@ -135,7 +140,7 @@ async function pickDialog({ runes, actor, token, options }) {
               window.open("https://ko-fi.com/chasarooni", "_blank"),
           },
         ],
-        classes: ['runepicker'],
+        classes: ["runepicker"],
         icon: "fas fa-stamp",
       },
       content,
@@ -153,10 +158,7 @@ function onRender(_event, app) {
   $(html)
     .find(".radio-label img")
     .on("contextmenu", async function (event) {
-      const runeId = $(this)
-        .closest("label")
-        .find("input[type=radio]")
-        .val();
+      const runeId = $(this).closest("label").find("input[type=radio]").val();
       const runeObj = runes.find((s) => s.id === runeId);
       // Call addRune with free: true
       await addRune(runeObj, {
