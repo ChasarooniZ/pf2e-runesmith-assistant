@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 1.1.3
+
+- **Updated**
+  - Reduced module size by excluding compendium source from release
+  - Fixed issue with using actor rollData as opposed to item rollData in `Invoke` message casuing Toolbelt's Target Damage to fail
+
 ## 1.1.2
 
 - **New**
