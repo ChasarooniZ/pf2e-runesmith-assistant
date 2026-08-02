@@ -5,7 +5,7 @@ import {
   invokeRune,
   invokeRuneDialog,
 } from "./invokeRuneDialog.js";
-import { targetDescription } from "./messageHelpers.js";
+import { getDCInfo, targetDescription } from "./messageHelpers.js";
 import { getMaxEtchedRunes, hasFeat, isRunesmith, localize } from "./misc.js";
 import { MODULE_ID } from "./module.js";
 import { runeEtchTraceDialog } from "./etchTraceRuneDialog.js";
@@ -79,42 +79,42 @@ export function setupHooks() {
     <label><strong>${localize("ui.sections.etched")}</strong></label>
     <div class="runes-row">
       ${regularEtched
-        .map(
-          (r) => `<img
+          .map(
+            (r) => `<img
                       src="${r.rune.img}" 
                       data-tooltip="${runeTooltip(
-                        r,
-                        enrichedDescriptions[r.rune.id],
-                      )}" 
+              r,
+              enrichedDescriptions[r.rune.id],
+            )}" 
                       data-tooltip-direction="UP" 
                       class="rune-img"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
-        )
-        .join("")}
+          )
+          .join("")}
       ${Array.from({ length: emptyCount })
-        .map(
-          () => `<img
+          .map(
+            () => `<img
                     src="${EMPTY_RUNE_ART}"
                     data-tooltip="Empty Rune Slot"
                     class="rune-img placeholder"
                   >`,
-        )
-        .join("")}
+          )
+          .join("")}
       ${freeEtched
-        .map(
-          (r) => `<img
+          .map(
+            (r) => `<img
                       src="${r.rune.img}" 
                       data-tooltip="${runeTooltip(
-                        r,
-                        enrichedDescriptions[r.rune.id],
-                      )}" 
+              r,
+              enrichedDescriptions[r.rune.id],
+            )}" 
                       data-tooltip-direction="UP" 
                       class="rune-img free-etched"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
-        )
-        .join("")}
+          )
+          .join("")}
     </div>
   </div>
 `;
@@ -125,8 +125,8 @@ export function setupHooks() {
     <label><strong>${localize("ui.sections.traced")}</strong></label>
     <div class="runes-row">
       ${traced
-        .map(
-          (r) => `
+          .map(
+            (r) => `
         <img src="${r.rune.img}" 
           data-tooltip="${runeTooltip(r, enrichedDescriptions[r.rune.id])}" 
           data-tooltip-direction="UP" 
@@ -134,8 +134,8 @@ export function setupHooks() {
           data-rune-id="${r.id}"
           data-rune-type="traced">
       `,
-        )
-        .join("")}
+          )
+          .join("")}
     </div>
   </div>
 `;
@@ -171,15 +171,13 @@ export function setupHooks() {
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
           const content = await TextEditor.enrichHTML(
-            `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${
-              runeData.rune.link
+            `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${runeData.rune.link
             }</strong> ${localize("ui.quick-action.on-target", {
               target: `<i>${targetDescription(runeData.target).replaceAll(
                 '"',
                 "'",
               )}</i>`,
-            })}?</p><hr><fieldset>${
-              enrichedDescriptions[runeData.rune.id]
+            })}?</p><hr><fieldset>${enrichedDescriptions[runeData.rune.id]
             }</fieldset>`,
             {
               rollData,
@@ -231,8 +229,7 @@ export function setupHooks() {
           const runeType = event.target.dataset.runeType;
           const runeData = runes[runeType].find((r) => r.id === runeID);
           const content = await TextEditor.enrichHTML(
-            `<p>${localize("ui.quick-action.dispel")} <strong>${
-              runeData.rune.link
+            `<p>${localize("ui.quick-action.dispel")} <strong>${runeData.rune.link
             }</strong> ${localize("ui.quick-action.on-target", {
               target: `<i>${targetDescription(runeData.target).replaceAll(
                 '"',
@@ -374,4 +371,34 @@ export function setupHooks() {
         break;
     }
   });
+
+  Hooks.on('preCreateChatMessage', async (msg) => {
+    const traits = msg?.item?.system?.traits?.value;
+    if (!traits?.includes('rune')) {
+      return;
+    }
+    const rollData = msg.item.getRollData();
+    const enriched = await TextEditor.enrichHTML(msg.item.description, {
+      rollData,
+      async: true
+    })
+    const dcInfo = getDCInfo(enriched);
+    const targets = [...game.user.targets].map(t => t.document.uuid)
+    const flag = {
+      "type": "damage",
+      "isRegen": false,
+      "area": null,
+      "saveVariants": {
+        "null": {
+          "dc": dcInfo.dc,
+          "basic": dcInfo.basic,
+          "statistic": dFcInfo.statistic
+        }
+      },
+      "targets": targets
+    }
+    msg.flags = {
+      "pf2e-toolbelt": foundry.utils.mergeObject(msg?.flags["pf2e-toolbelt"] ?? {}, { targetHelper: flag })
+    }
+  })
 }

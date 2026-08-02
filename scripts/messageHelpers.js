@@ -196,9 +196,11 @@ function handleToolbelt({
       targets: targets
     }
   }
+
+  
 }
 
-function getDCInfo(description) {
+export function getDCInfo(description) {
   const DC_REGEXES = [
     /(data-pf2-dc=")(\d+)(")/g,
     /(@Check\[.*?type:.*?|dc:)(\d+)(.*?])/g
