@@ -524,7 +524,7 @@
           "rBlQcYYIhvqQKx9t": {
             "connection": "P1EsdsX8P4VcHnOq:outputs:jvEG2lfLRhaROa4t"
           },
-          "formula": { "value": "floor(@level / 2) - 1" }
+          "formula": { "value": "floor(@level / 2) + 3" }
         },
         "outs": { "out": { "connection": "Q2vshCHHT2tkfA6y:ins:in" } }
       },
@@ -547,7 +547,7 @@
           "YiizbsU8HqI6mPrs": {
             "connection": "2w0mFkb7AbJvDldy:outputs:value"
           },
-          "plain": { "value": "(1d4 + @dmg)[electricity]" }
+          "plain": { "value": "(@dmg)[electricity]" }
         },
         "outs": { "out": { "connection": "3ZFiachgZMlltCy6:ins:in" } }
       },

@@ -28,8 +28,12 @@ This does handle the basic cases of Etching, Invoking, and Scribing runes. This 
 
 **Runes**
 
+- `Atryl, Rune of Fire`
+  - **Trace/Etch** Reduce fire resistance
 - `Holtrik, Rune of Dwarven Ramparts`
   - **Invoke** Adds raise a shield + Effect for limited time
+- `Thullax, Rune of Corrosion`
+  - **Trace/Etch** Reduce physical resistance
 - `Zohk, Rune of Homecoming`
   - **Invoke** Adds a dialog option when a time is invoked to teleport the target to you
     **Actions**

@@ -1,9 +1,11 @@
 export const EMPTY_RUNE_ART = "icons/svg/d6-grey.svg";
 
 export const RUNES = {
-  "trolistri-forlorn-sorrow":
+  "atryl-rune-of-fire":
+    "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.r5BcAdtq2NjzpCII",
+  "trolistri-rune-of-forlorn-sorrow":
     "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.AgFVRI7aGK12H8wv",
-  "holtrick-dwarven-ramparts":
+  "holtrik-rune-of-dwarven-ramparts":
     "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.c01ZyJem8D0qvuvN",
   "zohk-rune-of-homecoming":
     "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.VwIDVNd5mPeTqXl9",

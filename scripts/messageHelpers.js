@@ -171,7 +171,7 @@ function handleToolbelt({
     targets = targetToken ? [targetToken?.document?.uuid] : [];
   }
 
-  if (runeSourceID === RUNES["trolistri-forlorn-sorrow"] && targetToken) {
+  if (runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"] && targetToken) {
     const enemyAlliances = new Set(
       ALLIANCES.filter((a) => a !== sourceAlliance),
     );

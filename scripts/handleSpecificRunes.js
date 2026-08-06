@@ -60,7 +60,7 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
   );
 
   switch (convertItemUUIDFromSF2eToPF2e(rune?.sourceId)) {
-    case RUNES["holtrick-dwarven-ramparts"]:
+    case RUNES["holtrik-rune-of-dwarven-ramparts"]:
       effectData.system.rules = getGrantItemRules(
         convertSpecificItemsToSF2e([
           ITEMS.EFFECT_HOLTRICK_RUNE_OF_DWARVEN_RAMPARTS,

@@ -1,9 +1,13 @@
 ## Unreleased
 
+- **New**
+  - Added automation for `Atryl` fire resistance reduction
+  - Added automation for `Thullax` physical resistance reduction
 - **Updated**
   - Fixed damage on `Ranshu` non moving (🐛 @mechamaya)
   - Fixed `Holtrik` RE to use release version (🐛 @mechamaya)
-  - Updated all RE ruleSelection flags to properly work with SF2e  (🐛 @mechamaya)
+  - Updated all RE ruleSelection flags to properly work with SF2e (🐛 @mechamaya)
+  - Fixed missing save on `Thullax`
 
 ## 1.3.0
 

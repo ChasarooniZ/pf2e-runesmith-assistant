@@ -45,6 +45,7 @@ export async function runeEtchTraceDialog(options = {}) {
           uuid: r.uuid,
           img: r.img,
           link: r.link,
+          slug: r.slug,
           traits: r.system.traits.value,
           effects: getEffectsStrings(
             r.description?.split("<strong>Invocation")?.[0] ?? r.description,
