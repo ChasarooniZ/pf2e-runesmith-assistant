@@ -3,10 +3,10 @@
 ## 1.3.0
 
 - **New**
-  - Updated sockets so that they now will add effects as the user that owns the token (with the active GM as a backup)
+  - Updated sockets so that they now will add effects as the user that owns the token (with the active GM as a backup) (@Supe asked again)
     - _overall this should help when your runesmith traces Kojastri x 6_
   - Added `Trigger Engine` recommendation (as well as included some useful trigger)
-    - `Camonica` - Taaking damage when concentrating
+    - `Camonica` - Taking damage when concentrating
     - `Germantria` - When the Runebearer takes damage, heal themselves for half and damage the runesmith for half
     - `Lyskel` - Apply Clumsy 1 if a move action is taken
     - `Ranshu` - End of Turn damage if no move action taken
