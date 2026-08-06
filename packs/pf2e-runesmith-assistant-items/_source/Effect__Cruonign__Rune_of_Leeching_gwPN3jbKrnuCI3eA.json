@@ -27,7 +27,7 @@
 			},
 			{
 				"key": "FlatModifier",
-				"selector": "{item|flags.pf2e.rulesSelections.weapon}-damage",
+				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
 				"value": "(3 + max(floor((@item.origin.level - 9) / 2), 0))",
 				"damageType": "void"
 			}

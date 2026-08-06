@@ -22,7 +22,7 @@
 			},
 			{
 				"key": "FlatModifier",
-				"selector": "{item|flags.pf2e.rulesSelections.weapon}-damage",
+				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
 				"value": "@weapon.system.damage.dice",
 				"damageType": "bludgeoning",
 				"damageCategory": "splash"
@@ -35,7 +35,7 @@
 			},
 			{
 				"key": "DamageDice",
-				"selector": "{item|flags.pf2e.rulesSelections.weapon}-damage",
+				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
 				"diceNumber": 1,
 				"predicate": [
 					"rune-of-impact-invocation"
@@ -43,7 +43,7 @@
 			},
 			{
 				"key": "Note",
-				"selector": "{item|flags.pf2e.rulesSelections.weapon}-damage",
+				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
 				"text": "The target must succeed at a @Check[fortitude] save against the runesmith's class DC or be pushed 10 feet in a straight line backwards, or 20 feet on a critical failure.",
 				"predicate": [
 					"rune-of-impact-invocation"

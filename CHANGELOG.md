@@ -1,5 +1,10 @@
 ## Unreleased
 
+- **Updated**
+  - Fixed damage on `Ranshu` non moving (🐛 @mechamaya)
+  - Fixed `Holtrik` RE to use release version (🐛 @mechamaya)
+  - Updated all RE ruleSelection flags to properly work with SF2e  (🐛 @mechamaya)
+
 ## 1.3.0
 
 - **New**

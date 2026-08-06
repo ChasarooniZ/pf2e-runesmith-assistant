@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.c01ZyJem8D0qvuvN]{Holtrik, Rune of Dwarven Ramparts}</p><p>Your shield's AC bonus increases its circumstance bonus to AC by 1.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.c01ZyJem8D0qvuvN]{Holtrik, Rune of Dwarven Ramparts}</p><p>When your shield is raised gains a +1 status bonus to AC</p>"
 		},
 		"rules": [
 			{
@@ -20,11 +20,21 @@
 				"flag": "shield"
 			},
 			{
-				"key": "ItemAlteration",
-				"mode": "add",
-				"property": "ac-bonus",
-				"itemId": "{item|flags.pf2e.rulesSelections.shield}",
-				"value": 1
+				"key": "FlatModifier",
+				"value": 1,
+				"type": "status",
+				"selector": [
+					"ac"
+				],
+				"predicate": [
+					"self:effect:raise-a-shield",
+					{
+						"eq": [
+							"{actor|system.attributes.shield.itemId}",
+							"{item|flags.system.rulesSelections.shield}"
+						]
+					}
+				]
 			}
 		],
 		"slug": "effect-holtrik-rune-of-dwarven-ramparts",
@@ -80,7 +90,7 @@
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
 		"createdTime": 1785527323026,
-		"modifiedTime": 1785614934692,
+		"modifiedTime": 1786050795287,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

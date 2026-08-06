@@ -1,6 +1,3 @@
-2026/08/06-01:03:20.360 ffc Recovering log #124
-2026/08/06-01:03:20.650 ffc Delete type=0 #98
-2026/08/06-01:03:20.650 ffc Delete type=2 #100
-2026/08/06-01:03:20.650 ffc Delete type=0 #124
-2026/08/06-01:03:20.650 ffc Delete type=3 #96
-2026/08/06-01:03:20.651 ffc Delete type=3 #123
+2026/08/06-20:38:47.295481 ffff5b7fe010 Recovering log #134
+2026/08/06-20:38:47.302740 ffff5b7fe010 Delete type=3 #132
+2026/08/06-20:38:47.302764 ffff5b7fe010 Delete type=0 #134
