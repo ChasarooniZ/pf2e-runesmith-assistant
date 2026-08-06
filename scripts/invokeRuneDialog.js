@@ -396,7 +396,6 @@ const STRICT_INVOCATION_REGEX =
   /<strong>Invocation<\/strong>(?:\s*\([^)]+\))?\s*([\s\S]*)/;
 const INVOCATION_TRAITS_REGEX = /<strong>Invocation<\/strong>\s*\(([^)]*)\)/;
 function getInvocation(description) {
-  //console.log({ test: description.match(STRICT_INVOCATION_REGEX) });
   const desc = description.match(STRICT_INVOCATION_REGEX)?.[1];
   const traits =
     description

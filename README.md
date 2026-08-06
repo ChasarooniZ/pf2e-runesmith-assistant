@@ -32,9 +32,16 @@ This does handle the basic cases of Etching, Invoking, and Scribing runes. This 
   - **Invoke** Adds raise a shield + Effect for limited time
 - `Zohk, Rune of Homecoming`
   - **Invoke** Adds a dialog option when a time is invoked to teleport the target to you
-  **Actions**
+    **Actions**
 - Chain of Words
   - Adds the cool AoE Effect
+
+**Trigger Engine Implementation**
+
+- `Camonica` - Taaking damage when concentrating
+- `Germantria` - When the Runebearer takes damage, heal themselves for half and damage the runesmith for half
+- `Lyskel` - Apply Clumsy 1 if a move action is taken
+- `Ranshu` - End of Turn damage if no move action taken
 
 ## Changelog
 
