@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature or armor</p><hr><p>The lines of this rune overlap strangely, making it seem larger than it really is. The rune-bearer gains a +2 status bonus to Athletics checks. They can @UUID[Compendium.pf2e.actionspf2e.Item.Dt6B1slsBy8ipJu9]{Disarm}, @UUID[Compendium.pf2e.actionspf2e.Item.PMbdMWc2QroouFGD]{Grapple}, @UUID[Compendium.pf2e.actionspf2e.Item.lOE4yjUnETTdaf2T]{Reposition}, @UUID[Compendium.pf2e.actionspf2e.Item.7blmbDrQFNfdT731]{Shove}, or @UUID[Compendium.pf2e.actionspf2e.Item.ge56Lu1xXVFYUnLP]{Trip} creatures up to two sizes larger than themself, or three sizes larger if the rune-bearer is legendary in Athletics.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.s3cil1tttjpA2N7f]{Effect: Feikris, Rune of Gravity}</p><p><strong>Invocation</strong> All creatures in a @Template[type:emanation|distance:15] around the rune-bearer must succeed at a @Check[fortitude|against:runesmith] save or be pulled 5 feet toward the rune-bearer (or 10 feet on a critical failure).</p><hr><p><strong>Level (17th)</strong> The status bonus increases to +3.</p>"
 		},
 		"rules": [],
-		"slug": null,
+		"slug": "feikris-rune-of-gravity",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

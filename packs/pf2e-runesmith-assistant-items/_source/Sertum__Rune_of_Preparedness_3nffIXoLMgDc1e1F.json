@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>The wavy lines of this rune evoke fields of reeds, the branches of trees blowing in the wind, or other natural phenomena. The rune-bearer gains a +1 status bonus to Survival checks and to Lore checks related to a type of terrain or specific natural location you choose as you draw the rune. The rune-bearer can use Survival to roll initiative, and the status bonus applies to this roll.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.xy8ngdGeUShUDuDu]{Effect: Sertum, Rune of Preparedness}</p><p><strong>Invocation </strong>The rune reaches out to the surrounding terrain, shifting it to the rune-bearer's advantage. The rune-bearer can Step up to three times as a free action.</p><hr><p><strong>Level (9th)</strong> The bonus increases to +2.</p><p><strong>Level (17th)</strong> The bonus increases to +3.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "sertum-rune-of-preparedness",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

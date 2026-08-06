@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>This rune is often placed on chests and boxes to keep their contents from spoiling, even in the hottest of climates. The rune-bearer takes a –5-foot circumstance penalty to its Speeds and becomes so cold that movement becomes dangerous; if the bearer takes a move action, it becomes @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy 1} until the beginning of its next turn.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.1QR428ABkNdyrZXd]{Effect: Lyskel, Rune of Frost}</p><p><strong>Invocation </strong>The rune-bearer takes @Damage[ceil(@actor.level / 2)d4[cold]] damage, with a @Check[fortitude|basic|against:runesmith] save. All squares on the ground in the bearer's space and adjacent squares are covered in snow, becoming difficult terrain for 1 round.</p><hr><p><strong>Level (+2)</strong> The damage of the invocation increases by [[/r 1d4]].</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "lyskel-rune-of-frost",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>The slanted lines and odd curls of this rune give the impression that it is trying to escape. The rune-bearer can use a single action to swap places with any other willing rune-bearer within 15 feet. (The other rune-bearer can be bearing any rune.) Each creature must have room to appear in its new location or the effect is disrupted. This action has the concentrate and teleportation traits.</p><p><strong>Invocation</strong> (teleportation) The rune grows to an enormous size, swallowing up the rune-bearer and each Large or smaller creature adjacent to them, and then immediately spits them back out. Choose a square within a @Template[type:emanation|distance:15] from the rune-bearer's original position for each swallowed creature to reappear. A Large creature doesn't necessarily need to reappear completely within the emanation, as long as one of its squares is. An unwilling creature avoids being teleported if it succeeds at a @Check[will|against:class] save against your class DC.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "piteregrin-rune-of-transposition",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>This rune of looping swirls is difficult to look straight at and stirs up a psychic cacophony in a foe's mind. The first time each round the rune-bearer takes an action with the concentrate trait, the turmoil increases, dealing it @Damage[(1 + ceil(@actor.level / 2))[mental]] damage.</p><p><strong>Invocation </strong>The cacophony fragments and expands rapidly in a mental explosion, dealing @Damage[ceil(@actor.level / 2)d4[mental]] damage to the rune- bearer with a @Check[will|basic|against:runesmith] save. On a failure, the rune-bearer is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round (or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} on a critical failure).</p><hr><p><strong>Level (+2)</strong> The damage from the mental turmoil increases by 1 and the damage of the invocation increases by [[/r 1d4]].</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "camonica-rune-of-perplexity",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

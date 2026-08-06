@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>The swooping lines of this rune seem to melt into each other as if their edges were hazy and indistinct, though the meaning is clear to you. The rune-bearer's resistance to each physical damage type is reduced by [[ceil(@actor.level / 2)]] (if it has any such resistances). Its immunities are unaffected.</p><p><strong>Invocation</strong> The bearer takes @Damage[ceil(@actor.level / 2)d6[acid]] damage with a basic Fortitude save; on a critical failure, it takes @Damage[(ceil(@actor.level / 2))[persistent,acid]] damage.</p><hr><p><strong>Level (+2)</strong> The reduction in physical resistance increases by 1, the damage of the invocation increases by 1d6, and the persistent damage increases by 1.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "thullax-rune-of-corrosion",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune </p><hr><p>The wavy lines of this diacritic seem to stretch the base rune into a wider area. When you draw this rune, choose a trigger that when met will invoke the base rune, using the same restrictions as for the trigger of a Ready action. When the trigger is met, you can Invoke the base Rune as a reaction; you can't invoke any additional runes with that reaction. If you define complicated conditions, as determined by the GM, the trigger might fail.</p><hr><p><strong>Special</strong> You can have only one nesh-, diacritic rune of contingency applied at a given time, and once you invoke it, you can't etch or trace it again for 10 minutes.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "nesh-diacritic-rune-of-contingency",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

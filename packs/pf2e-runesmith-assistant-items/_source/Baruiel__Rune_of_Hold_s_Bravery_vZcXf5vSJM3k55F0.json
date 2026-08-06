@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a willing creature</p><hr><p>This scratched rune reminds the bearer to stand strong against fear when near allies. As long as the rune-bearer is within 10 feet of one of its allies, whenever it would reduce its frightened condition by 1, it instead reduces it by 2.</p><p><strong>Invocation </strong>The essence of the rune is released outward, easing the minds of others. Each ally of the rune-bearer within a @Template[type:emanation|distance:10] reduces their frightened condition by 2.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "baruiel-rune-of-holds-bravery",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

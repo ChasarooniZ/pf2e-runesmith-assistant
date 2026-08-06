@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune</p><hr><p>This set of angular accents around the base rune channels the essence of fiendish corruption. The base rune gains the unholy trait, as does any damage it deals. If applied to a holy creature, that creature is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for as long as it bears the rune.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.OwbpgxdQFpxfre4g]{Effect: Inth-, Diacritic Rune of Corruption}</p><p><strong>Invocation</strong> (fire) When the base rune is invoked, it burns away in unholy black fire that lingers on its target. In addition to the base rune's normal effect, the target takes @Damage[(2 + floor((@actor.level - 13) / 2)*2)d4[persistent,fire]] damage.</p><hr><p><strong>Level (+2)</strong> The persistent fire damage increases by [[/r 2d4]].</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "inth-diacritic-rune-of-corruption",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

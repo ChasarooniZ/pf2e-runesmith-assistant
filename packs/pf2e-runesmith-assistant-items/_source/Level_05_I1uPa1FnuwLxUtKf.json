@@ -19,5 +19,8 @@
 		"duplicateSource": null,
 		"exportSource": null
 	},
-	"_key": "!folders!I1uPa1FnuwLxUtKf"
+	"_key": "!folders!I1uPa1FnuwLxUtKf",
+	"system": {
+		"slug": "level-05"
+	}
 }

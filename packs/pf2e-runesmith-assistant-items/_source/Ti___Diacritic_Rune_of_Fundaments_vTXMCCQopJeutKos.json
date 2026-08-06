@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune that deals acid, cold, electricity, or fire damage</p><p>This wavering diacritic encompasses the base rune to slightly change its meaning. When the base rune is invoked, you can alter the damage its invocation deals, choosing acid, cold, electricity, or fire.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "ti-diacritic-rune-of-fundaments",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

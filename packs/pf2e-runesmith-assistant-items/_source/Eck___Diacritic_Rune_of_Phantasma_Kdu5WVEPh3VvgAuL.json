@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune that deals damage</p><hr><p>This diacritic frames a base rune with almost @UUID[Compendium.pf2e.conditionitems.Item.zJxUflt9np0q4yML]{Invisible} lines that turn the rune's effects against the bearer's soul. The damage dealt on the base rune becomes spirit damage, and each of your enemies adjacent to the rune-bearer takes @Damage[(1 + max(floor(@actor.level / 17), 0))d8[persistent,spirit]] damage.</p><hr><p><strong>Level (17th)</strong> The persistent spirit damage increases by [[/r 1d8]].</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "eck-diacritic-rune-of-phantasma",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

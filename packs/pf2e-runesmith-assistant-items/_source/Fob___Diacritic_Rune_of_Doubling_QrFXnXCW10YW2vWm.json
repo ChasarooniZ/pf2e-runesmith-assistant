@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune that doesn't deal damage</p><hr><p>This diacritic consists of pairs of diamonds in opposite positions around the base rune. When the base rune is invoked, the rune-bearer is affected by it as usual, and you can choose to also be affected by the invocation if possible.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "fob-diacritic-rune-of-doubling",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

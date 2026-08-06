@@ -47,7 +47,7 @@ export function getActorToGiveRuneEffect(targetData, runesmithID) {
 }
 
 /**
- * 
+ *
  * @param {*} actor Actor to get owner of
  * @returns ID of token owner or the GM
  */
@@ -59,4 +59,59 @@ export function getActorOwnerOnline(actor) {
       game.users.get(userID)?.active,
   );
   return entry?.[0] ? entry?.[0] : game.users.activeGM?.id;
+}
+
+export function convertItemUUIDFromSF2eToPF2e(uuid) {
+  if (!uuid) return null;
+  let finalUUID = uuid;
+  if (game.system.id === "sf2e") {
+    finalUUID = finalUUID
+      .replace(".sf2e.", ".pf2e.")
+      .replace(".pf2e-anachronism.", ".pf2e.")
+      .replace(
+        ".starfinder-field-test-for-pf2e.actions.",
+        ".starfinder-field-test-for-pf2e.sf2e-actions.",
+      )
+      .replace(
+        ".starfinder-field-test-for-pf2e.feats.",
+        ".starfinder-field-test-for-pf2e.sf2e-feats.",
+      )
+      .replace(".actions.", ".actionspf2e.")
+      .replace(".class-features.", ".classfeatures.")
+      .replace(".conditions.", ".conditionitems.")
+      .replace(".equipment.", ".equipment-srd.")
+      .replace(".feats.", ".feats-srd.")
+      .replace(".macros.", ".pf2e-macros.")
+      .replace(".spells.", ".spells-srd.")
+      .replace(
+        ".pf2e-runesmith-assistant-items.",
+        ".sf2e-runesmith-assistant-items.",
+      );
+  }
+
+  return finalUUID;
+}
+
+export function convertSpecificItemsToSF2e(uuids) {
+  if (!uuids) return null;
+  if (game.system.id === "sf2e") {
+    return uuids.map((uuid) =>
+      uuid
+        .replace(".sf2e.", ".pf2e.")
+        .replace(".pf2e.", ".pf2e-anachronism.")
+        .replace(".actionspf2e.", ".actions.")
+        .replace(".classfeatures.", ".class-features.")
+        .replace(".conditionitems.", ".conditions.")
+        .replace(".equipment-srd.", ".equipment.")
+        .replace(".feats-srd.", ".feats.")
+        .replace(".pf2e-macros.", ".macros.")
+        .replace(".spells-srd.", ".spells.")
+        .replace(
+          ".sf2e-runesmith-assistant-items.",
+          ".pf2e-runesmith-assistant-items.",
+        ),
+    );
+  } else {
+    return uuids;
+  }
 }

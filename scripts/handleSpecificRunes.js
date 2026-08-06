@@ -1,5 +1,10 @@
 import { ITEMS, RUNES } from "./const.js";
-import { getActorOwnerOnline, localize } from "./misc.js";
+import {
+  convertItemUUIDFromSF2eToPF2e,
+  convertSpecificItemsToSF2e,
+  getActorOwnerOnline,
+  localize,
+} from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
 const RUNE_CHECK_LIST = Object.values(RUNES);
@@ -54,12 +59,14 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
     getActorToGiveRuneEffect(target, srcToken),
   );
 
-  switch (rune?.sourceId) {
+  switch (convertItemUUIDFromSF2eToPF2e(rune?.sourceId)) {
     case RUNES["holtrick-dwarven-ramparts"]:
-      effectData.system.rules = getGrantItemRules([
-        ITEMS.EFFECT_HOLTRICK_RUNE_OF_DWARVEN_RAMPARTS,
-        ITEMS.EFFECT_RAISE_A_SHIELD,
-      ]);
+      effectData.system.rules = getGrantItemRules(
+        convertSpecificItemsToSF2e([
+          ITEMS.EFFECT_HOLTRICK_RUNE_OF_DWARVEN_RAMPARTS,
+          ITEMS.EFFECT_RAISE_A_SHIELD,
+        ]),
+      );
       effectData.system.duration.expiry = "turn-start";
       game.pf2eRunesmithAssistant.socket.executeAsUser("createEffect", userID, {
         tokenID: target.token,

@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature or armor</p><hr><p>While many runes are enchanted to glow, light is the focus of this simple rune. The rune sheds bright light in a 20-foot emanation (and dim light to 40 feet). Creatures in the emanation take a –1 item penalty to Stealth checks.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.tuGYsi4iaULsHsbf]{Effect: Pluuna, Rune of Illumination}</p><p><strong>Invocation</strong> Each creature in the light must succeed at a @Check[fortitude|against:class] save against your class DC or be @UUID[Compendium.pf2e.conditionitems.Item.TkIyaNPgTZFBCCuh]{Dazzled} for 1 round. The light fades, but the target still sheds dim light in a 20-foot emanation for 1 round.</p>"
 		},
 		"rules": [],
-		"slug": null,
+		"slug": "pluuna-rune-of-illumination",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

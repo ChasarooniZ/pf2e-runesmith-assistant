@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on armor</p><hr><p>This rune insulates from harmful energy of all kinds. The creature wearing the armor gains resistance [[4 + max(floor((@actor.level - 9) / 2), 0)]] to your choice of cold, electricity, or fire, and any creature that touches the rune-bearer or damages it with an unarmed attack or non-reach melee weapon takes [[2 + max(floor((@actor.level - 9) / 2), 0)]] damage of the chosen type. The rune has the trait of the energy type chosen.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.aa9Ncmtrwm1EThms]{Effect: Kojastri, Rune of Insulation}</p><p><strong>Invocation</strong> Any creature that has the armor's wearer engulfed, @UUID[Compendium.pf2e.conditionitems.Item.kWc1fhmv9LBiTuei]{Grabbed}, @UUID[Compendium.pf2e.conditionitems.Item.VcDeM8A5oI6VqhbM]{Restrained}, or swallowed whole takes @Damage[(8 + floor((@actor.level - 9) / 2) * 2)d4[untyped]] damage of the rune's chosen type with a @Check[reflex|against:class|basic] save against your class DC. On a failure, it also releases the armor's wearer.</p><hr><p><strong>Level (+2)</strong> The resistance and damage granted by insulation both increase by 1, and the damage dealt by the invocation increases by [[/r 2d4]].</p>"
 		},
 		"rules": [],
-		"slug": null,
+		"slug": "kojastri-rune-of-insulation",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

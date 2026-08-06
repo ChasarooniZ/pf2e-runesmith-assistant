@@ -22,7 +22,7 @@
 			"remaster": false
 		},
 		"rules": [],
-		"slug": null,
+		"slug": "etch-rune",
 		"_migration": {
 			"version": 0.935,
 			"previous": {

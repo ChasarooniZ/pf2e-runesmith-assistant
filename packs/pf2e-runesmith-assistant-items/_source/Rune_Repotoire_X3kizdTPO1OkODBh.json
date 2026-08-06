@@ -8,7 +8,7 @@
 			"value": "<p><em>This item doesn't really do anything, it just was how I had my players organize their runes away somewhere out of the way.</em></p><p></p><p><span style=\"font-family:Roboto, sans-serif\">Your magic can sustain up to </span>[[ floor((@actor.level - 1)/4) + 2 ]]<span style=\"font-family:Roboto, sans-serif\"> etched runes at a time</span></p>"
 		},
 		"rules": [],
-		"slug": null,
+		"slug": "rune-repotoire",
 		"_migration": {
 			"version": 0.935,
 			"lastMigration": null

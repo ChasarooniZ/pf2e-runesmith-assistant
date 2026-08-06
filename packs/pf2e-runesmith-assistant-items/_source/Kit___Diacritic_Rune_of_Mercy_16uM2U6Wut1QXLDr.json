@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune that deals damage and doesn't have the death or void trait</p><hr><p>This diacritic frames a rune with soft curves that mitigate its deadlier effects but make them harder to resist. When the base rune is invoked, it has the nonlethal trait, but the rune-bearer takes a –1 status penalty to any saving throw.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "kit-diacritic-rune-of-mercy",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

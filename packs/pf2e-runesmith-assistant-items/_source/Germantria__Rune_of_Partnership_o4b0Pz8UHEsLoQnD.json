@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>When drawn, this knobby rune pulses with your own heartbeat, creating a vital connection between you and the bearer. While you are within 1 mile of the rune-bearer, it takes half damage from all effects that deal Hit Point damage, and you take the remainder of the damage. When you take this damage, you don't apply any resistances, weaknesses, or other abilities you have to that damage; you simply take that amount of damage. If either you or the rune-bearer is reduced to 0 Hit Points, the rune fades without being invoked.</p><p><strong>Invocation</strong> (healing) The connection between you and the rune-bearer is severed in a burst of healing energy. Both you and the rune-bearer regain @Damage[(20 + floor((@actor.level - 9) / 2)*5)[healing]] Hit Points.</p><hr><p><strong>Level (+2)</strong> The amount of Hit Points healed by the invocation increases by 5.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "germantria-rune-of-partnership",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

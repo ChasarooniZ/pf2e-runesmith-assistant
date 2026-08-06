@@ -19,5 +19,8 @@
 		"duplicateSource": null,
 		"exportSource": null
 	},
-	"_key": "!folders!7S3XCFEkaWLI4t3S"
+	"_key": "!folders!7S3XCFEkaWLI4t3S",
+	"system": {
+		"slug": "rune-effects"
+	}
 }

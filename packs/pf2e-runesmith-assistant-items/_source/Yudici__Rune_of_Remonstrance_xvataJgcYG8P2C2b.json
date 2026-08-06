@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a shield</p><hr><p>This majestic rune grants the shield's wielder the conviction to aid their allies. While a shield bearing this rune is raised, its bearer emits an aura in a @Template[type:emanation|distance:10] that grants their allies a +1 circumstance bonus to AC.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.4c8YJ0142bwmrJa0]{Effect: Yudici, Rune of Remonstrance (Aura)}</p><p><strong>Invocation</strong> The shield regains 40 Hit Points, and all of the bearer's allies in a @Template[type:emanation|distance:10] gain a +1 status bonus to attack rolls and skill checks for 1 round.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.ziClnEyuXfHnJPwp]{Effect: Yudici, Rune of Remonstrance (Invocation)}</p><hr><p><strong>Level (+3)</strong> The Hit Points restored increases by 10.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "yudici-rune-of-remonstrance",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

@@ -9,6 +9,7 @@
   - Code maintenance + Fixing up
   - Fixed damage scaling on `Atryl` (🐛 @mechamaya)
   - Cleaned up broken links in data entry
+  - Fixed bad slugs in data entry
 
 ## 1.2.0
 

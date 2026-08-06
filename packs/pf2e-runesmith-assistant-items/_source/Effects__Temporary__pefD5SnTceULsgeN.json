@@ -19,5 +19,8 @@
 		"duplicateSource": null,
 		"exportSource": null
 	},
-	"_key": "!folders!pefD5SnTceULsgeN"
+	"_key": "!folders!pefD5SnTceULsgeN",
+	"system": {
+		"slug": "effects-temporary"
+	}
 }

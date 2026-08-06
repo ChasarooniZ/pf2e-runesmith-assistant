@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a creature</p><hr><p>Originating from Thalassic script, this wavy rune is popular with iruxi practitioners of rune magic who want to easily traverse their watery environs. The rune-bearer can breathe underwater and gains a swim Speed equal to its land Speed or 30 feet, whichever is greater. Its melee Strikes don't take the usual circumstance penalty for passing through water.</p><p><strong>Invocation </strong>The rune's power pushes the bearer forward in a surprising surge of speed. The rune-bearer can Swim up to 60 feet as a free action, and this movement doesn't trigger reactions.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "astillu-rune-of-submersion",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,

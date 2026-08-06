@@ -46,7 +46,9 @@ export async function runeEtchTraceDialog(options = {}) {
           img: r.img,
           link: r.link,
           traits: r.system.traits.value,
-          effects: getEffectsStrings(r.description),
+          effects: getEffectsStrings(
+            r.description?.split("<strong>Invocation")?.[0] ?? r.description,
+          ),
           enriched_desc: (
             await foundry.applications.ux.TextEditor.implementation.enrichHTML(
               r.description,

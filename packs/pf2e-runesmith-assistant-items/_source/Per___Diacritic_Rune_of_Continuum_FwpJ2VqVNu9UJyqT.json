@@ -9,7 +9,7 @@
 			"value": "<p><strong>Usage</strong> drawn on a rune</p><hr><p>This whirling diacritic recirculates the magic of the base rune onto another creature. After the base rune is invoked, it automatically traces itself on a different target of your choice within 15 feet of the original rune-bearer.</p><hr><p><strong>Special</strong> You can have only one copy of per-, diacritic rune of continuum applied at a given time, and once you invoke it, you can't etch or trace it again for 10 minutes.</p>"
 		},
 		"rules": [],
-		"slug": "aiuen-the-elf-gate-key-rune",
+		"slug": "per-diacritic-rune-of-continuum",
 		"_migration": {
 			"version": 0.959,
 			"lastMigration": null,
