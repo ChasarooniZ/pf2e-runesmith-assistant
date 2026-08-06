@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.KGQvlQDy4QT23tO5]{Marssyl, Rune of Impact}</p><p>The chosen weapon deals 1 bludgeoning splash damage per weapon damage die.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.KGQvlQDy4QT23tO5]{Marssyl, Rune of Impact}</p><p>The chosen weapon deals 1 bludgeoning splash damage per weapon damage die.</p>"
 		},
 		"rules": [
 			{

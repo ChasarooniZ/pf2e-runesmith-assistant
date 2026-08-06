@@ -1,31 +1,22 @@
 {
 	"folder": "7S3XCFEkaWLI4t3S",
-	"name": "Effect: Ur-, Diacritic Rune of Intensity",
+	"name": "Effect: Rehgog, Rune of Bestial Might",
 	"type": "effect",
 	"effects": [],
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.mJV8HVSelLajRMtJ]{Ur-, Diacritic Rune of Intensity}</p><p>When the base rune is invoked, its invocation gains a status bonus to damage equal to 2 plus half your level.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.WhYg8Bve6wlB4mFH]{Rehgog, Rune of Bestial Might}</p><p>Your nose an animal-like snout, giving you scent as an imprecise scent with a range of 30 feet.</p>"
 		},
 		"rules": [
 			{
-				"key": "RollOption",
-				"option": "diacritic-rune-of-intensity",
-				"toggleable": true,
-				"domain": "damage"
-			},
-			{
-				"key": "FlatModifier",
-				"selector": "damage",
-				"value": "@item.origin.system.abilities.int.mod",
-				"predicate": [
-					"diacritic-rune-of-intensity"
-				],
-				"type": "status"
+				"acuity": "imprecise",
+				"key": "Sense",
+				"range": 30,
+				"selector": "scent"
 			}
 		],
-		"slug": "effect-ur-diacritic-rune-of-intensity",
+		"slug": "effect-rehgog-rune-of-bestial-might",
 		"_migration": {
 			"version": 0.959,
 			"previous": {
@@ -39,7 +30,7 @@
 			"value": []
 		},
 		"publication": {
-			"title": "PF2e Runesmith Assistant",
+			"title": "Pathfinder Impossible Playtest",
 			"authors": "",
 			"license": "ORC",
 			"remaster": true
@@ -66,24 +57,23 @@
 		"fromSpell": false
 	},
 	"img": "icons/magic/symbols/rune-sigil-black-pink.webp",
-	"ownership": {
-		"default": 0,
-		"V4DL7FqWwg5mhC94": 3,
-		"vj8VUT8j7Wtzy3Y2": 3
-	},
 	"flags": {},
 	"_stats": {
 		"coreVersion": "14.365",
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
-		"createdTime": 1785527338599,
-		"modifiedTime": 1785559345646,
+		"createdTime": 1785726085764,
+		"modifiedTime": 1785726192194,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,
 		"exportSource": null
 	},
-	"_id": "MXgAIqOq9toR0qmc",
-	"sort": 600000,
-	"_key": "!items!MXgAIqOq9toR0qmc"
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "VD6FfCpAl05fqr4V",
+	"sort": 0,
+	"_key": "!items!VD6FfCpAl05fqr4V"
 }

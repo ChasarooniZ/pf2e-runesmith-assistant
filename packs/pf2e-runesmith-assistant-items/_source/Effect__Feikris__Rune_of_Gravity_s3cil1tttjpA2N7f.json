@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.WJ472N5rUoZfPMp3]{Feikris, Rune of Gravity}</p><p>You gain a +2 item bonus to Athletics checks. If the origin runesmith is 17th level or higher, the bonus increases to +3.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.x8KBhfNz8ZntjP0n]{Feikris, Rune of Gravity}</p><p>You gain a +2 item bonus to Athletics checks. If the origin runesmith is 17th level or higher, the bonus increases to +3.</p>"
 		},
 		"rules": [
 			{

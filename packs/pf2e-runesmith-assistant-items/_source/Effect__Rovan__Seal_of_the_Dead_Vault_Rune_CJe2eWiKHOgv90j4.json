@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.yL4Yam21U0RwbaEN]{Rovan, Seal of the Dead Vault Rune}</p><p>You take a –20-foot penalty to your land Speed and a –40-foot penalty to all other Speeds.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.yL4Yam21U0RwbaEN]{Rovan, Seal of the Dead Vault Rune}</p><p>You take a –20-foot penalty to your land Speed and a –40-foot penalty to all other Speeds.</p>"
 		},
 		"rules": [
 			{

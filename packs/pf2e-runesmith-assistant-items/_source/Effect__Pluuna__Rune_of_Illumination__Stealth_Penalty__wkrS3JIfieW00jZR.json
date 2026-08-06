@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.eHKXdrPV1Vkev8Wt]{Pluuna, Rune of Illumination}</p><p>You take a –1 item penalty to Stealth checks.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.5hnMYxZfN4cdNGur]{Pluuna, Rune of Illumination}</p><p>You take a –1 item penalty to Stealth checks.</p>"
 		},
 		"rules": [
 			{

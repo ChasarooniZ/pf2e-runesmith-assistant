@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.cO1zNpHbEZiSphNp]{Ichelsu, Rune of Observation}</p><p>You gain the effects of <em>see the unseen</em> and cannot be flanked.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.pC3xFVhRpMBjq8nc]{Ichelsu, Rune of Observation}</p><p>You gain the effects of <em>see the unseen</em> and cannot be flanked.</p>"
 		},
 		"rules": [
 			{

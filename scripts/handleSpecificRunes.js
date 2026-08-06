@@ -1,5 +1,5 @@
 import { ITEMS, RUNES } from "./const.js";
-import { localize } from "./misc.js";
+import { getActorOwnerOnline, localize } from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
 const RUNE_CHECK_LIST = Object.values(RUNES);
@@ -45,10 +45,14 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
         value: "created by PF2e Runesmith Assistant",
       },
       slug: game.pf2e.system.sluggify(
-        `[${localize("effect.types.invoked")}] ${rune.name}`
+        `[${localize("effect.types.invoked")}] ${rune.name}`,
       ),
     },
   };
+
+  const userID = getActorOwnerOnline(
+    getActorToGiveRuneEffect(target, srcToken),
+  );
 
   switch (rune?.sourceId) {
     case RUNES["holtrick-dwarven-ramparts"]:
@@ -57,9 +61,8 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
         ITEMS.EFFECT_RAISE_A_SHIELD,
       ]);
       effectData.system.duration.expiry = "turn-start";
-      game.pf2eRunesmithAssistant.socket.executeAsGM("createEffect", {
-        targetID: target.token,
-        tokenID: srcToken,
+      game.pf2eRunesmithAssistant.socket.executeAsUser("createEffect", userID, {
+        tokenID: target.token,
         effectData,
       });
       break;
@@ -85,7 +88,7 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
             .distance(Math.max(tokenTarget.document.width - 1, 0) * 5)
             .snapPosition(
               CONST.GRID_SNAPPING_MODES.CENTER |
-                CONST.GRID_SNAPPING_MODES.VERTEX
+                CONST.GRID_SNAPPING_MODES.VERTEX,
             )
             .icon(tokenTarget.document.texture.src)
             //invisible

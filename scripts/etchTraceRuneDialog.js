@@ -1,6 +1,8 @@
 import { runeAppliedMessage } from "./messageHelpers.js";
 import {
-  getEffects,
+  getActorOwnerOnline,
+  getActorToGiveRuneEffect,
+  getEffectsStrings,
   getMaxEtchedRunes,
   getYourToken,
   localize,
@@ -44,7 +46,7 @@ export async function runeEtchTraceDialog(options = {}) {
           img: r.img,
           link: r.link,
           traits: r.system.traits.value,
-          effects: getEffects(r.description),
+          effects: getEffectsStrings(r.description),
           enriched_desc: (
             await foundry.applications.ux.TextEditor.implementation.enrichHTML(
               r.description,
@@ -154,13 +156,11 @@ async function pickDialog({ runes, actor, token, options }) {
 
 function onRender(_event, app) {
   const html = app.element ? app.element : app;
-  // Attach right-click listener to rune images
   $(html)
     .find(".radio-label img")
     .on("contextmenu", async function (event) {
       const runeId = $(this).closest("label").find("input[type=radio]").val();
       const runeObj = runes.find((s) => s.id === runeId);
-      // Call addRune with free: true
       await addRune(runeObj, {
         actor,
         token,
@@ -171,9 +171,6 @@ function onRender(_event, app) {
     });
 }
 
-/**
- *
- */
 async function addRune(
   rune,
   { actor, token, type = "etched", action = 0, free },
@@ -201,13 +198,21 @@ async function addRune(
       ...(free && { free }),
     });
 
-    game.pf2eRunesmithAssistant.socket.executeAsGM("createTraceEffect", {
-      rune,
-      target,
-      tokenID: token.id,
-      id,
-      type,
-    });
+    const userID = getActorOwnerOnline(
+      getActorToGiveRuneEffect(target, token.id),
+    );
+
+    game.pf2eRunesmithAssistant.socket.executeAsUser(
+      "createTraceEffect",
+      userID,
+      {
+        rune,
+        target,
+        tokenID: token.id,
+        id,
+        type,
+      },
+    );
     await actor.setFlag(MODULE_ID, "runes", runes);
     await runeAppliedMessage({ actor, token, rune, target, type, action });
   }

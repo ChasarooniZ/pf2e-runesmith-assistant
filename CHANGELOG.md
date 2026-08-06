@@ -1,5 +1,15 @@
 ## Unreleased
 
+- **New**
+  - Updated sockets so that they now will add effects as the user that owns the token (with the active GM as a backup)
+    - _overall this should help when your runesmith traces Kojastri x 6_
+
+- **Updated**
+  - Added some more localization
+  - Code maintenance + Fixing up
+  - Fixed damage scaling on `Atryl` (🐛 @mechamaya)
+  - Cleaned up broken links in data entry
+
 ## 1.2.0
 
 - **New**

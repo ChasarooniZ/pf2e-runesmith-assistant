@@ -18,7 +18,8 @@
       "tooltip": {
         "empty-rune-slot": "Empty Rune Slot",
         "highlight-affected-token": "Highlight Affected Token",
-        "hover": "Hover"
+        "hover": "Hover",
+        "no-rune-description" :"Rune has been removed from your inventory so it has no result"
       },
       "sections": {
         "etched": "Etched Runes",
@@ -95,6 +96,10 @@
         "traced": "Traced",
         "etched": "Etched",
         "invoked": "Invoked"
+      },
+      "names": {
+        "on-person" : "[{etchOrTrace}] {name}",
+        "on-object": "[{etchOrTrace}] {name} on {object}"
       }
     },
     "traits": {

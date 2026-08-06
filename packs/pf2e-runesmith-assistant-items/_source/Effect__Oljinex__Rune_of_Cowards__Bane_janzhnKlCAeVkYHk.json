@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.Q4INkfHzqn6tm4LM]{Oljinex, Rune of Cowards' Bane}</p><p>While the chosen shield is raised, you gain a +1 status bonus to AC against physical ranged attacks.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.bI1255auW2ren8R0]{Oljinex, Rune of Cowards' Bane}</p><p>While the chosen shield is raised, you gain a +1 status bonus to AC against physical ranged attacks.</p>"
 		},
 		"rules": [
 			{

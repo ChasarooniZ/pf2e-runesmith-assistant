@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p><strong>Usage</strong> drawn on a willing creature</p><hr><p>The jagged edges of this rune evoke the claws and talons of mighty beasts. The target's nose becomes an animal-like snout, giving the rune-bearer scent as an imprecise scent with a range of 30 feet.</p><p><strong>Invocation </strong>The rune-bearer's muscles bulge with the strength of a ferocious beast. The bearer can immediately Step as a free action. The next unarmed Strike the bearer attempts before the start of your next turn deals an additional die of damage.</p>"
+			"value": "<p><strong>Usage</strong> drawn on a willing creature</p><hr><p>The jagged edges of this rune evoke the claws and talons of mighty beasts. The target's nose becomes an animal-like snout, giving the rune-bearer scent as an imprecise scent with a range of 30 feet.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.VD6FfCpAl05fqr4V]{Effect: Rehgog, Rune of Bestial Might}</p><p><strong>Invocation </strong>The rune-bearer's muscles bulge with the strength of a ferocious beast. The bearer can immediately Step as a free action. The next unarmed Strike the bearer attempts before the start of your next turn deals an additional die of damage.</p><p>@UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.50aeNGG86oIcpDtP]{Effect: Rehgog, Rune of Bestial Might (Invocation)}</p>"
 		},
 		"rules": [],
 		"slug": "aiuen-the-elf-gate-key-rune",
@@ -89,7 +89,7 @@
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
 		"createdTime": 1785530153925,
-		"modifiedTime": 1785561081970,
+		"modifiedTime": 1785726848194,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

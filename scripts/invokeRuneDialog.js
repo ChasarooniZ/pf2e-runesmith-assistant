@@ -352,7 +352,9 @@ export async function invokeRune({ token, act, runeID, type }) {
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(
     rune?.description ??
-      "Rune has been removed from your inventory so it has no result",
+      game.i18n.localize(
+        "pf2e-runesmith-assistant.ui.tooltip.no-rune-description",
+      ),
   );
 
   const traits = [

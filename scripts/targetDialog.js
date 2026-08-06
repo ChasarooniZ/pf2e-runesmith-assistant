@@ -1,3 +1,8 @@
+/**
+ *
+ * @param  options
+ * @returns { { type: string, item: string || null, token: string || null, actor: string || null, location:  string || null, personName: string || null, img: string || null, objectName: string || null }[] }
+ */
 export function showDynamicTargetForm(options) {
   const form = new RuneTargetForm(options);
   form.render(true);
@@ -33,7 +38,7 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
   constructor(options = {}) {
     super(options);
     this._processType = options?.processType || "etched";
-    this._rune = options?.rune
+    this._rune = options?.rune;
     this._resolve = null;
     this._reject = null;
     this._promise = new Promise((resolve, reject) => {
@@ -124,12 +129,10 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
 
   static PARTS = {
     tabs: {
-      // Foundry-provided generic template
       template: "templates/generic/tab-navigation.hbs",
     },
     main: {
       template: `modules/pf2e-runesmith-assistant/templates/target-dialog.hbs`,
-      // scrollable: [".tab.critical", ".tab.token"],
       classes: ["runesmith-target-dialog", "form"],
     },
     footer: {
@@ -211,14 +214,13 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
           selected: targets.some((t) => t.id === token.id),
         })),
         selectedCount: targets.length,
-        location: "actor", // Default location
+        location: "actor",
         itemName: "",
-        // Final output data - will contain arrays for multiple tokens
         actors: [],
         personNames: [],
         imgs: [],
         item: null,
-        rune: this._rune
+        rune: this._rune,
       };
     }
     return {

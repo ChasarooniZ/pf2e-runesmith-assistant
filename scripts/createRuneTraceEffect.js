@@ -1,3 +1,5 @@
+import { getActorToGiveRuneEffect, localize } from "./misc.js";
+
 export async function createRuneTraceEffect({
   rune,
   target,
@@ -7,6 +9,7 @@ export async function createRuneTraceEffect({
 }) {
   const { name, img, enriched_desc } = rune;
 
+  const act = getActorToGiveRuneEffect(target, tokenID);
   const targetToken = canvas.tokens.get(target?.token);
   const tokenSource = canvas.tokens.get(tokenID);
 
@@ -14,8 +17,17 @@ export async function createRuneTraceEffect({
   const object = target?.object;
   const item = target?.item;
 
-  const effectName = `[${type === "etched" ? "Etched" : "Traced"}] ${name}${object || item ? " on " : ""
-    }${object || ""}${item || ""}`;
+  const effectName = localize(
+    `effect.names.${object || item ? "on-object" : "on-person"}`,
+    {
+      etchOrTrace:
+        type === "etched"
+          ? localize("effect.types.etched")
+          : localize("effect.types.traced"),
+      name,
+      object: object || item || "",
+    },
+  );
 
   const effectData = {
     type: "effect",
@@ -50,13 +62,13 @@ export async function createRuneTraceEffect({
       rules: object
         ? []
         : rune.effects.map((effectUUID) => ({
-          key: "GrantItem",
-          onDeleteActions: {
-            grantee: "restrict",
-          },
-          allowDuplicate: true,
-          uuid: effectUUID,
-        })),
+            key: "GrantItem",
+            onDeleteActions: {
+              grantee: "restrict",
+            },
+            allowDuplicate: true,
+            uuid: effectUUID,
+          })),
       level: {
         value: tokenSource?.actor?.level ?? 1,
       },
@@ -70,19 +82,16 @@ export async function createRuneTraceEffect({
       source: {
         value: "created by PF2e Runesmith Assistant",
       },
-      // note: naming this just 'temporary-effect-...' will lead to a PF2E bug, apparently!
       slug: game.pf2e.system.sluggify(name),
     },
   };
-  const act = object ? tokenSource.actor : targetToken?.actor;
   const effects = await act.createEmbeddedDocuments("Item", [effectData], {
     parent: tokenSource.actor,
   });
-  //console.log({ effects });
   return effects;
 }
 
-export async function createEffect({ tokenID, targetID, effectData }) {
+export async function createEffect({ targetID, effectData }) {
   const targetToken = canvas.tokens.get(targetID);
   const act = targetToken?.actor;
 
@@ -94,8 +103,8 @@ export async function createEffect({ tokenID, targetID, effectData }) {
       },
     ],
     {
-      parent: targetToken.actor,
-    }
+      parent: tokenSource.actor,
+    },
   );
   return effects;
 }

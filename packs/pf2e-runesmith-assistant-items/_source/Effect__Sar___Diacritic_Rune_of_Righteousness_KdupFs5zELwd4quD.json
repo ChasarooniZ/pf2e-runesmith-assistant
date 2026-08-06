@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.8AksFXlcywERvqKV]{Inth-, Diacritic Rune of Corruption}</p><p>Any damage dealt by the base rune gains the holy trait. If you're an unholy creature, you become enfeebled 2.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.yTOFOmB0xmyy42bh]{Sar-, Diacritic Rune of Righteousness}</p><p>Any damage dealt by the base rune gains the holy trait. If you're an unholy creature, you become enfeebled 2.</p>"
 		},
 		"rules": [
 			{

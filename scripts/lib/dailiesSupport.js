@@ -1,5 +1,5 @@
 import { MODULE_ID } from "../module.js";
-
+// TODO make this work at all
 export const CUSTOM_DAILIES = [
   {
     key: "runic-tattoo",

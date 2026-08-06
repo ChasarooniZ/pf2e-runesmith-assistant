@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.Item.LiEb1gKaBfF08xOK]{Kojastri, Rune of Insulation}</p><p>You gain resistance to your choice of cold, electricity, or fire, and any creature that damages you with an unarmed attack or non-reach melee weapon takes 2 damage of the chosen type.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.LiEb1gKaBfF08xOK]{Kojastri, Rune of Insulation}</p><p>You gain resistance to your choice of cold, electricity, or fire, and any creature that damages you with an unarmed attack or non-reach melee weapon takes 2 damage of the chosen type.</p>"
 		},
 		"rules": [
 			{
