@@ -28,8 +28,10 @@ This does handle the basic cases of Etching, Invoking, and Scribing runes. This 
 
 **Runes**
 
-- `Holtrik, Rune of Dwarven Ramparts` - Adds raise a shield)
-- `Zohk, Rune of Homecoming` - Adds a dialog option when a time is invoked to teleport the target to you
+- `Holtrik, Rune of Dwarven Ramparts`
+  - **Invoke** Adds raise a shield + Effect for limited time
+- `Zohk, Rune of Homecoming`
+  - **Invoke** Adds a dialog option when a time is invoked to teleport the target to you
   **Actions**
 - Chain of Words
   - Adds the cool AoE Effect
