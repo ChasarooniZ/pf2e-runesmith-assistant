@@ -171,7 +171,10 @@ function handleToolbelt({
     targets = targetToken ? [targetToken?.document?.uuid] : [];
   }
 
-  if (runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"] && targetToken) {
+  if (
+    runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"] &&
+    targetToken
+  ) {
     const enemyAlliances = new Set(
       ALLIANCES.filter((a) => a !== sourceAlliance),
     );
@@ -252,7 +255,7 @@ async function getMessageFlavor({
   effect = undefined,
   glyph = "",
 }) {
-  return await renderTemplate(
+  return await foundry.applications.handlebars.renderTemplate(
     "systems/pf2e/templates/actors/actions/simple/chat-message-flavor.hbs",
     {
       effect: effect,

@@ -19,7 +19,7 @@
         "empty-rune-slot": "Empty Rune Slot",
         "highlight-affected-token": "Highlight Affected Token",
         "hover": "Hover",
-        "no-rune-description" :"Rune has been removed from your inventory so it has no result"
+        "no-rune-description": "Rune has been removed from your inventory so it has no result"
       },
       "sections": {
         "etched": "Etched Runes",
@@ -34,7 +34,8 @@
       },
       "buttons": {
         "invoke-menu": "Invoke Menu",
-        "etch-trace-menu": "Etch or Trace Menu"
+        "etch-trace-menu": "Etch or Trace Menu",
+        "diacritic-menu": "Diacritic Menu"
       }
     },
     "message": {
@@ -98,7 +99,7 @@
         "invoked": "Invoked"
       },
       "names": {
-        "on-person" : "[{etchOrTrace}] {name}",
+        "on-person": "[{etchOrTrace}] {name}",
         "on-object": "[{etchOrTrace}] {name} on {object}"
       }
     },

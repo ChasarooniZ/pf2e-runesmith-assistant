@@ -3,6 +3,7 @@ import {
   convertItemUUIDFromSF2eToPF2e,
   convertSpecificItemsToSF2e,
   getActorOwnerOnline,
+  getActorToGiveRuneEffect,
   localize,
 } from "./misc.js";
 import { MODULE_ID } from "./module.js";

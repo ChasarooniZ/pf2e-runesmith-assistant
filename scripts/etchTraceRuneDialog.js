@@ -1,7 +1,9 @@
+import { pickRuneDialog } from "./invokeRuneDialog.js";
 import { runeAppliedMessage } from "./messageHelpers.js";
 import {
   getActorOwnerOnline,
   getActorToGiveRuneEffect,
+  getDiacriticCombinedName,
   getEffectsStrings,
   getMaxEtchedRunes,
   getYourToken,
@@ -178,45 +180,117 @@ async function addRune(
   rune,
   { actor, token, type = "etched", action = 0, free },
 ) {
-  const targets = await showDynamicTargetForm({
-    processType: type,
-    rune: rune,
-  });
-  if (!targets?.length || targets === "cancel" || !rune) return;
-  for (const target of targets) {
-    let runes = actor.getFlag(MODULE_ID, "runes");
-    const id = foundry.utils.randomID();
-
-    if (type === "etched") {
-      const maxEtchedRunes = getMaxEtchedRunes(token.actor);
-      if (runes.etched.filter((r) => !r.free).length >= maxEtchedRunes) {
-        runes.etched.pop();
-      }
-    }
-
-    runes[type].push({
-      rune,
-      target,
-      id,
-      ...(free && { free }),
+  let runes = actor.getFlag(MODULE_ID, "runes");
+  if (rune.traits.includes("diacritic")) {
+    const runesSelected = await pickRuneDialog({
+      token,
+      type: "select",
+      title: localize("ui.buttons.diacritic-menu"),
     });
 
-    const userID = getActorOwnerOnline(
-      getActorToGiveRuneEffect(target, token.id),
-    );
+    for (const runeInfo of runesSelected?.selected) {
+      const baseRuneNumber = runes[runeInfo.type].findIndex(
+        (r) => r.id === runeInfo.id,
+      );
+      if (baseRuneNumber !== -1) {
+        const id = foundry.utils.randomID();
 
-    game.pf2eRunesmithAssistant.socket.executeAsUser(
-      "createTraceEffect",
-      userID,
-      {
+        const baseRuneInfo = runes[runeInfo.type][baseRuneNumber];
+        runes[runeInfo.type][baseRuneNumber] = foundry.utils.mergeObject(
+          baseRuneInfo,
+          {
+            diacritic: {
+              type,
+              id,
+            },
+            rune: {
+              name: getDiacriticCombinedName(rune.name, baseRuneInfo.rune.name),
+              enriched_desc:
+                rune.enriched_desc + "<hr />" + baseRuneInfo.rune.enriched_desc,
+            },
+          },
+        );
+        await applyRuneHelper(
+          actor,
+          type,
+          token,
+          rune,
+          foundry.utils.mergeObject(
+            foundry.utils.deepClone(baseRuneInfo.target),
+            {
+              location: "item",
+              item: baseRuneInfo?.rune?.name ?? "",
+            },
+          ),
+          free,
+          action,
+          id,
+          runes,
+        );
+      }
+    }
+  } else {
+    const targets = await showDynamicTargetForm({
+      processType: type,
+      rune: rune,
+    });
+    if (!targets?.length || targets === "cancel" || !rune) return;
+    for (const target of targets) {
+      await applyRuneHelper(
+        actor,
+        type,
+        token,
         rune,
         target,
-        tokenID: token.id,
-        id,
-        type,
-      },
-    );
-    await actor.setFlag(MODULE_ID, "runes", runes);
-    await runeAppliedMessage({ actor, token, rune, target, type, action });
+        free,
+        action,
+        foundry.utils.randomID(),
+        runes,
+      );
+    }
   }
+
+  await actor.setFlag(MODULE_ID, "runes", runes);
+}
+async function applyRuneHelper(
+  actor,
+  type,
+  token,
+  rune,
+  target,
+  free,
+  action,
+  id,
+  runes,
+) {
+  if (type === "etched") {
+    const maxEtchedRunes = getMaxEtchedRunes(token.actor);
+    if (runes.etched.filter((r) => !r.free).length >= maxEtchedRunes) {
+      runes.etched.pop();
+    }
+  }
+
+  runes[type].push({
+    rune,
+    target,
+    id,
+    ...(free && { free }),
+  });
+
+  const userID = getActorOwnerOnline(
+    getActorToGiveRuneEffect(target, token.id),
+  );
+
+  game.pf2eRunesmithAssistant.socket.executeAsUser(
+    "createTraceEffect",
+    userID,
+    {
+      rune,
+      target,
+      tokenID: token.id,
+      id,
+      type,
+    },
+  );
+  runeAppliedMessage({ actor, token, rune, target, type, action });
 }

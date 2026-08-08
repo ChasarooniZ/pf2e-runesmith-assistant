@@ -6,7 +6,7 @@ import { MODULE_ID } from "./module.js";
 
 export async function invokeRuneDialog() {
   const token = getYourToken();
-  const res = await pickDialog({ token });
+  const res = await pickRuneDialog({ token });
   //console.log({ res });
 
   if (res?.action === "dispel") {
@@ -20,7 +20,7 @@ export async function invokeRuneDialog() {
   }
 }
 
-export async function pickDialog({
+export async function pickRuneDialog({
   token,
   type = "invoke",
   title = localize("ui.buttons.invoke-menu"),
@@ -34,8 +34,16 @@ export async function pickDialog({
   }
   // Get rune flags
   const flags = actor?.getFlag(MODULE_ID, "runes");
-  const etched = flags?.etched ?? [];
-  const traced = flags?.traced ?? [];
+  const etched = (flags?.etched ?? []).filter(
+    (r) =>
+      type !== "select" ||
+      (!r.diacritic && !r.rune.traits.includes("diacritic")),
+  );
+  const traced = (flags?.traced ?? []).filter(
+    (r) =>
+      type !== "select" ||
+      (!r.diacritic && !r.rune.traits.includes("diacritic")),
+  );
   if (etched.length === 0 && traced.length === 0) {
     ui.notifications.error(localize("notifications.no-runes-applied"));
     return;
@@ -43,12 +51,9 @@ export async function pickDialog({
 
   const MAX_ETCHED = getMaxEtchedRunes(actor);
 
-  const unique_rune_ids = [
-    ...new Set([
-      ...etched.map((e) => e.rune.id),
-      ...traced.map((t) => t.rune.id),
-    ]),
-  ];
+  const unique_rune_ids = Array.from(
+    new Set([etched, traced].flat().map((i) => i?.rune?.id)),
+  );
 
   const enrichedPromises = unique_rune_ids.map(async (id) => {
     const r = actor.items.get(id);
@@ -62,7 +67,7 @@ export async function pickDialog({
           async: true,
         },
       );
-    return [id, enriched.replaceAll('"', "'")];
+    return [id, enriched.replaceAll('"', "&quot;")];
   });
   const enrichedPairs = await Promise.all(enrichedPromises);
   const enrichedDescriptions = Object.fromEntries(enrichedPairs);
@@ -96,12 +101,12 @@ export async function pickDialog({
         runeData?.id ? "" : " placeholder"
       }"
         data-tooltip="<i>${localize("dialog.invoke.applied-to", {
-          target: targetDescription(runeData.target).replaceAll('"', "'"),
+          target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
         })}</i><hr>${
-          enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
+          enrichedDescriptions[rune.id].replaceAll('"', "&quot;") ?? rune.name
         }"
         data-tooltip-direction="UP"
-        data-rune-target='${JSON.stringify(runeData.target)}'
+        data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
           <img src="${rune.img}">
@@ -128,12 +133,12 @@ export async function pickDialog({
         runeData?.id ? "" : " placeholder"
       }"
         data-tooltip="<i>${localize("dialog.invoke.applied-to", {
-          target: targetDescription(runeData.target).replaceAll('"', "'"),
+          target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
         })}</i><hr>${
-          enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
+          enrichedDescriptions[rune.id].replaceAll('"', "&quot;") ?? rune.name
         }"
         data-tooltip-direction="UP"
-        data-rune-target='${JSON.stringify(runeData.target)}'
+        data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
           <img src="${rune.img}">
@@ -152,13 +157,15 @@ export async function pickDialog({
       let rune = runeData?.rune;
       html += `<label class="radio-label rune-item" data-tooltip="<i>${localize(
         "dialog.invoke.applied-to",
-        { target: targetDescription(runeData.target).replaceAll('"', "'") },
+        {
+          target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
+        },
       )}</i><hr><fieldset>${enrichedDescriptions[rune.id].replaceAll(
         '"',
         "'",
       )}</fieldset>"
         data-tooltip-direction="UP"
-        data-rune-target='${JSON.stringify(runeData.target)}'
+        data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
             <input type="checkbox" name="traced" value="${runeData?.id}">
             <img src="${rune.img}" ${
@@ -322,12 +329,30 @@ export async function dispelRune({ token, act, runeID, type }) {
   const tok =
     token ?? canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
   const flag = actor?.getFlag(MODULE_ID, "runes");
-  const { target } = flag[type].find((r) => r.id === runeID);
+
+  const runeFlagData = flag[type].find((r) => r.id === runeID);
+  const target = runeFlagData.target;
+  if (runeFlagData?.diacritic) {
+    const diacritic = runeFlagData?.diacritic;
+    await dispelRuneHelper(
+      flag,
+      diacritic.type,
+      diacritic.id,
+      actor,
+      target,
+      tok,
+    );
+  }
+
+  await dispelRuneHelper(flag, type, runeID, actor, target, tok);
+}
+
+async function dispelRuneHelper(flag, type, runeID, actor, target, tok) {
   flag[type] = flag?.[type]?.filter((r) => r.id !== runeID);
   await actor.setFlag(MODULE_ID, "runes", flag);
   game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
     id: runeID,
-    target,
+    target: target,
     srcTokenID: tok.id,
   });
 }
@@ -348,7 +373,34 @@ export async function invokeRune({ token, act, runeID, type }) {
   //console.log({ flag, token: tok, runeID, type });
   const flagData = flag?.[type]?.find((r) => r.id === runeID);
   const target = flagData.target;
+  if (flagData?.diacritic) {
+    const diacritic = flagData?.diacritic;
+    const diacriticFlagData = flag?.[diacritic?.type]?.find(
+      (r) => r.id === diacritic?.id,
+    );
+    await invokeRuneHelper(
+      diacriticFlagData,
+      flag,
+      diacritic.type,
+      diacritic.id,
+      tok,
+      actor,
+      target,
+    );
+  }
   //console.log({ flagData });
+  await invokeRuneHelper(flagData, flag, type, runeID, tok, actor, target);
+}
+
+async function invokeRuneHelper(
+  flagData,
+  flag,
+  type,
+  runeID,
+  tok,
+  actor,
+  target,
+) {
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(
     rune?.description ??
@@ -395,6 +447,7 @@ export async function invokeRune({ token, act, runeID, type }) {
 const STRICT_INVOCATION_REGEX =
   /<strong>Invocation<\/strong>(?:\s*\([^)]+\))?\s*([\s\S]*)/;
 const INVOCATION_TRAITS_REGEX = /<strong>Invocation<\/strong>\s*\(([^)]*)\)/;
+
 function getInvocation(description) {
   const desc = description.match(STRICT_INVOCATION_REGEX)?.[1];
   const traits =

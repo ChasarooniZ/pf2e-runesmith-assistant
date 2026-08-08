@@ -115,3 +115,11 @@ export function convertSpecificItemsToSF2e(uuids) {
     return uuids;
   }
 }
+
+export function getDiacriticCombinedName(diacriticName, baseRuneName) {
+  return (
+    diacriticName.substring(0, diacriticName.indexOf("-") + 1) +
+    baseRuneName[0].toLowerCase() +
+    baseRuneName.slice(1)
+  );
+}

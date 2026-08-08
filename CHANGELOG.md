@@ -1,6 +1,8 @@
 ## Unreleased
 
 - **New**
+  - Added bespoke support for **Diacritic Runes**
+    - Currently the support is solely that it will apply it to a rune as opposed to applying it to a targets
   - Added automation for `Atryl` fire resistance reduction
   - Added automation for `Thullax` physical resistance reduction
 - **Updated**
@@ -8,6 +10,10 @@
   - Fixed `Holtrik` RE to use release version (🐛 @mechamaya)
   - Updated all RE ruleSelection flags to properly work with SF2e (🐛 @mechamaya)
   - Fixed missing save on `Thullax`
+  - Fixed bad link to source on `Kojastri` (@Kromko)
+  - Fixed errors with highlight target info
+  - Fixed bug causing effects added on `invocation` failing
+  - Another Attempt to fix triggers
 
 ## 1.3.0
 
