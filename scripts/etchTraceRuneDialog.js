@@ -196,6 +196,7 @@ async function addRune(
         const id = foundry.utils.randomID();
 
         const baseRuneInfo = runes[runeInfo.type][baseRuneNumber];
+        const baseRuneName = baseRuneInfo?.rune?.name;
         runes[runeInfo.type][baseRuneNumber] = foundry.utils.mergeObject(
           baseRuneInfo,
           {
@@ -204,7 +205,7 @@ async function addRune(
               id,
             },
             rune: {
-              name: getDiacriticCombinedName(rune.name, baseRuneInfo.rune.name),
+              name: getDiacriticCombinedName(rune.name, baseRuneName),
               enriched_desc:
                 rune.enriched_desc + "<hr />" + baseRuneInfo.rune.enriched_desc,
             },
@@ -219,7 +220,7 @@ async function addRune(
             foundry.utils.deepClone(baseRuneInfo.target),
             {
               location: "item",
-              item: baseRuneInfo?.rune?.name ?? "",
+              item: baseRuneName ?? "",
             },
           ),
           free,
