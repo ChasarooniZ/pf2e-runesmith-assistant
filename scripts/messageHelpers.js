@@ -87,6 +87,7 @@ export async function runeInvokedMessage({
   actor,
   token,
   rune,
+  runeLink,
   target,
   traits,
   invocation,
@@ -133,7 +134,7 @@ export async function runeInvokedMessage({
 
   await ChatMessage.create({
     author: game.user.id,
-    content: `<b>${rune?.link}</b> <i>on ${targetDescription(
+    content: `<b>${runeLink}</b> <i>on ${targetDescription(
       target,
     )}</i><hr><fieldset>${enrichedDescription}</fieldset>`,
     speaker: ChatMessage.getSpeaker({

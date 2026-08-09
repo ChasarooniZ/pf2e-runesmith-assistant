@@ -106,6 +106,17 @@
             "description": "pf2e-runesmith-assistant.traits.Description.Rune"
           },
           "runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
+        },
+        "featTraits": {
+          "diacritic": {
+            "label": "pf2e-runesmith-assistant.traits.Diacritic",
+            "description": "pf2e-runesmith-assistant.traits.Description.Diacritic"
+          },
+          "rune": {
+            "label": "pf2e-runesmith-assistant.traits.Rune",
+            "description": "pf2e-runesmith-assistant.traits.Description.Rune"
+          },
+          "runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
         }
       }
     }

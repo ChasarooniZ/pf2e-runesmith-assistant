@@ -1,7 +1,12 @@
 import { EMPTY_RUNE_ART } from "./const.js";
 import { handleSpecificRunes } from "./handleSpecificRunes.js";
 import { runeInvokedMessage, targetDescription } from "./messageHelpers.js";
-import { getMaxEtchedRunes, getYourToken, localize } from "./misc.js";
+import {
+  canOnlyEtch,
+  getMaxEtchedRunes,
+  getYourToken,
+  localize,
+} from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
 export async function invokeRuneDialog() {
@@ -109,7 +114,7 @@ export async function pickRuneDialog({
         data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
-          <img src="${rune.img}">
+          <img src="${rune.img}" class="${rune?.diacritic ? "diacritic" : ""}">
           <span class="rune-name">${rune.name}</span>
       </label>`;
     }
@@ -183,7 +188,7 @@ export async function pickRuneDialog({
     <form class="runepicker">
         ${renderEtchedRunes(etched, MAX_ETCHED, localize("ui.sections.etched"))}
         <hr>
-        ${renderTracedRunes(traced, localize("ui.sections.traced"))}
+        ${canOnlyEtch(actor) ? "" : renderTracedRunes(traced, localize("ui.sections.traced"))}
     </form>
     `;
 
@@ -198,19 +203,7 @@ export async function pickRuneDialog({
           label: `${localize("keywords.invoke")}`,
           callback: async (event, button, dialog) => {
             const html = dialog.element ? dialog.element : dialog;
-            // Collect all checked checkboxes for both types
-            let etchedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='etched']:checked"),
-            ).map((e) => e.value);
-            let tracedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='traced']:checked"),
-            ).map((e) => e.value);
-
-            // Compose result: array of {id, type}
-            let selected = [
-              ...etchedIds.map((id) => ({ id, type: "etched" })),
-              ...tracedIds.map((id) => ({ id, type: "traced" })),
-            ];
+            const selected = resolveInvokeHelper(html);
             if (selected.length) resolve({ selected, action: "invoke" });
           },
           icon: "fa-solid fa-hand-holding-magic",
@@ -220,16 +213,7 @@ export async function pickRuneDialog({
           label: localize("keywords.dispel"),
           callback: async (event, button, dialog) => {
             const html = dialog.element ? dialog.element : dialog;
-            let etchedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='etched']:checked"),
-            ).map((e) => e.value);
-            let tracedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='traced']:checked"),
-            ).map((e) => e.value);
-            let selected = [
-              ...etchedIds.map((id) => ({ id, type: "etched" })),
-              ...tracedIds.map((id) => ({ id, type: "traced" })),
-            ];
+            const selected = resolveInvokeHelper(html);
             if (selected.length) resolve({ selected, action: "dispel" });
           },
           icon: "fa-solid fa-trash",
@@ -241,16 +225,7 @@ export async function pickRuneDialog({
         label: localize("keywords.select"),
         callback: async (event, button, dialog) => {
           const html = dialog.element ? dialog.element : dialog;
-          let etchedIds = Array.from(
-            $(html).find("input[type='checkbox'][name='etched']:checked"),
-          ).map((e) => e.value);
-          let tracedIds = Array.from(
-            $(html).find("input[type='checkbox'][name='traced']:checked"),
-          ).map((e) => e.value);
-          let selected = [
-            ...etchedIds.map((id) => ({ id, type: "etched" })),
-            ...tracedIds.map((id) => ({ id, type: "traced" })),
-          ];
+          const selected = resolveInvokeHelper(html);
           if (selected.length) resolve({ selected, action: "select" });
         },
         icon: "fa-solid fa-circle-check",
@@ -286,6 +261,19 @@ export async function pickRuneDialog({
       },
     });
   });
+}
+
+function resolveInvokeHelper(html) {
+  const etchedIds = Array.from(
+    $(html).find("input[type='checkbox'][name='etched']:checked"),
+  ).map((e) => e.value);
+  const tracedIds = Array.from(
+    $(html).find("input[type='checkbox'][name='traced']:checked"),
+  ).map((e) => e.value);
+  return [
+    etchedIds.map((id) => ({ id, type: "etched" })),
+    tracedIds.map((id) => ({ id, type: "traced" })),
+  ].flat();
 }
 
 function addHighlight() {
@@ -373,34 +361,8 @@ export async function invokeRune({ token, act, runeID, type }) {
   //console.log({ flag, token: tok, runeID, type });
   const flagData = flag?.[type]?.find((r) => r.id === runeID);
   const target = flagData.target;
-  if (flagData?.diacritic) {
-    const diacritic = flagData?.diacritic;
-    const diacriticFlagData = flag?.[diacritic?.type]?.find(
-      (r) => r.id === diacritic?.id,
-    );
-    await invokeRuneHelper(
-      diacriticFlagData,
-      flag,
-      diacritic.type,
-      diacritic.id,
-      tok,
-      actor,
-      target,
-    );
-  }
+  const diacriticData = await getDiacriticRuneData(flagData?.diacritic, flag);
   //console.log({ flagData });
-  await invokeRuneHelper(flagData, flag, type, runeID, tok, actor, target);
-}
-
-async function invokeRuneHelper(
-  flagData,
-  flag,
-  type,
-  runeID,
-  tok,
-  actor,
-  target,
-) {
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(
     rune?.description ??
@@ -409,25 +371,38 @@ async function invokeRuneHelper(
       ),
   );
 
-  const traits = [
-    ...new Set([
-      "invocation",
-      "magical",
-      "runesmith",
-      ...(rune?.traits ? rune.traits.toObject() : []),
-      ...invocation.traits,
-    ]),
-  ];
+  const traits = Array.from(
+    new Set(
+      [
+        "invocation",
+        "magical",
+        "runesmith",
+        rune?.traits ? rune.traits : [],
+        invocation.traits,
+      ].flat(),
+    ),
+  );
 
   flag[type] = flag?.[type]?.filter((r) => r.id !== runeID);
+
+  if (diacriticData) {
+    flag[diacriticData.type] = flag?.[diacriticData.type]?.filter(
+      (r) => r.id !== diacriticData.id,
+    );
+  }
 
   await runeInvokedMessage({
     token: tok,
     actor,
     rune,
+    runeLink: diacriticData
+      ? getDiacriticCombinedRuneLink(rune.link, flagData.rune.name)
+      : rune.link,
     target,
     traits,
-    invocation: invocation.desc,
+    invocation: diacriticData
+      ? invocation.desc + getDiacriticDescription(diacriticData.rune)
+      : invocation.desc,
   });
 
   handleSpecificRunes({
@@ -435,18 +410,59 @@ async function invokeRuneHelper(
     target,
     srcToken: tok.id,
     invocation: invocation.desc,
+    diacritic: diacriticData?.rune,
   });
   game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
     id: runeID,
     target,
     srcTokenID: tok.id,
   });
+
+  if (diacriticData) {
+    game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
+      id: diacriticData?.id,
+      target,
+      srcTokenID: tok.id,
+    });
+  }
   await actor.setFlag(MODULE_ID, "runes", flag);
 }
 
 const STRICT_INVOCATION_REGEX =
   /<strong>Invocation<\/strong>(?:\s*\([^)]+\))?\s*([\s\S]*)/;
 const INVOCATION_TRAITS_REGEX = /<strong>Invocation<\/strong>\s*\(([^)]*)\)/;
+
+/**
+ *
+ *
+ * @param {*} diacriticFlag
+ * @param {*} flag
+ * @return {{flagData: any, type: string, id: string, rune: Item} | null}
+ */
+async function getDiacriticRuneData(diacriticFlag, flag) {
+  if (diacriticFlag) {
+    const diacriticFlagData = flag?.[diacriticFlag?.type]?.find(
+      (r) => r.id === diacriticFlag?.id,
+    );
+    const diacriticRune = await fromUuid(diacriticFlagData.rune.uuid);
+    return {
+      flagData: diacriticRune,
+      type: diacriticFlag.type,
+      id: diacriticFlag.id,
+      rune: diacriticRune,
+    };
+  } else {
+    return null;
+  }
+}
+
+function getDiacriticDescription(rune) {
+  return `<hr><hr>${rune.link}<hr>${rune.description}`;
+}
+
+function getDiacriticCombinedRuneLink(link, combinedName) {
+  return `${link.substring(0, link.indexOf("{") + 1)}${combinedName}}`;
+}
 
 function getInvocation(description) {
   const desc = description.match(STRICT_INVOCATION_REGEX)?.[1];

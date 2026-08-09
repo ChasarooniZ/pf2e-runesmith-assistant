@@ -16,10 +16,16 @@ const RUNE_CHECK_LIST = Object.values(RUNES);
  * @export
  * @param {{rune: Item, target: {
  *      type: string, item?: string, token?: string, actor?: string, location?: string
- * }, srcToken: string, invocation: string}}} { rune, target, srcToken, invocation }
+ * }, srcToken: string, invocation: string, diacritic: Item}}} { rune, target, srcToken, invocation }
  * @return {undefined}
  */
-export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
+export function handleSpecificRunes({
+  rune,
+  target,
+  srcToken,
+  invocation,
+  diacritic,
+}) {
   if (!RUNE_CHECK_LIST.includes(rune?.sourceId)) return;
   const tokenSource = canvas.tokens.get(srcToken);
   const tokenTarget = canvas.tokens.get(target.token);
@@ -39,7 +45,7 @@ export function handleSpecificRunes({ rune, target, srcToken, invocation }) {
       traits: {
         custom: "",
         rarity: "common",
-        value: rune?.traits?.toObject() ?? [],
+        value: rune?.traits ?? [],
       },
       description: {
         value: `<p>Granted by @UUID[${rune?.sourceId}]</p>${invocation}`,

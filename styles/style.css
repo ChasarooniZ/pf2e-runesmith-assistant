@@ -202,3 +202,7 @@ fieldset.runes-fieldset {
   display: flex;
   gap: 1em;
 }
+
+img.diacritic {
+  opacity: 50%;
+}

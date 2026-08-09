@@ -35,6 +35,7 @@
       "buttons": {
         "invoke-menu": "Invoke Menu",
         "etch-trace-menu": "Etch or Trace Menu",
+        "etch-menu": "Etch Menu",
         "diacritic-menu": "Diacritic Menu"
       }
     },

@@ -182,6 +182,7 @@ async function addRune(
 ) {
   let runes = actor.getFlag(MODULE_ID, "runes");
   if (rune.traits.includes("diacritic")) {
+    rune.diacritic = true;
     const runesSelected = await pickRuneDialog({
       token,
       type: "select",

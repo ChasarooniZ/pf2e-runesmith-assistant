@@ -15,7 +15,9 @@ export function getYourToken() {
 }
 
 export function getMaxEtchedRunes(actor) {
-  return 2 + Math.floor((actor.level - 1) / 4);
+  return isRunesmithDedication(actor)
+    ? 1 + Math.floor((actor.level - 1) / 8)
+    : 2 + Math.floor((actor.level - 1) / 4);
 }
 
 export function hasFeat(actor, slug) {
@@ -28,10 +30,22 @@ export function localize(str, options = {}) {
 
 export function isRunesmith(actor) {
   return (
-    actor &&
-    (actor.class?.slug === "runesmith" ||
-      actor.rollOptions.all["class:runesmith"])
+    (actor &&
+      (actor.class?.slug === "runesmith" ||
+        actor.rollOptions.all["class:runesmith"])) ||
+    actor.rollOptions.all["feat:runesmith-dedication"]
   );
+}
+
+export function canOnlyEtch(actor) {
+  return (
+    isRunesmithDedication(actor) &&
+    !actor?.rollOptions?.all?.["feat:tracing-studies"]
+  );
+}
+
+function isRunesmithDedication(actor) {
+  return actor.rollOptions.all["feat:runesmith-dedication"];
 }
 
 export function getTokenImage(token) {

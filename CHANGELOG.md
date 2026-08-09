@@ -14,6 +14,8 @@
   - Fixed errors with highlight target info
   - Fixed bug causing effects added on `invocation` failing
   - Another Attempt to fix triggers
+  - Adjusted `Etched Rune Slots` for Runesmith Dedication (🐛 @Wizard-Level-1)
+  - Dynamicaally hide `Trace Runes` for Runesmith Dedication based on whetehr they have the followup feat
 
 ## 1.3.0
 
