@@ -45,7 +45,7 @@ export function handleSpecificRunes({
       traits: {
         custom: "",
         rarity: "common",
-        value: rune?.traits ?? [],
+        value: Array.from(rune?.traits) ?? [],
       },
       description: {
         value: `<p>Granted by @UUID[${rune?.sourceId}]</p>${invocation}`,

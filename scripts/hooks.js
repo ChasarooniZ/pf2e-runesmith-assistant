@@ -9,6 +9,7 @@ import { getDCInfo, targetDescription } from "./messageHelpers.js";
 import {
   canOnlyEtch,
   getMaxEtchedRunes,
+  getTraitsHTML,
   hasFeat,
   isRunesmith,
   localize,
@@ -351,7 +352,10 @@ export function setupHooks() {
       function runeTooltip(runeFlag, enrichedDesc) {
         return `<b>${runeFlag.rune.name}</b><p><i>on ${targetDescription(
           runeFlag.target,
-        ).replaceAll('"', "'")}</i></p><hr>${enrichedDesc}<hr>
+        ).replaceAll(
+          '"',
+          "'",
+        )}</i></p><hr>${getTraitsHTML(runeFlag.rune.traits)}${enrichedDesc}<hr>
         <p><b>${localize(
           "dialog.invoke.title",
         )}: </b><span class='reference'>${game.i18n.localize(

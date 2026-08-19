@@ -4,6 +4,7 @@ import { runeInvokedMessage, targetDescription } from "./messageHelpers.js";
 import {
   canOnlyEtch,
   getMaxEtchedRunes,
+  getTraitsHTML,
   getYourToken,
   localize,
 } from "./misc.js";
@@ -32,7 +33,7 @@ export async function pickRuneDialog({
 }) {
   const actor = token?.actor ?? game.user.character;
   if (!actor) {
-    console.warning(
+    console.warn(
       "[PF2e Runesmith Assistant] No Actor selected to open Invoke Dialog",
     );
     return;
@@ -107,7 +108,7 @@ export async function pickRuneDialog({
       }"
         data-tooltip="<i>${localize("dialog.invoke.applied-to", {
           target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
-        })}</i><hr>${
+        })}</i><hr>${getTraitsHTML(rune.traits)}${
           enrichedDescriptions[rune.id].replaceAll('"', "&quot;") ?? rune.name
         }"
         data-tooltip-direction="UP"
@@ -377,8 +378,8 @@ export async function invokeRune({ token, act, runeID, type }) {
         "invocation",
         "magical",
         "runesmith",
-        rune?.traits ? rune.traits : [],
-        invocation.traits,
+        rune?.traits ? Array.from(rune.traits) : [],
+        Array.from(invocation.traits),
       ].flat(),
     ),
   );

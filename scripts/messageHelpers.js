@@ -262,11 +262,19 @@ async function getMessageFlavor({
       effect: effect,
       glyph: glyph,
       name: name,
-      traits: traits.map((trait) => ({
-        description: CONFIG.PF2E.traitsDescriptions[trait],
-        label: CONFIG.PF2E.actionTraits[trait] ?? trait,
-        slug: trait,
-      })),
+      traits: traits.map((trait) =>
+        ["diacritic", "rune"].includes(trait)
+          ? {
+              description: `pf2e-runesmith-assistant.traits.Description.${trait}`,
+              label: `pf2e-runesmith-assistant.traits.${trait}`,
+              slug: trait,
+            }
+          : {
+              description: CONFIG.PF2E.traitsDescriptions[trait],
+              label: CONFIG.PF2E.actionTraits[trait] ?? trait,
+              slug: trait,
+            },
+      ),
     },
   );
 }

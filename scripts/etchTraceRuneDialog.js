@@ -6,6 +6,7 @@ import {
   getDiacriticCombinedName,
   getEffectsStrings,
   getMaxEtchedRunes,
+  getTraitsHTML,
   getYourToken,
   localize,
 } from "./misc.js";
@@ -16,7 +17,7 @@ export async function runeEtchTraceDialog(options = {}) {
   const token = getYourToken();
   const actor = token?.actor ?? game.user.character;
   if (!actor) {
-    console.warning(
+    console.warn(
       "[PF2e Runesmith Assistant] No Actor selected to open Etch/Trace Dialog",
     );
     return;
@@ -71,7 +72,7 @@ async function pickDialog({ runes, actor, token, options }) {
 
   //Filter for runes
   for (let rune of runes) {
-    rune_content += `<label class="radio-label" data-tooltip='${rune.enriched_desc}'
+    rune_content += `<label class="radio-label" data-tooltip='${getTraitsHTML(rune.traits)}${rune.enriched_desc}'
     data-tooltip-direction="UP">
       <input type="radio" name="rune" value="${rune.id}">
       <img src="${rune.img}" ">

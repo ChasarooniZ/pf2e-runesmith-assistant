@@ -193,6 +193,10 @@ fieldset.runes-fieldset {
         &.free-etched {
           box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
         }
+
+        &.has-diacrtic {
+          box-shadow: 0 0 6px 2px rgb(255 193 0 / 80%);
+        }
       }
     }
   }
@@ -205,4 +209,19 @@ fieldset.runes-fieldset {
 
 img.diacritic {
   opacity: 50%;
+}
+
+section.runesmith.traits {
+  display: flex;
+  flex-wrap: wrap;
+  p {
+    display: inline-flex;
+    padding: 0.16rem 0.25rem;
+    margin: 0;
+    background-color: var(--primary);
+    border: 2px solid var(--color-border-trait);
+    color: var(--text-light);
+    font: 500 var(--font-size-10) var(--sans-serif);
+    text-transform: uppercase;
+  }
 }
