@@ -1,13 +1,32 @@
 ## Unreleased
 
+## 1.4.0
+
 - **New**
+  - Added bespoke support for **Diacritic Runes**
+    - Currently the support is solely that it will apply it to a rune as opposed to applying it to a targets
   - Added automation for `Atryl` fire resistance reduction
   - Added automation for `Thullax` physical resistance reduction
+  - Added Rune traits to tooltips in module
+    - Filtered out `Rune` and `Runesmith` from traits visualized
+  - Added handling for `Ti-`
+  - Added handling for `Eck-`
+  - Dynamically hide `Trace Runes` for **Runesmith Dedication** based on whether they have the followup feat
+  - Will automatically try and grab the active token for etch and trace menus called from the character sheet
 - **Updated**
   - Fixed damage on `Ranshu` non moving (🐛 @mechamaya)
   - Fixed `Holtrik` RE to use release version (🐛 @mechamaya)
   - Updated all RE ruleSelection flags to properly work with SF2e (🐛 @mechamaya)
   - Fixed missing save on `Thullax`
+  - Fixed bad link to source on `Kojastri` (@Kromko)
+  - Fixed errors with highlight target info
+  - Fixed bug causing effects added on `invocation` failing
+  - Adjusted `Etched Rune Slots` for **Runesmith Dedication** (🐛 @Wizard-Level-1)
+  - Actually included the triggers
+  - Fixed issue with free rune etching not working
+  - Fixed `Felkris - Gravity` giving the `item` bonus instead of `status` (🐛 @Mirvyr-byte)
+  - Fixed scaling on `Sertum`, `Tilus`, and `Ledria` (🐛 @Niskraya)
+  - Fixed `Pluna` not giving penalty to stealth
 
 ## 1.3.0
 

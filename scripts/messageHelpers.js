@@ -87,6 +87,7 @@ export async function runeInvokedMessage({
   actor,
   token,
   rune,
+  runeLink,
   target,
   traits,
   invocation,
@@ -133,7 +134,7 @@ export async function runeInvokedMessage({
 
   await ChatMessage.create({
     author: game.user.id,
-    content: `<b>${rune?.link}</b> <i>on ${targetDescription(
+    content: `<b>${runeLink}</b> <i>on ${targetDescription(
       target,
     )}</i><hr><fieldset>${enrichedDescription}</fieldset>`,
     speaker: ChatMessage.getSpeaker({
@@ -171,7 +172,10 @@ function handleToolbelt({
     targets = targetToken ? [targetToken?.document?.uuid] : [];
   }
 
-  if (runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"] && targetToken) {
+  if (
+    runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"] &&
+    targetToken
+  ) {
     const enemyAlliances = new Set(
       ALLIANCES.filter((a) => a !== sourceAlliance),
     );
@@ -252,17 +256,25 @@ async function getMessageFlavor({
   effect = undefined,
   glyph = "",
 }) {
-  return await renderTemplate(
+  return await foundry.applications.handlebars.renderTemplate(
     "systems/pf2e/templates/actors/actions/simple/chat-message-flavor.hbs",
     {
       effect: effect,
       glyph: glyph,
       name: name,
-      traits: traits.map((trait) => ({
-        description: CONFIG.PF2E.traitsDescriptions[trait],
-        label: CONFIG.PF2E.actionTraits[trait] ?? trait,
-        slug: trait,
-      })),
+      traits: traits.map((trait) =>
+        ["diacritic", "rune"].includes(trait)
+          ? {
+              description: `pf2e-runesmith-assistant.traits.Description.${trait}`,
+              label: `pf2e-runesmith-assistant.traits.${trait}`,
+              slug: trait,
+            }
+          : {
+              description: CONFIG.PF2E.traitsDescriptions[trait],
+              label: CONFIG.PF2E.actionTraits[trait] ?? trait,
+              slug: trait,
+            },
+      ),
     },
   );
 }

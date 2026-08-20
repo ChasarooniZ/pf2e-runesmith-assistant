@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>The swooping lines of this rune seem to melt into each other as if their edges were hazy and indistinct, though the meaning is clear to you. The rune-bearer's resistance to each physical damage type is reduced by [[floor(@actor.level / 2) + 1]] (if it has any such resistances). Its immunities are unaffected.</p><p><strong>Invocation</strong> The bearer takes @Damage[ceil(@actor.level / 2)d6[acid]] damage with a basic Fortitude save; on a critical failure, it takes @Damage[(ceil(@actor.level / 2))[persistent,acid]] damage.</p><hr><p><strong>Level (+2)</strong> The reduction in physical resistance increases by 1, the damage of the invocation increases by 1d6, and the persistent damage increases by 1.</p>"
+			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>The swooping lines of this rune seem to melt into each other as if their edges were hazy and indistinct, though the meaning is clear to you. The rune-bearer's resistance to each physical damage type is reduced by [[floor(@actor.level / 2) + 1]] (if it has any such resistances). Its immunities are unaffected.</p><p><strong>Invocation</strong> The bearer takes @Damage[ceil(@actor.level / 2)d6[acid]] damage with a @Check[fortitude|basic|against:runesmith] save; on a critical failure, it takes @Damage[(ceil(@actor.level / 2))[persistent,acid]] damage.</p><hr><p><strong>Level (+2)</strong> The reduction in physical resistance increases by 1, the damage of the invocation increases by 1d6, and the persistent damage increases by 1.</p>"
 		},
 		"rules": [],
 		"slug": "thullax-rune-of-corrosion",
@@ -89,7 +89,7 @@
 		"systemId": "pf2e",
 		"systemVersion": "8.4.0",
 		"createdTime": 1785530543766,
-		"modifiedTime": 1786049017644,
+		"modifiedTime": 1786059310354,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

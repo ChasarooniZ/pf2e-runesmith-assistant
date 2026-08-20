@@ -1,12 +1,19 @@
 import { EMPTY_RUNE_ART } from "./const.js";
 import { handleSpecificRunes } from "./handleSpecificRunes.js";
 import { runeInvokedMessage, targetDescription } from "./messageHelpers.js";
-import { getMaxEtchedRunes, getYourToken, localize } from "./misc.js";
+import {
+  canOnlyEtch,
+  getMaxEtchedRunes,
+  getRuneClasses,
+  getTraitsHTML,
+  getYourToken,
+  localize,
+} from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
-export async function invokeRuneDialog() {
-  const token = getYourToken();
-  const res = await pickDialog({ token });
+export async function invokeRuneDialog(config) {
+  const token = config?.token ?? getYourToken();
+  const res = await pickRuneDialog({ token });
   //console.log({ res });
 
   if (res?.action === "dispel") {
@@ -20,22 +27,30 @@ export async function invokeRuneDialog() {
   }
 }
 
-export async function pickDialog({
+export async function pickRuneDialog({
   token,
   type = "invoke",
   title = localize("ui.buttons.invoke-menu"),
 }) {
   const actor = token?.actor ?? game.user.character;
   if (!actor) {
-    console.warning(
+    console.warn(
       "[PF2e Runesmith Assistant] No Actor selected to open Invoke Dialog",
     );
     return;
   }
   // Get rune flags
   const flags = actor?.getFlag(MODULE_ID, "runes");
-  const etched = flags?.etched ?? [];
-  const traced = flags?.traced ?? [];
+  const etched = (flags?.etched ?? []).filter(
+    (r) =>
+      type !== "select" ||
+      (!r.diacritic && !r.rune.traits.includes("diacritic")),
+  );
+  const traced = (flags?.traced ?? []).filter(
+    (r) =>
+      type !== "select" ||
+      (!r.diacritic && !r.rune.traits.includes("diacritic")),
+  );
   if (etched.length === 0 && traced.length === 0) {
     ui.notifications.error(localize("notifications.no-runes-applied"));
     return;
@@ -43,12 +58,9 @@ export async function pickDialog({
 
   const MAX_ETCHED = getMaxEtchedRunes(actor);
 
-  const unique_rune_ids = [
-    ...new Set([
-      ...etched.map((e) => e.rune.id),
-      ...traced.map((t) => t.rune.id),
-    ]),
-  ];
+  const unique_rune_ids = Array.from(
+    new Set([etched, traced].flat().map((i) => i?.rune?.id)),
+  );
 
   const enrichedPromises = unique_rune_ids.map(async (id) => {
     const r = actor.items.get(id);
@@ -62,7 +74,7 @@ export async function pickDialog({
           async: true,
         },
       );
-    return [id, enriched.replaceAll('"', "'")];
+    return [id, enriched.replaceAll('"', "&quot;")];
   });
   const enrichedPairs = await Promise.all(enrichedPromises);
   const enrichedDescriptions = Object.fromEntries(enrichedPairs);
@@ -96,16 +108,17 @@ export async function pickDialog({
         runeData?.id ? "" : " placeholder"
       }"
         data-tooltip="<i>${localize("dialog.invoke.applied-to", {
-          target: targetDescription(runeData.target).replaceAll('"', "'"),
-        })}</i><hr>${
-          enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
+          target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
+        })}</i><hr>${getTraitsHTML(rune.traits)}${
+          enrichedDescriptions[rune.id].replaceAll('"', "&quot;") ?? rune.name
         }"
         data-tooltip-direction="UP"
-        data-rune-target='${JSON.stringify(runeData.target)}'
+        data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
-          <img src="${rune.img}">
+          <img src="${rune.img}" class="${getRuneClasses(runeData)}">
           <span class="rune-name">${rune.name}</span>
+          ${getTraitsHTML(rune.traits)}
       </label>`;
     }
 
@@ -128,16 +141,17 @@ export async function pickDialog({
         runeData?.id ? "" : " placeholder"
       }"
         data-tooltip="<i>${localize("dialog.invoke.applied-to", {
-          target: targetDescription(runeData.target).replaceAll('"', "'"),
+          target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
         })}</i><hr>${
-          enrichedDescriptions[rune.id].replaceAll('"', "'") ?? rune.name
+          enrichedDescriptions[rune.id].replaceAll('"', "&quot;") ?? rune.name
         }"
         data-tooltip-direction="UP"
-        data-rune-target='${JSON.stringify(runeData.target)}'
+        data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
           <img src="${rune.img}">
           <span class="rune-name">${rune.name}</span>
+          ${getTraitsHTML(rune.traits)}
       </label>`;
     }
 
@@ -152,19 +166,20 @@ export async function pickDialog({
       let rune = runeData?.rune;
       html += `<label class="radio-label rune-item" data-tooltip="<i>${localize(
         "dialog.invoke.applied-to",
-        { target: targetDescription(runeData.target).replaceAll('"', "'") },
+        {
+          target: targetDescription(runeData.target).replaceAll('"', "&quot;"),
+        },
       )}</i><hr><fieldset>${enrichedDescriptions[rune.id].replaceAll(
         '"',
         "'",
       )}</fieldset>"
         data-tooltip-direction="UP"
-        data-rune-target='${JSON.stringify(runeData.target)}'
+        data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
             <input type="checkbox" name="traced" value="${runeData?.id}">
-            <img src="${rune.img}" ${
-              runeData.free ? 'class="rune-purple-shadow"' : ""
-            }>
+            <img src="${rune.img}" class="${getRuneClasses(runeData)}">
             <span class="rune-name">${rune.name}</span>
+            ${getTraitsHTML(rune.traits)}
         </label>`;
     }
     html += `</div></div>`;
@@ -176,7 +191,7 @@ export async function pickDialog({
     <form class="runepicker">
         ${renderEtchedRunes(etched, MAX_ETCHED, localize("ui.sections.etched"))}
         <hr>
-        ${renderTracedRunes(traced, localize("ui.sections.traced"))}
+        ${canOnlyEtch(actor) ? "" : renderTracedRunes(traced, localize("ui.sections.traced"))}
     </form>
     `;
 
@@ -191,19 +206,7 @@ export async function pickDialog({
           label: `${localize("keywords.invoke")}`,
           callback: async (event, button, dialog) => {
             const html = dialog.element ? dialog.element : dialog;
-            // Collect all checked checkboxes for both types
-            let etchedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='etched']:checked"),
-            ).map((e) => e.value);
-            let tracedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='traced']:checked"),
-            ).map((e) => e.value);
-
-            // Compose result: array of {id, type}
-            let selected = [
-              ...etchedIds.map((id) => ({ id, type: "etched" })),
-              ...tracedIds.map((id) => ({ id, type: "traced" })),
-            ];
+            const selected = resolveInvokeHelper(html);
             if (selected.length) resolve({ selected, action: "invoke" });
           },
           icon: "fa-solid fa-hand-holding-magic",
@@ -213,16 +216,7 @@ export async function pickDialog({
           label: localize("keywords.dispel"),
           callback: async (event, button, dialog) => {
             const html = dialog.element ? dialog.element : dialog;
-            let etchedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='etched']:checked"),
-            ).map((e) => e.value);
-            let tracedIds = Array.from(
-              $(html).find("input[type='checkbox'][name='traced']:checked"),
-            ).map((e) => e.value);
-            let selected = [
-              ...etchedIds.map((id) => ({ id, type: "etched" })),
-              ...tracedIds.map((id) => ({ id, type: "traced" })),
-            ];
+            const selected = resolveInvokeHelper(html);
             if (selected.length) resolve({ selected, action: "dispel" });
           },
           icon: "fa-solid fa-trash",
@@ -234,16 +228,7 @@ export async function pickDialog({
         label: localize("keywords.select"),
         callback: async (event, button, dialog) => {
           const html = dialog.element ? dialog.element : dialog;
-          let etchedIds = Array.from(
-            $(html).find("input[type='checkbox'][name='etched']:checked"),
-          ).map((e) => e.value);
-          let tracedIds = Array.from(
-            $(html).find("input[type='checkbox'][name='traced']:checked"),
-          ).map((e) => e.value);
-          let selected = [
-            ...etchedIds.map((id) => ({ id, type: "etched" })),
-            ...tracedIds.map((id) => ({ id, type: "traced" })),
-          ];
+          const selected = resolveInvokeHelper(html);
           if (selected.length) resolve({ selected, action: "select" });
         },
         icon: "fa-solid fa-circle-check",
@@ -279,6 +264,19 @@ export async function pickDialog({
       },
     });
   });
+}
+
+function resolveInvokeHelper(html) {
+  const etchedIds = Array.from(
+    $(html).find("input[type='checkbox'][name='etched']:checked"),
+  ).map((e) => e.value);
+  const tracedIds = Array.from(
+    $(html).find("input[type='checkbox'][name='traced']:checked"),
+  ).map((e) => e.value);
+  return [
+    etchedIds.map((id) => ({ id, type: "etched" })),
+    tracedIds.map((id) => ({ id, type: "traced" })),
+  ].flat();
 }
 
 function addHighlight() {
@@ -322,12 +320,30 @@ export async function dispelRune({ token, act, runeID, type }) {
   const tok =
     token ?? canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
   const flag = actor?.getFlag(MODULE_ID, "runes");
-  const { target } = flag[type].find((r) => r.id === runeID);
+
+  const runeFlagData = flag[type].find((r) => r.id === runeID);
+  const target = runeFlagData.target;
+  if (runeFlagData?.diacritic) {
+    const diacritic = runeFlagData?.diacritic;
+    await dispelRuneHelper(
+      flag,
+      diacritic.type,
+      diacritic.id,
+      actor,
+      target,
+      tok,
+    );
+  }
+
+  await dispelRuneHelper(flag, type, runeID, actor, target, tok);
+}
+
+async function dispelRuneHelper(flag, type, runeID, actor, target, tok) {
   flag[type] = flag?.[type]?.filter((r) => r.id !== runeID);
   await actor.setFlag(MODULE_ID, "runes", flag);
   game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
     id: runeID,
-    target,
+    target: target,
     srcTokenID: tok.id,
   });
 }
@@ -348,6 +364,7 @@ export async function invokeRune({ token, act, runeID, type }) {
   //console.log({ flag, token: tok, runeID, type });
   const flagData = flag?.[type]?.find((r) => r.id === runeID);
   const target = flagData.target;
+  const diacriticData = await getDiacriticRuneData(flagData?.diacritic, flag);
   //console.log({ flagData });
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(
@@ -357,44 +374,105 @@ export async function invokeRune({ token, act, runeID, type }) {
       ),
   );
 
-  const traits = [
-    ...new Set([
-      "invocation",
-      "magical",
-      "runesmith",
-      ...(rune?.traits ? rune.traits.toObject() : []),
-      ...invocation.traits,
-    ]),
-  ];
+  const traits = Array.from(
+    new Set(
+      [
+        "invocation",
+        "magical",
+        "runesmith",
+        rune?.traits ? Array.from(rune.traits) : [],
+        Array.from(invocation.traits),
+      ].flat(),
+    ),
+  );
 
   flag[type] = flag?.[type]?.filter((r) => r.id !== runeID);
+
+  if (diacriticData) {
+    flag[diacriticData.type] = flag?.[diacriticData.type]?.filter(
+      (r) => r.id !== diacriticData.id,
+    );
+  }
+
+  const changes = await handleSpecificRunes({
+    rune,
+    target,
+    srcToken: tok.id,
+    invocation: invocation.desc,
+    diacritic: diacriticData?.rune,
+  });
+
+  if (changes?.invocation?.desc) {
+    invocation.desc = changes.invocation.desc;
+  }
 
   await runeInvokedMessage({
     token: tok,
     actor,
     rune,
+    runeLink: diacriticData
+      ? getDiacriticCombinedRuneLink(rune.link, flagData.rune.name)
+      : rune.link,
     target,
     traits,
-    invocation: invocation.desc,
-  });
-
-  handleSpecificRunes({
-    rune,
-    target,
-    srcToken: tok.id,
-    invocation: invocation.desc,
+    invocation: diacriticData
+      ? invocation.desc + getDiacriticDescription(diacriticData.rune)
+      : invocation.desc,
   });
   game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
     id: runeID,
     target,
     srcTokenID: tok.id,
   });
+
+  if (diacriticData) {
+    game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
+      id: diacriticData?.id,
+      target,
+      srcTokenID: tok.id,
+    });
+  }
   await actor.setFlag(MODULE_ID, "runes", flag);
 }
 
 const STRICT_INVOCATION_REGEX =
   /<strong>Invocation<\/strong>(?:\s*\([^)]+\))?\s*([\s\S]*)/;
 const INVOCATION_TRAITS_REGEX = /<strong>Invocation<\/strong>\s*\(([^)]*)\)/;
+
+/**
+ *
+ *
+ * @param {*} diacriticFlag
+ * @param {*} flag
+ * @return {{flagData: any, type: string, id: string, rune: Item} | null}
+ */
+async function getDiacriticRuneData(diacriticFlag, flag) {
+  if (diacriticFlag) {
+    const diacriticFlagData = flag?.[diacriticFlag?.type]?.find(
+      (r) => r.id === diacriticFlag?.id,
+    );
+    const diacriticRune = await fromUuid(diacriticFlagData?.rune?.uuid);
+    return diacriticRune
+      ? {
+          flagData: diacriticRune,
+          type: diacriticFlag.type,
+          id: diacriticFlag.id,
+          rune: diacriticRune,
+        }
+      : null;
+  } else {
+    return null;
+  }
+}
+
+function getDiacriticDescription(rune) {
+  return `<hr><hr>${rune.link}<hr>${rune.description}`;
+}
+
+function getDiacriticCombinedRuneLink(link, combinedName) {
+  return `${link.substring(0, link.indexOf("{") + 1)}${combinedName}}`;
+}
+
 function getInvocation(description) {
   const desc = description.match(STRICT_INVOCATION_REGEX)?.[1];
   const traits =
@@ -402,5 +480,5 @@ function getInvocation(description) {
       .match(INVOCATION_TRAITS_REGEX)?.[1]
       ?.split(",")
       ?.map((t) => t.trim()) ?? [];
-  return { desc: desc ? `<p>${desc}` : description, traits };
+  return { desc: desc ? `<p>${desc}` : description, traits: traits };
 }

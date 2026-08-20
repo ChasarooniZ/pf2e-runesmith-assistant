@@ -6,7 +6,15 @@ import {
   invokeRuneDialog,
 } from "./invokeRuneDialog.js";
 import { getDCInfo, targetDescription } from "./messageHelpers.js";
-import { getMaxEtchedRunes, hasFeat, isRunesmith, localize } from "./misc.js";
+import {
+  canOnlyEtch,
+  getMaxEtchedRunes,
+  getRuneClasses,
+  getTraitsHTML,
+  hasFeat,
+  isRunesmith,
+  localize,
+} from "./misc.js";
 import { MODULE_ID } from "./module.js";
 import { runeEtchTraceDialog } from "./etchTraceRuneDialog.js";
 
@@ -91,7 +99,7 @@ export function setupHooks() {
                         enrichedDescriptions[r.rune.id],
                       )}" 
                       data-tooltip-direction="UP" 
-                      class="rune-img"
+                      class="rune-img ${getRuneClasses(r)}"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
         )
@@ -114,7 +122,7 @@ export function setupHooks() {
                         enrichedDescriptions[r.rune.id],
                       )}" 
                       data-tooltip-direction="UP" 
-                      class="rune-img free-etched"
+                      class="rune-img free-etched ${getRuneClasses(r)}"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
         )
@@ -124,7 +132,9 @@ export function setupHooks() {
 `;
 
       // Build Traced Runes section (no placeholders, wraps)
-      let tracedHtml = `
+      let tracedHtml = canOnlyEtch(actor)
+        ? ""
+        : `
   <div class="runesmith-assistant runes-section traced-runes">
     <label><strong>${localize("ui.sections.traced")}</strong></label>
     <div class="runes-row">
@@ -134,7 +144,7 @@ export function setupHooks() {
         <img src="${r.rune.img}" 
           data-tooltip="${runeTooltip(r, enrichedDescriptions[r.rune.id])}" 
           data-tooltip-direction="UP" 
-          class="rune-img"
+          class="rune-img ${getRuneClasses(r)}"
           data-rune-id="${r.id}"
           data-rune-type="traced">
       `,
@@ -146,8 +156,14 @@ export function setupHooks() {
 
       let buttonsHtml = `
   <div class="runes-buttons">
-    <button type="button" class="invoke-runes-btn"><i class='fa-solid fa-hand-holding-magic'></i> ${localize("ui.buttons.invoke-menu")}</button>
-    <button type="button" class="etch-trace-btn"><i class='fa-solid fa-pencil'></i> ${localize("ui.buttons.etch-trace-menu")}</button>
+    <button type="button" class="invoke-runes-btn"><i class='fa-solid fa-hand-holding-magic'></i> ${localize(
+      "ui.buttons.invoke-menu",
+    )}</button>
+    <button type="button" class="etch-trace-btn"><i class='fa-solid fa-pencil'></i> ${localize(
+      canOnlyEtch(actor)
+        ? "ui.buttons.etch-menu"
+        : "ui.buttons.etch-trace-menu",
+    )}</button>
   </div>
 `;
 
@@ -177,7 +193,7 @@ export function setupHooks() {
           const content =
             await foundry.applications.ux.TextEditor.implementation.enrichHTML(
               `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${
-                runeData.rune.link
+                runeData.rune.name
               }</strong> ${localize("ui.quick-action.on-target", {
                 target: `<i>${targetDescription(runeData.target).replaceAll(
                   '"',
@@ -325,17 +341,29 @@ export function setupHooks() {
         },
       );
 
-      runesFieldset.find(".invoke-runes-btn").on("click", () => {
-        game.pf2eRunesmithAssistant.dialog.openInvoke();
-      });
-      runesFieldset.find(".etch-trace-btn").on("click", () => {
-        game.pf2eRunesmithAssistant.dialog.openEtchTrace();
-      });
+      runesFieldset?.[0]
+        .querySelector(".invoke-runes-btn")
+        .addEventListener("click", (event) => {
+          game.pf2eRunesmithAssistant.dialog.openInvoke({
+            token: actor?.getActiveTokens()?.[0],
+          });
+        });
+      runesFieldset?.[0]
+        .querySelector(".etch-trace-btn")
+        .addEventListener("click", (event) => {
+          game.pf2eRunesmithAssistant.dialog.openEtchTrace({
+            etchOnly: canOnlyEtch(actor),
+            token: actor?.getActiveTokens()?.[0],
+          });
+        });
 
       function runeTooltip(runeFlag, enrichedDesc) {
         return `<b>${runeFlag.rune.name}</b><p><i>on ${targetDescription(
           runeFlag.target,
-        ).replaceAll('"', "'")}</i></p><hr>${enrichedDesc}<hr>
+        ).replaceAll(
+          '"',
+          "'",
+        )}</i></p><hr>${getTraitsHTML(runeFlag.rune.traits)}${enrichedDesc}<hr>
         <p><b>${localize(
           "dialog.invoke.title",
         )}: </b><span class='reference'>${game.i18n.localize(

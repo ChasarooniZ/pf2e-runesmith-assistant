@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-runes.AgFVRI7aGK12H8wv]{Trolistri, Rune of Forlorn Sorrow}</p><p><span style=\"font-family:Roboto, sans-serif\">Enemies within 20 feet of the rune-bearer treat all squares between them and the rune-bearer as difficult terrain.</span></p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.AgFVRI7aGK12H8wv]{Trolistri, Rune of Forlorn Sorrow}</p><p><span style=\"font-family:'Roboto, sans-serif'\">Enemies within 20 feet of the rune-bearer treat all squares between them and the rune-bearer as difficult terrain.</span></p>"
 		},
 		"rules": [
 			{
@@ -80,11 +80,11 @@
 		}
 	},
 	"_stats": {
-		"coreVersion": "14.365",
+		"coreVersion": "14.367",
 		"systemId": "pf2e",
-		"systemVersion": "8.4.0",
+		"systemVersion": "8.4.1",
 		"createdTime": 1785557255431,
-		"modifiedTime": 1785559345647,
+		"modifiedTime": 1787265321560,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,
