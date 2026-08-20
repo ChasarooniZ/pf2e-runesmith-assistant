@@ -14,7 +14,7 @@ import { MODULE_ID } from "./module.js";
 import { showDynamicTargetForm } from "./targetDialog.js";
 
 export async function runeEtchTraceDialog(options = {}) {
-  const token = getYourToken();
+  const token = options?.token ?? getYourToken();
   const actor = token?.actor ?? game.user.character;
   if (!actor) {
     console.warn(

@@ -11,8 +11,8 @@ import {
 } from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
-export async function invokeRuneDialog() {
-  const token = getYourToken();
+export async function invokeRuneDialog(config) {
+  const token = config?.token ?? getYourToken();
   const res = await pickRuneDialog({ token });
   //console.log({ res });
 

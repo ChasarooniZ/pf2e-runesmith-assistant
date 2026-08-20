@@ -341,14 +341,21 @@ export function setupHooks() {
         },
       );
 
-      runesFieldset.find(".invoke-runes-btn").on("click", () => {
-        game.pf2eRunesmithAssistant.dialog.openInvoke();
-      });
-      runesFieldset.find(".etch-trace-btn").on("click", () => {
-        game.pf2eRunesmithAssistant.dialog.openEtchTrace(
-          canOnlyEtch(actor) ? { etchOnly: true } : {},
-        );
-      });
+      runesFieldset?.[0]
+        .querySelector(".invoke-runes-btn")
+        .addEventListener("click", (event) => {
+          game.pf2eRunesmithAssistant.dialog.openInvoke({
+            token: actor?.getActiveTokens()?.[0],
+          });
+        });
+      runesFieldset?.[0]
+        .querySelector(".etch-trace-btn")
+        .addEventListener("click", (event) => {
+          game.pf2eRunesmithAssistant.dialog.openEtchTrace({
+            etchOnly: canOnlyEtch(actor),
+            token: actor?.getActiveTokens()?.[0],
+          });
+        });
 
       function runeTooltip(runeFlag, enrichedDesc) {
         return `<b>${runeFlag.rune.name}</b><p><i>on ${targetDescription(

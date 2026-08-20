@@ -12,6 +12,7 @@
   - Added handling for `Ti-`
   - Added handling for `Eck-`
   - Dynamically hide `Trace Runes` for **Runesmith Dedication** based on whether they have the followup feat
+  - Will automatically try and grab the active token for etch and trace menus called from the character sheet
 - **Updated**
   - Fixed damage on `Ranshu` non moving (🐛 @mechamaya)
   - Fixed `Holtrik` RE to use release version (🐛 @mechamaya)
