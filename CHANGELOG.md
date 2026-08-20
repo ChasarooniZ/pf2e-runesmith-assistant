@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 1.4.0
+
 - **New**
   - Added bespoke support for **Diacritic Runes**
     - Currently the support is solely that it will apply it to a rune as opposed to applying it to a targets
