@@ -22,7 +22,10 @@
   - Fixed bug causing effects added on `invocation` failing
   - Adjusted `Etched Rune Slots` for **Runesmith Dedication** (🐛 @Wizard-Level-1)
   - Actually included the triggers
-  - Fixed issue with free rune etching
+  - Fixed issue with free rune etching not working
+  - Fixed `Felkris - Gravity` giving the `item` bonus instead of `status` (🐛 @Mirvyr-byte)
+  - Fixed scaling on `Sertum`, `Tilus`, and `Ledria` (🐛 @Niskraya)
+  - Fixed `Pluna` not giving penalty to stealth
 
 ## 1.3.0
 
