@@ -1,9 +1,12 @@
+import { pickRuneDialog } from "./invokeRuneDialog.js";
 import { runeAppliedMessage } from "./messageHelpers.js";
 import {
   getActorOwnerOnline,
   getActorToGiveRuneEffect,
+  getDiacriticCombinedName,
   getEffectsStrings,
   getMaxEtchedRunes,
+  getTraitsHTML,
   getYourToken,
   localize,
 } from "./misc.js";
@@ -11,16 +14,17 @@ import { MODULE_ID } from "./module.js";
 import { showDynamicTargetForm } from "./targetDialog.js";
 
 export async function runeEtchTraceDialog(options = {}) {
-  const token = getYourToken();
+  const token = options?.token ?? getYourToken();
   const actor = token?.actor ?? game.user.character;
   if (!actor) {
-    console.warning(
+    console.warn(
       "[PF2e Runesmith Assistant] No Actor selected to open Etch/Trace Dialog",
     );
     return;
   }
-  const runesList = actor.items.contents.filter((it) =>
-    it.system?.traits?.value?.includes("rune"),
+  const runesList = actor.items.contents.filter(
+    (it) =>
+      it.system?.traits?.value?.includes("rune") && it?.type === "equipment",
   );
   if (runesList.length === 0) {
     ui.notifications.error(localize("notifications.own-no-runes"));
@@ -69,11 +73,12 @@ async function pickDialog({ runes, actor, token, options }) {
 
   //Filter for runes
   for (let rune of runes) {
-    rune_content += `<label class="radio-label" data-tooltip='${rune.enriched_desc}'
+    rune_content += `<label class="radio-label" data-tooltip="${getTraitsHTML(rune.traits)}${rune.enriched_desc.replaceAll('"', "&quot;")}"
     data-tooltip-direction="UP">
       <input type="radio" name="rune" value="${rune.id}">
       <img src="${rune.img}" ">
-      ${rune.name}
+      <span>${rune.name}</span>
+      ${getTraitsHTML(rune.traits)}
   </label>`;
   }
   let content = `
@@ -155,68 +160,143 @@ async function pickDialog({ runes, actor, token, options }) {
     });
   });
   return image;
-}
 
-function onRender(_event, app) {
-  const html = app.element ? app.element : app;
-  $(html)
-    .find(".radio-label img")
-    .on("contextmenu", async function (event) {
-      const runeId = $(this).closest("label").find("input[type=radio]").val();
-      const runeObj = runes.find((s) => s.id === runeId);
-      await addRune(runeObj, {
-        actor,
-        token,
-        type: "etched",
-        free: true,
-      });
-      resolve(runeId);
-    });
+  function onRender(_event, app) {
+    const html = app.element ? app.element : app;
+    html.querySelectorAll(".radio-label img").forEach((item) =>
+      item.addEventListener("contextmenu", async function (event) {
+        const runeId = event.currentTarget
+          .closest("label")
+          .querySelector("input[type=radio]").value;
+        const runeObj = runes.find((s) => s.id === runeId);
+        await addRune(runeObj, {
+          actor,
+          token,
+          type: "etched",
+          free: true,
+        });
+      }),
+    );
+  }
 }
 
 async function addRune(
   rune,
   { actor, token, type = "etched", action = 0, free },
 ) {
-  const targets = await showDynamicTargetForm({
-    processType: type,
-    rune: rune,
-  });
-  if (!targets?.length || targets === "cancel" || !rune) return;
-  for (const target of targets) {
-    let runes = actor.getFlag(MODULE_ID, "runes");
-    const id = foundry.utils.randomID();
-
-    if (type === "etched") {
-      const maxEtchedRunes = getMaxEtchedRunes(token.actor);
-      if (runes.etched.filter((r) => !r.free).length >= maxEtchedRunes) {
-        runes.etched.pop();
-      }
-    }
-
-    runes[type].push({
-      rune,
-      target,
-      id,
-      ...(free && { free }),
+  let runes = actor.getFlag(MODULE_ID, "runes");
+  if (rune.traits.includes("diacritic")) {
+    rune.diacritic = true;
+    const runesSelected = await pickRuneDialog({
+      token,
+      type: "select",
+      title: localize("ui.buttons.diacritic-menu"),
     });
 
-    const userID = getActorOwnerOnline(
-      getActorToGiveRuneEffect(target, token.id),
-    );
+    for (const runeInfo of runesSelected?.selected) {
+      const baseRuneNumber = runes[runeInfo.type].findIndex(
+        (r) => r.id === runeInfo.id,
+      );
+      if (baseRuneNumber !== -1) {
+        const id = foundry.utils.randomID();
 
-    game.pf2eRunesmithAssistant.socket.executeAsUser(
-      "createTraceEffect",
-      userID,
-      {
+        const baseRuneInfo = runes[runeInfo.type][baseRuneNumber];
+        const baseRuneName = baseRuneInfo?.rune?.name;
+        runes[runeInfo.type][baseRuneNumber] = foundry.utils.mergeObject(
+          baseRuneInfo,
+          {
+            diacritic: {
+              type,
+              id,
+            },
+            rune: {
+              name: getDiacriticCombinedName(rune.name, baseRuneName),
+              enriched_desc:
+                rune.enriched_desc + "<hr />" + baseRuneInfo.rune.enriched_desc,
+            },
+          },
+        );
+        await applyRuneHelper(
+          actor,
+          type,
+          token,
+          rune,
+          foundry.utils.mergeObject(
+            foundry.utils.deepClone(baseRuneInfo.target),
+            {
+              location: "item",
+              item: baseRuneName ?? "",
+            },
+          ),
+          free,
+          action,
+          id,
+          runes,
+        );
+      }
+    }
+  } else {
+    const targets = await showDynamicTargetForm({
+      processType: type,
+      rune: rune,
+    });
+    if (!targets?.length || targets === "cancel" || !rune) return;
+    for (const target of targets) {
+      await applyRuneHelper(
+        actor,
+        type,
+        token,
         rune,
         target,
-        tokenID: token.id,
-        id,
-        type,
-      },
-    );
-    await actor.setFlag(MODULE_ID, "runes", runes);
-    await runeAppliedMessage({ actor, token, rune, target, type, action });
+        free,
+        action,
+        foundry.utils.randomID(),
+        runes,
+      );
+    }
   }
+}
+async function applyRuneHelper(
+  actor,
+  type,
+  token,
+  rune,
+  target,
+  free,
+  action,
+  id,
+  runes,
+) {
+  if (type === "etched") {
+    const maxEtchedRunes = getMaxEtchedRunes(token.actor);
+    if (runes.etched.filter((r) => !r.free).length >= maxEtchedRunes) {
+      runes.etched.pop();
+    }
+  }
+
+  runes[type].push({
+    rune,
+    target,
+    id,
+    ...(free && { free }),
+  });
+
+  await actor.setFlag(MODULE_ID, "runes", runes);
+
+  const userID = getActorOwnerOnline(
+    getActorToGiveRuneEffect(target, token.id),
+  );
+
+  game.pf2eRunesmithAssistant.socket.executeAsUser(
+    "createTraceEffect",
+    userID,
+    {
+      rune,
+      target,
+      tokenID: token.id,
+      id,
+      type,
+    },
+  );
+  runeAppliedMessage({ actor, token, rune, target, type, action });
 }

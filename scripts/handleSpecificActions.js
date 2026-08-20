@@ -1,11 +1,11 @@
-import { invokeRune, pickDialog } from "./invokeRuneDialog.js";
+import { invokeRune, pickRuneDialog } from "./invokeRuneDialog.js";
 import { getYourToken } from "./misc.js";
 import { MODULE_ID } from "./module.js";
 
 export async function chainOfWords() {
   return;
   const token = getYourToken();
-  const runes = await pickDialog({
+  const runes = await pickRuneDialog({
     token,
     type: "select",
     title: "Chain of Words",

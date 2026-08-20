@@ -30,6 +30,12 @@
 						"type": "starlight"
 					}
 				}
+			},
+			{
+				"key": "FlatModifier",
+				"selector": "stealth",
+				"value": -1,
+				"type": "item"
 			}
 		],
 		"slug": "effect-pluuna-rune-of-illumination",
@@ -81,11 +87,11 @@
 	},
 	"flags": {},
 	"_stats": {
-		"coreVersion": "14.365",
+		"coreVersion": "14.367",
 		"systemId": "pf2e",
-		"systemVersion": "8.4.0",
+		"systemVersion": "8.4.1",
 		"createdTime": 1785527332370,
-		"modifiedTime": 1785559345648,
+		"modifiedTime": 1787265380411,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,
