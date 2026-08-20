@@ -9,6 +9,7 @@ import { getDCInfo, targetDescription } from "./messageHelpers.js";
 import {
   canOnlyEtch,
   getMaxEtchedRunes,
+  getRuneClasses,
   getTraitsHTML,
   hasFeat,
   isRunesmith,
@@ -98,7 +99,7 @@ export function setupHooks() {
                         enrichedDescriptions[r.rune.id],
                       )}" 
                       data-tooltip-direction="UP" 
-                      class="rune-img ${r.rune?.diacritic ? "diacritic" : ""}"
+                      class="rune-img ${getRuneClasses(r)}"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
         )
@@ -121,7 +122,7 @@ export function setupHooks() {
                         enrichedDescriptions[r.rune.id],
                       )}" 
                       data-tooltip-direction="UP" 
-                      class="rune-img free-etched ${r.rune?.diacritic ? "diacritic" : ""}"
+                      class="rune-img free-etched ${getRuneClasses(r)}"
                       data-rune-id="${r.id}"
                       data-rune-type="etched">`,
         )
@@ -143,7 +144,7 @@ export function setupHooks() {
         <img src="${r.rune.img}" 
           data-tooltip="${runeTooltip(r, enrichedDescriptions[r.rune.id])}" 
           data-tooltip-direction="UP" 
-          class="rune-img ${r.rune?.diacritic ? "diacritic" : ""}"
+          class="rune-img ${getRuneClasses(r)}"
           data-rune-id="${r.id}"
           data-rune-type="traced">
       `,
@@ -192,7 +193,7 @@ export function setupHooks() {
           const content =
             await foundry.applications.ux.TextEditor.implementation.enrichHTML(
               `<p>${localize("ui.quick-action.invoke.want-to-invoke")} <strong>${
-                runeData.rune.link
+                runeData.rune.name
               }</strong> ${localize("ui.quick-action.on-target", {
                 target: `<i>${targetDescription(runeData.target).replaceAll(
                   '"',

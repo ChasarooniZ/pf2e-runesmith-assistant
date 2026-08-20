@@ -4,6 +4,7 @@ import { runeInvokedMessage, targetDescription } from "./messageHelpers.js";
 import {
   canOnlyEtch,
   getMaxEtchedRunes,
+  getRuneClasses,
   getTraitsHTML,
   getYourToken,
   localize,
@@ -115,8 +116,9 @@ export async function pickRuneDialog({
         data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
           <input type="checkbox" name="etched" value="${runeData?.id}">
-          <img src="${rune.img}" class="${rune?.diacritic ? "diacritic" : ""}">
+          <img src="${rune.img}" class="${getRuneClasses(runeData)}">
           <span class="rune-name">${rune.name}</span>
+          ${getTraitsHTML(rune.traits)}
       </label>`;
     }
 
@@ -149,6 +151,7 @@ export async function pickRuneDialog({
           <input type="checkbox" name="etched" value="${runeData?.id}">
           <img src="${rune.img}">
           <span class="rune-name">${rune.name}</span>
+          ${getTraitsHTML(rune.traits)}
       </label>`;
     }
 
@@ -174,10 +177,9 @@ export async function pickRuneDialog({
         data-rune-target="${JSON.stringify(runeData.target).replaceAll('"', "&quot;")}"
         >
             <input type="checkbox" name="traced" value="${runeData?.id}">
-            <img src="${rune.img}" ${
-              runeData.free ? 'class="rune-purple-shadow"' : ""
-            }>
+            <img src="${rune.img}" class="${getRuneClasses(runeData)}">
             <span class="rune-name">${rune.name}</span>
+            ${getTraitsHTML(rune.traits)}
         </label>`;
     }
     html += `</div></div>`;
@@ -392,6 +394,18 @@ export async function invokeRune({ token, act, runeID, type }) {
     );
   }
 
+  const changes = await handleSpecificRunes({
+    rune,
+    target,
+    srcToken: tok.id,
+    invocation: invocation.desc,
+    diacritic: diacriticData?.rune,
+  });
+
+  if (changes?.invocation?.desc) {
+    invocation.desc = changes.invocation.desc;
+  }
+
   await runeInvokedMessage({
     token: tok,
     actor,
@@ -404,14 +418,6 @@ export async function invokeRune({ token, act, runeID, type }) {
     invocation: diacriticData
       ? invocation.desc + getDiacriticDescription(diacriticData.rune)
       : invocation.desc,
-  });
-
-  handleSpecificRunes({
-    rune,
-    target,
-    srcToken: tok.id,
-    invocation: invocation.desc,
-    diacritic: diacriticData?.rune,
   });
   game.pf2eRunesmithAssistant.socket.executeAsGM("deleteEffect", {
     id: runeID,
@@ -445,13 +451,15 @@ async function getDiacriticRuneData(diacriticFlag, flag) {
     const diacriticFlagData = flag?.[diacriticFlag?.type]?.find(
       (r) => r.id === diacriticFlag?.id,
     );
-    const diacriticRune = await fromUuid(diacriticFlagData.rune.uuid);
-    return {
-      flagData: diacriticRune,
-      type: diacriticFlag.type,
-      id: diacriticFlag.id,
-      rune: diacriticRune,
-    };
+    const diacriticRune = await fromUuid(diacriticFlagData?.rune?.uuid);
+    return diacriticRune
+      ? {
+          flagData: diacriticRune,
+          type: diacriticFlag.type,
+          id: diacriticFlag.id,
+          rune: diacriticRune,
+        }
+      : null;
   } else {
     return null;
   }
@@ -472,5 +480,5 @@ function getInvocation(description) {
       .match(INVOCATION_TRAITS_REGEX)?.[1]
       ?.split(",")
       ?.map((t) => t.trim()) ?? [];
-  return { desc: desc ? `<p>${desc}` : description, traits };
+  return { desc: desc ? `<p>${desc}` : description, traits: traits };
 }

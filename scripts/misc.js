@@ -66,12 +66,14 @@ export function getActorToGiveRuneEffect(targetData, runesmithID) {
  * @returns ID of token owner or the GM
  */
 export function getActorOwnerOnline(actor) {
-  const entry = Object.entries(actor?.ownership).find(
-    ([userID, permission]) =>
-      permission === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER &&
-      !game.users.get(userID)?.isGM &&
-      game.users.get(userID)?.active,
-  );
+  const entry = actor?.ownership
+    ? Object.entries(actor?.ownership).find(
+        ([userID, permission]) =>
+          permission === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER &&
+          !game.users.get(userID)?.isGM &&
+          game.users.get(userID)?.active,
+      )
+    : [];
   return entry?.[0] ? entry?.[0] : game.users.activeGM?.id;
 }
 
@@ -135,14 +137,30 @@ export function getDiacriticCombinedName(diacriticName, baseRuneName) {
 }
 
 export function getTraitsHTML(traits) {
-  const traitNames = traits.map((trait) =>
-    game.i18n.localize(
-      ["diacritic", "rune"].includes(trait)
-        ? `pf2e-runesmith-assistant.traits.${trait}`
-        : (CONFIG.PF2E.actionTraits[trait] ?? trait),
-    ),
-  );
+  const traitNames = traits
+    .filter((trait) => trait !== "runesmith" && trait !== "rune")
+    .map((trait) =>
+      game.i18n.localize(
+        ["diacritic", "rune"].includes(trait)
+          ? `pf2e-runesmith-assistant.traits.${trait}`
+          : (CONFIG.PF2E.actionTraits[trait] ?? trait),
+      ),
+    );
   return `<section class='runesmith traits'>
     <p>${traitNames.join("</p><p>")}</p>
 </section>`;
+}
+
+export function getRuneClasses(runeInfo) {
+  const cssClasses = [];
+  if (runeInfo?.diacritic) {
+    cssClasses.push("has-diacritic");
+  }
+  if (runeInfo?.free) {
+    cssClasses.push("free-etched");
+  }
+  if (runeInfo?.rune?.traits?.includes("diacritic")) {
+    cssClasses.push("diacritic");
+  }
+  return cssClasses.join(" ");
 }

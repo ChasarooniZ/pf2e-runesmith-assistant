@@ -59,14 +59,9 @@
   outline: 2px solid #f00;
 }
 
-.rune-purple-shadow {
-  box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
-  border-radius: 6px;
-}
-
 /* Etch or Trace */
 .runepicker {
-  .form-group {
+  &.form-group {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -189,14 +184,6 @@ fieldset.runes-fieldset {
         &.placeholder {
           opacity: 0.3;
         }
-
-        &.free-etched {
-          box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
-        }
-
-        &.has-diacrtic {
-          box-shadow: 0 0 6px 2px rgb(255 193 0 / 80%);
-        }
       }
     }
   }
@@ -209,6 +196,14 @@ fieldset.runes-fieldset {
 
 img.diacritic {
   opacity: 50%;
+}
+
+img.free-etched {
+  box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
+}
+
+img.has-diacritic {
+  box-shadow: 0 0 6px 2px rgb(1, 81, 231);
 }
 
 section.runesmith.traits {

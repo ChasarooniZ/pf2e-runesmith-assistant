@@ -22,8 +22,9 @@ export async function runeEtchTraceDialog(options = {}) {
     );
     return;
   }
-  const runesList = actor.items.contents.filter((it) =>
-    it.system?.traits?.value?.includes("rune"),
+  const runesList = actor.items.contents.filter(
+    (it) =>
+      it.system?.traits?.value?.includes("rune") && it?.type === "equipment",
   );
   if (runesList.length === 0) {
     ui.notifications.error(localize("notifications.own-no-runes"));
@@ -72,11 +73,12 @@ async function pickDialog({ runes, actor, token, options }) {
 
   //Filter for runes
   for (let rune of runes) {
-    rune_content += `<label class="radio-label" data-tooltip='${getTraitsHTML(rune.traits)}${rune.enriched_desc}'
+    rune_content += `<label class="radio-label" data-tooltip="${getTraitsHTML(rune.traits)}${rune.enriched_desc.replaceAll('"', "&quot;")}"
     data-tooltip-direction="UP">
       <input type="radio" name="rune" value="${rune.id}">
       <img src="${rune.img}" ">
-      ${rune.name}
+      <span>${rune.name}</span>
+      ${getTraitsHTML(rune.traits)}
   </label>`;
   }
   let content = `
@@ -158,23 +160,24 @@ async function pickDialog({ runes, actor, token, options }) {
     });
   });
   return image;
-}
 
-function onRender(_event, app) {
-  const html = app.element ? app.element : app;
-  $(html)
-    .find(".radio-label img")
-    .on("contextmenu", async function (event) {
-      const runeId = $(this).closest("label").find("input[type=radio]").val();
-      const runeObj = runes.find((s) => s.id === runeId);
-      await addRune(runeObj, {
-        actor,
-        token,
-        type: "etched",
-        free: true,
-      });
-      resolve(runeId);
-    });
+  function onRender(_event, app) {
+    const html = app.element ? app.element : app;
+    html.querySelectorAll(".radio-label img").forEach((item) =>
+      item.addEventListener("contextmenu", async function (event) {
+        const runeId = event.currentTarget
+          .closest("label")
+          .querySelector("input[type=radio]").value;
+        const runeObj = runes.find((s) => s.id === runeId);
+        await addRune(runeObj, {
+          actor,
+          token,
+          type: "etched",
+          free: true,
+        });
+      }),
+    );
+  }
 }
 
 async function addRune(
@@ -252,8 +255,6 @@ async function addRune(
       );
     }
   }
-
-  await actor.setFlag(MODULE_ID, "runes", runes);
 }
 async function applyRuneHelper(
   actor,
@@ -279,6 +280,8 @@ async function applyRuneHelper(
     id,
     ...(free && { free }),
   });
+
+  await actor.setFlag(MODULE_ID, "runes", runes);
 
   const userID = getActorOwnerOnline(
     getActorToGiveRuneEffect(target, token.id),

@@ -6,6 +6,10 @@
   - Added automation for `Atryl` fire resistance reduction
   - Added automation for `Thullax` physical resistance reduction
   - Added Rune traits to tooltips in module
+    - Filtered out `Rune` and `Runesmith` from traits visualized
+  - Added handling for `Ti-`
+  - Added handling for `Eck-`
+  - Dynamically hide `Trace Runes` for **Runesmith Dedication** based on whether they have the followup feat
 - **Updated**
   - Fixed damage on `Ranshu` non moving (🐛 @mechamaya)
   - Fixed `Holtrik` RE to use release version (🐛 @mechamaya)
@@ -14,10 +18,9 @@
   - Fixed bad link to source on `Kojastri` (@Kromko)
   - Fixed errors with highlight target info
   - Fixed bug causing effects added on `invocation` failing
-  - Another Attempt to fix triggers
-  - Adjusted `Etched Rune Slots` for Runesmith Dedication (🐛 @Wizard-Level-1)
-  - Dynamicaally hide `Trace Runes` for Runesmith Dedication based on whetehr they have the followup feat
+  - Adjusted `Etched Rune Slots` for **Runesmith Dedication** (🐛 @Wizard-Level-1)
   - Actually included the triggers
+  - Fixed issue with free rune etching
 
 ## 1.3.0
 

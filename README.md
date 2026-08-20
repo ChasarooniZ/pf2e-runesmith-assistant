@@ -21,12 +21,15 @@ This does handle the basic cases of Etching, Invoking, and Scribing runes. This 
 - [PF2e Runesmith Assistant](#pf2e-runesmith-assistant)
   - [Table of Contents](#table-of-contents)
   - [Specific Handling](#specific-handling)
+    - [Runes](#runes)
+    - [Actions](#actions)
+  - [Trigger Engine Implementation](#trigger-engine-implementation)
   - [Changelog](#changelog)
   - [Contributors](#contributors)
 
 ## Specific Handling
 
-**Runes**
+### Runes
 
 - `Atryl, Rune of Fire`
   - **Trace/Etch** Reduce fire resistance
@@ -36,11 +39,17 @@ This does handle the basic cases of Etching, Invoking, and Scribing runes. This 
   - **Trace/Etch** Reduce physical resistance
 - `Zohk, Rune of Homecoming`
   - **Invoke** Adds a dialog option when a time is invoked to teleport the target to you
-    **Actions**
-- Chain of Words
-  - Adds the cool AoE Effect
+- `Ti-, Diacritic Rune of Fundaments`
+  - Added damage type change for invocation
+- `Eck-, Diacritic Rune of Phantasma`
+  - Added damage type change for invocation and the AOE Persistent Spirit
 
-**Trigger Engine Implementation**
+### Actions
+
+- ~~`Chain of Words`~~
+  - ~~Adds the cool AoE Effect~~
+
+## Trigger Engine Implementation
 
 - `Camonica` - Taaking damage when concentrating
 - `Germantria` - When the Runebearer takes damage, heal themselves for half and damage the runesmith for half

@@ -1,4 +1,4 @@
-import { ITEMS, RUNES } from "./const.js";
+import { ITEMS, REGEX, RUNES } from "./const.js";
 import {
   convertItemUUIDFromSF2eToPF2e,
   convertSpecificItemsToSF2e,
@@ -17,16 +17,20 @@ const RUNE_CHECK_LIST = Object.values(RUNES);
  * @param {{rune: Item, target: {
  *      type: string, item?: string, token?: string, actor?: string, location?: string
  * }, srcToken: string, invocation: string, diacritic: Item}}} { rune, target, srcToken, invocation }
- * @return {undefined}
+ * @return {}
  */
-export function handleSpecificRunes({
+export async function handleSpecificRunes({
   rune,
   target,
   srcToken,
   invocation,
   diacritic,
 }) {
-  if (!RUNE_CHECK_LIST.includes(rune?.sourceId)) return;
+  if (
+    !RUNE_CHECK_LIST.includes(rune?.sourceId) &&
+    !RUNE_CHECK_LIST.includes(diacritic?.sourceId)
+  )
+    return;
   const tokenSource = canvas.tokens.get(srcToken);
   const tokenTarget = canvas.tokens.get(target.token);
   const effectData = {
@@ -151,6 +155,74 @@ export function handleSpecificRunes({
         },
       });
       break;
+  }
+
+  switch (convertItemUUIDFromSF2eToPF2e(diacritic?.sourceId)) {
+    case RUNES["ti-diacritic-rune-of-fundaments"]:
+      // Rune Dialog here to ask damage type
+      const type = await foundry.applications.api.DialogV2.input({
+        window: {
+          title: "PF2E.Item.Condition.PersistentDamage.Dialog.DamageType",
+          icon: "",
+        },
+        content: await foundry.applications.ux.TextEditor.implementation
+          .enrichHTML(`
+          @UUID[${RUNES["ti-diacritic-rune-of-fundaments"]}]
+          <label><input type="radio" name="choice" value="acid" checked> ${game.i18n.format("PF2E.TraitAcid")}</label>
+          <label><input type="radio" name="choice" value="cold" checked> ${game.i18n.format("PF2E.TraitCold")}</label>
+          <label><input type="radio" name="choice" value="electricity" checked> ${game.i18n.format("PF2E.TraitElectricity")}</label>
+          <label><input type="radio" name="choice" value="fire" checked> ${game.i18n.format("PF2E.TraitFire")}</label>
+            `),
+        ok: {
+          label: "PF2E.SelectLabel",
+          icon: "fa-solid fa-check",
+        },
+      });
+      return {
+        invocation: {
+          desc: invocation.replaceAll(
+            REGEX.DAMAGE_ROLL.TI_RUNE,
+            `$1${type?.choice}$3`,
+          ),
+        },
+      };
+    case RUNES["eck-diacritic-rune-of-phantasma"]:
+      const dice = tokenSource?.actor?.level >= 17 ? 2 : 1;
+
+      const DamageRoll = CONFIG.Dice.rolls.find((r) => r.name === "DamageRoll");
+      const roll = new DamageRoll(`${dice}d8[spirit,persistent]`);
+      roll.toMessage({
+        flavor: `Eck: Diacritic Rune of Phantasma`,
+        speaker: ChatMessage.getSpeaker({ token: tokenSource?.document }),
+        flags: {
+          "pf2e-toolbelt": {
+            targetHelper: {
+              type: "action",
+              author: tokenSource?.uuid,
+              traits: diacritic?.system?.traits?.value ?? [],
+              item: diacritic?.uuid,
+              options: ["damaging-effect"],
+              targets: canvas.tokens.placeables
+                .filter(
+                  (t) =>
+                    tokenSource?.document?.disposition !==
+                      t?.document?.disposition &&
+                    tokenTarget.distanceTo(t) <= 5 &&
+                    tokenTarget?.id !== t?.id,
+                )
+                .map((t) => t?.document?.uuid),
+            },
+          },
+        },
+      });
+      return {
+        invocation: {
+          desc: invocation.replaceAll(
+            REGEX.DAMAGE_ROLL.ALL_TYPES,
+            `$1spirit$3`,
+          ),
+        },
+      };
   }
 }
 
