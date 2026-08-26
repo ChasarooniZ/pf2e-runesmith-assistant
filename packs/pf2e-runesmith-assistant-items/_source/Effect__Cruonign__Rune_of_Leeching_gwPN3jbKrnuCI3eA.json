@@ -14,7 +14,10 @@
 					"attacks": true,
 					"predicate": [
 						{
-							"or": ["item:damage:type:piercing", "item:damage:type:slashing"]
+							"or": [
+								"item:damage:type:piercing",
+								"item:damage:type:slashing"
+							]
 						}
 					]
 				},

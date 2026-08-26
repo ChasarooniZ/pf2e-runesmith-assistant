@@ -6,7 +6,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>This vertical rune is often carved on tall towers to draw lightning and shield the buildings below it. If the bearer does not take a move action at least once on its turn, lightning finds it at the end of its turn, dealing @Damage[(floor(@actor.level/2) + 3)[electricity]].</p><p><strong>Invocation</strong> The preliminary streaks of lightning braid together into a powerful bolt. The rune-bearer takes @Damage[(ceil(@actor.level / 2))d8[electricity]] damage, with a @Check[fortitude|basic|against:runesmith] save.</p><hr><p><strong>Level (+2)</strong> The damage increases by 1, and the damage of the invocation increases by 1d8.</p>"
+			"value": "<p><strong>Usage</strong> drawn on a creature or object</p><hr><p>This vertical rune is often carved on tall towers to draw lightning and shield the buildings below it. If the bearer does not take a move action at least once on its turn, lightning finds it at the end of its turn, dealing @Damage[(ceil(max(@actor.level, 1) / 2) + 2)[electricity]].</p><p><strong>Invocation</strong> The preliminary streaks of lightning braid together into a powerful bolt. The rune-bearer takes @Damage[(ceil(@actor.level / 2))d8[electricity]] damage, with a @Check[fortitude|basic|against:runesmith] save.</p><hr><p><strong>Level (+2)</strong> The damage increases by 1, and the damage of the invocation increases by 1d8.</p>"
 		},
 		"rules": [],
 		"slug": "ranshu-rune-of-thunder",
@@ -95,11 +95,11 @@
 		}
 	},
 	"_stats": {
-		"coreVersion": "14.365",
+		"coreVersion": "14.367",
 		"systemId": "pf2e",
-		"systemVersion": "8.4.0",
+		"systemVersion": "8.4.1",
 		"createdTime": 1785527429556,
-		"modifiedTime": 1786049315749,
+		"modifiedTime": 1787721273067,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

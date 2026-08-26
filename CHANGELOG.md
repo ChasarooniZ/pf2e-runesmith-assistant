@@ -2,6 +2,7 @@
 
 - **Updated**
   - Added a fallback for nonexistent target caausing errors (@GameCrazed)
+  - Fixed scaling on etch/trace effects on `Atryl` and `Ranshu` (@trlipp)
 
 ## 1.4.0
 
