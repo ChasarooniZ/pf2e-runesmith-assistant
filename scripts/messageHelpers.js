@@ -288,7 +288,7 @@ export function targetDescription(target) {
     const token = getToken(target.token, target.actor);
     const name = token?.name ?? target.personName;
     const item = target?.item;
-    return `${name}${item ? "'s " : ""}${item || ""}`;
+    return `${name ?? ""}${item ? "'s " : ""}${item || ""}`;
   }
 }
 

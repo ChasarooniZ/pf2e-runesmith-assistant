@@ -1,5 +1,8 @@
 ## Unreleased
 
+- **Updated**
+  - Added a fallback for nonexistent target caausing errors (@GameCrazed)
+
 ## 1.4.0
 
 - **New**
