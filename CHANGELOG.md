@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 1.4.1
+
 - **Updated**
   - Added a fallback for nonexistent target causing errors (🐛 @GameCrazed)
   - Fixed scaling on etch/trace effects on `Atryl` and `Ranshu` (🐛 @trlipp)
