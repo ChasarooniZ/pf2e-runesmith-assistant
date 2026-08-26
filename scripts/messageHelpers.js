@@ -295,6 +295,6 @@ export function targetDescription(target) {
 function getToken(tokenID, actorID) {
   return (
     canvas.tokens.get(tokenID) ||
-    canvas.tokens.placeables.find((t) => t.actor.id === actorID)
+    canvas.tokens.placeables.find((t) => t?.actor?.id === actorID)
   );
 }

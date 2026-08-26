@@ -1,8 +1,9 @@
 ## Unreleased
 
 - **Updated**
-  - Added a fallback for nonexistent target caausing errors (@GameCrazed)
+  - Added a fallback for nonexistent target causing errors (@GameCrazed)
   - Fixed scaling on etch/trace effects on `Atryl` and `Ranshu` (@trlipp)
+  - Added a fallback for tokens without IDs
 
 ## 1.4.0
 
