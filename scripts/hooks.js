@@ -318,7 +318,7 @@ export function setupHooks() {
           if (target.type === "person" && target.token) {
             const token =
               canvas.tokens.get(target.token) ||
-              canvas.tokens.placeables.find((t) => t.actor.id === target.actor);
+              canvas.tokens.placeables.find((t) => t?.actor?.id === target?.actor);
             if (token) {
               token._onHoverIn(event); // highlight token
             }
@@ -333,7 +333,7 @@ export function setupHooks() {
           if (target.type === "person" && target.token) {
             const token =
               canvas.tokens.get(target.token) ||
-              canvas.tokens.placeables.find((t) => t.actor.id === target.actor);
+              canvas.tokens.placeables.find((t) => t?.actor?.id === target?.actor);
             if (token) {
               token._onHoverOut(event); // remove highlight
             }

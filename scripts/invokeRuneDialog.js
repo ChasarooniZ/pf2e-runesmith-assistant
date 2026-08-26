@@ -286,7 +286,7 @@ function addHighlight() {
   if (target?.type === "person" && target?.token && canvas?.tokens) {
     const token =
       canvas.tokens.get(target.token) ||
-      canvas.tokens.placeables.find((t) => t.actor?.id === target.actor);
+      canvas.tokens.placeables.find((t) => t?.actor?.id === target?.actor);
     if (token) {
       token.emit("hoverToken", true); // highlight token
     }
@@ -300,7 +300,7 @@ function removeHighlight() {
   if (target?.type === "person" && target?.token && canvas?.tokens) {
     const token =
       canvas.tokens.get(target.token) ||
-      canvas.tokens.placeables.find((t) => t.actor?.id === target.actor);
+      canvas.tokens.placeables.find((t) => t?.actor?.id === target?.actor);
     if (token) {
       token.emit("hoverToken", false); // remove highlight
     }
@@ -318,7 +318,7 @@ function removeHighlight() {
 export async function dispelRune({ token, act, runeID, type }) {
   const actor = token?.actor ?? act;
   const tok =
-    token ?? canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
+    token ?? canvas.tokens.placeables.find((t) => t?.actor?.id === actor?.id);
   const flag = actor?.getFlag(MODULE_ID, "runes");
 
   const runeFlagData = flag[type].find((r) => r.id === runeID);
@@ -359,7 +359,7 @@ async function dispelRuneHelper(flag, type, runeID, actor, target, tok) {
 export async function invokeRune({ token, act, runeID, type }) {
   const actor = token?.actor ?? act;
   const tok =
-    token ?? canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
+    token ?? canvas.tokens.placeables.find((t) => t?.actor?.id === actor?.id);
   const flag = actor?.getFlag(MODULE_ID, "runes");
   //console.log({ flag, token: tok, runeID, type });
   const flagData = flag?.[type]?.find((r) => r.id === runeID);

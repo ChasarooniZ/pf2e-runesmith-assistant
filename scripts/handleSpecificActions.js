@@ -22,7 +22,7 @@ export async function chainOfWords() {
     const targ =
       canvas.tokens.get(flagData?.target?.token) ||
       canvas.tokens.placeables.find(
-        (t) => t.actor.id === flagData?.target?.actor
+        (t) => t?.actor?.id === flagData?.target?.actor
       );
     if (targ) points.push(targ);
     await invokeRune({ token, runeID: rune.id, type: rune.type });
