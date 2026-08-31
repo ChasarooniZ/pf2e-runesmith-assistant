@@ -1,0 +1,116 @@
+{
+  "I18N.LANGUAGE": "Français",
+  "pf2e-runesmith-assistant": {
+    "keywords": {
+      "etch": "Graver",
+      "trace": "Tracer",
+      "invoke": "Invoquer",
+      "dispel": "Dissiper",
+      "select": "Choisir"
+    },
+    "notifications": {
+      "dispelled-rune": "Rune {rune} dissipée !",
+      "own-no-runes": "Vous n'avez pas de runes",
+      "no-runes-applied": "Vous n'avez aucune rune appliquée."
+    },
+    "ui": {
+      "header": "Gestion des runes",
+      "tooltip": {
+        "empty-rune-slot": "Emplacement de rune vide",
+        "highlight-affected-token": "Surligner le jeton affecté",
+        "hover": "Au survol",
+        "no-rune-description": "La rune a été retirée de votre inventaire, elle est donc sans effet."
+      },
+      "sections": {
+        "etched": "Runes gravées",
+        "traced": "Runes tracées"
+      },
+      "quick-action": {
+        "invoke": {
+          "want-to-invoke": "Souhaitez-vous invoquer la rune ?"
+        },
+        "dispel": "Souhaitez-vous dissiper (retirer) la rune ?",
+        "on-target": "sur {target}"
+      },
+      "buttons": {
+        "invoke-menu": "Menu invoquer",
+        "etch-trace-menu": "Menu graver ou tracer",
+        "etch-menu": "Menu graver",
+        "diacritic-menu": "Menu diacritique"
+      }
+    },
+    "message": {
+      "invoke": {
+        "rune": "Invoquer la rune"
+      },
+      "apply": {
+        "etched": {
+          "rune": "Graver la rune"
+        },
+        "traced": {
+          "rune": "Tracer la rune {distance}",
+          "ft": "{distance} pieds."
+        },
+        "onto": "sur"
+      },
+      "target": {
+        "an-object": "un objet"
+      }
+    },
+    "dialog": {
+      "invoke": {
+        "title": "Invoquer la rune",
+        "failed-or-willing": "La cible est consentante ou a obtenu un échec sur le test ?",
+        "applied-to": "Appliqué à {target}"
+      },
+      "dispel": {
+        "title": "Dissipation de la rune"
+      },
+      "etch-trace": {
+        "title": "Liste de runes"
+      },
+      "empty-rune-slot-filler-name": "Vide",
+      "target-menu": {
+        "title": "Choisir les cibles de la rune",
+        "sections": {
+          "type": "Type de cible",
+          "object-name": "Nom de l'objet",
+          "select-tokens": "Choisir le(s) jeton(s)",
+          "person-rune-location": "Emplacement de la rune"
+        },
+        "buttons": {
+          "object": "Objet non tenu",
+          "person": "Personne",
+          "worn-item": "Objet porté/tenu",
+          "item-name": "Nom de l'objet"
+        },
+        "misc": {
+          "x-tokens-selected": "{tokenCount} jetons choisis"
+        },
+        "placeholder": {
+          "item-name": "Saisissez le nom de l'objet"
+        }
+      }
+    },
+    "effect": {
+      "types": {
+        "traced": "Tracé",
+        "etched": "Gravé",
+        "invoked": "Invoqué"
+      },
+      "names": {
+        "on-person": "[{etchOrTrace}] {name}",
+        "on-object": "[{etchOrTrace}] {name} sur {object}"
+      }
+    },
+    "traits": {
+      "rune": "Rune",
+      "diacritic": "Diacritique",
+      "Runesmith": "Forgerune",
+      "Description": {
+        "diacritic": "Un signe diacritique est un type particulier de rune qui ne s'applique pas directement à une créature ou un objet, mais plutôt à une autre, modifiant ou renforçant cette rune de base. Un signe diacritique ne peut jamais être appliqué seul et tout effet qui supprimerait ou invoquerait la rune de base supprime ou invoque également le signe diacritique. Une rune ne peut avoir qu'un seul signe diacritique.",
+        "rune": "Un forgerune ne lance pas de sorts, mais peut appliquer divers effets magiques grâce aux runes. Les runes peuvent être <strong>gravées</strong> ou <strong>tracées</strong>. Les runes <em>gravées</em> sont appliquées en mode exploration et durent indéfiniment alors que les runes <em>tracées</em> ne durent que jusqu'à la fin de votre prochain tour. Quoi qu'il en soit, leurs effets sont identiques. Plusieurs capacités font référence aux créatures portant l'une de vos runes sous le nom de porteurs de runes : il s'agit de toute créature sur laquelle une de vos runes est apposée sur son corps ou sur un objet qu'elle tient."
+      }
+    }
+  }
+}
