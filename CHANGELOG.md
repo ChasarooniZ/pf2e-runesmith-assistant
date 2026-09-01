@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.4.2
+
+- Added fr3ench translation (🌐 @rectulo)
+
 ## 1.4.1
 
 - **Updated**
