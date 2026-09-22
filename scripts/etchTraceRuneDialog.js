@@ -1,3 +1,4 @@
+import { CONTROLS } from "./const.js";
 import { pickRuneDialog } from "./invokeRuneDialog.js";
 import { runeAppliedMessage } from "./messageHelpers.js";
 import {
@@ -65,7 +66,7 @@ export async function runeEtchTraceDialog(options = {}) {
     )
   ).sort((a, b) => a.name.localeCompare(b.name));
 
-  let res = await pickDialog({ runes: runeData, actor, token, options });
+  await pickDialog({ runes: runeData, actor, token, options });
 }
 
 async function pickDialog({ runes, actor, token, options }) {
@@ -142,13 +143,7 @@ async function pickDialog({ runes, actor, token, options }) {
       window: {
         title: localize("dialog.etch-trace.title"),
         controls: [
-          {
-            action: "kofi",
-            label: "Support Dev",
-            icon: "fa-solid fa-mug-hot fa-beat-fade",
-            onClick: () =>
-              window.open("https://ko-fi.com/chasarooni", "_blank"),
-          },
+          CONTROLS.KOFI
         ],
         classes: ["runepicker"],
         icon: "fas fa-stamp",
@@ -193,7 +188,7 @@ async function addRune(
       title: localize("ui.buttons.diacritic-menu"),
     });
 
-    for (const runeInfo of runesSelected?.selected) {
+    for (const runeInfo of runesSelected?.selected ?? []) {
       const baseRuneNumber = runes[runeInfo.type].findIndex(
         (r) => r.id === runeInfo.id,
       );
@@ -216,12 +211,12 @@ async function addRune(
             },
           },
         );
-        await applyRuneHelper(
+        await applyRuneHelper({
           actor,
           type,
           token,
           rune,
-          foundry.utils.mergeObject(
+          target: foundry.utils.mergeObject(
             foundry.utils.deepClone(baseRuneInfo.target),
             {
               location: "item",
@@ -232,7 +227,7 @@ async function addRune(
           action,
           id,
           runes,
-        );
+        });
       }
     }
   } else {
@@ -242,7 +237,7 @@ async function addRune(
     });
     if (!targets?.length || targets === "cancel" || !rune) return;
     for (const target of targets) {
-      await applyRuneHelper(
+      await applyRuneHelper({
         actor,
         type,
         token,
@@ -250,13 +245,13 @@ async function addRune(
         target,
         free,
         action,
-        foundry.utils.randomID(),
+        id: foundry.utils.randomID(),
         runes,
-      );
+      });
     }
   }
 }
-async function applyRuneHelper(
+async function applyRuneHelper({
   actor,
   type,
   token,
@@ -266,7 +261,7 @@ async function applyRuneHelper(
   action,
   id,
   runes,
-) {
+}) {
   if (type === "etched") {
     const maxEtchedRunes = getMaxEtchedRunes(token.actor);
     if (runes.etched.filter((r) => !r.free).length >= maxEtchedRunes) {

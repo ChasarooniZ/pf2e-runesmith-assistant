@@ -37,8 +37,22 @@ export const MSG_ITEMS = {
 
 export const REGEX = {
   DAMAGE_ROLL: {
-    TI_RUNE: /(@Damage\[[^\[]+\[)(acid|cold|electricity|fire)([A-z, ]*]])/gm,
+    TI_RUNE: /(@Damage\[[^[]+\[)(acid|cold|electricity|fire)([A-z, ]*]])/gm,
     ALL_TYPES:
-      /(@Damage\[[^\[]+\[)(bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|vitality|void|mental|bleed|poison|spirit|precision)([A-z, ]*]])/gm,
+      /(@Damage\[[^[]+\[)(bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|vitality|void|mental|bleed|poison|spirit|precision)([A-z, ]*]])/gm,
+  },
+};
+
+export const CONTROLS = {
+  KOFI: {
+    action: "kofi",
+    label: "Support Dev",
+    icon: "fa-solid fa-mug-hot fa-beat-fade",
+    onClick: () =>
+      window.open(
+        "https://ko-fi.com/chasarooni",
+        "_blank",
+        "noopener,resizable,scrollbars",
+      ),
   },
 };

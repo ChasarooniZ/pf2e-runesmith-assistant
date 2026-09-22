@@ -37,7 +37,8 @@
         "etch-trace-menu": "Etch or Trace Menu",
         "etch-menu": "Etch Menu",
         "diacritic-menu": "Diacritic Menu"
-      }
+      },
+      "names-item": "{name}'s {item}"
     },
     "message": {
       "invoke": {
@@ -51,8 +52,8 @@
           "rune": "Trace Rune{distance}",
           "ft": "{distance} ft."
         },
-        "onto": "onto",
-        "'s": "'s"
+        "onto-token": "onto {tokenName}",
+        "onto-tokens-item": "onto {tokenName}'s {item}"
       },
       "target": {
         "an-object": "an Object"
@@ -113,5 +114,8 @@
         "rune": "A runesmith doesn't cast spells, but they can apply various magical effects through runes. Runes can be applied via <strong>etching</strong> or <strong>tracing</strong>. Etched runes are applied in exploration mode and last indefinitely, while traced runes last only until the end of your next turn. Their effects, however, are the same. Several abilities refer to creatures bearing one of your runes, known as rune-bearers—this is any creature who has one of your runes applied to its body or to any gear it is holding."
       }
     }
+  },
+  "code": {
+    "invocation": ""
   }
 }

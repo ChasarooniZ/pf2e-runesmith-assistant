@@ -158,8 +158,10 @@ export async function handleSpecificRunes({
   }
 
   switch (convertItemUUIDFromSF2eToPF2e(diacritic?.sourceId)) {
-    case RUNES["ti-diacritic-rune-of-fundaments"]:
-      // Rune Dialog here to ask damage type
+    case RUNES[
+      "ti-diacritic-rune-of-fundaments"
+    ]: // Rune Dialog here to ask damage type
+    {
       const type = await foundry.applications.api.DialogV2.input({
         window: {
           title: "PF2E.Item.Condition.PersistentDamage.Dialog.DamageType",
@@ -186,7 +188,8 @@ export async function handleSpecificRunes({
           ),
         },
       };
-    case RUNES["eck-diacritic-rune-of-phantasma"]:
+    }
+    case RUNES["eck-diacritic-rune-of-phantasma"]: {
       const dice = tokenSource?.actor?.level >= 17 ? 2 : 1;
 
       const DamageRoll = CONFIG.Dice.rolls.find((r) => r.name === "DamageRoll");
@@ -223,6 +226,7 @@ export async function handleSpecificRunes({
           ),
         },
       };
+    }
   }
 }
 

@@ -4,7 +4,7 @@ import { getAllowedTokenName } from "./targetDialog.js";
 
 /**
  * Creates a rune Apply Message
- * @param {Object} param Config data
+ * @param {object} param Config data
  * @param {Actor} param.actor Actor
  * @param {Token} param.token Token
  * @param {Item} param.rune Rune Item
@@ -28,7 +28,7 @@ export async function runeAppliedMessage({
     author: game.user.id,
     content: applyMessageHelper({ rune, target, type }),
     speaker: ChatMessage.getSpeaker({
-      actor: actor,
+      actor,
       token: token?.document ?? token,
     }),
     flavor: await getMessageFlavor({
@@ -58,7 +58,7 @@ export async function runeAppliedMessage({
 }
 
 function applyMessageHelper({ rune, target, type }) {
-  //const action = type === "etched" ? "Etched" : "Traced";
+  // const action = type === "etched" ? "Etched" : "Traced";
   let targetText = "";
 
   if (target.type === "object") {
@@ -68,15 +68,14 @@ function applyMessageHelper({ rune, target, type }) {
   } else if (target.type === "person") {
     const tokenName = getAllowedTokenName(canvas.tokens.get(target?.token));
     if (target?.location === "actor") {
-      targetText = ` ${localize(
-        "message.apply.onto",
-      )} <b><u>${tokenName}</u></b>`;
+      targetText = localize("message.apply.onto-token", {
+        tokenName: `<b><u>${tokenName}</u></b>`,
+      });
     } else if (target?.location === "item") {
-      targetText = ` ${localize(
-        "message.apply.onto",
-      )} <u><b>${tokenName}</b>${localize("message.apply.'s")} <b>${
-        target.item
-      }</b></u>`;
+      targetText = localize("message.apply.onto-tokens-item", {
+        tokenName: `<b><u>${tokenName}</u></b>`,
+        item: `<b><u>${target.item}<b><u>`,
+      });
     }
   }
 
@@ -138,11 +137,11 @@ export async function runeInvokedMessage({
       target,
     )}</i><hr><fieldset>${enrichedDescription}</fieldset>`,
     speaker: ChatMessage.getSpeaker({
-      actor: actor,
+      actor,
       token: token?.document ?? token,
     }),
     flavor: await getMessageFlavor({
-      traits: traits,
+      traits,
       name: localize("message.invoke.rune"),
       glyph: "1",
     }),
@@ -203,7 +202,7 @@ function handleToolbelt({
           statistic: dcInfo.statistic,
         },
       },
-      targets: targets,
+      targets,
     },
   };
 }
@@ -211,7 +210,7 @@ function handleToolbelt({
 export function getDCInfo(description) {
   const DC_REGEXES = [
     /(data-pf2-dc=")(\d+)(")/g,
-    /(@Check\[.*?type:.*?|dc:)(\d+)(.*?])/g,
+    /(@Check\[.*?type:.*?|dc:)(\d+)(.*?\])/g,
   ];
 
   // Look for data-pf2-check attribute to get the statistic
@@ -242,8 +241,8 @@ export function getDCInfo(description) {
   if (dcValue !== null) {
     return {
       dc: dcValue,
-      statistic: statistic,
-      isBasic: isBasic,
+      statistic,
+      isBasic,
     };
   }
 
@@ -259,9 +258,9 @@ async function getMessageFlavor({
   return await foundry.applications.handlebars.renderTemplate(
     "systems/pf2e/templates/actors/actions/simple/chat-message-flavor.hbs",
     {
-      effect: effect,
-      glyph: glyph,
-      name: name,
+      effect,
+      glyph,
+      name,
       traits: traits.map((trait) =>
         ["diacritic", "rune"].includes(trait)
           ? {
@@ -288,7 +287,11 @@ export function targetDescription(target) {
     const token = getToken(target.token, target.actor);
     const name = token?.name ?? target.personName;
     const item = target?.item;
-    return `${name ?? ""}${item ? "'s " : ""}${item || ""}`;
+    if (name && item) {
+      return localize("ui.names-item", { name, item });
+    } else {
+      return `${name ?? ""}${item || ""}`;
+    }
   }
 }
 

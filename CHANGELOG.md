@@ -1,8 +1,12 @@
 ## Unreleased
 
+- **Updated**
+  - Improved localization of some weird localization choices made when this module was a house game module
+  - Fixed up some bad coding in the original character sheet hook
+
 ## 1.4.2
 
-- Added fr3ench translation (🌐 @rectulo)
+- Added french translation (🌐 @rectulo)
 
 ## 1.4.1
 

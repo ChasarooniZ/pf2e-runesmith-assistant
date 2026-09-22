@@ -1,4 +1,4 @@
-import { EMPTY_RUNE_ART } from "./const.js";
+import { CONTROLS, EMPTY_RUNE_ART } from "./const.js";
 import { handleSpecificRunes } from "./handleSpecificRunes.js";
 import { runeInvokedMessage, targetDescription } from "./messageHelpers.js";
 import {
@@ -123,8 +123,8 @@ export async function pickRuneDialog({
     }
 
     // Render empty slots
-    for (let _ of emptySlots) {
-      html += `<span class="rune-icon temp" data-tooltip="${localize(
+    if (emptySlots.length > 0) {
+      const empty = `<span class="rune-icon temp" data-tooltip="${localize(
         "ui.tooltip.empty-rune-slot",
       )}" data-tooltip-direction="UP">
           <img src="${EMPTY_RUNE_ART}">
@@ -132,6 +132,7 @@ export async function pickRuneDialog({
             "dialog.empty-rune-slot-filler-name",
           )}</span>
         </span>`;
+      html += `${empty.repeat(emptySlots.length)}`;
     }
 
     // Render free runes at the end
@@ -238,13 +239,7 @@ export async function pickRuneDialog({
       window: {
         title,
         controls: [
-          {
-            action: "kofi",
-            label: "Support Dev",
-            icon: "fa-solid fa-mug-hot fa-beat-fade",
-            onClick: () =>
-              window.open("https://ko-fi.com/chasarooni", "_blank"),
-          },
+          CONTROLS.KOFI
         ],
         icon: "far fa-chart-network",
       },
@@ -364,7 +359,7 @@ export async function invokeRune({ token, act, runeID, type }) {
   //console.log({ flag, token: tok, runeID, type });
   const flagData = flag?.[type]?.find((r) => r.id === runeID);
   const target = flagData.target;
-  const diacriticData = await getDiacriticRuneData(flagData?.diacritic, flag);
+  const diacriticData = getDiacriticRuneData(flagData?.diacritic, flag);
   //console.log({ flagData });
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(

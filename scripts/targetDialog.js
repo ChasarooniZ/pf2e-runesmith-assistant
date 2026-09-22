@@ -1,9 +1,11 @@
+import { CONTROLS } from "./const";
+
 /**
  *
  * @param  options
- * @returns { { type: string, item: string || null, token: string || null, actor: string || null, location:  string || null, personName: string || null, img: string || null, objectName: string || null }[] }
+ * @returns { Promise<{ type: string, item: string || null, token: string || null, actor: string || null, location:  string || null, personName: string || null, img: string || null, objectName: string || null }[] || 'cancel'>}
  */
-export function showDynamicTargetForm(options) {
+export async function showDynamicTargetForm(options) {
   const form = new RuneTargetForm(options);
   form.render(true);
   return form.wait();
@@ -62,14 +64,7 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
       icon: "fas fa-bullseye-pointer",
       title: "pf2e-runesmith-assistant.dialog.target-menu.title",
       contentClasses: ["standard-form", "flexcol"],
-      controls: [
-        {
-          action: "kofi",
-          label: "Support Dev",
-          icon: "fa-solid fa-mug-hot fa-beat-fade",
-          onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
-        },
-      ],
+      controls: [CONTROLS.KOFI],
     },
     tabs: [
       { navSelector: ".tabs", contentSelector: ".content", initial: "tab1" },

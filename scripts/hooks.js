@@ -1,4 +1,4 @@
-import { EMPTY_RUNE_ART, MSG_ITEMS } from "./const.js";
+import { CONTROLS, EMPTY_RUNE_ART, MSG_ITEMS } from "./const.js";
 import { chainOfWords } from "./handleSpecificActions.js";
 import {
   dispelRune,
@@ -36,16 +36,12 @@ export function setupHooks() {
     }
   });
 
-  Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, character) => {
+  Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
     const actor = _sheet.actor;
     if (
-      character.owner &&
+      actor.owner &&
       (isRunesmith(actor) || hasFeat(actor, "runesmith-dedication"))
     ) {
-      //console.log({ _sheet, html, character });
-
-      const actor = _sheet.actor;
-
       const runes = actor.getFlag(MODULE_ID, "runes");
       const etched = runes?.etched ?? [];
       const traced = runes?.traced ?? [];
@@ -211,15 +207,7 @@ export function setupHooks() {
           foundry.applications.api.DialogV2.wait({
             window: {
               title: localize("dialog.invoke.title"),
-              controls: [
-                {
-                  action: "kofi",
-                  label: "Support Dev",
-                  icon: "fa-solid fa-mug-hot fa-beat-fade",
-                  onClick: () =>
-                    window.open("https://ko-fi.com/chasarooni", "_blank"),
-                },
-              ],
+              controls: [CONTROLS.KOFI],
               icon: "far fa-chart-network",
             },
             position: {
@@ -271,15 +259,7 @@ export function setupHooks() {
           foundry.applications.api.DialogV2.wait({
             window: {
               title: localize("dialog.dispel.title"),
-              controls: [
-                {
-                  action: "kofi",
-                  label: "Support Dev",
-                  icon: "fa-solid fa-mug-hot fa-beat-fade",
-                  onClick: () =>
-                    window.open("https://ko-fi.com/chasarooni", "_blank"),
-                },
-              ],
+              controls: [CONTROLS.KOFI],
               icon: "fa-solid fa-trash",
             },
             position: {
@@ -318,7 +298,9 @@ export function setupHooks() {
           if (target.type === "person" && target.token) {
             const token =
               canvas.tokens.get(target.token) ||
-              canvas.tokens.placeables.find((t) => t?.actor?.id === target?.actor);
+              canvas.tokens.placeables.find(
+                (t) => t?.actor?.id === target?.actor,
+              );
             if (token) {
               token._onHoverIn(event); // highlight token
             }
@@ -333,7 +315,9 @@ export function setupHooks() {
           if (target.type === "person" && target.token) {
             const token =
               canvas.tokens.get(target.token) ||
-              canvas.tokens.placeables.find((t) => t?.actor?.id === target?.actor);
+              canvas.tokens.placeables.find(
+                (t) => t?.actor?.id === target?.actor,
+              );
             if (token) {
               token._onHoverOut(event); // remove highlight
             }
