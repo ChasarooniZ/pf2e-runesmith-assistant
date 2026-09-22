@@ -3,6 +3,8 @@
 - **Updated**
   - Improved localization of some weird localization choices made when this module was a house game module
   - Fixed up some bad coding in the original character sheet hook
+  - Fixed data entry issue with Feikris rune effect description (🐛 @heckogeck0)
+  - Fixed data entry issue with Remote Detonation & Elemental Revision effects (🐛 @Cuingamehtar)
 
 ## 1.4.2
 

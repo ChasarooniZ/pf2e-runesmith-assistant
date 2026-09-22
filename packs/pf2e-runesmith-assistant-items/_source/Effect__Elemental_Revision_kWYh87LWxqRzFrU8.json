@@ -5,7 +5,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-class-feats.Item.QW43JtWz3pVZMsKj]{Elemental Revision}</p><p>You select a weapon's <em>corrosive</em>, <em>flaming</em>, <em>frost</em>, <em>shock</em>, or <em>thundering</em> rune and you change it into any other rune from that list. If the origin is 15th level or higher, the greater version of the runes are included in the list.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e.feats-srd.Item.7NQM5dJfOJ7J7pVA]{Elemental Revision}</p><p>You select a weapon's <em>corrosive</em>, <em>flaming</em>, <em>frost</em>, <em>shock</em>, or <em>thundering</em> rune and you change it into any other rune from that list. If the origin is 15th level or higher, the greater version of the runes are included in the list.</p>"
 		},
 		"rules": [
 			{

@@ -5,7 +5,7 @@
 	"system": {
 		"description": {
 			"gm": "",
-			"value": "<p>Granted by @UUID[Compendium.pf2e-playtest-data.impossible-playtest-class-feats.Item.EArC1mxaneUs1Pzr]{Remote Detonation}</p><p>You take a –1 circumstance penalty on saving throws against runes.</p>"
+			"value": "<p>Granted by @UUID[Compendium.pf2e.feats-srd.Item.JFb1euLOlFX2IBbp]{Remote Detonation}</p><p>You take a –1 circumstance penalty on saving throws against runes.</p>"
 		},
 		"rules": [
 			{
