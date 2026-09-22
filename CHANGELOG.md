@@ -1,5 +1,7 @@
 ## Unreleased
 
+- **New**
+  - QoL Feature, automatically will add party member tokens on the scene to the target options (💡 @Supe)
 - **Updated**
   - Improved localization of some weird localization choices made when this module was a house game module
   - Fixed up some bad coding in the original character sheet hook
