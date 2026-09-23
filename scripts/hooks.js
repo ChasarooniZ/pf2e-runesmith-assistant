@@ -39,7 +39,7 @@ export function setupHooks() {
   Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
     const actor = _sheet.actor;
     if (
-      actor.owner &&
+      actor.isOwner &&
       (isRunesmith(actor) || hasFeat(actor, "runesmith-dedication"))
     ) {
       const runes = actor.getFlag(MODULE_ID, "runes");
