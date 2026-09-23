@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 1.4.3
+
 - **New**
   - QoL Feature, automatically will add party member tokens on the scene to the target options (💡 @Supe)
 - **Updated**
