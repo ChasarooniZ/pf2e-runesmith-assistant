@@ -1,4 +1,4 @@
-import { CONTROLS } from "./const";
+import { CONTROLS } from "./const.js";
 
 /**
  *

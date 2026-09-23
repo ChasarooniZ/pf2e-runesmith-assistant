@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.4.4
+
+- Fixed issue with `1.4.3` release
+
 ## 1.4.3
 
 - **New**
