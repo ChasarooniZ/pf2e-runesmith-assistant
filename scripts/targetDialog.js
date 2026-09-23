@@ -193,28 +193,28 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
       this._formData = {
         type: "person", // Default to person
         objectName: "",
-        tokens: [
-          Array.from(
-            new Set(
-              [
-                game?.user?.character?.getActiveTokens().flat(),
-                game?.user?.character
-                  ? game.actors.party.members
-                      .map((actor) => actor.getActiveTokens())
-                      .flat()
-                  : [],
-                game.canvas.tokens.controlled,
-                game.user.targets.toObject(),
-              ].flat(),
-            ),
+        tokens: Array.from(
+          new Set(
+            [
+              game?.user?.character?.getActiveTokens().flat(),
+              game?.user?.character
+                ? game.actors.party.members
+                    .map((actor) => actor.getActiveTokens())
+                    .flat()
+                : [],
+              game.canvas.tokens.controlled,
+              game.user.targets.toObject(),
+            ].flat(),
           ),
-        ].map((token) => ({
-          id: token.id,
-          name: getAllowedTokenName(token),
-          img: getTokenImage(token),
-          token: token,
-          selected: targets.some((t) => t.id === token.id),
-        })),
+        )
+          .filter((t) => !!t)
+          .map((token) => ({
+            id: token.id,
+            name: getAllowedTokenName(token),
+            img: getTokenImage(token),
+            token: token,
+            selected: targets.some((t) => t.id === token.id),
+          })),
         selectedCount: targets.length,
         location: "actor",
         itemName: "",

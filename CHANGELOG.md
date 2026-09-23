@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.4.6
+
+- Fixed issue with the etch menu caused by `1.4.3`
+
 ## 1.4.5
 
 - Fixed actor permission check
