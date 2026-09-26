@@ -37,9 +37,10 @@ export const MSG_ITEMS = {
 
 export const REGEX = {
   DAMAGE_ROLL: {
-    TI_RUNE: /(@Damage\[[^[]+\[)(acid|cold|electricity|fire)([A-z, ]*]])/gm,
+    TI_RUNE:
+      /(@Damage\[[^[]+\[[A-z, ]*)(acid|cold|electricity|fire)([A-z, ]*]])/gm,
     ALL_TYPES:
-      /(@Damage\[[^[]+\[)(bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|vitality|void|mental|bleed|poison|spirit|precision)([A-z, ]*]])/gm,
+      /(@Damage\[[^[]+\[[A-z, ]*)(bludgeoning|piercing|slashing|acid|cold|electricity|fire|sonic|vitality|void|mental|bleed|poison|spirit|precision)([A-z, ]*]])/gm,
   },
 };
 

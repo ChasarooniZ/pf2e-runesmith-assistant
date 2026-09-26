@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 1.4.7
+
+- **Updated**
+  - Modified rune effects to better work with versatile damage types (💡 @heckogeck0)
+  - Updated regex that replaces damage types from specific rune implementations to also work for persistent damage (🐛 @twales3)
+
 ## 1.4.6
 
 - Fixed issue with the etch menu caused by `1.4.3`

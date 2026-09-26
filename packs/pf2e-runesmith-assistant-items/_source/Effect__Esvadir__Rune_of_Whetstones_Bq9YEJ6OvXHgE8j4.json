@@ -16,7 +16,9 @@
 						{
 							"or": [
 								"item:damage:type:piercing",
-								"item:damage:type:slashing"
+								"item:damage:type:slashing",
+								"item:trait:versatile-s",
+								"item:trait:versatile-p"
 							]
 						}
 					]
@@ -27,9 +29,19 @@
 			},
 			{
 				"key": "FlatModifier",
-				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
+				"selector": [
+					"{item|flags.system.rulesSelections.weapon}-damage"
+				],
 				"value": "2*@weapon.system.damage.dice",
-				"damageType": "bleed"
+				"damageType": "bleed",
+				"predicate": [
+					{
+						"or": [
+							"item:damage:type:slashing",
+							"item:damage:type:piercing"
+						]
+					}
+				]
 			}
 		],
 		"slug": "effect-esvadir-rune-of-whetstones",
@@ -81,11 +93,11 @@
 	},
 	"flags": {},
 	"_stats": {
-		"coreVersion": "14.365",
+		"coreVersion": "14.368",
 		"systemId": "pf2e",
-		"systemVersion": "8.4.0",
+		"systemVersion": "8.5.1",
 		"createdTime": 1785527318890,
-		"modifiedTime": 1785569428421,
+		"modifiedTime": 1790396511719,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

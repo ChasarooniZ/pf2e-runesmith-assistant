@@ -1,14 +1,15 @@
-2026/09/22-02:49:15.648 63d8 Recovering log #266
-2026/09/22-02:49:15.743 63d8 Delete type=0 #266
-2026/09/22-02:49:15.743 63d8 Delete type=3 #264
-2026/09/22-02:49:15.775 8994 Level-0 table #272: started
-2026/09/22-02:49:15.810 8994 Level-0 table #272: 86582 bytes OK
-2026/09/22-02:49:15.885 8994 Delete type=0 #270
-2026/09/22-02:49:15.885 8994 Manual compaction at level-0 from '!folders!7S3XCFEkaWLI4t3S' @ 72057594037927935 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at '!items!ziClnEyuXfHnJPwp' @ 1428 : 1
-2026/09/22-02:49:15.886 8994 Compacting 1@0 + 1@1 files
-2026/09/22-02:49:15.928 8994 Generated table #273@0: 85 keys, 86582 bytes
-2026/09/22-02:49:15.928 8994 Compacted 1@0 + 1@1 files => 86582 bytes
-2026/09/22-02:49:15.985 8994 compacted to: files[ 0 1 0 0 0 0 0 ]
-2026/09/22-02:49:15.985 8994 Delete type=2 #268
-2026/09/22-02:49:15.986 8994 Delete type=2 #272
-2026/09/22-02:49:15.986 8994 Manual compaction at level-0 from '!items!ziClnEyuXfHnJPwp' @ 1428 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at (end)
+2026/09/26-01:00:24.901 6ee0 Recovering log #291
+2026/09/26-01:00:25.439 6ee0 Delete type=0 #291
+2026/09/26-01:00:25.439 6ee0 Delete type=3 #289
+2026/09/26-01:00:25.527 c790 Level-0 table #295: started
+2026/09/26-01:00:25.649 c790 Level-0 table #295: 86674 bytes OK
+2026/09/26-01:00:25.714 c790 Delete type=0 #293
+2026/09/26-01:00:25.714 c790 Manual compaction at level-0 from '!folders!7S3XCFEkaWLI4t3S' @ 72057594037927935 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at '!items!gwPN3jbKrnuCI3eA' @ 1560 : 1
+2026/09/26-01:00:25.714 c790 Compacting 2@0 + 1@1 files
+2026/09/26-01:00:25.750 c790 Generated table #296@0: 85 keys, 86674 bytes
+2026/09/26-01:00:25.750 c790 Compacted 2@0 + 1@1 files => 86674 bytes
+2026/09/26-01:00:25.813 c790 compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/09/26-01:00:25.814 c790 Delete type=2 #278
+2026/09/26-01:00:25.814 c790 Delete type=2 #290
+2026/09/26-01:00:25.815 c790 Delete type=2 #295
+2026/09/26-01:00:25.815 c790 Manual compaction at level-0 from '!items!gwPN3jbKrnuCI3eA' @ 1560 : 1 .. '!items!ziClnEyuXfHnJPwp' @ 0 : 0; will stop at (end)

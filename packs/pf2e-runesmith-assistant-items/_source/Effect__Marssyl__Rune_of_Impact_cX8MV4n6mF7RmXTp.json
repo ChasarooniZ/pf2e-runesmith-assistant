@@ -13,7 +13,12 @@
 				"choices": {
 					"attacks": true,
 					"predicate": [
-						"item:damage:type:bludgeoning"
+						{
+							"or": [
+								"item:damage:type:bludgeoning",
+								"item:trait:versatile-b"
+							]
+						}
 					]
 				},
 				"flag": "weapon",
@@ -22,10 +27,15 @@
 			},
 			{
 				"key": "FlatModifier",
-				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
+				"selector": [
+					"{item|flags.system.rulesSelections.weapon}-damage"
+				],
 				"value": "@weapon.system.damage.dice",
 				"damageType": "bludgeoning",
-				"damageCategory": "splash"
+				"damageCategory": "splash",
+				"predicate": [
+					"item:damage:type:bludgeoning"
+				]
 			},
 			{
 				"key": "RollOption",
@@ -38,15 +48,19 @@
 				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
 				"diceNumber": 1,
 				"predicate": [
-					"rune-of-impact-invocation"
+					"rune-of-impact-invocation",
+					"item:damage:type:bludgeoning"
 				]
 			},
 			{
 				"key": "Note",
-				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
+				"selector": [
+					"{item|flags.system.rulesSelections.weapon}-damage"
+				],
 				"text": "The target must succeed at a @Check[fortitude] save against the runesmith's class DC or be pushed 10 feet in a straight line backwards, or 20 feet on a critical failure.",
 				"predicate": [
-					"rune-of-impact-invocation"
+					"rune-of-impact-invocation",
+					"item:damage:type:bludgeoning"
 				],
 				"title": "{item|name}"
 			}
@@ -100,11 +114,11 @@
 	},
 	"flags": {},
 	"_stats": {
-		"coreVersion": "14.365",
+		"coreVersion": "14.368",
 		"systemId": "pf2e",
-		"systemVersion": "8.4.0",
+		"systemVersion": "8.5.1",
 		"createdTime": 1785527329870,
-		"modifiedTime": 1785559345648,
+		"modifiedTime": 1790396746186,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,

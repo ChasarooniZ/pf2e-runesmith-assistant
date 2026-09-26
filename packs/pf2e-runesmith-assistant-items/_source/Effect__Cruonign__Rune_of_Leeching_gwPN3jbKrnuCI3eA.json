@@ -16,7 +16,9 @@
 						{
 							"or": [
 								"item:damage:type:piercing",
-								"item:damage:type:slashing"
+								"item:damage:type:slashing",
+								"item:trait:versatile-s",
+								"item:trait:versatile-p"
 							]
 						}
 					]
@@ -27,9 +29,19 @@
 			},
 			{
 				"key": "FlatModifier",
-				"selector": "{item|flags.system.rulesSelections.weapon}-damage",
+				"selector": [
+					"{item|flags.system.rulesSelections.weapon}-damage"
+				],
 				"value": "(3 + max(floor((@item.origin.level - 9) / 2), 0))",
-				"damageType": "void"
+				"damageType": "void",
+				"predicate": [
+					{
+						"or": [
+							"item:damage:type:slashing",
+							"item:damage:type:piercing"
+						]
+					}
+				]
 			}
 		],
 		"slug": "effect-cruonign-rune-of-leeching",
@@ -75,11 +87,11 @@
 	"img": "icons/magic/symbols/rune-sigil-black-pink.webp",
 	"flags": {},
 	"_stats": {
-		"coreVersion": "14.365",
+		"coreVersion": "14.368",
 		"systemId": "pf2e",
-		"systemVersion": "8.4.0",
+		"systemVersion": "8.5.1",
 		"createdTime": 1785569330741,
-		"modifiedTime": 1785569500216,
+		"modifiedTime": 1790396447795,
 		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
 		"compendiumSource": null,
 		"duplicateSource": null,
