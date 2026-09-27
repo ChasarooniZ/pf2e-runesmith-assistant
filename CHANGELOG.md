@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 1.4.10
+
+- Actually fixed the issue `1.4.9` attempted to patch with _Diacritics_ specifically an unawaited promise
+
 ## 1.4.9
 
 - Added quick patch to fix possible errors when invoking

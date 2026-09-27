@@ -357,7 +357,7 @@ export async function invokeRune({ token, act, runeID, type }) {
   //console.log({ flag, token: tok, runeID, type });
   const flagData = flag?.[type]?.find((r) => r.id === runeID);
   const target = flagData.target;
-  const diacriticData = getDiacriticRuneData(flagData?.diacritic, flag);
+  const diacriticData = await getDiacriticRuneData(flagData?.diacritic, flag);
   //console.log({ flagData });
   const rune = await fromUuid(flagData.rune.uuid);
   const invocation = getInvocation(
@@ -437,7 +437,7 @@ const INVOCATION_TRAITS_REGEX = /<strong>Invocation<\/strong>\s*\(([^)]*)\)/;
  *
  * @param {*} diacriticFlag
  * @param {*} flag
- * @return {{flagData: any, type: string, id: string, rune: Item} | null}
+ * @return {Promise<{flagData: any, type: string, id: string, rune: Item} | null>}
  */
 async function getDiacriticRuneData(diacriticFlag, flag) {
   if (diacriticFlag) {
