@@ -2,7 +2,7 @@
 
 ## 1.4.9
 
-- AAdded quick patch to fix possible errors when invoking 
+- Added quick patch to fix possible errors when invoking
 
 ## 1.4.8
 
