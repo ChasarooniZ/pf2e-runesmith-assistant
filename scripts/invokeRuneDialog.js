@@ -238,9 +238,7 @@ export async function pickRuneDialog({
     foundry.applications.api.DialogV2.wait({
       window: {
         title,
-        controls: [
-          CONTROLS.KOFI
-        ],
+        controls: [CONTROLS.KOFI],
         icon: "far fa-chart-network",
       },
       content,
@@ -461,7 +459,7 @@ async function getDiacriticRuneData(diacriticFlag, flag) {
 }
 
 function getDiacriticDescription(rune) {
-  return `<hr><hr>${rune.link}<hr>${rune.description}`;
+  return `<hr><hr>${rune?.link}<hr>${rune?.description}`;
 }
 
 function getDiacriticCombinedRuneLink(link, combinedName) {
