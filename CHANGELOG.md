@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 1.4.8
+
+- **Updated**
+  - Loosened restrictions on showing party members by default
+  - Loosened restrictions on name being visible if the token belongs to the party
+
 ## 1.4.7
 
 - **Updated**

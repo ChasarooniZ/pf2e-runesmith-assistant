@@ -30,7 +30,8 @@ export function getAllowedTokenName(token) {
     [
       CONST.TOKEN_DISPLAY_MODES.ALWAYS,
       CONST.TOKEN_DISPLAY_MODES.HOVER,
-    ].includes(displayMode);
+    ].includes(displayMode) ||
+    game.actors.party.members.some((a) => a.id === token?.actor?.id);
   return nameVisible ? token.name : "Unidentified Creature";
 }
 
@@ -197,7 +198,12 @@ export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicati
           new Set(
             [
               game?.user?.character?.getActiveTokens().flat(),
-              game?.user?.character
+              game.actors.party.members.some((a) =>
+                [
+                  game?.user?.character?.id,
+                  game.canvas.tokens.controlled?.[0]?.actor?.id,
+                ]?.includes(a?.id),
+              )
                 ? game.actors.party.members
                     .map((actor) => actor.getActiveTokens())
                     .flat()
