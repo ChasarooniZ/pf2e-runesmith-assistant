@@ -223,5 +223,20 @@ section.runesmith.traits {
     color: var(--text-light);
     font: 500 var(--font-size-10) var(--sans-serif);
     text-transform: uppercase;
+    &.arcane {
+      background-color: #00495b;
+    }
+    &.divine {
+      background-color: #595900;
+    }
+    &.occult {
+      background-color: #2e0059;
+    }
+    &.primal {
+      background-color: #005917;
+    }
+    &.magical {
+      background-color: #530056;
+    }
   }
 }

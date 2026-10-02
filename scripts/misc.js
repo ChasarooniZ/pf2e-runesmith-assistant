@@ -1,7 +1,20 @@
 import { MODULE_ID } from "./module.js";
 
+let regex = "";
+
+function getRegex() {
+  const spellText = localize("code.spell");
+  const effectText = localize("code.effect");
+  return new RegExp(
+    String.raw`@UUID\[([^\]]+)\](?=\{(?:${spellText} )?${effectText}: )`,
+    "g",
+  );
+}
+
 export function getEffectsStrings(description) {
-  const regex = /@UUID\[([^\]]+)\](?=\{(?:Spell )?Effect: )/g;
+  if (!regex) {
+    regex = getRegex();
+  }
   return description.match(regex)?.map((str) => str?.slice(6, -1)) ?? [];
 }
 
@@ -137,17 +150,18 @@ export function getDiacriticCombinedName(diacriticName, baseRuneName) {
 }
 
 export function getTraitsHTML(traits) {
-  const traitNames = traits
+  const traitMap = traits
     .filter((trait) => trait !== "runesmith" && trait !== "rune")
-    .map((trait) =>
-      game.i18n.localize(
+    .map((trait) => ({
+      trait,
+      name: game.i18n.localize(
         ["diacritic", "rune"].includes(trait)
           ? `pf2e-runesmith-assistant.traits.${trait}`
           : (CONFIG.PF2E.actionTraits[trait] ?? trait),
       ),
-    );
+    }));
   return `<section class='runesmith traits'>
-    <p>${traitNames.join("</p><p>")}</p>
+    ${traitMap.map(({ trait, name }) => `<p class='${trait}'>${name}</p>`).join("")}
 </section>`;
 }
 

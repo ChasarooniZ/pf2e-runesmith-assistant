@@ -1,5 +1,16 @@
 ## Unreleased
 
+## 1.5.0
+
+- **New**
+  - Added support for setting magical traditions on runes with the magical trait
+  - Added support for localized effect adding (IE it splits on localized invocation text)
+- **Updated**
+  - Sorted Magical traditions to the front of the rune listing
+  - Added coloring for Magical traditions traits in the rune menu
+  - Fixed localization of etching rune in some cases
+  - Fixed spacing on etch message
+
 ## 1.4.10
 
 - Actually fixed the issue `1.4.9` attempted to patch with _Diacritics_ specifically an unawaited promise

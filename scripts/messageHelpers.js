@@ -62,9 +62,9 @@ function applyMessageHelper({ rune, target, type }) {
   let targetText = "";
 
   if (target.type === "object") {
-    targetText = ` ${localize("message.apply.onto")} <b><u>${
-      target.object
-    }</u></b>`;
+    targetText = localize("message.apply.onto-token", {
+      tokenName: `<b><u>${target.object}</u></b>`,
+    });
   } else if (target.type === "person") {
     const tokenName = getAllowedTokenName(canvas.tokens.get(target?.token));
     if (target?.location === "actor") {
@@ -79,7 +79,7 @@ function applyMessageHelper({ rune, target, type }) {
     }
   }
 
-  return `${rune.link}${targetText}`;
+  return `${rune.link} ${targetText}`;
 }
 
 export async function runeInvokedMessage({

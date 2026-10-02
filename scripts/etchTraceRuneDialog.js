@@ -13,6 +13,10 @@ import {
 } from "./misc.js";
 import { MODULE_ID } from "./module.js";
 import { showDynamicTargetForm } from "./targetDialog.js";
+import {
+  askTraditionChange,
+  MAGICAL_TRADITIONS,
+} from "./traditionSelectionDialog.js";
 
 export async function runeEtchTraceDialog(options = {}) {
   const token = options?.token ?? getYourToken();
@@ -51,9 +55,20 @@ export async function runeEtchTraceDialog(options = {}) {
           img: r.img,
           link: r.link,
           slug: r.slug,
-          traits: r.system.traits.value,
+          traits: r.system.traits.value.toSorted((a, b) => {
+            if (MAGICAL_TRADITIONS.has(a)) {
+              return -1;
+            } else if (MAGICAL_TRADITIONS.has(b)) {
+              return 1;
+            }
+            return 0;
+          }),
           effects: getEffectsStrings(
-            r.description?.split("<strong>Invocation")?.[0] ?? r.description,
+            r.description?.split(
+              game.i18n.localize("pf2e-runesmith-assistant.code.invocation"),
+            )?.[0] ??
+              r.description?.split("<strong>Invocation")?.[0] ??
+              r.description,
           ),
           enriched_desc: (
             await foundry.applications.ux.TextEditor.implementation.enrichHTML(
@@ -142,9 +157,7 @@ async function pickDialog({ runes, actor, token, options }) {
     foundry.applications.api.DialogV2.wait({
       window: {
         title: localize("dialog.etch-trace.title"),
-        controls: [
-          CONTROLS.KOFI
-        ],
+        controls: [CONTROLS.KOFI],
         classes: ["runepicker"],
         icon: "fas fa-stamp",
       },
@@ -179,6 +192,14 @@ async function addRune(
   rune,
   { actor, token, type = "etched", action = 0, free },
 ) {
+  const magicalIndex = rune?.traits.indexOf("magical");
+  if (!Number.isNaN(Number(magicalIndex))) {
+    const tradition = await askTraditionChange(actor, rune);
+    if (tradition !== "magical") {
+      rune.traits[magicalIndex] = tradition;
+    }
+  }
+
   let runes = actor.getFlag(MODULE_ID, "runes");
   if (rune.traits.includes("diacritic")) {
     rune.diacritic = true;

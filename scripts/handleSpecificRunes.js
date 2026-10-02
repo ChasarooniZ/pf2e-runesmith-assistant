@@ -158,10 +158,7 @@ export async function handleSpecificRunes({
   }
 
   switch (convertItemUUIDFromSF2eToPF2e(diacritic?.sourceId)) {
-    case RUNES[
-      "ti-diacritic-rune-of-fundaments"
-    ]: // Rune Dialog here to ask damage type
-    {
+    case RUNES["ti-diacritic-rune-of-fundaments"]: { // Rune Dialog here to ask damage type
       const type = await foundry.applications.api.DialogV2.input({
         window: {
           title: "PF2E.Item.Condition.PersistentDamage.Dialog.DamageType",
@@ -171,9 +168,9 @@ export async function handleSpecificRunes({
           .enrichHTML(`
           @UUID[${RUNES["ti-diacritic-rune-of-fundaments"]}]
           <label><input type="radio" name="choice" value="acid" checked> ${game.i18n.format("PF2E.TraitAcid")}</label>
-          <label><input type="radio" name="choice" value="cold" checked> ${game.i18n.format("PF2E.TraitCold")}</label>
-          <label><input type="radio" name="choice" value="electricity" checked> ${game.i18n.format("PF2E.TraitElectricity")}</label>
-          <label><input type="radio" name="choice" value="fire" checked> ${game.i18n.format("PF2E.TraitFire")}</label>
+          <label><input type="radio" name="choice" value="cold"> ${game.i18n.format("PF2E.TraitCold")}</label>
+          <label><input type="radio" name="choice" value="electricity"> ${game.i18n.format("PF2E.TraitElectricity")}</label>
+          <label><input type="radio" name="choice" value="fire"> ${game.i18n.format("PF2E.TraitFire")}</label>
             `),
         ok: {
           label: "PF2E.SelectLabel",
