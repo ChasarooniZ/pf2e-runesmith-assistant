@@ -3,8 +3,14 @@ import { MODULE_ID } from "./module.js";
 let regex = "";
 
 function getRegex() {
-  const spellText = localize("code.spell");
-  const effectText = localize("code.effect");
+  const spellText =
+    localize("code.spell") !== "pf2e-runesmith-assistant.code.spell"
+      ? localize("code.spell")
+      : "Spell";
+  const effectText =
+    localize("code.effect") !== "pf2e-runesmith-assistant.code.effect"
+      ? localize("code.effect")
+      : "Effect";
   return new RegExp(
     String.raw`@UUID\[([^\]]+)\](?=\{(?:${spellText} )?${effectText}: )`,
     "g",
