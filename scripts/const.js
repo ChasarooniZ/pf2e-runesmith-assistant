@@ -32,7 +32,12 @@ export const MSG_ITEMS = {
     "Compendium.pf2e-runesmith-assistant.pf2e-runesmith-assistant-items.Item.pK4dYJlztm6U1Izf",
   "Trace Rune": ITEMS.TRACE_RUNE,
   "Invoke Rune": ITEMS.INVOKE_RUNE,
+  "Engraving Strike": "Compendium.pf2e.feats-srd.Item.lTBARjqQZc1duLIX",
+  "Engraving Maneuver": "Compendium.pf2e.feats-srd.Item.eiEmU5Hy4sEYllJh",
+  "Edifying Trace": "Compendium.pf2e.feats-srd.Item.SCIczsxMTcwD5I4e",
+  "Swiping Trace": "Compendium.pf2e.feats-srd.Item.f88lisILiPrOQv2r",
   "Fortifying Knock": "Compendium.pf2e.feats-srd.Item.ybMeVTC8TG3rcgoU",
+  "Pattern Flight": "Compendium.pf2e.feats-srd.Item.KNPNjqMFd73Or8mV",
 };
 
 export const REGEX = {

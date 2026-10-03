@@ -124,7 +124,7 @@ export async function pickRuneDialog({
 
     // Render empty slots
     if (emptySlots.length > 0) {
-      const empty = `<span class="rune-icon temp" data-tooltip="${localize(
+      const empty = `<span class="rune-label temp" data-tooltip="${localize(
         "ui.tooltip.empty-rune-slot",
       )}" data-tooltip-direction="UP">
           <img src="${EMPTY_RUNE_ART}">
@@ -241,9 +241,10 @@ export async function pickRuneDialog({
         controls: [CONTROLS.KOFI],
         icon: "far fa-chart-network",
       },
+      classes: ["runepicker"],
       content,
       position: {
-        width: 500,
+        width: 700,
       },
       buttons,
       render: (_event, app) => {

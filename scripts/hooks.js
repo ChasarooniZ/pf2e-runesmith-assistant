@@ -7,6 +7,7 @@ import {
 } from "./invokeRuneDialog.js";
 import { getDCInfo, targetDescription } from "./messageHelpers.js";
 import {
+  canConditionallyTrace,
   canOnlyEtch,
   getMaxEtchedRunes,
   getRuneClasses,
@@ -336,7 +337,7 @@ export function setupHooks() {
         .querySelector(".etch-trace-btn")
         .addEventListener("click", (event) => {
           game.pf2eRunesmithAssistant.dialog.openEtchTrace({
-            etchOnly: canOnlyEtch(actor),
+            etchOnly: canOnlyEtch(actor) && !canConditionallyTrace(actor),
             token: actor?.getActiveTokens()?.[0],
           });
         });
@@ -384,6 +385,11 @@ export function setupHooks() {
         break;
       case MSG_ITEMS["Trace Rune"]:
       case MSG_ITEMS["Fortifying Knock"]:
+      case MSG_ITEMS["Edifying Trace"]:
+      case MSG_ITEMS["Engraving Strike"]:
+      case MSG_ITEMS["Engraving Maneuver"]:
+      case MSG_ITEMS["Pattern Flight"]:
+      case MSG_ITEMS["Swiping Trace"]:
         runeEtchTraceDialog({ traceOnly: true });
         break;
       case MSG_ITEMS["Invoke Rune"]:

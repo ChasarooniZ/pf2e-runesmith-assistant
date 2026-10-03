@@ -21,6 +21,7 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 6px;
     padding: 5px;
+    flex: 1 1;
   }
 
   .rune-label input,
@@ -37,9 +38,10 @@
 }
 
 .rune-name {
-  font-size: 0.9em;
-  margin-top: 2px;
-  word-break: word-break;
+  line-height: 1;
+  padding-bottom: 0.5em;
+  padding-top: 0.25em;
+  overflow-wrap: anywhere;
 }
 
 .rune-icon {
@@ -112,6 +114,8 @@
   span {
     line-height: 1;
     padding-bottom: 0.5em;
+    padding-top: 0.25em;
+    overflow-wrap: anywhere;
   }
 
   [type="radio"]:checked + img {

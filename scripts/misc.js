@@ -63,6 +63,16 @@ export function canOnlyEtch(actor) {
   );
 }
 
+export function canConditionallyTrace(actor) {
+  return (
+    actor?.rollOptions?.all?.["feat:edifying-trace"] ||
+    actor?.rollOptions?.all?.["feat:engraving-maneuver"] ||
+    actor?.rollOptions?.all?.["feat:engraving-strike"] ||
+    actor?.rollOptions?.all?.["feat:pattern-flight"] ||
+    actor?.rollOptions?.all?.["feat:swiping-trace"]
+  );
+}
+
 function isRunesmithDedication(actor) {
   return actor.rollOptions.all["feat:runesmith-dedication"];
 }

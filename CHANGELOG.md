@@ -1,5 +1,13 @@
 ## Unreleased
 
+## 1.5.1
+
+- **Updated**
+  - Added a carveout in runesmith dedication for `Engraving Strike` to allow it to Trace (🐛 @Thermocirque)
+    - Added carve outs for `Edifying Trace`, `Engraving Maneuver`, `Pattern Flight`, and `Swiping Trace` as well
+  - Some CSS updates to hopefully improve things (💡 @Supe)
+  - Fixed longstanding bug causing the invoke menu to scale weirdly with empty slots
+
 ## 1.5.0
 
 - **New**
