@@ -37,7 +37,8 @@
         "etch-trace-menu": "Menu graver ou tracer",
         "etch-menu": "Menu graver",
         "diacritic-menu": "Menu diacritique"
-      }
+      },
+      "names-item": "{item} de {name}"
     },
     "message": {
       "invoke": {
@@ -51,7 +52,8 @@
           "rune": "Tracer la rune {distance}",
           "ft": "{distance} pieds."
         },
-        "onto": "sur"
+        "onto-token": "sur {tokenName}",
+        "onto-tokens-item": "sur {item} de {tokenName}"
       },
       "target": {
         "an-object": "un objet"
@@ -90,6 +92,9 @@
         "placeholder": {
           "item-name": "Saisissez le nom de l'objet"
         }
+      },
+      "tradition-menu": {
+        "title": "Choisissez la tradition magique de cette rune"
       }
     },
     "effect": {
@@ -111,6 +116,11 @@
         "diacritic": "Un signe diacritique est un type particulier de rune qui ne s'applique pas directement à une créature ou un objet, mais plutôt à une autre, modifiant ou renforçant cette rune de base. Un signe diacritique ne peut jamais être appliqué seul et tout effet qui supprimerait ou invoquerait la rune de base supprime ou invoque également le signe diacritique. Une rune ne peut avoir qu'un seul signe diacritique.",
         "rune": "Un forgerune ne lance pas de sorts, mais peut appliquer divers effets magiques grâce aux runes. Les runes peuvent être <strong>gravées</strong> ou <strong>tracées</strong>. Les runes <em>gravées</em> sont appliquées en mode exploration et durent indéfiniment alors que les runes <em>tracées</em> ne durent que jusqu'à la fin de votre prochain tour. Quoi qu'il en soit, leurs effets sont identiques. Plusieurs capacités font référence aux créatures portant l'une de vos runes sous le nom de porteurs de runes : il s'agit de toute créature sur laquelle une de vos runes est apposée sur son corps ou sur un objet qu'elle tient."
       }
+    },
+    "code": {
+      "invocation": "<strong>Invocation",
+      "spell": "Sort",
+      "effect": "Effet"
     }
   }
 }
