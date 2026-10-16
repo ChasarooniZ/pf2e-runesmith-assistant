@@ -1,129 +1,129 @@
 {
-  "id": "pf2e-runesmith-assistant",
-  "title": "PF2e Runesmith Assistant",
-  "description": "WIP Runesmith Implementation",
-  "version": "#{VERSION}#",
-  "library": "false",
-  "compatibility": {
-    "minimum": 14,
-    "verified": 14
-  },
-  "authors": [
-    {
-      "name": "chasarooniZ",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
-    }
-  ],
-  "relationships": {
-    "systems": [],
-    "requires": [
-      {
-        "id": "socketlib",
-        "type": "module",
-        "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json"
-      }
-    ],
-    "recommends": [
-      {
-        "id": "trigger-engine",
-        "reason": "For some automation of specific rune triggers",
-        "type": "module",
-        "compatibility": {
-          "minimum": "1.25.0"
-        }
-      },
-      {
-        "id": "sequencer",
-        "reason": "For Bespoke animations and moving of tokens",
-        "type": "module",
-        "compatibility": {
-          "minimum": "4.2"
-        }
-      }
-    ]
-  },
-  "esmodules": ["scripts/module.js"],
-  "scripts": ["scripts/lib/lib.js"],
-  "styles": ["styles/style.css"],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    },
-    {
-      "lang": "fr",
-      "name": "French",
-      "path": "languages/fr.json"
-    }
-  ],
-  "socket": true,
-  "url": "#{URL}#",
-  "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",
-  "license": "LICENSE",
-  "readme": "README.md",
-  "packs": [
-    {
-      "name": "pf2e-runesmith-assistant-items",
-      "label": "PF2e Runesmith Assistant: Items",
-      "path": "packs/pf2e-runesmith-assistant-items",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "pf2e"
-    },
-    {
-      "name": "sf2e-runesmith-assistant-items",
-      "label": "SF2e Runesmith Assistant: Items",
-      "path": "packs/sf2e-runesmith-assistant-items",
-      "type": "Item",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "system": "sf2e"
-    },
-    {
-      "name": "pf2e-runesmith-assistant-macro",
-      "label": "PF2e Runesmith Assistant: Macro",
-      "path": "packs/pf2e-runesmith-assistant-macro",
-      "type": "Macro",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    }
-  ],
-  "flags": {
-    "pf2e-runesmith-assistant": {
-      "pf2e-homebrew": {
-        "equipmentTraits": {
-          "diacritic": {
-            "label": "pf2e-runesmith-assistant.traits.diacritic",
-            "description": "pf2e-runesmith-assistant.traits.Description.diacritic"
-          },
-          "rune": {
-            "label": "pf2e-runesmith-assistant.traits.rune",
-            "description": "pf2e-runesmith-assistant.traits.Description.rune"
-          },
-          "runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
-        },
-        "featTraits": {
-          "diacritic": {
-            "label": "pf2e-runesmith-assistant.traits.diacritic",
-            "description": "pf2e-runesmith-assistant.traits.Description.diacritic"
-          },
-          "rune": {
-            "label": "pf2e-runesmith-assistant.traits.rune",
-            "description": "pf2e-runesmith-assistant.traits.Description.rune"
-          },
-          "runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
-        }
-      }
-    }
-  }
+	"id": "pf2e-runesmith-assistant",
+	"title": "PF2e Runesmith Assistant",
+	"description": "WIP Runesmith Implementation",
+	"version": "#{VERSION}#",
+	"library": "false",
+	"compatibility": {
+		"minimum": 14,
+		"verified": 14
+	},
+	"authors": [
+		{
+			"name": "chasarooniZ",
+			"url": "https://github.com/League-of-Foundry-Developers",
+			"discord": "discordID#0001"
+		}
+	],
+	"relationships": {
+		"systems": [],
+		"requires": [
+			{
+				"id": "socketlib",
+				"type": "module",
+				"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-socketlib/master/module.json"
+			}
+		],
+		"recommends": [
+			{
+				"id": "trigger-engine",
+				"reason": "For some automation of specific rune triggers",
+				"type": "module",
+				"compatibility": {
+					"minimum": "1.25.0"
+				}
+			},
+			{
+				"id": "sequencer",
+				"reason": "For Bespoke animations and moving of tokens",
+				"type": "module",
+				"compatibility": {
+					"minimum": "4.2"
+				}
+			}
+		]
+	},
+	"esmodules": ["scripts/module.js"],
+	"scripts": ["scripts/lib/lib.js"],
+	"styles": ["styles/style.css"],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "languages/en.json"
+		},
+		{
+			"lang": "fr",
+			"name": "French",
+			"path": "languages/fr.json"
+		}
+	],
+	"socket": true,
+	"url": "#{URL}#",
+	"manifest": "#{MANIFEST}#",
+	"download": "#{DOWNLOAD}#",
+	"license": "LICENSE",
+	"readme": "README.md",
+	"packs": [
+		{
+			"name": "pf2e-runesmith-assistant-items",
+			"label": "PF2e Runesmith Assistant: Items",
+			"path": "packs/pf2e-runesmith-assistant-items",
+			"type": "Item",
+			"ownership": {
+				"PLAYER": "OBSERVER",
+				"ASSISTANT": "OWNER"
+			},
+			"system": "pf2e"
+		},
+		{
+			"name": "sf2e-runesmith-assistant-items",
+			"label": "SF2e Runesmith Assistant: Items",
+			"path": "packs/sf2e-runesmith-assistant-items",
+			"type": "Item",
+			"ownership": {
+				"PLAYER": "OBSERVER",
+				"ASSISTANT": "OWNER"
+			},
+			"system": "sf2e"
+		},
+		{
+			"name": "pf2e-runesmith-assistant-macro",
+			"label": "PF2e Runesmith Assistant: Macro",
+			"path": "packs/pf2e-runesmith-assistant-macro",
+			"type": "Macro",
+			"ownership": {
+				"PLAYER": "OBSERVER",
+				"ASSISTANT": "OWNER"
+			}
+		}
+	],
+	"flags": {
+		"pf2e-runesmith-assistant": {
+			"pf2e-homebrew": {
+				"equipmentTraits": {
+					"diacritic": {
+						"label": "pf2e-runesmith-assistant.traits.diacritic",
+						"description": "pf2e-runesmith-assistant.traits.Description.diacritic"
+					},
+					"rune": {
+						"label": "pf2e-runesmith-assistant.traits.rune",
+						"description": "pf2e-runesmith-assistant.traits.Description.rune"
+					},
+					"runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
+				},
+				"featTraits": {
+					"diacritic": {
+						"label": "pf2e-runesmith-assistant.traits.diacritic",
+						"description": "pf2e-runesmith-assistant.traits.Description.diacritic"
+					},
+					"rune": {
+						"label": "pf2e-runesmith-assistant.traits.rune",
+						"description": "pf2e-runesmith-assistant.traits.Description.rune"
+					},
+					"runesmith": "pf2e-runesmith-assistant.traits.Runesmith"
+				}
+			}
+		}
+	}
 }

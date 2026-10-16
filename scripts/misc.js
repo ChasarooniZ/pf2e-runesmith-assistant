@@ -3,90 +3,90 @@ import { MODULE_ID } from "./module.js";
 let regex = "";
 
 function getRegex() {
-  const spellText =
-    localize("code.spell") !== "pf2e-runesmith-assistant.code.spell"
-      ? localize("code.spell")
-      : "Spell";
-  const effectText =
-    localize("code.effect") !== "pf2e-runesmith-assistant.code.effect"
-      ? localize("code.effect")
-      : "Effect";
-  return new RegExp(
-    String.raw`@UUID\[([^\]]+)\](?=\{(?:${spellText} )?${effectText}: )`,
-    "g",
-  );
+	const spellText
+		= localize("code.spell") !== "pf2e-runesmith-assistant.code.spell"
+			? localize("code.spell")
+			: "Spell";
+	const effectText
+		= localize("code.effect") !== "pf2e-runesmith-assistant.code.effect"
+			? localize("code.effect")
+			: "Effect";
+	return new RegExp(
+		String.raw`@UUID\[([^\]]+)\](?=\{(?:${spellText} )?${effectText}: )`,
+		"g",
+	);
 }
 
 export function getEffectsStrings(description) {
-  if (!regex) {
-    regex = getRegex();
-  }
-  return description.match(regex)?.map((str) => str?.slice(6, -1)) ?? [];
+	if (!regex) {
+		regex = getRegex();
+	}
+	return description.match(regex)?.map(str => str?.slice(6, -1)) ?? [];
 }
 
 export function getYourToken() {
-  return (
-    canvas.tokens.controlled?.[0] ||
-    canvas.tokens.placeables.find(
-      (t) => t?.actor?.id === game?.user?.character?.id,
-    )
-  );
+	return (
+		canvas.tokens.controlled?.[0]
+		|| canvas.tokens.placeables.find(
+			t => t?.actor?.id === game?.user?.character?.id,
+		)
+	);
 }
 
 export function getMaxEtchedRunes(actor) {
-  return isRunesmithDedication(actor)
-    ? 1 + Math.floor((actor.level - 1) / 8)
-    : 2 + Math.floor((actor.level - 1) / 4);
+	return isRunesmithDedication(actor)
+		? 1 + Math.floor((actor.level - 1) / 8)
+		: 2 + Math.floor((actor.level - 1) / 4);
 }
 
 export function hasFeat(actor, slug) {
-  return actor.itemTypes.feat.some((feat) => feat.slug === slug);
+	return actor.itemTypes.feat.some(feat => feat.slug === slug);
 }
 
 export function localize(str, options = {}) {
-  return game.i18n.format(`${MODULE_ID}.${str}`, options);
+	return game.i18n.format(`${MODULE_ID}.${str}`, options);
 }
 
 export function isRunesmith(actor) {
-  return (
-    (actor &&
-      (actor.class?.slug === "runesmith" ||
-        actor.rollOptions.all["class:runesmith"])) ||
-    actor.rollOptions.all["feat:runesmith-dedication"]
-  );
+	return (
+		(actor
+			&& (actor.class?.slug === "runesmith"
+				|| actor.rollOptions.all["class:runesmith"]))
+			|| actor.rollOptions.all["feat:runesmith-dedication"]
+	);
 }
 
 export function canOnlyEtch(actor) {
-  return (
-    isRunesmithDedication(actor) &&
-    !actor?.rollOptions?.all?.["feat:tracing-studies"]
-  );
+	return (
+		isRunesmithDedication(actor)
+		&& !actor?.rollOptions?.all?.["feat:tracing-studies"]
+	);
 }
 
 export function canConditionallyTrace(actor) {
-  return (
-    actor?.rollOptions?.all?.["feat:edifying-trace"] ||
-    actor?.rollOptions?.all?.["feat:engraving-maneuver"] ||
-    actor?.rollOptions?.all?.["feat:engraving-strike"] ||
-    actor?.rollOptions?.all?.["feat:pattern-flight"] ||
-    actor?.rollOptions?.all?.["feat:swiping-trace"]
-  );
+	return (
+		actor?.rollOptions?.all?.["feat:edifying-trace"]
+		|| actor?.rollOptions?.all?.["feat:engraving-maneuver"]
+		|| actor?.rollOptions?.all?.["feat:engraving-strike"]
+		|| actor?.rollOptions?.all?.["feat:pattern-flight"]
+		|| actor?.rollOptions?.all?.["feat:swiping-trace"]
+	);
 }
 
 function isRunesmithDedication(actor) {
-  return actor.rollOptions.all["feat:runesmith-dedication"];
+	return actor.rollOptions.all["feat:runesmith-dedication"];
 }
 
 export function getTokenImage(token) {
-  return token?.ring?.enabled
-    ? (token?.ring?.subject?.texture ?? token?.texture?.src)
-    : token?.texture?.src || "icons/svg/cowled.svg";
+	return token?.ring?.enabled
+		? (token?.ring?.subject?.texture ?? token?.texture?.src)
+		: token?.texture?.src || "icons/svg/cowled.svg";
 }
 
 export function getActorToGiveRuneEffect(targetData, runesmithID) {
-  const targetToken = canvas.tokens.get(targetData?.token);
-  const tokenSource = canvas.tokens.get(runesmithID);
-  return targetData?.object ? tokenSource?.actor : targetToken?.actor;
+	const targetToken = canvas.tokens.get(targetData?.token);
+	const tokenSource = canvas.tokens.get(runesmithID);
+	return targetData?.object ? tokenSource?.actor : targetToken?.actor;
 }
 
 /**
@@ -95,102 +95,102 @@ export function getActorToGiveRuneEffect(targetData, runesmithID) {
  * @returns ID of token owner or the GM
  */
 export function getActorOwnerOnline(actor) {
-  const entry = actor?.ownership
-    ? Object.entries(actor?.ownership).find(
-        ([userID, permission]) =>
-          permission === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER &&
-          !game.users.get(userID)?.isGM &&
-          game.users.get(userID)?.active,
-      )
-    : [];
-  return entry?.[0] ? entry?.[0] : game.users.activeGM?.id;
+	const entry = actor?.ownership
+		? Object.entries(actor?.ownership).find(
+				([userID, permission]) =>
+					permission === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER
+					&& !game.users.get(userID)?.isGM
+					&& game.users.get(userID)?.active,
+			)
+		: [];
+	return entry?.[0] ? entry?.[0] : game.users.activeGM?.id;
 }
 
 export function convertItemUUIDFromSF2eToPF2e(uuid) {
-  if (!uuid) return null;
-  let finalUUID = uuid;
-  if (game.system.id === "sf2e") {
-    finalUUID = finalUUID
-      .replace(".sf2e.", ".pf2e.")
-      .replace(".pf2e-anachronism.", ".pf2e.")
-      .replace(
-        ".starfinder-field-test-for-pf2e.actions.",
-        ".starfinder-field-test-for-pf2e.sf2e-actions.",
-      )
-      .replace(
-        ".starfinder-field-test-for-pf2e.feats.",
-        ".starfinder-field-test-for-pf2e.sf2e-feats.",
-      )
-      .replace(".actions.", ".actionspf2e.")
-      .replace(".class-features.", ".classfeatures.")
-      .replace(".conditions.", ".conditionitems.")
-      .replace(".equipment.", ".equipment-srd.")
-      .replace(".feats.", ".feats-srd.")
-      .replace(".macros.", ".pf2e-macros.")
-      .replace(".spells.", ".spells-srd.")
-      .replace(
-        ".pf2e-runesmith-assistant-items.",
-        ".sf2e-runesmith-assistant-items.",
-      );
-  }
+	if (!uuid) return null;
+	let finalUUID = uuid;
+	if (game.system.id === "sf2e") {
+		finalUUID = finalUUID
+			.replace(".sf2e.", ".pf2e.")
+			.replace(".pf2e-anachronism.", ".pf2e.")
+			.replace(
+				".starfinder-field-test-for-pf2e.actions.",
+				".starfinder-field-test-for-pf2e.sf2e-actions.",
+			)
+			.replace(
+				".starfinder-field-test-for-pf2e.feats.",
+				".starfinder-field-test-for-pf2e.sf2e-feats.",
+			)
+			.replace(".actions.", ".actionspf2e.")
+			.replace(".class-features.", ".classfeatures.")
+			.replace(".conditions.", ".conditionitems.")
+			.replace(".equipment.", ".equipment-srd.")
+			.replace(".feats.", ".feats-srd.")
+			.replace(".macros.", ".pf2e-macros.")
+			.replace(".spells.", ".spells-srd.")
+			.replace(
+				".pf2e-runesmith-assistant-items.",
+				".sf2e-runesmith-assistant-items.",
+			);
+	}
 
-  return finalUUID;
+	return finalUUID;
 }
 
 export function convertSpecificItemsToSF2e(uuids) {
-  if (!uuids) return null;
-  if (game.system.id === "sf2e") {
-    return uuids.map((uuid) =>
-      uuid
-        .replace(".sf2e.", ".pf2e.")
-        .replace(".pf2e.", ".pf2e-anachronism.")
-        .replace(".actionspf2e.", ".actions.")
-        .replace(".classfeatures.", ".class-features.")
-        .replace(".conditionitems.", ".conditions.")
-        .replace(".equipment-srd.", ".equipment.")
-        .replace(".feats-srd.", ".feats.")
-        .replace(".pf2e-macros.", ".macros.")
-        .replace(".spells-srd.", ".spells.")
-        .replace(
-          ".sf2e-runesmith-assistant-items.",
-          ".pf2e-runesmith-assistant-items.",
-        ),
-    );
-  } else {
-    return uuids;
-  }
+	if (!uuids) return null;
+	if (game.system.id === "sf2e") {
+		return uuids.map(uuid =>
+			uuid
+				.replace(".sf2e.", ".pf2e.")
+				.replace(".pf2e.", ".pf2e-anachronism.")
+				.replace(".actionspf2e.", ".actions.")
+				.replace(".classfeatures.", ".class-features.")
+				.replace(".conditionitems.", ".conditions.")
+				.replace(".equipment-srd.", ".equipment.")
+				.replace(".feats-srd.", ".feats.")
+				.replace(".pf2e-macros.", ".macros.")
+				.replace(".spells-srd.", ".spells.")
+				.replace(
+					".sf2e-runesmith-assistant-items.",
+					".pf2e-runesmith-assistant-items.",
+				),
+		);
+	} else {
+		return uuids;
+	}
 }
 
 export function getDiacriticCombinedName(diacriticName, baseRuneName) {
-  return `${diacriticName.substring(0, diacriticName.indexOf("-") + 1)}${baseRuneName}`;
+	return `${diacriticName.substring(0, diacriticName.indexOf("-") + 1)}${baseRuneName}`;
 }
 
 export function getTraitsHTML(traits) {
-  const traitMap = traits
-    .filter((trait) => trait !== "runesmith" && trait !== "rune")
-    .map((trait) => ({
-      trait,
-      name: game.i18n.localize(
-        ["diacritic", "rune"].includes(trait)
-          ? `pf2e-runesmith-assistant.traits.${trait}`
-          : (CONFIG.PF2E.actionTraits[trait] ?? trait),
-      ),
-    }));
-  return `<section class='runesmith traits'>
+	const traitMap = traits
+		.filter(trait => trait !== "runesmith" && trait !== "rune")
+		.map(trait => ({
+			trait,
+			name: game.i18n.localize(
+				["diacritic", "rune"].includes(trait)
+					? `pf2e-runesmith-assistant.traits.${trait}`
+					: (CONFIG.PF2E.actionTraits[trait] ?? trait),
+			),
+		}));
+	return `<section class='runesmith traits'>
     ${traitMap.map(({ trait, name }) => `<p class='${trait}'>${name}</p>`).join("")}
 </section>`;
 }
 
 export function getRuneClasses(runeInfo) {
-  const cssClasses = [];
-  if (runeInfo?.diacritic) {
-    cssClasses.push("has-diacritic");
-  }
-  if (runeInfo?.free) {
-    cssClasses.push("free-etched");
-  }
-  if (runeInfo?.rune?.traits?.includes("diacritic")) {
-    cssClasses.push("diacritic");
-  }
-  return cssClasses.join(" ");
+	const cssClasses = [];
+	if (runeInfo?.diacritic) {
+		cssClasses.push("has-diacritic");
+	}
+	if (runeInfo?.free) {
+		cssClasses.push("free-etched");
+	}
+	if (runeInfo?.rune?.traits?.includes("diacritic")) {
+		cssClasses.push("diacritic");
+	}
+	return cssClasses.join(" ");
 }

@@ -45,8 +45,7 @@ export function transformEntry(doc) {
 			case "prototypeToken": {
 				if (property.name
 					.split(" ")
-					.find(x => doc.name.split(" ").find(y => y.includes(x)))
-				) {
+					.find(x => doc.name.split(" ").find(y => y.includes(x)))) {
 					warn(`Token Prototype "${doc[key].name}" has a mismatching but similar name to "${doc.name}"!`);
 				} else {
 					changed(`Replaced "${doc[key].name}" to "${doc.name}" in token prototype!`);

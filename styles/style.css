@@ -1,246 +1,246 @@
 .runesmith-assistant {
-  .runes-row {
-    display: flex;
-  }
+	.runes-row {
+		display: flex;
+	}
 }
 
 .rune-label {
-  font-weight: bold;
-  margin-bottom: 4px;
+	font-weight: bold;
+	margin-bottom: 4px;
 }
 
 .rune-section {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 
-  .rune-label,
-  .radio-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 80px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    padding: 5px;
-    flex: 1 1;
-  }
+	.rune-label,
+	.radio-label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 80px;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 6px;
+		padding: 5px;
+		flex: 1 1;
+	}
 
-  .rune-label input,
-  .radio-label input {
-    display: none;
-  }
+	.rune-label input,
+	.radio-label input {
+		display: none;
+	}
 }
 
 .rune-label img,
 .radio-label img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 6px;
+	width: 50px;
+	height: 50px;
+	margin-bottom: 6px;
 }
 
 .rune-name {
-  line-height: 1;
-  padding-bottom: 0.5em;
-  padding-top: 0.25em;
-  overflow-wrap: anywhere;
+	line-height: 1;
+	padding-bottom: 0.5em;
+	padding-top: 0.25em;
+	overflow-wrap: anywhere;
 }
 
 .rune-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 80px;
 }
 
 .rune-icon.temp img {
-  opacity: 0.3;
+	opacity: 0.3;
 }
 
 [name="etched"]:checked + img,
 [name="rune"]:checked + img,
 [name="traced"]:checked + img {
-  outline: 2px solid #f00;
+	outline: 2px solid #f00;
 }
 
 /* Etch or Trace */
 .runepicker {
-  &.form-group {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    align-items: flex-start;
-    gap: 10px;
-  }
+	&.form-group {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		align-items: flex-start;
+		gap: 10px;
+	}
 
-  .radio-label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-items: center;
-    flex: 1 0 19%;
-    min-width: 120px;
-    margin: 5px 0;
-    padding: 5px 5px;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-  }
+	.radio-label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		justify-items: center;
+		flex: 1 0 19%;
+		min-width: 120px;
+		margin: 5px 0;
+		padding: 5px 5px;
+		box-sizing: border-box;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 6px;
+	}
 
-  .radio-label input {
-    display: none;
-  }
+	.radio-label input {
+		display: none;
+	}
 
-  img {
-    border: 0px;
-    width: 50px;
-    height: 50px;
-    flex: 0 0 50px;
-    cursor: pointer;
-    border-radius: 6px;
-    margin-bottom: 6px;
-  }
+	img {
+		border: 0px;
+		width: 50px;
+		height: 50px;
+		flex: 0 0 50px;
+		cursor: pointer;
+		border-radius: 6px;
+		margin-bottom: 6px;
+	}
 
-  .rune-icon {
-    &.temp {
-      img {
-        opacity: 0.3;
-      }
-      span.rune-name {
-        opacity: 0.5;
-      }
-    }
-  }
+	.rune-icon {
+		&.temp {
+			img {
+				opacity: 0.3;
+			}
+			span.rune-name {
+				opacity: 0.5;
+			}
+		}
+	}
 
-  span {
-    line-height: 1;
-    padding-bottom: 0.5em;
-    padding-top: 0.25em;
-    overflow-wrap: anywhere;
-  }
+	span {
+		line-height: 1;
+		padding-bottom: 0.5em;
+		padding-top: 0.25em;
+		overflow-wrap: anywhere;
+	}
 
-  [type="radio"]:checked + img {
-    outline: 2px solid var(--color-pf-tertiary-dark);
-  }
+	[type="radio"]:checked + img {
+		outline: 2px solid var(--color-pf-tertiary-dark);
+	}
 }
 
 .runesmith-target-dialog {
-  .option-row {
-    display: flex;
-    gap: 10px;
-    margin: 10px 0;
-  }
+	.option-row {
+		display: flex;
+		gap: 10px;
+		margin: 10px 0;
+	}
 
-  .option-button.active {
-    background: var(--color-pf-primary-dark);
-    font-weight: bold;
-  }
+	.option-button.active {
+		background: var(--color-pf-primary-dark);
+		font-weight: bold;
+	}
 
-  .rune-desc {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+	.rune-desc {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
 
-  .token-selector {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    max-height: 200px;
-    overflow-y: auto;
-    margin: 10px 0;
-  }
+	.token-selector {
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap;
+		max-height: 200px;
+		overflow-y: auto;
+		margin: 10px 0;
+	}
 
-  .token-card {
-    text-align: center;
-    cursor: pointer;
-    border: 2px solid transparent;
-    padding: 5px;
-    border-radius: 3px;
-  }
+	.token-card {
+		text-align: center;
+		cursor: pointer;
+		border: 2px solid transparent;
+		padding: 5px;
+		border-radius: 3px;
+	}
 
-  .token-card.selected {
-    border-color: var(--button-focus-outline-color);
-    background: var(--color-pf-primary-dark);
-  }
+	.token-card.selected {
+		border-color: var(--button-focus-outline-color);
+		background: var(--color-pf-primary-dark);
+	}
 
-  .token-card img {
-    width: 60px;
-    height: 60px;
-  }
-  .rune-art {
-    width: 32px;
-    height: 32px;
-  }
+	.token-card img {
+		width: 60px;
+		height: 60px;
+	}
+	.rune-art {
+		width: 32px;
+		height: 32px;
+	}
 
-  .hidden {
-    display: none;
-  }
+	.hidden {
+		display: none;
+	}
 }
 
 fieldset.runes-fieldset {
-  margin-top: 1em;
+	margin-top: 1em;
 
-  .runesmith-assistant.runes-section {
-    .runes-row {
-      flex-wrap: wrap;
+	.runesmith-assistant.runes-section {
+		.runes-row {
+			flex-wrap: wrap;
 
-      .rune-img {
-        width: 32px;
-        height: 32px;
-        margin: 2px;
-        border-radius: 4px;
+			.rune-img {
+				width: 32px;
+				height: 32px;
+				margin: 2px;
+				border-radius: 4px;
 
-        &.placeholder {
-          opacity: 0.3;
-        }
-      }
-    }
-  }
+				&.placeholder {
+					opacity: 0.3;
+				}
+			}
+		}
+	}
 }
 .runes-buttons {
-  margin-top: 1em;
-  display: flex;
-  gap: 1em;
+	margin-top: 1em;
+	display: flex;
+	gap: 1em;
 }
 
 img.diacritic {
-  opacity: 50%;
+	opacity: 50%;
 }
 
 img.free-etched {
-  box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
+	box-shadow: 0 0 6px 2px rgba(128, 0, 255, 0.8);
 }
 
 img.has-diacritic {
-  box-shadow: 0 0 6px 2px rgb(1, 81, 231);
+	box-shadow: 0 0 6px 2px rgb(1, 81, 231);
 }
 
 section.runesmith.traits {
-  display: flex;
-  flex-wrap: wrap;
-  p {
-    display: inline-flex;
-    padding: 0.16rem 0.25rem;
-    margin: 0;
-    background-color: var(--primary);
-    border: 2px solid var(--color-border-trait);
-    color: var(--text-light);
-    font: 500 var(--font-size-10) var(--sans-serif);
-    text-transform: uppercase;
-    &.arcane {
-      background-color: #00495b;
-    }
-    &.divine {
-      background-color: #595900;
-    }
-    &.occult {
-      background-color: #2e0059;
-    }
-    &.primal {
-      background-color: #005917;
-    }
-    &.magical {
-      background-color: #530056;
-    }
-  }
+	display: flex;
+	flex-wrap: wrap;
+	p {
+		display: inline-flex;
+		padding: 0.16rem 0.25rem;
+		margin: 0;
+		background-color: var(--primary);
+		border: 2px solid var(--color-border-trait);
+		color: var(--text-light);
+		font: 500 var(--font-size-10) var(--sans-serif);
+		text-transform: uppercase;
+		&.arcane {
+			background-color: #00495b;
+		}
+		&.divine {
+			background-color: #595900;
+		}
+		&.occult {
+			background-color: #2e0059;
+		}
+		&.primal {
+			background-color: #005917;
+		}
+		&.magical {
+			background-color: #530056;
+		}
+	}
 }

@@ -6,259 +6,263 @@ import { CONTROLS } from "./const.js";
  * @returns { Promise<{ type: string, item: string || null, token: string || null, actor: string || null, location:  string || null, personName: string || null, img: string || null, objectName: string || null }[] || 'cancel'>}
  */
 export async function showDynamicTargetForm(options) {
-  const form = new RuneTargetForm(options);
-  form.render(true);
-  return form.wait();
+	const form = new RuneTargetForm(options);
+	form.render(true);
+	return form.wait();
 }
 
 export function getTokenImage(token) {
-  return token.document.ring.enabled
-    ? token.document.ring.subject.texture.src || token.document.texture.src
-    : token.document.texture.src;
+	return token.document.ring.enabled
+		? token.document.ring.subject.texture.src || token.document.texture.src
+		: token.document.texture.src;
 }
 
 export function getAllowedTokenName(token) {
-  const isOwner = token?.isOwner;
-  const displayMode = token?.document?.displayName;
-  const nameVisible =
-    (isOwner &&
-      [
-        CONST.TOKEN_DISPLAY_MODES.CONTROL,
-        CONST.TOKEN_DISPLAY_MODES.OWNER,
-        CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,
-      ].includes(displayMode)) ||
-    [
-      CONST.TOKEN_DISPLAY_MODES.ALWAYS,
-      CONST.TOKEN_DISPLAY_MODES.HOVER,
-    ].includes(displayMode) ||
-    game.actors.party.members.some((a) => a.id === token?.actor?.id);
-  return nameVisible ? token.name : "Unidentified Creature";
+	const isOwner = token?.isOwner;
+	const displayMode = token?.document?.displayName;
+	const nameVisible
+		= (isOwner
+			&& [
+				CONST.TOKEN_DISPLAY_MODES.CONTROL,
+				CONST.TOKEN_DISPLAY_MODES.OWNER,
+				CONST.TOKEN_DISPLAY_MODES.OWNER_HOVER,
+			].includes(displayMode))
+			|| [
+				CONST.TOKEN_DISPLAY_MODES.ALWAYS,
+				CONST.TOKEN_DISPLAY_MODES.HOVER,
+			].includes(displayMode)
+			|| game.actors.party.members.some(a => a.id === token?.actor?.id);
+	return nameVisible ? token.name : "Unidentified Creature";
 }
 
 export class RuneTargetForm extends foundry.applications.api.HandlebarsApplicationMixin(
-  foundry.applications.api.ApplicationV2,
+	foundry.applications.api.ApplicationV2,
 ) {
-  constructor(options = {}) {
-    super(options);
-    this._processType = options?.processType || "etched";
-    this._rune = options?.rune;
-    this._resolve = null;
-    this._reject = null;
-    this._promise = new Promise((resolve, reject) => {
-      this._resolve = resolve;
-      this._reject = reject;
-    });
-  }
-  static DEFAULT_OPTIONS = {
-    id: "pf2e-runesmith-assistant-target-form",
-    form: {
-      handler: RuneTargetForm.onSubmit,
-      closeOnSubmit: true,
-    },
-    popOut: true,
-    position: {
-      width: 600,
-      height: "auto",
-    },
-    tag: "form",
-    window: {
-      icon: "fas fa-bullseye-pointer",
-      title: "pf2e-runesmith-assistant.dialog.target-menu.title",
-      contentClasses: ["standard-form", "flexcol"],
-      controls: [CONTROLS.KOFI],
-    },
-    tabs: [
-      { navSelector: ".tabs", contentSelector: ".content", initial: "tab1" },
-    ],
-    actions: {
-      save: RuneTargetForm.save,
-      cancel: RuneTargetForm.cancel,
-    },
-  };
-  static async save() {
-    const formData = this._formData;
-    if (formData.type === "object") {
-      this._resolve([
-        {
-          type: formData.type,
-          item: formData.itemName || null,
-          token: null,
-          actor: null,
-          location: formData.location,
-          personName: null,
-          img: null,
-          objectName: formData.objectName || null,
-        },
-      ]);
-    } else {
-      this._resolve(
-        formData.tokens
-          .filter((tok) => tok.selected)
-          .map((tok) => ({
-            type: formData.type,
-            item: formData.itemName || null,
-            token: tok.id,
-            actor: tok.token.actor.id,
-            location: formData.location,
-            personName: tok.name,
-            img: tok.img,
-            objectName: null,
-          })),
-      );
-    }
-    this.close();
-  }
+	constructor(options = {}) {
+		super(options);
+		this._processType = options?.processType || "etched";
+		this._rune = options?.rune;
+		this._resolve = null;
+		this._reject = null;
+		this._promise = new Promise((resolve, reject) => {
+			this._resolve = resolve;
+			this._reject = reject;
+		});
+	}
 
-  static async cancel() {
-    this._resolve(null);
-    this.close();
-  }
+	static DEFAULT_OPTIONS = {
+		id: "pf2e-runesmith-assistant-target-form",
+		form: {
+			handler: RuneTargetForm.onSubmit,
+			closeOnSubmit: true,
+		},
+		popOut: true,
+		position: {
+			width: 600,
+			height: "auto",
+		},
+		tag: "form",
+		window: {
+			icon: "fas fa-bullseye-pointer",
+			title: "pf2e-runesmith-assistant.dialog.target-menu.title",
+			contentClasses: ["standard-form", "flexcol"],
+			controls: [CONTROLS.KOFI],
+		},
+		tabs: [
+			{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" },
+		],
+		actions: {
+			save: RuneTargetForm.save,
+			cancel: RuneTargetForm.cancel,
+		},
+	};
 
-  wait() {
-    return this._promise;
-  }
+	static async save() {
+		const formData = this._formData;
+		if (formData.type === "object") {
+			this._resolve([
+				{
+					type: formData.type,
+					item: formData.itemName || null,
+					token: null,
+					actor: null,
+					location: formData.location,
+					personName: null,
+					img: null,
+					objectName: formData.objectName || null,
+				},
+			]);
+		} else {
+			this._resolve(
+				formData.tokens
+					.filter(tok => tok.selected)
+					.map(tok => ({
+						type: formData.type,
+						item: formData.itemName || null,
+						token: tok.id,
+						actor: tok.token.actor.id,
+						location: formData.location,
+						personName: tok.name,
+						img: tok.img,
+						objectName: null,
+					})),
+			);
+		}
+		this.close();
+	}
 
-  async close(options = {}) {
-    this._resolve?.(null);
-    return super.close(options);
-  }
+	static async cancel() {
+		this._resolve(null);
+		this.close();
+	}
 
-  static PARTS = {
-    tabs: {
-      template: "templates/generic/tab-navigation.hbs",
-    },
-    main: {
-      template: `modules/pf2e-runesmith-assistant/templates/target-dialog.hbs`,
-      classes: ["runesmith-target-dialog", "form"],
-    },
-    footer: {
-      template: "templates/generic/form-footer.hbs",
-    },
-  };
+	wait() {
+		return this._promise;
+	}
 
-  _onRender(context, options) {
-    this.element
-      .querySelectorAll("#type-section .option-button")
-      .forEach((btn) => {
-        btn.addEventListener("click", (event) => {
-          event.preventDefault();
-          const newType = event.currentTarget.dataset.type;
-          this._formData.type = newType;
-          if (newType === "object") {
-            this._formData.tokens.forEach((t) => (t.selected = false));
-            this._formData.location = "actor";
-          } else {
-            this._formData.objectName = "";
-          }
-          this.render();
-        });
-      });
+	async close(options = {}) {
+		this._resolve?.(null);
+		return super.close(options);
+	}
 
-    this.element.querySelectorAll(".token-card").forEach((card) => {
-      card.addEventListener("click", (event) => {
-        const tokenId = event.currentTarget.dataset.tokenId;
-        const token = this._formData.tokens.find((t) => t.id === tokenId);
-        if (!token) return;
-        token.selected = !token.selected;
-        this.render();
-      });
-    });
+	static PARTS = {
+		tabs: {
+			template: "templates/generic/tab-navigation.hbs",
+		},
+		main: {
+			template: `modules/pf2e-runesmith-assistant/templates/target-dialog.hbs`,
+			classes: ["runesmith-target-dialog", "form"],
+		},
+		footer: {
+			template: "templates/generic/form-footer.hbs",
+		},
+	};
 
-    this.element
-      .querySelectorAll("#location-section .option-button")
-      .forEach((btn) => {
-        btn.addEventListener("click", (event) => {
-          event.preventDefault();
-          this._formData.location = event.currentTarget.dataset.location;
-          this.render();
-        });
-      });
+	_onRender(context, options) {
+		this.element
+			.querySelectorAll("#type-section .option-button")
+			.forEach((btn) => {
+				btn.addEventListener("click", (event) => {
+					event.preventDefault();
+					const newType = event.currentTarget.dataset.type;
+					this._formData.type = newType;
+					if (newType === "object") {
+						this._formData.tokens.forEach(t => (t.selected = false));
+						this._formData.location = "actor";
+					} else {
+						this._formData.objectName = "";
+					}
+					this.render();
+				});
+			});
 
-    this.element
-      .querySelector("#objectName")
-      ?.addEventListener(
-        "input",
-        (e) => (this._formData.objectName = e.target.value),
-      );
+		this.element.querySelectorAll(".token-card").forEach((card) => {
+			card.addEventListener("click", (event) => {
+				const tokenId = event.currentTarget.dataset.tokenId;
+				const token = this._formData.tokens.find(t => t.id === tokenId);
+				if (!token) return;
+				token.selected = !token.selected;
+				this.render();
+			});
+		});
 
-    this.element
-      .querySelector("#itemNameInput")
-      ?.addEventListener(
-        "input",
-        (e) => (this._formData.itemName = e.target.value),
-      );
-  }
-  _prepareContext(options) {
-    if (!this._formData) {
-      const targets = game.user.targets.toObject();
-      this._formData = {
-        type: "person", // Default to person
-        objectName: "",
-        tokens: Array.from(
-          new Set(
-            [
-              game?.user?.character?.getActiveTokens().flat(),
-              game.actors.party.members.some((a) =>
-                [
-                  game?.user?.character?.id,
-                  game.canvas.tokens.controlled?.[0]?.actor?.id,
-                ]?.includes(a?.id),
-              )
-                ? game.actors.party.members
-                    .map((actor) => actor.getActiveTokens())
-                    .flat()
-                : [],
-              game.canvas.tokens.controlled,
-              game.user.targets.toObject(),
-            ].flat(),
-          ),
-        )
-          .filter((t) => !!t)
-          .map((token) => ({
-            id: token.id,
-            name: getAllowedTokenName(token),
-            img: getTokenImage(token),
-            token: token,
-            selected: targets.some((t) => t.id === token.id),
-          })),
-        selectedCount: targets.length,
-        location: "actor",
-        itemName: "",
-        actors: [],
-        personNames: [],
-        imgs: [],
-        item: null,
-        rune: this._rune,
-      };
-    }
-    return {
-      ...this._formData,
-      selectedCount: this._formData.tokens.filter((t) => t.selected).length,
-      buttons: [
-        {
-          type: "save",
-          action: "save",
-          icon:
+		this.element
+			.querySelectorAll("#location-section .option-button")
+			.forEach((btn) => {
+				btn.addEventListener("click", (event) => {
+					event.preventDefault();
+					this._formData.location = event.currentTarget.dataset.location;
+					this.render();
+				});
+			});
+
+		this.element
+			.querySelector("#objectName")
+			?.addEventListener(
+				"input",
+				e => (this._formData.objectName = e.target.value),
+			);
+
+		this.element
+			.querySelector("#itemNameInput")
+			?.addEventListener(
+				"input",
+				e => (this._formData.itemName = e.target.value),
+			);
+	}
+
+	_prepareContext(options) {
+		if (!this._formData) {
+			const targets = game.user.targets.toObject();
+			this._formData = {
+				type: "person", // Default to person
+				objectName: "",
+				tokens: Array.from(
+					new Set(
+						[
+							game?.user?.character?.getActiveTokens().flat(),
+							game.actors.party.members.some(a =>
+								[
+									game?.user?.character?.id,
+									game.canvas.tokens.controlled?.[0]?.actor?.id,
+								]?.includes(a?.id),
+							)
+								? game.actors.party.members
+										.map(actor => actor.getActiveTokens())
+										.flat()
+								: [],
+							game.canvas.tokens.controlled,
+							game.user.targets.toObject(),
+						].flat(),
+					),
+				)
+					.filter(t => !!t)
+					.map(token => ({
+						id: token.id,
+						name: getAllowedTokenName(token),
+						img: getTokenImage(token),
+						token,
+						selected: targets.some(t => t.id === token.id),
+					})),
+				selectedCount: targets.length,
+				location: "actor",
+				itemName: "",
+				actors: [],
+				personNames: [],
+				imgs: [],
+				item: null,
+				rune: this._rune,
+			};
+		}
+		return {
+			...this._formData,
+			selectedCount: this._formData.tokens.filter(t => t.selected).length,
+			buttons: [
+				{
+					type: "save",
+					action: "save",
+					icon:
             this._processType === "etched"
-              ? "fa-solid fa-pencil"
-              : "fa-solid fa-hammer-crash",
-          label:
+            	? "fa-solid fa-pencil"
+            	: "fa-solid fa-hammer-crash",
+					label:
             this._processType === "etched"
-              ? "pf2e-runesmith-assistant.keywords.etch"
-              : "pf2e-runesmith-assistant.keywords.trace",
-        },
-        {
-          type: "cancel",
-          action: "cancel",
-          icon: "fa-solid fa-xmark",
-          label: "Cancel",
-        },
-      ],
-    };
-  }
-  static async onSubmit(event, form, formData) {
-    const settings = foundry.utils.expandObject(formData.object);
-    console.log({ settings });
-    // await this.saveSettings(settings);
-  }
+            	? "pf2e-runesmith-assistant.keywords.etch"
+            	: "pf2e-runesmith-assistant.keywords.trace",
+				},
+				{
+					type: "cancel",
+					action: "cancel",
+					icon: "fa-solid fa-xmark",
+					label: "Cancel",
+				},
+			],
+		};
+	}
+
+	static async onSubmit(event, form, formData) {
+		const settings = foundry.utils.expandObject(formData.object);
+		console.log({ settings });
+		// await this.saveSettings(settings);
+	}
 }

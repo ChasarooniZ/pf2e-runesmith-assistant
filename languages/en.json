@@ -1,126 +1,126 @@
 {
-  "I18N.LANGUAGE": "English",
-  "pf2e-runesmith-assistant": {
-    "keywords": {
-      "etch": "Etch",
-      "trace": "Trace",
-      "invoke": "Invoke",
-      "dispel": "Dispel",
-      "select": "Select"
-    },
-    "notifications": {
-      "dispelled-rune": "Dispelled {rune}!",
-      "own-no-runes": "You have no Runes",
-      "no-runes-applied": "You have no runes applied"
-    },
-    "ui": {
-      "header": "Rune Management",
-      "tooltip": {
-        "empty-rune-slot": "Empty Rune Slot",
-        "highlight-affected-token": "Highlight Affected Token",
-        "hover": "Hover",
-        "no-rune-description": "Rune has been removed from your inventory so it has no result"
-      },
-      "sections": {
-        "etched": "Etched Runes",
-        "traced": "Traced Runes"
-      },
-      "quick-action": {
-        "invoke": {
-          "want-to-invoke": "Do you want to invoke the rune"
-        },
-        "dispel": "Do you want to dispel (remove) the rune",
-        "on-target": "on {target}"
-      },
-      "buttons": {
-        "invoke-menu": "Invoke Menu",
-        "etch-trace-menu": "Etch or Trace Menu",
-        "etch-menu": "Etch Menu",
-        "diacritic-menu": "Diacritic Menu"
-      },
-      "names-item": "{name}'s {item}"
-    },
-    "message": {
-      "invoke": {
-        "rune": "Invoke Rune"
-      },
-      "apply": {
-        "etched": {
-          "rune": "Etch Rune"
-        },
-        "traced": {
-          "rune": "Trace Rune{distance}",
-          "ft": "{distance} ft."
-        },
-        "onto-token": "onto {tokenName}",
-        "onto-tokens-item": "onto {tokenName}'s {item}"
-      },
-      "target": {
-        "an-object": "an Object"
-      }
-    },
-    "dialog": {
-      "invoke": {
-        "title": "Invoke Rune",
-        "failed-or-willing": "Target is willing or has failed the check?",
-        "applied-to": "Applied to {target}"
-      },
-      "dispel": {
-        "title": "Dispel Rune"
-      },
-      "etch-trace": {
-        "title": "Rune List"
-      },
-      "empty-rune-slot-filler-name": "Empty",
-      "target-menu": {
-        "title": "Select Rune Targets",
-        "sections": {
-          "type": "Target Type",
-          "object-name": "Object Name",
-          "select-tokens": "Select Token(s)",
-          "person-rune-location": "Rune Location"
-        },
-        "buttons": {
-          "object": "Unattended Object",
-          "person": "Person",
-          "worn-item": "On Worn/Held Item",
-          "item-name": "Item Name"
-        },
-        "misc": {
-          "x-tokens-selected": "{tokenCount} tokens selected"
-        },
-        "placeholder": {
-          "item-name": "Enter item name"
-        }
-      },
-      "tradition-menu": {
-        "title": "Select the Magic Tradition of this rune"
-      }
-    },
-    "effect": {
-      "types": {
-        "traced": "Traced",
-        "etched": "Etched",
-        "invoked": "Invoked"
-      },
-      "names": {
-        "on-person": "[{etchOrTrace}] {name}",
-        "on-object": "[{etchOrTrace}] {name} on {object}"
-      }
-    },
-    "traits": {
-      "rune": "Rune",
-      "diacritic": "Diacritic",
-      "Runesmith": "Runesmith",
-      "Description": {
-        "diacritic": "A diacritic is a special type of rune that is not applied directly to a creature or object, but rather to another rune itself, modifying or empowering that base rune. A diacritic can never be applied by itself, and any effect that would remove or invoke the base rune always also removes or invokes the diacritic rune. A rune can have only one diacritic.",
-        "rune": "A runesmith doesn't cast spells, but they can apply various magical effects through runes. Runes can be applied via <strong>etching</strong> or <strong>tracing</strong>. Etched runes are applied in exploration mode and last indefinitely, while traced runes last only until the end of your next turn. Their effects, however, are the same. Several abilities refer to creatures bearing one of your runes, known as rune-bearers—this is any creature who has one of your runes applied to its body or to any gear it is holding."
-      }
-    },
-    "code": {
-      "invocation": "<strong>Invocation",
-      "spell": "Spell",
-      "effect": "Effect"
-    }
-  }
+	"I18N.LANGUAGE": "English",
+	"pf2e-runesmith-assistant": {
+		"keywords": {
+			"etch": "Etch",
+			"trace": "Trace",
+			"invoke": "Invoke",
+			"dispel": "Dispel",
+			"select": "Select"
+		},
+		"notifications": {
+			"dispelled-rune": "Dispelled {rune}!",
+			"own-no-runes": "You have no Runes",
+			"no-runes-applied": "You have no runes applied"
+		},
+		"ui": {
+			"header": "Rune Management",
+			"tooltip": {
+				"empty-rune-slot": "Empty Rune Slot",
+				"highlight-affected-token": "Highlight Affected Token",
+				"hover": "Hover",
+				"no-rune-description": "Rune has been removed from your inventory so it has no result"
+			},
+			"sections": {
+				"etched": "Etched Runes",
+				"traced": "Traced Runes"
+			},
+			"quick-action": {
+				"invoke": {
+					"want-to-invoke": "Do you want to invoke the rune"
+				},
+				"dispel": "Do you want to dispel (remove) the rune",
+				"on-target": "on {target}"
+			},
+			"buttons": {
+				"invoke-menu": "Invoke Menu",
+				"etch-trace-menu": "Etch or Trace Menu",
+				"etch-menu": "Etch Menu",
+				"diacritic-menu": "Diacritic Menu"
+			},
+			"names-item": "{name}'s {item}"
+		},
+		"message": {
+			"invoke": {
+				"rune": "Invoke Rune"
+			},
+			"apply": {
+				"etched": {
+					"rune": "Etch Rune"
+				},
+				"traced": {
+					"rune": "Trace Rune{distance}",
+					"ft": "{distance} ft."
+				},
+				"onto-token": "onto {tokenName}",
+				"onto-tokens-item": "onto {tokenName}'s {item}"
+			},
+			"target": {
+				"an-object": "an Object"
+			}
+		},
+		"dialog": {
+			"invoke": {
+				"title": "Invoke Rune",
+				"failed-or-willing": "Target is willing or has failed the check?",
+				"applied-to": "Applied to {target}"
+			},
+			"dispel": {
+				"title": "Dispel Rune"
+			},
+			"etch-trace": {
+				"title": "Rune List"
+			},
+			"empty-rune-slot-filler-name": "Empty",
+			"target-menu": {
+				"title": "Select Rune Targets",
+				"sections": {
+					"type": "Target Type",
+					"object-name": "Object Name",
+					"select-tokens": "Select Token(s)",
+					"person-rune-location": "Rune Location"
+				},
+				"buttons": {
+					"object": "Unattended Object",
+					"person": "Person",
+					"worn-item": "On Worn/Held Item",
+					"item-name": "Item Name"
+				},
+				"misc": {
+					"x-tokens-selected": "{tokenCount} tokens selected"
+				},
+				"placeholder": {
+					"item-name": "Enter item name"
+				}
+			},
+			"tradition-menu": {
+				"title": "Select the Magic Tradition of this rune"
+			}
+		},
+		"effect": {
+			"types": {
+				"traced": "Traced",
+				"etched": "Etched",
+				"invoked": "Invoked"
+			},
+			"names": {
+				"on-person": "[{etchOrTrace}] {name}",
+				"on-object": "[{etchOrTrace}] {name} on {object}"
+			}
+		},
+		"traits": {
+			"rune": "Rune",
+			"diacritic": "Diacritic",
+			"Runesmith": "Runesmith",
+			"Description": {
+				"diacritic": "A diacritic is a special type of rune that is not applied directly to a creature or object, but rather to another rune itself, modifying or empowering that base rune. A diacritic can never be applied by itself, and any effect that would remove or invoke the base rune always also removes or invokes the diacritic rune. A rune can have only one diacritic.",
+				"rune": "A runesmith doesn't cast spells, but they can apply various magical effects through runes. Runes can be applied via <strong>etching</strong> or <strong>tracing</strong>. Etched runes are applied in exploration mode and last indefinitely, while traced runes last only until the end of your next turn. Their effects, however, are the same. Several abilities refer to creatures bearing one of your runes, known as rune-bearers—this is any creature who has one of your runes applied to its body or to any gear it is holding."
+			}
+		},
+		"code": {
+			"invocation": "<strong>Invocation",
+			"spell": "Spell",
+			"effect": "Effect"
+		}
+	}
 }

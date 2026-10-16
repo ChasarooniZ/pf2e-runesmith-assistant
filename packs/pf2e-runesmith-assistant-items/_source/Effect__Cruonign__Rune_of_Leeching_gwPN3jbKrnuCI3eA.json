@@ -29,17 +29,12 @@
 			},
 			{
 				"key": "FlatModifier",
-				"selector": [
-					"{item|flags.system.rulesSelections.weapon}-damage"
-				],
-				"value": "(3 + max(floor((@item.origin.level - 9) / 2), 0))",
+				"selector": ["{item|flags.system.rulesSelections.weapon}-damage"],
+				"value": "(3 + match(when(gte(@item.grantedBy?.origin?.level, -2), max(floor((@item.grantedBy?.origin?.level - 9) / 2), 0)),max(floor((@item.origin.level - 9) / 2), 0)))",
 				"damageType": "void",
 				"predicate": [
 					{
-						"or": [
-							"item:damage:type:slashing",
-							"item:damage:type:piercing"
-						]
+						"or": ["item:damage:type:slashing", "item:damage:type:piercing"]
 					}
 				]
 			}

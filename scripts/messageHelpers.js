@@ -13,291 +13,291 @@ import { getAllowedTokenName } from "./targetDialog.js";
  * @param {'' | '0' | '1' | '2' | '3' | 'r'} param.action Action cost
  */
 export async function runeAppliedMessage({
-  actor,
-  token,
-  rune,
-  target,
-  type,
-  action,
+	actor,
+	token,
+	rune,
+	target,
+	type,
+	action,
 }) {
-  const traceDistance =
-    action === "2"
-      ? ` (${localize("message.apply.traced.ft", { distance: 30 })})`
-      : "";
-  await ChatMessage.create({
-    author: game.user.id,
-    content: applyMessageHelper({ rune, target, type }),
-    speaker: ChatMessage.getSpeaker({
-      actor,
-      token: token?.document ?? token,
-    }),
-    flavor: await getMessageFlavor({
-      traits:
+	const traceDistance
+		= action === "2"
+			? ` (${localize("message.apply.traced.ft", { distance: 30 })})`
+			: "";
+	await ChatMessage.create({
+		author: game.user.id,
+		content: applyMessageHelper({ rune, target, type }),
+		speaker: ChatMessage.getSpeaker({
+			actor,
+			token: token?.document ?? token,
+		}),
+		flavor: await getMessageFlavor({
+			traits:
         type === "etched"
-          ? ["exploration"]
-          : ["concentrate", "magical", "manipulate", "runesmith"],
-      name: localize(`message.apply.${type}.rune`, { distance: traceDistance }),
-      glyph: type === "etched" ? "" : action,
-    }),
-    flags: {
-      pf2e: {
-        origin: {
-          actor: actor.uuid,
-          sourceId: actor.id,
-          uuid: ITEMS.TRACE_RUNE,
-          type: "action",
-        },
-        context: {
-          target: {
-            token: canvas.tokens.get(target?.token)?.uuid,
-          },
-        },
-      },
-    },
-  });
+        	? ["exploration"]
+        	: ["concentrate", "magical", "manipulate", "runesmith"],
+			name: localize(`message.apply.${type}.rune`, { distance: traceDistance }),
+			glyph: type === "etched" ? "" : action,
+		}),
+		flags: {
+			pf2e: {
+				origin: {
+					actor: actor.uuid,
+					sourceId: actor.id,
+					uuid: ITEMS.TRACE_RUNE,
+					type: "action",
+				},
+				context: {
+					target: {
+						token: canvas.tokens.get(target?.token)?.uuid,
+					},
+				},
+			},
+		},
+	});
 }
 
 function applyMessageHelper({ rune, target, type }) {
-  // const action = type === "etched" ? "Etched" : "Traced";
-  let targetText = "";
+	// const action = type === "etched" ? "Etched" : "Traced";
+	let targetText = "";
 
-  if (target.type === "object") {
-    targetText = localize("message.apply.onto-token", {
-      tokenName: `<b><u>${target.object}</u></b>`,
-    });
-  } else if (target.type === "person") {
-    const tokenName = getAllowedTokenName(canvas.tokens.get(target?.token));
-    if (target?.location === "actor") {
-      targetText = localize("message.apply.onto-token", {
-        tokenName: `<b><u>${tokenName}</u></b>`,
-      });
-    } else if (target?.location === "item") {
-      targetText = localize("message.apply.onto-tokens-item", {
-        tokenName: `<b><u>${tokenName}</u></b>`,
-        item: `<b><u>${target.item}<b><u>`,
-      });
-    }
-  }
+	if (target.type === "object") {
+		targetText = localize("message.apply.onto-token", {
+			tokenName: `<b><u>${target.object}</u></b>`,
+		});
+	} else if (target.type === "person") {
+		const tokenName = getAllowedTokenName(canvas.tokens.get(target?.token));
+		if (target?.location === "actor") {
+			targetText = localize("message.apply.onto-token", {
+				tokenName: `<b><u>${tokenName}</u></b>`,
+			});
+		} else if (target?.location === "item") {
+			targetText = localize("message.apply.onto-tokens-item", {
+				tokenName: `<b><u>${tokenName}</u></b>`,
+				item: `<b><u>${target.item}<b><u>`,
+			});
+		}
+	}
 
-  return `${rune.link} ${targetText}`;
+	return `${rune.link} ${targetText}`;
 }
 
 export async function runeInvokedMessage({
-  actor,
-  token,
-  rune,
-  runeLink,
-  target,
-  traits,
-  invocation,
+	actor,
+	token,
+	rune,
+	runeLink,
+	target,
+	traits,
+	invocation,
 }) {
-  const rollData = rune.getRollData();
-  const enrichedDescription =
-    await foundry.applications.ux.TextEditor.implementation.enrichHTML(
-      invocation,
-      {
-        rollData,
-      },
-    );
+	const rollData = rune.getRollData();
+	const enrichedDescription
+		= await foundry.applications.ux.TextEditor.implementation.enrichHTML(
+			invocation,
+			{
+				rollData,
+			},
+		);
 
-  const flags = {
-    pf2e: {
-      origin: {
-        actor: actor.uuid,
-        sourceId: actor.id,
-        uuid: rune.uuid,
-        type: "action",
-      },
-      context: {
-        target: {
-          token: canvas.tokens.get(target?.token)?.uuid,
-        },
-      },
-    },
-  };
+	const flags = {
+		pf2e: {
+			origin: {
+				actor: actor.uuid,
+				sourceId: actor.id,
+				uuid: rune.uuid,
+				type: "action",
+			},
+			context: {
+				target: {
+					token: canvas.tokens.get(target?.token)?.uuid,
+				},
+			},
+		},
+	};
 
-  if (game.modules.get("pf2e-toolbelt")?.active) {
-    const flagInfo = handleToolbelt({
-      description: enrichedDescription,
-      sourceUUID: actor?.uuid,
-      target,
-      runeUUID: rune?.uuid,
-      traits: rune?.system?.traits?.value,
-      runeSourceID: rune.sourceId,
-      sourceAlliance: actor?.alliance,
-    });
-    if (flagInfo) {
-      flags["pf2e-toolbelt"] = flagInfo;
-    }
-  }
+	if (game.modules.get("pf2e-toolbelt")?.active) {
+		const flagInfo = handleToolbelt({
+			description: enrichedDescription,
+			sourceUUID: actor?.uuid,
+			target,
+			runeUUID: rune?.uuid,
+			traits: rune?.system?.traits?.value,
+			runeSourceID: rune.sourceId,
+			sourceAlliance: actor?.alliance,
+		});
+		if (flagInfo) {
+			flags["pf2e-toolbelt"] = flagInfo;
+		}
+	}
 
-  await ChatMessage.create({
-    author: game.user.id,
-    content: `<b>${runeLink}</b> <i>on ${targetDescription(
-      target,
-    )}</i><hr><fieldset>${enrichedDescription}</fieldset>`,
-    speaker: ChatMessage.getSpeaker({
-      actor,
-      token: token?.document ?? token,
-    }),
-    flavor: await getMessageFlavor({
-      traits,
-      name: localize("message.invoke.rune"),
-      glyph: "1",
-    }),
-    flags,
-  });
+	await ChatMessage.create({
+		author: game.user.id,
+		content: `<b>${runeLink}</b> <i>on ${targetDescription(
+			target,
+		)}</i><hr><fieldset>${enrichedDescription}</fieldset>`,
+		speaker: ChatMessage.getSpeaker({
+			actor,
+			token: token?.document ?? token,
+		}),
+		flavor: await getMessageFlavor({
+			traits,
+			name: localize("message.invoke.rune"),
+			glyph: "1",
+		}),
+		flags,
+	});
 }
 
 function handleToolbelt({
-  description,
-  sourceUUID,
-  target,
-  runeUUID,
-  traits,
-  runeSourceID,
-  sourceAlliance = "party",
+	description,
+	sourceUUID,
+	target,
+	runeUUID,
+	traits,
+	runeSourceID,
+	sourceAlliance = "party",
 }) {
-  const dcInfo = getDCInfo(description);
-  if (!dcInfo) return null;
+	const dcInfo = getDCInfo(description);
+	if (!dcInfo) return null;
 
-  const targetToken =
-    target?.type === "object" ? null : getToken(target.token, target.actor);
+	const targetToken
+		= target?.type === "object" ? null : getToken(target.token, target.actor);
 
-  let targets;
-  if (game.user.targets.size > 1 || !targetToken) {
-    targets = [...game.user.targets].map((t) => t.document.uuid);
-  } else {
-    targets = targetToken ? [targetToken?.document?.uuid] : [];
-  }
+	let targets;
+	if (game.user.targets.size > 1 || !targetToken) {
+		targets = [...game.user.targets].map(t => t.document.uuid);
+	} else {
+		targets = targetToken ? [targetToken?.document?.uuid] : [];
+	}
 
-  if (
-    runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"] &&
-    targetToken
-  ) {
-    const enemyAlliances = new Set(
-      ALLIANCES.filter((a) => a !== sourceAlliance),
-    );
-    targets = canvas.tokens.placeables
-      .filter(
-        (t) =>
-          enemyAlliances.has(t?.actor?.alliance) &&
-          targetToken.distanceTo(t) <= 20,
-      )
-      .map((t) => t?.document?.uuid);
-  }
+	if (
+		runeSourceID === RUNES["trolistri-rune-of-forlorn-sorrow"]
+		&& targetToken
+	) {
+		const enemyAlliances = new Set(
+			ALLIANCES.filter(a => a !== sourceAlliance),
+		);
+		targets = canvas.tokens.placeables
+			.filter(
+				t =>
+					enemyAlliances.has(t?.actor?.alliance)
+					&& targetToken.distanceTo(t) <= 20,
+			)
+			.map(t => t?.document?.uuid);
+	}
 
-  return {
-    targetHelper: {
-      type: "action",
-      author: sourceUUID,
-      item: runeUUID,
-      itemUUID: runeUUID,
-      traits: traits ?? [],
-      options: dcInfo.basic ? ["damaging-effect"] : [],
-      saveVariants: {
-        null: {
-          basic: dcInfo.basic,
-          dc: dcInfo.dc,
-          statistic: dcInfo.statistic,
-        },
-      },
-      targets,
-    },
-  };
+	return {
+		targetHelper: {
+			type: "action",
+			author: sourceUUID,
+			item: runeUUID,
+			itemUUID: runeUUID,
+			traits: traits ?? [],
+			options: dcInfo.basic ? ["damaging-effect"] : [],
+			saveVariants: {
+				null: {
+					basic: dcInfo.basic,
+					dc: dcInfo.dc,
+					statistic: dcInfo.statistic,
+				},
+			},
+			targets,
+		},
+	};
 }
 
 export function getDCInfo(description) {
-  const DC_REGEXES = [
-    /(data-pf2-dc=")(\d+)(")/g,
-    /(@Check\[.*?type:.*?|dc:)(\d+)(.*?\])/g,
-  ];
+	const DC_REGEXES = [
+		/(data-pf2-dc=")(\d+)(")/g,
+		/(@Check\[.*?type:.*?|dc:)(\d+)(.*?\])/g,
+	];
 
-  // Look for data-pf2-check attribute to get the statistic
-  const checkMatch = description.match(/data-pf2-check="([^"]+)"/);
-  const statistic = checkMatch ? checkMatch[1] : null;
+	// Look for data-pf2-check attribute to get the statistic
+	const checkMatch = description.match(/data-pf2-check="([^"]+)"/);
+	const statistic = checkMatch ? checkMatch[1] : null;
 
-  // Look for DC value in spans and check if "Basic" is present
-  const spanMatch = description.match(
-    /<span[^>]*>DC\s+(\d+)<\/span>\s*([^<]*)</i,
-  );
-  let dcValue = null;
-  let isBasic = false;
+	// Look for DC value in spans and check if "Basic" is present
+	const spanMatch = description.match(
+		/<span[^>]*>DC\s+(\d+)<\/span>\s*([^<]*)</i,
+	);
+	let dcValue = null;
+	let isBasic = false;
 
-  if (spanMatch) {
-    dcValue = Number.parseInt(spanMatch[1]);
-    isBasic = spanMatch[2].toLowerCase().includes("basic");
-  } else {
-    for (const regex of DC_REGEXES) {
-      regex.lastIndex = 0;
-      const match = regex.exec(description);
-      if (match !== null) {
-        dcValue = Number.parseInt(match[2]);
-        break;
-      }
-    }
-  }
+	if (spanMatch) {
+		dcValue = Number.parseInt(spanMatch[1]);
+		isBasic = spanMatch[2].toLowerCase().includes("basic");
+	} else {
+		for (const regex of DC_REGEXES) {
+			regex.lastIndex = 0;
+			const match = regex.exec(description);
+			if (match !== null) {
+				dcValue = Number.parseInt(match[2]);
+				break;
+			}
+		}
+	}
 
-  if (dcValue !== null) {
-    return {
-      dc: dcValue,
-      statistic,
-      isBasic,
-    };
-  }
+	if (dcValue !== null) {
+		return {
+			dc: dcValue,
+			statistic,
+			isBasic,
+		};
+	}
 
-  return null;
+	return null;
 }
 
 async function getMessageFlavor({
-  traits = [],
-  name = "",
-  effect = undefined,
-  glyph = "",
+	traits = [],
+	name = "",
+	effect = undefined,
+	glyph = "",
 }) {
-  return await foundry.applications.handlebars.renderTemplate(
-    "systems/pf2e/templates/actors/actions/simple/chat-message-flavor.hbs",
-    {
-      effect,
-      glyph,
-      name,
-      traits: traits.map((trait) =>
-        ["diacritic", "rune"].includes(trait)
-          ? {
-              description: `pf2e-runesmith-assistant.traits.Description.${trait}`,
-              label: `pf2e-runesmith-assistant.traits.${trait}`,
-              slug: trait,
-            }
-          : {
-              description: CONFIG.PF2E.traitsDescriptions[trait],
-              label: CONFIG.PF2E.actionTraits[trait] ?? trait,
-              slug: trait,
-            },
-      ),
-    },
-  );
+	return await foundry.applications.handlebars.renderTemplate(
+		"systems/pf2e/templates/actors/actions/simple/chat-message-flavor.hbs",
+		{
+			effect,
+			glyph,
+			name,
+			traits: traits.map(trait =>
+				["diacritic", "rune"].includes(trait)
+					? {
+							description: `pf2e-runesmith-assistant.traits.Description.${trait}`,
+							label: `pf2e-runesmith-assistant.traits.${trait}`,
+							slug: trait,
+						}
+					: {
+							description: CONFIG.PF2E.traitsDescriptions[trait],
+							label: CONFIG.PF2E.actionTraits[trait] ?? trait,
+							slug: trait,
+						},
+			),
+		},
+	);
 }
 
 export function targetDescription(target) {
-  if (!target) {
-    return "";
-  } else if (target?.type === "object") {
-    return target?.object || localize("message.target.an-object");
-  } else {
-    const token = getToken(target.token, target.actor);
-    const name = token?.name ?? target.personName;
-    const item = target?.item;
-    if (name && item) {
-      return localize("ui.names-item", { name, item });
-    } else {
-      return `${name ?? ""}${item || ""}`;
-    }
-  }
+	if (!target) {
+		return "";
+	} else if (target?.type === "object") {
+		return target?.object || localize("message.target.an-object");
+	} else {
+		const token = getToken(target.token, target.actor);
+		const name = token?.name ?? target.personName;
+		const item = target?.item;
+		if (name && item) {
+			return localize("ui.names-item", { name, item });
+		} else {
+			return `${name ?? ""}${item || ""}`;
+		}
+	}
 }
 
 function getToken(tokenID, actorID) {
-  return (
-    canvas.tokens.get(tokenID) ||
-    canvas.tokens.placeables.find((t) => t?.actor?.id === actorID)
-  );
+	return (
+		canvas.tokens.get(tokenID)
+		|| canvas.tokens.placeables.find(t => t?.actor?.id === actorID)
+	);
 }

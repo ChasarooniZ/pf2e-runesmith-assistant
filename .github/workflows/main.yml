@@ -95,7 +95,7 @@ jobs:
         id: sub_manifest_link_version
         uses: cschleiden/replace-tokens@v1
         with:
-          files: "module.json"
+          files: module.json
         env:
           VERSION: ${{steps.get_version.outputs.version-without-v}}
           URL: ${{ env.project_url }}
@@ -139,7 +139,7 @@ jobs:
             packs/                               \
             languages/                           \
             triggers.json                        \
-            --exclude \*source\*   
+            --exclude \*source\*
           # Don't forget to add a backslash at the end of the line for any
           # additional files or directories!
 
