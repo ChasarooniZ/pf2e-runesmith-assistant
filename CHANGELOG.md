@@ -1,9 +1,13 @@
 ## Unreleased
 
-## 1.5.2
+## 1.5.3
 
 - **Updated**
   - Modified the REs for some runes so they apply the proper level effect on targets when it's auto added `Cruonign`, `Feikris`, `Kojastri`, `Ledria`, `Sertum`
+
+## 1.5.2
+
+- Added french translation (🌐 @rectulo)
 
 ## 1.5.1
 
