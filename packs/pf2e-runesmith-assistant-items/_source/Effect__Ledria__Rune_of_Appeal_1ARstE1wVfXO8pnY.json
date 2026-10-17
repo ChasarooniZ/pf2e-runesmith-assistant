@@ -13,7 +13,11 @@
 				"key": "FlatModifier",
 				"value": "match(when(lte(@item.grantedBy?.origin?.level, 8), 1), when(btwn(@item.grantedBy?.origin?.level, 9, 17), 2), when(gte(@item.grantedBy?.origin?.level, 18), when(lte(@item.origin.level, 8), 1), when(btwn(@item.origin.level, 9, 17), 2), when(gte(@item.origin.level, 18), 3))",
 				"type": "status",
-				"selector": ["diplomacy", "deception", "performance"]
+				"selector": [
+					"diplomacy",
+					"deception",
+					"performance"
+				]
 			}
 		],
 		"slug": "effect-ledria-rune-of-appeal",

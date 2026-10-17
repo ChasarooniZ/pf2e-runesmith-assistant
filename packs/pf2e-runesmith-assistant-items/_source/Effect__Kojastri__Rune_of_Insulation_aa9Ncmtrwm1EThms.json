@@ -13,7 +13,9 @@
 				"key": "ChoiceSet",
 				"choices": {
 					"ownedItems": true,
-					"types": ["armor"]
+					"types": [
+						"armor"
+					]
 				},
 				"flag": "armor",
 				"prompt": "Select an armor."
@@ -48,11 +50,15 @@
 				"key": "Resistance",
 				"type": "{item|flags.system.rulesSelections.energy}",
 				"value": "4 + match(when(gte(@item.grantedBy?.origin?.level, -2), floor((@item.grantedBy?.origin?.level - 9) / 2)), floor((@item.origin.level - 9) / 2))",
-				"predicate": ["armor:id:{item|flags.system.rulesSelections.armor}"]
+				"predicate": [
+					"armor:id:{item|flags.system.rulesSelections.armor}"
+				]
 			},
 			{
 				"key": "Note",
-				"selector": ["damage-received"],
+				"selector": [
+					"damage-received"
+				],
 				"text": "Any creature that touches you or damages you with an unarmed attack or non-reach melee weapon takes @Damage[(2 + floor((@actor.level - 9) / 2))[@actor.flags.pf2e.runeOfInsulation.energy]]",
 				"title": "{item|name}",
 				"predicate": [

@@ -11,7 +11,9 @@
 		"rules": [
 			{
 				"key": "FlatModifier",
-				"selector": ["athletics"],
+				"selector": [
+					"athletics"
+				],
 				"value": "match(when(gte(@item.grantedBy?.origin?.level, -2), ternary(gte(@item.grantedBy?.origin?.level,17),3,2)), ternary(gte(@item.origin.level,17),3,2))",
 				"type": "status"
 			}
